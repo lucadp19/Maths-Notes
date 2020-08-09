@@ -1,0 +1,64 @@
+\chapter{Funzioni di variabile reale}
+
+\section{Funzioni di variabile reale}
+
+Studieremo nel seguito principalmente funzioni di variabile reale, ovvero funzioni definite da un sottoinsieme $A$ di $\R$ non vuoto in $\R$.
+
+Studiamo le proprietà fondamentali delle funzioni di variabile reale.
+
+\begin{definition} [Monotonia di una funzione]
+    Sia $A \subseteq \R$ non vuoto, $f : A \to \R$.
+    
+    Allora $f$ si dice
+    \begin{enumerate}[label=(\arabic*)]
+        \item \emph{strettamente crescente} se per ogni $x, y \in A$, $y > x$ vale che $f(y) > f(x)$;
+        \item \emph{debolmente crescente} se per ogni $x, y \in A$, $y > x$ vale che $f(y) \geq f(x)$;
+        \item \emph{strettamente decrescente} se per ogni $x, y \in A$, $y > x$ vale che $f(y) < f(x)$;
+        \item \emph{debolmente decrescente} se per ogni $x, y \in A$, $y > x$ vale che $f(y) \leq f(x)$;
+    \end{enumerate}
+    
+    Se $f$ è strettamente crescente o decrescente si dice anche che è \emph{strettamente monotona}; invece se è debolmente crescente o decrescente si dice anche \emph{debolmente monotona}.
+\end{definition}
+
+\begin{definition}
+    [Simmetrie di una funzione]
+    Sia $A \subseteq \R$ non vuoto, $f : A \to \R$.
+
+    Allora la funzione $f$ si dice \begin{itemize}
+        \item \emph{pari} se per ogni $x \in A$ vale che $f(-x) = f(x)$,
+        \item \emph{dispari} se per ogni $x \in A$ vale che $f(-x) = -f(x)$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    [Periodicità]
+    Sia $A \subseteq \R$ non vuoto, $f : A \to \R$.
+
+    Allora la funzione $f$ si dice \emph{periodica} se esiste almeno un $T \in \R$, $T > 0$ tale che \[
+        f(x + T) = f(x)
+    \] per ogni $x \in A$. Ogni $T$ che soddisfa la precedente equazione si dice \emph{periodo di $f$}. 
+    
+    Se esiste un minimo $T^*$ che la soddisfa, $T^*$ si dice \emph{minimo periodo di $f$}.
+\end{definition}
+
+\section{Limiti di funzioni}
+
+\begin{definition}
+    [Limite di funzione]
+    Sia $A \subseteq \R$ non vuoto, $f : A \to \R$, $x_0 \in \derived{A}$.
+
+    Allora si dice che il \emph{limite di $f(x)$ per $x$ che tende a $x_0$ è $l \in \closure{\R}$}, e si scrive \[
+        \lim_{x \to x_0} f(x) = l, \quad \text{oppure} \quad f(x) \to l \text{   (per $x \to x_0$)}     
+    \] se vale che per ogni intorno $\UU$ di $l$ esiste un intorno $\VV$ di $x_0$ tale che per ogni $x$ in $\VV \inters A \setminus x_0$ vale che $f(x) \in \UU$. 
+    In simboli \[
+        \forall \UU \in \BB(l). \quad \exists \VV \in \BB(x_0). \quad \forall x \in \VV \inters A \setminus \set{x_0}. \quad f(x) \in \UU.    
+    \]
+\end{definition}
+
+\begin{remark}
+    L'insieme derivato di $A$ può anche includere i punti $\pm\infty$, dunque possiamo fare i limiti per $x$ che tende ad infinito se $\pm\infty \in \derived{A}$.
+\end{remark}
+
+La definizione topologica (ovvero per intorni) è equivalente alla definizione tramite $\eps$ e $\delta$. Ad esempio nel caso $x_0 \in \R$, $l \in \R$ abbiamo che il limite di $f(x)$ per $x \to x_0$ è $l$ se e solo se \[
+    \forall \eps > 0. \quad \exists \delta > 0. \quad \forall x \in (x_0 - \delta, x_0 + \delta) \inters A \setminus \set{x_0}. \quad f(x) \in (l - \eps, l + \eps).
+\] Tuttavia dato che gli intorni di $\pm\infty$ sono diversi dagli intorni dei punti di $\R$ dovremmo dare nove definizioni diverse di limite, mentre la definizione topologica è uguale in tutti i casi ed è quindi più comoda.

@@ -1,0 +1,259 @@
+\section{Elementi di Topologia della retta}
+
+\begin{definition}
+    [Spazio metrico e funzione distanza] \label{def:spazio_metrico}
+    Sia $X$ un insieme. 
+    
+    Allora una funzione $d : X \times X \to \R$ si dice \emph{distanza} o \emph{metrica} se rispetta le seguenti proprietà:
+    \begin{enumerate}[label={(d\arabic*)}, ref={(d\arabic*)}]
+        \item \label{def:distanza:pos} Per ogni $x, y \in X$ vale che $d(x, y) \geq 0$. In particolare, $d(x, y) = 0$ se e solo se $x = y$.
+        \item \label{def:distanza:simm} Per ogni $x, y \in X$ vale che $d(x, y) = d(y, x)$.
+        \item \label{def:distanza:dis_triang} Per ogni $x, y, z \in X$ vale che $d(x, y) \leq d(x, z) + d(z, y)$.
+    \end{enumerate}
+
+    La struttura $(X, d)$ si dice \emph{spazio metrico}.
+\end{definition}
+
+La proprietà \ref{def:distanza:dis_triang} è particolarmente importante e viene chiamata \emph{disuguaglianza triangolare}.
+
+Se l'insieme $X$ è $\R^n$ possiamo definire diversi tipi di metriche $d$ che rendano la coppia $(\R^n, d)$ uno spazio metrico. Le più comuni sono:
+\begin{itemize}
+    \item la metrica $d_1$, anche detta \emph{metrica di Manhattan}, definita da \[
+        d_1(x, y) = \sum_{i = 1}^n \abs*{x_i - y_i}.    
+    \]
+    \item la metrica $d_2$, che rappresenta la comune \emph{distanza euclidea}, definita da \[
+        d_2(x, y) = \sqrt{\sum_{i = 1}^n \abs*{x_i - y_i}^2}.   
+    \]
+    \item la metrica $d_p$ con $p \in \R$, $p \geq 1$, definita da \[
+        d_p(x, y) = \sqrt[p]{\sum_{i = 1}^n \abs*{x_i - y_i}^p}.   
+    \]
+    \item la metrica $d_\infty$, definita da \[
+        d_\infty(x, y) = \max_{i = 1, \dots, n} {\abs*{x_i - y_i}}.    
+    \]
+\end{itemize}
+
+\begin{remark}
+    L'insieme $\R$ con la distanza $d(x, y) \deq \abs*{x - y}$ è uno spazio metrico.
+\end{remark}
+
+D'ora in avanti considereremo lo spazio metrico $(X, d)$ dove $X$ è un insieme e $d$ è una metrica qualunque su $X$.
+
+\begin{definition}
+    [Palle aperte e chiuse] \label{def:palla_aperta_chiusa}
+    Sia $x_0 \in X$, $\eps \in \R$, $\eps > 0$.
+
+    Allora si dice \emph{palla aperta centrata in $x_0$ di raggio $\eps$} l'insieme \[
+        \oB{x_0} \deq \set{x \in X \suchthat d(x, x_0) < \eps}.   
+    \] L'insieme di tutte le palle aperte centrate in $x_0$ si denota con $\BB(x_0)$.
+
+    Invece si dice \emph{palla chiusa centrata in $x_0$ di raggio $\eps$} l'insieme \[
+        \cB{x_0} \deq \set{x \in X \suchthat d(x, x_0) \leq \eps}.   
+    \] L'insieme di tutte le palle chiuse centrate in $x_0$ si denota con $\closure{\BB}(x_0)$.
+\end{definition}
+
+\begin{definition}
+    [Caratterizzazione dei punti di uno spazio metrico] \label{def:caratt_punti}
+    Sia $x \in X$, $A \subseteq X$ non vuoto. Si dice che:
+    \begin{enumerate}
+        \item $x$ è \emph{interno ad $A$} se esiste $\eps > 0$ reale tale che \[
+                \oB{x} \subseteq A, 
+        \] ovvero se vi è una palla centrata in $x$ tutta contenuta in $A$.
+        \item $x$ è \emph{aderente ad $A$} se per ogni $\eps > 0$ reale vale che \[
+            \oB{x} \inters A \neq \varnothing,
+        \] ovvero se per ogni palla centrata in $x$ c'è un punto che cade nell'insieme $A$.
+        \item $x$ è \emph{sulla frontiera di $A$} se per ogni $\eps > 0$ reale vale che \[
+            \oB{x} \inters A \neq \varnothing, \quad \oB{x} \inters (X \setminus A) \neq \varnothing, 
+        \] ovvero se per ogni palla centrata in $x$ c'è un punto che cade nell'insieme $A$ e un punto che cade nel suo complementare $X \setminus A$.
+        \item $x$ è \emph{isolato in $A$} se esiste $\eps > 0$ reale tale che \[
+                \oB{x} \inters A = \set{x}, 
+        \] ovvero se vi è una palla centrata in $x$ in cui non cadono punti di $A$ tranne $x$.
+        \item $x$ è \emph{punto di accumulazione per $A$} se per ogni $\eps > 0$ reale vale che \[
+            \oB{x} \inters (A \setminus \set{x}) \neq \varnothing,
+        \] ovvero se per ogni palla centrata in $x$ c'è un punto diverso da $x$ che cade nell'insieme $A$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    [Caratterizzazione dei punti di uno spazio metrico - Insiemi] \label{def:caratt_punti_insiemi}
+    Sia $A \subseteq X$ non vuoto. Si definiscono allora \begin{enumerate}
+        \item la parte interna di $A$, definita da \[
+            \interior{A} \deq \set{x \in X \suchthat x \text{ è punto interno di } A}.
+        \]
+        \item la chiusura di $A$, definita da \[
+            \closure{A} \deq \set{x \in X \suchthat x \text{ è punto di aderenza per } A}
+        \]
+        \item la frontiera di $A$, definita da \[
+            \partial{A} \deq \set{x \in X \suchthat x \text{ è punto di frontiera per } A}   
+        \]
+        \item l'insieme dei punti isolati di $A$, ovvero \[
+            \operatorname{Isol}(A) \deq \set{x \in X \suchthat x \text{ è punto isolato in } A}.
+        \]
+        \item l'insieme derivato di $A$, definito da \[
+            \derived{A} \deq \set{x \in X \suchthat x \text{ è punto di accumulazione per } A}.
+        \]
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Notiamo che tutti i punti di $A$ sono punti di aderenza per $A$ (in quanto l'intersezione tra la palla centrata nel punto e $A$ deve contenere il punto stesso, e quindi non può essere vuota); inoltre anche i punti di accumulazione sono punti di aderenza, per definizione di punto di accumulazione. Segue quindi che la chiusura di $A$ è data dall'unione di $A$ con il suo derivato. In formule \[
+        \closure{A} = A \union \derived{A}.    
+    \]
+\end{remark}
+
+\begin{definition}
+    [Insieme aperto] \label{def:aperto}
+    Sia $A \subseteq X$. Allora si dice che $A$ è un \emph{insieme aperto}, o semplicemente un \emph{aperto}, se per ogni $x \in A$ esiste un $\eps > 0$ reale tale che \[
+        \oB{x} \subseteq A,    
+    \] ovvero se tutti i punti di $A$ sono punti interni ad $A$.
+\end{definition}
+
+\begin{proposition}
+    [L'unione di una famiglia qualsiasi di aperti è aperta]\label{prop:unione_aperti}
+    Sia $\FF \subseteq \pset{X}$ una famiglia di insiemi aperti.
+
+    Allora la loro unione $\displaystyle \bigunion_{A \in \FF} A$ è un aperto.
+\end{proposition}
+\begin{proof}
+    Sia $x \in \bigunion \FF$; dunque $x \in A$ per qualche $A \in \FF$. 
+
+    Siccome $A$ è aperto deve esistere una palla centrata in $x$ tutta contenuta in $A$; dunque a maggior ragione questa palla sarà contenuta in $\FF$, che risulterà quindi aperto.
+\end{proof}
+
+\begin{proposition}
+    [L'intersezione di due aperti è un aperto]\label{prop:inters_aperti}
+    Siano $A, B \subseteq X$ due aperti. Allora $A \inters B$ è aperto.
+\end{proposition}
+\begin{proof}
+    Sia $x \in A \inters B$. Siccome $A$ e $B$ sono aperti, dovranno esistere $\eps_A, \eps_B > 0$ e reali tali che \[
+        \oB[\eps_A]{x} \subseteq A, \quad \oB[\eps_B]{x} \subseteq B. 
+    \]
+
+    Sia ora $\eps = \min \set{\eps_A, \eps_B}$. Allora l'intorno $\oB{x}$ è contenuto sia in $A$ che in $B$, dunque deve essere in $A \inters B$, da cui viene la tesi.
+\end{proof}
+\begin{corollary}
+    [L'intersezione di un numero finito di aperti è aperto] \label{cor:inters_aperti}
+    Siano $A_1, \dots, A_n \subseteq X$ aperti. Allora la loro intersezione $\displaystyle \biginters_{i = 1}^n A_i$ è aperta. 
+\end{corollary}
+\begin{proof}
+    Per induzione su $n$.
+\end{proof}
+
+\begin{definition}
+    [Insieme chiuso] \label{def:chiuso}
+    Sia $D \subseteq X$. Allora $D$ si dice \emph{chiuso} se e solo se $D$ contiene tutti i suoi punti di accumulazione.
+\end{definition}
+
+\begin{proposition}
+    [Un insieme è chiuso se e solo se il suo complementare è aperto] \label{prop:chiuso_sse_compl_aperto}
+    Sia $D \subseteq X$. Allora $D$ è chiuso se e solo se $X \setminus D$ è aperto.
+\end{proposition}
+\begin{proof}
+    Definiamo $A \deq X \setminus D$ per brevità.
+    \begin{description}
+        \item[($\implies$)] Sia $x \in A$; siccome $D$ contiene tutti i suoi punti di accumulazione allora $x$ non può essere punto di accumulazione per $D$. Questo significa che deve esistere una palla centrata in $x$ per cui $\oB{x} \inters D$ è vuoto, ovvero $\oB{x}$ è tutto contenuto nel complementare di $D$, ovvero $A$.
+        
+        Dunque $x$ è un punto interno ad $A$. Per la generalità di $x$ segue che tutti i punti di $A$ sono interni, ovvero $A$ è aperto.
+        \item[($\impliedby$)] Sia $x$ punto di accumulazione per $D$. 
+        
+        Siccome $A$ è aperto, se per assurdo $x \in A$ dovrebbe esistere una palla centrata in $x$ tale che $\oB{x}$ è tutta contenuta in $A$. Ma questa palla non può contenere punti di $D$, il che è assurdo in quanto $x$ è un punto di accumulazione per $D$ e quindi ogni sua palla ha un punto in comune con $D$.
+
+        Segue quindi che $D$ è chiuso. \qedhere
+    \end{description}
+\end{proof}
+
+
+\subsection{Insiemi compatti}
+
+\begin{definition}[Diametro]
+    Sia $A \subseteq X$. Allora il \emph{diametro} di $A$ è \[
+        \diameter A \deq \sup \set{d(x, y) \suchthat x, y \in A}.
+    \]
+\end{definition}
+
+\begin{definition}[Insieme limitato]
+    Sia $A \subseteq X$. Allora $A$ si dice \emph{limitato} se il suo diametro è finito.
+\end{definition}
+
+\begin{remark}
+    Un insieme ha diametro limitato se e solo se è contenuto in una palla di raggio finito, ovvero se esiste un punto $x \in X$ e un raggio $r \in \R$ tali che \[
+        A \subseteq \oB[r]{x}.    
+    \]
+\end{remark}
+
+\begin{definition}
+    [Ricoprimento aperto di un insieme] \label{def:ricoprimento}
+    Sia $\FF = \left\{U_i\right\}_{i \in I}$ una famiglia di sottoinsiemi aperti di $X$, $A$ un altro sottoinsieme di $X$. 
+    
+    Allora si dice che $\FF$ è un \emph{ricoprimento di $A$} se $A$ è contenuto nell'unione degli elementi $\FF$, ovvero se \[
+        A \subseteq \bigunion_{i \in I} U_i.
+    \] 
+\end{definition}
+
+La famiglia $\FF$ di sottoinsiemi di $X$ può essere qualunque: in particolare, può essere formata da infiniti insiemi.
+
+\begin{definition}
+    [Sottoricoprimento finito di un insieme] \label{def:sottoricoprimento_finito}
+    Sia $A$ un sottoinsieme di $X$ e sia $\FF = \left\{U_i\right\}_{i \in I}$ un suo ricoprimento.     
+    Sia inoltre $J \subseteq I$. 
+    
+    Allora si dice che $\left\{U_i\right\}_{i \in J}$ è un \emph{sottoricoprimento finito} di $A$ se
+    \begin{enumerate}[label={(\roman*)}]
+        \item $J$ è un insieme finito (ovvero con un numero finito di elementi);
+        \item $\left\{U_i\right\}_{i \in J}$ è ancora un ricoprimento di $A$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    [Compattezza per ricoprimenti] \label{def:compatto_ricopr}
+    Sia $A \subseteq X$. Si dice che $A$ è \emph{compatto per ricoprimenti} o semplicemente \emph{compatto} se ogni ricoprimento di $A$ ammette un sottoricoprimento finito.
+\end{definition}
+
+\begin{proposition}
+    [Un compatto è chiuso e limitato]
+    Sia $(X, d)$ uno spazio metrico e sia $A \subseteq X$ compatto.
+
+    Allora vale che \begin{enumerate}[label={(\roman*)}]
+        \item $A$ è chiuso;
+        \item $A$ è limitato.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo entrambe le proprietà degli insiemi compatti in uno spazio metrico.
+    \paragraph{Chiusura.} Supponiamo per assurdo $A$ non sia chiuso. Per definizione allora dovrà esistere almeno un punto di accumulazione di $A$ che non è contenuto in $A$.
+
+    Sia $x_0 \in \derived{A}$ tale che $x_0 \notin A$. Costruiamo un ricoprimento di $A$ fatta in questo modo: per ogni punto $x \in A$ associamo ad esso una palla $\oB[r_x]{x}$ dove \[
+        r_x = \frac12 d(x, x_0).    
+    \] Ovviamente questa è un ricoprimento aperto di $A$, dunque siccome $A$ è compatto possiamo estrarne un sottoricoprimento finito della forma \[
+        \oB[r_{x_1}]{x_1} \union \dots \union \oB[r_{x_n}]{x_n}.   
+    \] Sia $r = \min \set{r_{x_1}, \dots, r_{x_n}}$. Allora la palla $\oB[r]{x_0}$ non interseca nessuna delle palle del sottoricoprimento finito, poiché altrimenti $x_0$ sarebbe in $A$.
+
+    Dato che $x_0$ è di accumulazione per $A$ segue che in $\oB[r]{x_0}$ devono esserci infiniti punti di $A$, il che contraddice la conclusione che il sottoricoprimento sia un ricoprimento di $A$. Dunque segue che $A$ è chiuso.
+    \paragraph{Limitatezza} Supponiamo per assurdo $A$ non limitato. Allora per ogni $x \in X$, $r \in \R$ dovranno esistere dei punti di $A$ che non sono in $\oB[r]{x}$.
+
+    Fisso $x \in X$. L'unione di tutte le palle di centro $x$ con raggio $n \in \N$ è un ricoprimento di $A$, ma da questo ricoprimento non si può estrarre un sottoricoprimento finito. Infatti se prendo un numero finito di palle centrate in $x$ e ne faccio l'unione ottengo \[
+        \oB[n_1]{x} \union \dots \union \oB[n_k]{x}.
+    \] Sia $\bar n = \max \set{n_1, \dots, n_k}$, allora il sottoricoprimento è uguale alla palla $\oB[\bar n]{x}$. Ma per ipotesi $A$ è illimitato, dunque non può essere contenuto in una palla di dimensione finita $\bar n$.
+
+    Dunque concludiamo che $A$ è limitato.
+\end{proof}
+
+Nel caso specifico dello spazio euclideo $\R^n$ vale anche il viceversa, come ci viene garantito dal seguente teorema.
+
+\begin{theorem}
+    [Teorema di Heine-Borel] \label{th:heine-borel}
+    Sia $A \subseteq \R^n$. Allora $A$ è compatto per ricoprimenti se e solo se è chiuso e limitato.
+\end{theorem}
+
+\subsection{Topologia reale in una dimensione}
+
+Nel caso della retta valgono tutte le definizioni date sopra nel caso più generale di uno spazio metrico qualsiasi.
+
+In particolare le palle aperte si dicono \emph{intorni aperti} e sono rappresentati da intervalli aperti: \[
+    \oB{x_0} = \set{x \in \R \suchthat \abs*{x - x_0} < \eps} = (x_0 - \eps, x_0 + \eps).    
+\] Studiando la retta reale estesa invece sorge la necessità di definire degli \emph{intorni di $+\infty$ e $-\infty$}.
+
+Si dice \emph{intorno di $+\infty$ di raggio $M > 0$} una semiretta di $\R$ della forma \[
+    \oB[M]{+\infty} = \set{x \in \R \suchthat x > M} = (M, +\infty).
+\] Allo stesso modo si dice \emph{intorno di $-\infty$ di raggio $M > 0$} una semiretta di $\R$ della forma \[
+    \oB[M]{-\infty} = \set{x \in \R \suchthat x < -M} = (-\infty, -M).
+\] 

@@ -1,0 +1,296 @@
+\section{Numeri reali}
+
+\subsection{Proprietà algebriche dei numeri reali}
+
+\begin{definition} [Campo]
+    \label{def:campo}
+    Sia $\K$ un insieme e siano $+$ (\emph{somma}), $\cdot$ (\emph{prodotto}) due operazioni su $\K$, ovvero \begin{align*}
+        + : \K \times \K &\to \K, & \cdot : \K \times \K &\to \K. \\
+        (a, b) &\mapsto a+b,      &             (a, b) &\mapsto a\cdot b.
+    \end{align*} Allora la struttura $(\K, +, \cdot)$ si dice \emph{campo} se valgono i seguenti assiomi:
+    \begin{enumerate}[label={(S\arabic*)}]
+        \item \label{def:campo_sum:com} Vale la \emph{proprietà commutativa della somma}:
+        
+        per ogni $a, b \in \K$ vale che $a + b = b + a$.
+        \item \label{def:campo_sum:ass} Vale la \emph{proprietà associativa della somma}:
+        
+        per ogni $a, b, c \in \K$ vale che $(a + b) + c = a + (b + c)$.
+        \item \label{def:campo_sum:neu} Esiste un elemento $0 \in \K$ che è \emph{elemento neutro} per la somma:
+        
+        per ogni $a \in \K$ vale che $a + 0 = 0 + a = a$.
+        \item \label{def:campo_sum:opp} Ogni elemento di $\K$ è \emph{invertibile} rispetto alla somma:
+        
+        per ogni $a \in \K$ esiste $(-a) \in \K$ (detto \emph{opposto di $a$}) tale che $a + (-a) = 0$.
+    \end{enumerate}
+    \begin{enumerate}[label={(P\arabic*)}]
+        \item \label{def:campo_prod:com} Vale la \emph{proprietà commutativa del prodotto}:
+        
+        per ogni $a, b \in \K$ vale che $a \cdot b = b \cdot a$.
+        \item \label{def:campo_prod:ass} Vale la \emph{proprietà associativa del prodotto}:
+        
+        per ogni $a, b, c \in \K$ vale che $(a \cdot b) \cdot c = a \cdot (b \cdot c)$.
+        \item \label{def:campo_prod:neu} Esiste un elemento $1 \in \K$ che è \emph{elemento neutro} per il prodotto:
+        
+        per ogni $a \in \K$ vale che $a \cdot 1 = 1 \cdot a = a$.
+        \item \label{def:campo_prod:inv} Ogni elemento di $\K$ è \emph{invertibile} rispetto al prodotto:
+        
+        per ogni $a \in \K$ esiste $a\inv \in \K$ (detto \emph{inverso di $a$}) tale che $a \cdot a\inv = 1$.
+    \end{enumerate}
+    \begin{enumerate}[label=(SP)]
+        \item \label{def:campo:distr} Vale la \emph{proprietà distributiva del prodotto rispetto alla somma}:
+         
+        per ogni $a, b, c \in \K$ vale che $a(b + c) = ab + ac$.
+    \end{enumerate}
+\end{definition}
+
+Spesso sottointendiamo il simbolo di prodotto, scrivendo $ab$ per $a \cdot b$.
+
+\begin{definition} [Campo ordinato]
+    \label{def:campo_ord}
+    Sia $(\K, +, \cdot)$ un campo e sia $\leq$ una relazione di ordine totale su $\K$.
+    
+    Allora la struttura $(\K, +, \cdot, \leq)$ si dice \emph{campo ordinato} se valgono i seguenti assiomi:
+    \begin{enumerate}[label={(CO\arabic*)}]
+        \item \label{def:campo_ord:ord_sum} Per ogni $a, b, c \in \K$, se $a \leq b$ allora $a + c \leq b + c$.
+        \item \label{def:campo_ord:ord_prod} Per ogni $a, b \in \K$, se $0 \leq a$ e $0 \leq b$ allora $0 \leq ab$.
+    \end{enumerate}
+\end{definition}
+
+Esempi di campi sono $\Q$, $\R$ e $\C$ con le usuali operazioni di somma e prodotto. Di questi soltanto $\Q$ e $\R$ ammettono un ordinamento totale, dunque soltanto $\Q$ e $\R$ sono campi ordinati.
+
+Inoltre nei campi ordinati introduciamo l'ordinamento totale $\geq$ tale che per ogni $a, b \in \K$ vale che \[
+    a \geq b \iff b \leq a.    
+\]
+
+\begin{proposition}
+    [Proprietà di un campo]
+
+    Sia $(\K, +, \cdot)$ un campo. Allora valgono le seguenti:
+    \begin{enumerate}[label={(\roman*)}]
+        \item per ogni $a \in \K$ vale che $a \cdot 0 = 0$,
+        \item per ogni $a, b \in \K$ se $ab = 0$ allora $a = 0$ oppure $b = 0$.
+    \end{enumerate}
+
+    Inoltre se $\leq$ è un ordinamento totale su $\K$ tale che $(\K, +, \cdot, \leq)$ è un campo ordinato, vale che:
+    \begin{enumerate}[label={(\roman*)}, start=3]
+        \item per ogni $a \in \K$, se $a \geq 0$ allora $-a \leq 0$,
+        \item per ogni $a, b, c \in \K$, se $a \leq b$ e $c \leq 0$ allora $ac \geq bc$,
+        \item per ogni $a \in \R$ vale che $0 \leq a^2$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo le cinque proprietà separatamente.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Sia $a \in \K$ qualsiasi. Allora \begin{align*}
+            a0 &= a(0 + 0) \tag{per \ref{def:campo_sum:neu}}\\
+            &= a0 + a0 \tag{per \ref{def:campo_sum:neu}}\\
+            \intertext{Per \ref{def:campo_sum:neu} esiste $(-a0) \in \K$, dunque}
+            \iff a0 - a0 &= a0 + a0 - a0 \tag{per \ref{def:campo_sum:opp}}\\
+            \iff 0 &= a0.
+        \end{align*}
+        COMPLETA
+    \end{enumerate}
+\end{proof}
+
+\subsection{Valore assoluto}
+
+\begin{definition}
+    Sia $a \in \R$. Allora si definisce \emph{valore assoluto} di $a$ il massimo tra $a$ e $-a$, ovvero \begin{equation}
+        \abs*{a} \deq \max \set{a, -a} = \begin{cases}
+            a, &\text{se } a \geq 0\\
+            -a, &\text{se } a < 0.
+        \end{cases}
+    \end{equation}
+\end{definition}
+
+\begin{proposition}
+    [Proprietà del valore assoluto]
+    Il valore assoluto gode delle seguenti proprietà:
+    \begin{enumerate}
+        \item Per ogni $a \in \R$ vale che $a \leq \abs*{a}$, $-a \leq \abs*{a}$.
+        \item Per ogni $a, b \in \R$ vale che $\abs*{a + b} \leq \abs*{a} + \abs*{b}$.
+    \end{enumerate}
+\end{proposition}
+
+\subsection{Completezza dei numeri reali}
+
+\begin{definition} [Sezione]
+    \label{def:sezione}
+    Sia $\K$ un campo ordinato e siano $A, B \subseteq \K$ non vuoti. Allora si dice che $(A, B)$ è una sezione di $\K$ se \begin{enumerate}[label={(\roman*)}, ref={\thedefinition: (\roman*)}]
+        \item \label{def:sezione:part} $A \inters B = \varnothing$ e $A \union B = \K$;
+        \item \label{def:sezione:sx} $A$ sta a sinistra di $B$, ovvero per ogni $a \in A, b \in B$ vale che $a \leq b$.
+    \end{enumerate}
+\end{definition}
+
+\begin{unnamed}[Assioma di Dedekind]
+    \label{ax:dedekind}
+    Sia $(A, B)$ una sezione di $\K$.
+
+    Allora si dice che $\K$ è \emph{Dedekind-completo} (o semplicemente \emph{completo}) se esiste un unico elemento separatore per la sezione $(A, B)$, ovvero \[
+        \exists! \xi \in \K. \quad a \leq \xi \leq b \qquad \forall a \in A, b \in B.
+    \]
+\end{unnamed}
+
+\begin{theorem}
+    [Esistenza dei numeri reali]
+    Esiste una struttura $(\R, +, \cdot, \leq)$, detti \emph{numeri reali}, che è un campo ordinato completo.
+\end{theorem}
+
+\begin{theorem}
+    [Unicità dei numeri reali]
+    La struttura $(\R, +, \cdot, \leq)$ è unica a meno di isomorfismi; 
+    
+    ovvero se $(\R^\prime, +^\prime, \cdot^\prime, \leq^\prime)$ è un campo ordinato completo, allora esiste una bigezione $\phi : \R \to \R^\prime$ tale che per ogni $a, b \in \R$ \begin{enumerate}[label={(\roman*)}]
+        \item $\phi(a + b) = \phi(a) +^\prime \phi(b)$,
+        \item $\phi(a \cdot b) = \phi(a) \cdot^\prime \phi(b)$,
+        \item se $a \leq b$ allora $\phi(a) \leq^\prime \phi(b)$.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Proprietà dei numeri reali}
+
+\begin{definition} [Maggioranti e minoranti]
+    Sia $A \subseteq \R$, $A \neq \varnothing$. 
+    
+    Allora si dice che $M \in \R$ è un \emph{maggiorante} di $A$ se \[
+        \forall a \in A. \quad M \geq a. 
+    \] L'insieme dei maggioranti di un insieme $A$ si indica con $\MM(A)$.
+
+    Ugualmente si dice che $m \in \R$ è un \emph{minorante} di $A$ se \[
+        \forall a \in A. \quad m \leq a. 
+    \] L'insieme dei minoranti di un insieme $A$ si indica con $\NN(A)$.
+\end{definition}
+
+\begin{definition} [Limitato superiormente o inferiormente]
+    Sia $A \subseteq \R$, $A \neq \varnothing$. 
+    
+    Allora si dice che $A$ è \emph{limitato superiormente} se ammette almeno un maggiorante, ovvero se $\MM(A) \neq \varnothing$.
+
+    Ugualmente si dice che $A$ è \emph{limitato inferiormente} se ammette almeno un minorante, ovvero se $\NN(A) \neq \varnothing$.
+
+    Se $A$ è limitato sia superiormente che inferiormente allora si dice che $A$ è limitato.
+\end{definition}
+
+\begin{remark}
+    Un insieme $A \subseteq \R$ è limitato se e solo se esiste un $M \in \R$ tale che \[
+        \forall a \in A. \quad \abs*{a} \leq M    
+    \]
+\end{remark}
+
+\begin{definition} [Massimo e minimo di un insieme]
+    Sia $A \subseteq \R$, $A \neq \varnothing$. 
+
+    Allora si dice che $M \in \R$ è il \emph{massimo} di $A$, e si scrive $M = \max A$, se
+    \begin{enumerate}[label={(\roman*)}]
+        \item $M$ è un maggiorante di $A$, ovvero per ogni $a \in A$ vale che $M \geq a$
+        \item $M \in A$.
+    \end{enumerate}
+    
+    Ugualmente si dice che $m \in \R$ è il \emph{minimo} di $A$, e si scrive $m = \min A$, se
+    \begin{enumerate}[label={(\roman*)}]
+        \item $m$ è un minorante di $A$, ovvero per ogni $a \in A$ vale che $m \leq a$
+        \item $m \in A$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Massimo e minimo possono non esistere (ad esempio l'insieme $(0, 1)$ non ha né massimo né minimo) ma se esistono allora sono unici.
+\end{remark}
+
+\begin{definition}
+    [Estremo superiore ed estremo inferiore]
+    Sia $A \subseteq \R$, $A \neq \varnothing$. 
+
+    Allora si definisce l'estremo superiore di $A$, in simboli $\sup A$, nel seguente modo: \[
+        \sup A = \begin{cases}
+            +\infty,    &\text{se $A$ è illimitato superiormente,}\\
+            \min \MM(A) &\text{altrimenti.}
+        \end{cases}    
+    \]
+    
+    Ugualmente si definisce l'estremo inferiore di $A$, in simboli $\inf A$: \[
+        \inf A = \begin{cases}
+            -\infty,    &\text{se $A$ è illimitato inferiormente,}\\
+            \max \NN(A) &\text{altrimenti.}
+        \end{cases}    
+    \]
+\end{definition}
+
+\begin{theorem}
+    [Esistenza dell'estremo superiore]
+    Sia $A \subseteq \R$, $A \neq \varnothing$, $A$ limitato superiormente.
+
+    Allora l'insieme dei maggioranti di $A$ ammette minimo.
+\end{theorem}
+\begin{proof}
+    Siccome $A$ è limitato superiormente, $\MM(A) \neq \varnothing$. 
+    
+    Sia $B = \R \setminus \MM(A)$; mostriamo che $(B, \MM(A))$ è una sezione di $\R$.
+    Ovviamente le proprietà in \ref{def:sezione:part} sono verificate, in quanto ogni $x \in \R$ è in $\MM(A)$ oppure in $B$.
+
+    Siano ora $b \in B$ e $m \in \MM(A)$ e mostriamo che necessariamente $b < m$. Siccome $b$ non è un maggiorante di $A$ dovrà esistere un $a \in A$ tale che $b < a$. D'altra parte $m$ è un maggiorante di $A$, dunque $a \leq m$. Da ciò segue che $b < m$, che verifica la proprietà \ref{def:sezione:sx}.
+
+    Per l'\nameref{ax:dedekind} esiste ed è unico l'elemento separatore. Sia quindi $\xi$ l'elemento separatore della sezione: mostriamo che $\xi = \min \MM(A)$.
+
+    Abbiamo già mostrato che $\xi \leq m$ per ogni $m \in \MM(A)$, quindi dobbiamo soltanto mostrare che $\xi \in \MM(A)$. 
+    
+    Supponiamo per assurdo che $\xi$ non sia in $\MM(A)$, ovvero che $\xi$ non sia un maggiorante di $A$: allora dovrà esistere un $a \in A$ tale che $a > \xi$. Ma allora varrebbe che \[
+        \xi < \frac{\xi + a}{2} < a.
+    \] Essendo $\dfrac{\xi + a}{2} < a$ allora anche esso appartiene a $B$, da cui segue che $\xi$ non può essere l'elemento separatore di $(B, \MM(A))$, il che è assurdo.
+
+    Dunque $\xi \in \MM(A)$, ovvero $\xi = \min \MM(A) = \sup A$.
+\end{proof}
+
+Si può dimostrare un analogo risultato per l'estremo inferiore:
+\begin{theorem}
+    [Esistenza dell'estremo inferiore]
+    Sia $A \subseteq \R$, $A \neq \varnothing$, $A$ limitato inferiormente.
+
+    Allora l'insieme dei minoranti di $A$ ammette massimo.
+\end{theorem}
+
+\begin{proposition}
+    [Caratterizzazione dell'estremo superiore] \label{prop:caratt_sup}
+    Sia $A \subseteq \R$, $A \neq \varnothing$, $A$ limitato superiormente.
+
+    Allora se $L = \sup A$ segue che \begin{enumerate}[label={(\roman*)}, ref={caratterizzazione del sup: (\roman*)}]
+        \item \label{prop:caratt_sup:magg} per ogni $a \in A$ vale che $a \leq L$;
+        \item \label{prop:caratt_sup:min_magg} per ogni $\eps > 0$ esiste un $a \in A$ tale che $L - \eps < a$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Infatti la (i) dice che $L$ è un maggiorante di $A$; la (ii) dice che $L$ è il minimo maggiorante di $A$, ovvero che qualsiasi numero minore di $L$ non è maggiorante di $A$.
+\end{proof}
+
+\begin{proposition}
+    [Caratterizzazione dell'estremo inferiore] \label{prop:caratt_inf}
+    Sia $A \subseteq \R$, $A \neq \varnothing$, $A$ limitato inferiormente.
+
+    Allora se $L = \inf A$ segue che \begin{enumerate}[label={(\roman*)}, ref={caratterizzazione dell'inf: (\roman*)}]
+        \item \label{prop:caratt_inf:magg} per ogni $a \in A$ vale che $a \geq L$;
+        \item \label{prop:caratt_inf:min_magg} per ogni $\eps > 0$ esiste un $a \in A$ tale che $L - \eps > a$.
+    \end{enumerate}
+\end{proposition}
+
+\subsection{Retta reale estesa}
+
+\begin{definition}
+    [Retta reale estesa]
+    Si definisce retta reale estesa l'insieme \[
+        \closure{\R} = \R \union \set{-\infty, +\infty}    
+    \] tali che $-\infty < a < +\infty$ per ogni $a \in \R$.
+\end{definition}
+
+La retta reale estesa non è un campo ordinato poiché non possiamo estendere le operazioni di somma e prodotto in modo che siano consistenti. Possiamo tuttavia definirle parzialmente in questo modo:
+\begin{enumerate}
+    \item $a + (+\infty) = +\infty$ per ogni $a \in \R$;
+    \item $a + (-\infty) = -\infty$ per ogni $a \in \R$;
+    \item $a(+\infty) = +\infty$ per ogni $a > 0$;
+    \item $a(+\infty) = -\infty$ per ogni $a < 0$;
+    \item $a(-\infty) = -\infty$ per ogni $a > 0$;
+    \item $a(-\infty) = +\infty$ per ogni $a < 0$.
+\end{enumerate}
+
+I casi che non sono automaticamente determinati vengono chiamati \emph{forme indeterminate} oppure \emph{di indecisione}, e sono \begin{align*}
+    &+\infty - \infty & \pm\infty \cdot 0
+\end{align*} a cui si aggiungono $\dfrac{0}{0}$ e $\dfrac{\pm\infty}{\pm\infty}$ nello studio dei limiti.

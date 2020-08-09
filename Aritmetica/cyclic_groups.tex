@@ -1,0 +1,362 @@
+\section{Generatori e gruppi ciclici}
+
+Innanzitutto diamo una definizione generale di potenze:
+\begin{definition}[Potenze intere] \label{def:potenze_intere}
+    Sia $(G, \cdot)$ un gruppo e sia $g \in G$ qualsiasi. 
+    
+    Allora definiamo $g^k$ per $k \in \Z$ nel seguente modo: \[
+        g^k \deq \begin{cases}
+            e_G &\text{se } k = 0\\
+            g \cdot g^{k-1} &\text{se } k > 0\\
+            (g\inv)^k &\text{se } k < 0.
+        \end{cases}    
+    \]
+\end{definition}
+
+Se il gruppo è definito in notazione additiva, le potenze diventano prodotti per numeri interi. 
+
+Piu' formalmente, se $(G, +)$ è un gruppo e $g \in G$ qualsiasi, allora definiamo $ng$ per $n \in \Z$ nel seguente modo: \[
+    ng \deq \begin{cases}
+        e_G &\text{se } n = 0\\
+        g + (n-1)g &\text{se } n > 0\\
+        (-n)(-g) &\text{se } n < 0.
+    \end{cases}   
+\]
+
+Le potenze intere soddisfano alcune proprietà interessanti, verificabili facilmente per induzione, tra cui \begin{enumerate}[label={(P\arabic*)}, ref={(P\arabic*)}]
+    \item per ogni $n, m \in \Z$ vale che $g^mg^n = g^{n+m}$,
+    \item per ogni $n, m \in \Z$ vale che ${(g^n)}^m = g^{nm}$.
+\end{enumerate}
+
+\begin{definition}
+    [Sottogruppo generato] \label{def:sgr_generato}
+    Sia $(G, \cdot)$ un gruppo e sia $g \in G$.
+
+    Allora si dice \emph{sottogruppo generato da $g$} l'insieme \[
+        \cycl{g} \deq \set{g^k \suchthat k \in \Z}.    
+    \]
+\end{definition}
+
+\begin{proposition}
+    [Il sottogruppo generato è un sottogruppo abeliano] \label{prop:sgr_generato_è_sgr}
+    Sia $(G, \cdot)$ un gruppo e sia $g \in G$ qualsiasi.
+
+    Allora $\cycl{g} \leq G$. Inoltre $\cycl{g}$ è abeliano.
+\end{proposition}
+\begin{proof}
+    Innanzitutto notiamo che $\cycl{g} \neq \varnothing$ in quanto $g \in \cycl{g}$. Mostriamo che $\cycl{g}$ è un sottogruppo indotto da $G$.
+
+    \begin{enumerate}[label={(\roman*)}]
+        \item Se $g^n, g^m \in \cycl{g}$ allora $g^ng^m = g^{n+m} \in \cycl{g}$ in quanto $n+m \in \Z$;
+        \item Sia $g^n \in \cycl{g}$. Per definizione di potenza, $g^{-n}$ è l'inverso di $g^n$ e $g^{-n} \in \cycl{g}$ in quanto $-n \in \Z$. 
+    \end{enumerate}
+
+    Dunque per la proposizione \ref{prop:cond_sgr} segue che $\cycl{g} \leq G$.
+
+    Inoltre notiamo che \[
+        g^ng^m = g^{n+m} = g^{m+n} = g^mg^n    
+    \] dunque $\cycl{g}$ è abeliano.
+\end{proof}
+
+Notiamo che, al contrario di quanto succede con i numeri interi, può succedere che $g^h = g^k$ per qualche $h \neq k$.
+
+Supponiamo senza perdita di generalità $k > h$. In tal caso \begin{align*}
+    g^{k-h} &= e_G\\
+    \implies g^{k-h+1} &= g^{k-h} \cdot g\\
+    &= e_G \cdot g\\
+    &= g.
+\end{align*}
+Dunque il sottogruppo generato da $g$ non è infinito, ovvero \[
+    \abs*{\cycl*{g}} < +\infty.    
+\]
+
+Questo ci consente di parlare di ordine di un elemento di un gruppo:
+
+\begin{definition}
+    [Ordine di un elemento di un gruppo] \label{def:ord_grp}
+    Sia $(G, \cdot)$ un gruppo e sia $x \in G$.
+
+    Allora si dice ordine di $x$ in $G$ il numero \[
+        \ord[G]{x} \deq \min\set{k > 0 \suchthat x^k = _Ge}.    
+    \]
+
+    Se l'insieme $\set{k > 0 \suchthat x^k = e_G}$ è vuoto, allora per definizione \[
+        \ord[G]{x} \deq +\infty.
+    \]
+\end{definition}
+
+Quando il gruppo di cui stiamo parlando sarà evidente scriveremo semplicemente $\ord{x}$.
+
+\begin{proposition}
+    [Scrittura esplicita del sottogruppo generato] \label{prop:sgr_generato}
+    Sia $(G, \cdot)$ un gruppo e sia $x \in G$ tale che $\ord[G]{x} = d < +\infty$. 
+
+    Allora valgono i seguenti due fatti:
+    \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
+        \item \label{prop:sgr_generato:expr} Il sottogruppo generato $\cycl{x}$ è \[
+            \cycl{x} = \set{e, x, x^2, \dots, x^{d-1}}.    
+        \] Dunque in particolare $\abs*{\cycl* x} = d$.
+        \item \label{prop:sgr_generato:ord_div_n} $x^n = e \iff d \divides n$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo le due affermazioni separatamente. 
+    
+    \paragraph{Parte 1.} Sicuramente vale che \[
+        \set{e, x, \dots, x^{d-1}} \subseteq \cycl{x}.    
+    \] Dimostriamo che vale l'uguaglianza.
+
+    Sia $k \in \Z$ qualsiasi. Allora $x^k \in \cycl x$. 
+    
+    Dimostriamo che necessariamente $x^k \in \set{e, x, \dots, x^{d-1}}$.
+
+    Per la divisione euclidea esisteranno $q, r \in \Z$ tali che \begin{align*}
+        k = qd + r &&\text{con } 0 \leq r < d.
+    \end{align*} Allora sostituendo $k = qd+r$ otteniamo \begin{align*}
+        x^k &= x^{qd + r}\\
+        &= x^{qd}x^r\\
+        &= e^qx^r\\
+        &= x^r.
+    \end{align*}
+    
+    Per ipotesi $0 \leq r < d$, dunque $x^r \in \set{e, x, \dots, x^{d-1}}$. Dato che $x^r = x^k$ concludiamo che \[
+        x^k \in \set{e, x, \dots, x^{d-1}}    
+    \] e quindi \[
+        \cycl x = \set{e, x, \dots, x^{d-1}}.    
+    \]
+
+    Ci rimane da mostrare che $\abs*{\cycl* x} = d$, ovvero che tutti gli elementi di $\cycl x$ sono distinti. 
+
+    Supponiamo per assurdo che esistano $a, b \in \Z$ con $0 \leq a < b < d$ (senza perdita di generalità) tali che $x^a = x^b$.
+
+    Da questo segue che $x^{b-a} = e$, ma questo è assurdo poichè $b-a < d$ e per definizione l'ordine è il minimo numero positivo per cui $x^d = e$.
+
+    Di conseguenza tutti gli elementi di $\cycl x$ sono distinti, ovvero $\abs*{\cycl* x} = d$.
+
+    \paragraph{Parte 2.} Dimostriamo entrambi i versi dell'implicazione.
+    \begin{description}
+        \item[($\implies$)] Sia $n \in \Z$ tale che $x^n = e$.
+        
+        Per divisione euclidea esistono $q, r \in \Z$ tali che \begin{align*}
+            n = qd + r &&\text{con } 0 \leq r < d.
+        \end{align*}
+
+        Dunque $x^n = x^{qd+r} = x^r = e$. Ma questo è possibile solo se $r = 0$, altrimenti andremmo contro la minimalità dell'ordine.
+        
+        Dunque $x = qd$, ovvero $d \divides n$.
+        \item[($\impliedby$)] Ovvia: se $n = kd$ per qualche $k \in \Z$ allora \[
+            x^n = x^{kd} = (x^d)^k = e^k = e.    
+        \]
+    \end{description}
+\end{proof}
+
+\begin{definition}
+    [Gruppo ciclico]\label{def:grp_ciclico}
+    Sia $(G, \cdot)$ un gruppo. 
+    
+    Allora $G$ si dice \emph{ciclico} se esiste un $g \in G$ tale che \[
+        G = \cycl{g}.    
+    \]
+
+    L'elemento $g$ viene detto \emph{generatore} del gruppo $G$.
+\end{definition}
+
+Ad esempio $\Z$ è un gruppo ciclico, in quanto $\Z = \cycl{1}$, come lo è $n\Z = \cycl n$. Questi due gruppi sono anche infiniti, in quanto contengono un numero infinito di elementi.
+
+Un esempio di gruppo ciclico finito è $\Zmod{n} = \cycl{[1]_n}$, che è finito in quanto $\ord[\Zmod{n}]{[1]_n} = n$.
+
+\begin{theorem}
+    [Ogni sottogruppo di un gruppo ciclico è ciclico] \label{th:sottogr_ciclico}
+    Sia $(G, \cdot)$ un gruppo ciclico, ovvero $G = \cycl{g}$ per qualche $g \in G$. Sia inoltre $H \leq G$ un sottogruppo.
+
+    Allora $H$ è ciclico, ovvero esiste $h \in \Z$ tale che $H = \cycl{g^h}$.
+\end{theorem}
+\begin{proof}
+    Innanzitutto notiamo che $e_G \in H$. 
+    
+    Se $H = \set{e_G}$ allora $H$ è ciclico, e $H = \cycl{e_G}$.
+
+    Assumiamo $\set e_G \subset H$. Allora esiste $k \in \Z$, $k \neq 0$ tale che $g^k \in H$. 
+    Dato che per (G3) se $g^k \in H$ allora $g^{-k} \in H$ possiamo supporre senza perdita di generalità $k > 0$.
+
+    Consideriamo l'insieme $S$ tale che \[
+        S \deq \set{h > 0 \suchthat g^h \in H} \subseteq \N.    
+    \] Avendo assunto $k \in S$ sappiamo che $S \neq \varnothing$, dunque per il principio del minimo $S$ ammette minimo.
+
+    Sia $h_0 = \min S$. Mostro che $H = \cycl*{g^{h_0}}$.
+    \begin{description}
+        \item[($\supseteq$)] Per ipotesi $g^{h_0} \in H$. 
+        
+        Dato che $H$ è un sottogruppo di $G$ tutte le potenze intere di $g^{h_0}$ dovranno appartenere ad $H$, ovvero $\cycl*{g^{h_0}} \subseteq H$.
+        \item[($\subseteq$)] Sia $n \in \N$ tale che $g^n \in H$. Dimostriamo che $g^n \in \cycl*{g^{h_0}}$.
+        
+        Per divisione euclidea esistono $q, r \in \Z$ tali che \begin{align*}
+            n = qh_0 + r &&\text{con } 0 \leq r < h_0.
+        \end{align*}
+        Dunque \begin{align*}
+            g^n &= g^{qh_0 + r}\\
+                &= g^{qh_0}g^r.
+        \end{align*}
+        Moltiplicando entrambi i membri per $g^{-qh_0}$ otteniamo \[
+            \iff g^ng^{-qh_0} = g^r.
+        \]
+
+        Ma $g^n \in H$ e $g^{-qh_0} \in H$ (in quanto è una potenza intera di $g^{h_0}$), dunque anche il loro prodotto $g^r \in H$.
+
+        Se $r > 0$ allora esisterebbe una potenza di $g$ con esponente positivo minore di $h_0$ contenuto in $H$, che è assurdo in quanto abbiamo assunto che $h_0$ sia il minimo dell'insieme $S$.
+        
+        Segue che $r = 0$, ovvero $n = qh_0$, ovvero che $g^n \in \cycl*{g^{h_0}}$, ovvero $H \subseteq \cycl*{g^{h_0}}$.
+    \end{description}
+
+    Concludiamo quindi che $H = \cycl*{g^{h_0}}$, ovvero $H$ è ciclico.
+\end{proof}
+
+Consideriamo i sottogruppi di $\Z$. Tramite la proposizione \ref{prop:nZ_sgr_Z} abbiamo dimostrato che per ogni $n \in \Z$ allora $n\Z \leq \Z$. La prossima proposizione mostra che i sottogruppi della forma $n\Z = \cycl{n}$ sono gli unici possibili.
+
+\begin{proposition}
+    [Caratterizzazione dei sottogruppi di $\Z$]\label{prop:sgr_Z}
+    I sottogruppi di $\Z$ sono tutti e solo della forma $n\Z$ al variare di $n \in \N$.
+\end{proposition}
+\begin{proof}
+    Nella proposizione \ref{prop:nZ_sgr_Z} abbiamo mostrato che $n\Z \leq \Z$ per ogni $n \in \Z$. Ora mostriamo che è sufficiente considerare $n \in \N$ e che questi sono gli unici sottogruppi possibili.
+
+    Dato che $\Z$ è ciclico (poiché $\Z = \cycl{1}$) per il teorema \ref{th:sottogr_ciclico} ogni suo sottogruppo dovrà essere ciclico, ovvero dovrà essere della forma $\cycl{n}$ per qualche $n \in \N$.
+
+    Per la proposizione \ref{cor:nZ_mZ:eq} sappiamo che $n\Z = (-n)\Z$, dunque possiamo considerare (senza perdita di generalità) $n$ positivo o nullo, ovvero $n \in \N$.
+
+    Ma $\cycl{n} = n\Z$, dunque i sottogruppi di $\Z$ sono tutti e solo della forma $n\Z$ al variare di $n \in \N$.
+\end{proof}
+
+
+\subsection{Il gruppo ciclico $\Zmod{n}$}
+
+In questa sezione analizzeremo il gruppo ciclico $(\Zmod{n}, +)$, anche definito da \[
+    \Zmod{n} = \cycl{[1]_n} = \cycl{\eqclass 1}.
+\]
+
+L'ordine di $\eqclass 1$ in $\Zmod{n}$ è $n$. Infatti \begin{align*}
+    &x\cdot \eqclass 1 = \eqclass 0\\
+    \iff &x \congr 0 \Mod n \\
+    \iff &x = nk
+\end{align*}
+con $k \in \Z$. 
+La minima soluzione positiva a quest'equazione è per $k = 1$, dunque $x = n$. 
+Per la proposizione \ref{prop:sgr_generato:expr} sappiamo quindi che \begin{equation} \label{eq:card_Z/nZ}
+    \abs{\Zmod{n}} = \abs{\eqclass 1} = \ord[\Zmod{n}]{\eqclass 1} = n.
+\end{equation}
+
+\begin{proposition}
+    [Ordine degli elementi di $\Zmod n$] \label{prop:ord_in_Z/nZ}
+    Sia $\eqclass a \in \Zmod n$ qualsiasi. Allora vale che \[
+        \ord{\eqclass a} = \frac{n}{\mcd{a}{n}}    
+    \] dove $a \in \Z$ è un rappresentante della classe $\eqclass a$.
+\end{proposition}
+\begin{proof}
+    Per definizione di ordine \[
+        \ord{\eqclass a} = \min \set{k > 0 \suchthat k \eqclass a = \eqclass 0}.    
+    \]
+
+    Si tratta quindi di trovare la minima soluzione positiva di $ax \congr 0 \Mod{n}$. Divido entrambi i membri e il modulo per $a$, ottenendo \[
+        x \congr 0 \Mod{\frac{n}{\mcd{n}{a}}} \implies x = \frac{n}{\mcd{n}{a}}t    
+    \] al variare di $t \in \Z$. 
+
+    Dato che siamo interessati alla minima soluzione positiva, questa è ottenuta per $t = 1$, da cui segue che \[
+        \ord{\eqclass a} = \frac{n}{\mcd{n}{a}}. \qedhere    
+    \]
+\end{proof}
+
+\begin{corollary}
+    [Conseguenze della proposizione \ref{prop:ord_in_Z/nZ}]
+    \label{cor:cons_ord_in_Z/nZ}
+    Consideriamo il gruppo $(\Zmod n, +)$. Valgono le seguenti affermazioni:
+    \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
+        \item \label{cor:cons_ord_in_Z/nZ:ord_a_div_n} $\forall \eqclass{a} \in \Zmod{n}. \quad \ord{\eqclass a} \divides n$.
+        \item \label{cor:cons_ord_in_Z/nZ:phi(n)_gen} $\Zmod{n}$ ha $\phi(n)$ generatori.
+        \item \label{cor:cons_ord_in_Z/nZ:phi(d)_el} Sia $d \in \Z$ tale che $d \divides n$. Allora in $\Zmod{n}$ ci sono esattamente $\phi(d)$ elementi di ordine $d$.
+    \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+    \begin{enumerate}[label={(\roman*)}]
+        \item Ovvia in quanto (per la proposizione \ref{prop:ord_in_Z/nZ}) $\ord{\eqclass a} = \dfrac{n}{\mcd{n}{a}} \divides n$.
+        \item Sia $\eqclass x \in \Zmod{n}$. Sappiamo che $\eqclass x$ è un generatore di $\Zmod{n}$ se \[
+            \cycl*{\eqclass x} = \Zmod n    
+        \] ovvero se la cardinalità di $\cycl*{\eqclass x}$ è $n$.
+
+        Per la proposizione \ref{prop:ord_in_Z/nZ} $\ord{\eqclass x} = \dfrac{n}{\mcd{n}{x}}$, dunque $\eqclass x$ è un generatore se e solo se $\mcd{n}{x} = 1$, ovvero se $x$ è coprimo con $n$.
+
+        Ma ci sono $\phi(n)$ numeri coprimi con $n$, dunque ci sono $\phi(n)$ generatori di $\Zmod n$.
+        \item Sia $\eqclass a \in \Zmod n$ tale che \[
+            \ord{\eqclass a} = \frac{n}{\mcd{n}{a}} = d.    
+        \]
+
+        Allora $\mcd{n}{a} = \dfrac{n}{d}$, da cui segue che $\dfrac{n}{d} \divides a$.
+
+        Sia $b \in \Z$ tale che $a = \dfrac{n}{d}b$. Dato che $\mcd{n}{a} = \dfrac{n}{d}$ segue che \begin{align*}
+            &\mcd{n}{\frac{n}{d}b} = \frac{n}{d}\\[3pt]
+            \iff &\mcd{\frac{n}{d}d}{\frac{n}{d}b} = \frac{n}{d}\\[3pt]
+            \iff &\frac{n}{d}\mcd{d}{b} = \frac{n}{d}\\[3pt]
+            \iff &\mcd{d}{b} = 1
+        \end{align*}
+        ovvero se e solo se $d$ e $b$ sono coprimi.
+
+        Dunque segue che ho $\phi(d)$ scelte per $b$, ovvero ho $\phi(d)$ elementi di ordine $d$.
+    \end{enumerate}
+\end{proof}
+
+Questo corollario ci consente di enunciare una proprietà della funzione $\phi(\cdot)$.
+
+\begin{corollary}
+    [Espressione per $n$ in termini di $\phi(n)$]
+    Sia $n \in \Z$. Allora vale che \[
+        n = \sum_{d \divides n} \phi(d).    
+    \]
+\end{corollary}
+\begin{proof}
+    Sia $X_d$ l'insieme \[
+        X_d \deq \set{\eqclass a \in \Zmod n \suchthat \ord{\eqclass a} = d}.    
+    \]
+    Se $d \ndivides n$ per la proposizione \ref{cor:cons_ord_in_Z/nZ:ord_a_div_n} segue che $X_d = \varnothing$.
+
+    Dunque abbiamo che \[
+        \Zmod n = \bigsqcup_{d \divides n} X_d.  
+    \] Sfruttando la proposizione \ref{cor:cons_ord_in_Z/nZ:phi(d)_el} sappiamo che $\abs{X_d} = \phi(d)$, dunque passando alle cardinalità segue che \[
+        \abs{\Zmod n} = n = \sum_{d \divides n} X_d.    
+    \]
+\end{proof}
+
+Studiamo ora i sottogruppi di $\Zmod{n}$.
+
+\begin{proposition}
+    [Caratterizzazione dei sottogruppi di $\Zmod{n}$] \label{prop:sgr_Z/nZ}
+    Studiamo il gruppo $(\Zmod{n}, +)$. Valgono i due seguenti fatti:
+    \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
+        \item \label{prop:sgr_Z/nZ:ciclico_ord_d} Sia $H \leq \Zmod{n}$. Allora $H$ è ciclico e $\abs{H} = d$ per qualche $d \divides n$.
+        \item \label{prop:sgr_Z/nZ:unosolo_ord_d} Sia $d \in \Z, d \divides n$. Allora $\Zmod{n}$ ammette uno e un solo sottogruppo di ordine $d$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate} [label={(\roman*)}]
+        \item Sia $H \leq \Zmod n$; per il teorema \ref{th:sottogr_ciclico} sappiamo che $H$ deve essere ciclico, ovvero $H = \cycl*{\eqclass h}$ per qualche $\eqclass h \in \Zmod n$.
+        
+        Sia $d = \ord{\eqclass h}$. Allora per il corollario \ref{cor:cons_ord_in_Z/nZ:ord_a_div_n} segue che \[
+            \abs{H} = \ord{\eqclass h} = d \divides n.   
+        \]
+        \item Sia $H_d$ l'insieme \[
+            H_d = \set{\eqclass 0,\; \frac{\eqclass n}{d},\; 2\frac{\eqclass n}{d}, \dots,\; (d-1)\frac{\eqclass n}{d}}.    
+        \] Mostriamo innanzitutto che $H_d = \cycl*{\dfrac{\eqclass{n}}{d}}$.
+        
+        Infatti ovviamente $H_d \subseteq \cycl*{\dfrac{\eqclass n}{d}}$. Per mostrare che sono uguali basta notare che \[
+            \abs*{\cycl*{\frac{\eqclass n}{d}}} = \ord{\frac{\eqclass n}{d}} = \frac{n}{\mcd{\frac{n}{d}}{n}} = \frac{n}{\mcd{\frac{n}{d}}{\frac{n}{d}d}} = \frac{n}{\frac{n}{d}\mcd{1}{d}} = d
+        \] dunque i due insiemi sono finiti, hanno la stessa cardinalità e il primo è incluso nel secondo, da cui segue che sono uguali.
+
+        Sia ora $H \leq \Zmod n$ tale che $\abs{H} = d$. Per il teorema \ref{th:sottogr_ciclico} segue che $H = \cycl*{\eqclass x}$ per qualche $\eqclass x \in \Zmod n$ tale che $\ord{\eqclass x} = d$.
+
+        Seguendo la dimostrazione di \ref{cor:cons_ord_in_Z/nZ:phi(d)_el} possiamo scrivere $\eqclass x = \dfrac{\eqclass n}{d}b$ con $b \in Z$ tale che $\mcd{b}{d} = 1$.
+
+        Ma $H_d = \cycl*{\dfrac{\eqclass n}{d}}$ contiene tutti i multipli di $\dfrac{\eqclass n}{d}$, dunque deve contenere anche $\eqclass x$.
+
+        Dunque dato che $\eqclass x \in H_d$ segue che $H = \cycl*{\eqclass x} \subseteq H_d$. Ma gli insiemi $H$ e $H_d$ hanno la stessa cardinalità, dunque $H = H_d$, ovvero vi è un solo sottogruppo di ordine $d$. \qedhere
+    \end{enumerate}
+\end{proof}

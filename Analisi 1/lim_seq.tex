@@ -1,0 +1,428 @@
+\section{Calcolo di limiti di successioni}
+
+\subsection{Teoremi algebrici}
+
+Presentiamo ora i vari teoremi sull'algebra dei limiti.
+
+\begin{proposition}
+    [Limite della somma di successioni convergenti]\label{prop:sum_lim_succ_conv}
+    Siano $\seqn*{a}, \seqn*{b}$ due successioni convergenti, e siano $a, b \in \R$ rispettivamente i loro limiti. 
+    
+    Allora la successione $\left( a_n + b_n \right)$ converge e  \[
+        a_n + b_n \to a + b.
+    \]
+\end{proposition}
+\begin{proof}
+    Per definizione di successione convergente \begin{align}
+        &\forall \eps > 0. \quad \exists n_a \in \N. \quad \forall n \geq n_a. \quad \abs*{a_n - a} < \eps. \label{eq:sum_lim_succ_conv:1}\\
+        &\forall \eps > 0. \quad \exists n_b \in \N. \quad \forall n \geq n_b. \quad \abs*{b_n - b} < \eps. \label{eq:sum_lim_succ_conv:2}
+    \end{align}
+
+    Fissiamo $\eps$; allora per $n \geq \max \set{n_a, n_b}$ dovrà valere che \begin{align*}
+        &\abs*{a_n + b_n - (a+b)} \tag{per \ref{def:distanza:dis_triang}}\\
+        <\ &\abs*{a_n - a} + \abs*{b_n - b}  \tag{per \eqref{eq:sum_lim_succ_conv:1} e \eqref{eq:sum_lim_succ_conv:2}}\\
+        <\ &2\eps,
+    \end{align*}
+    dunque la successione $\left(a_n + b_n\right)$ è convergente e $a_n + b_n \to a + b$.
+\end{proof}
+
+\begin{remark}
+    Ovviamente questo teorema vale anche per la differenza tra successioni convergenti: \[
+        a_n - b_n \to a - b.    
+    \]
+\end{remark}
+
+\begin{proposition}
+    [Limite del prodotto di successioni convergenti]\label{prop:prod_lim_succ_conv}
+    Siano $\seqn*{a}, \seqn*{b}$ due successioni convergenti, e siano $a, b \in \R$ rispettivamente i loro limiti. 
+    
+    Allora la successione $\left( a_n \cdot b_n \right)$ converge e \[
+        a_n \cdot b_n \to ab.
+    \]
+\end{proposition}
+\begin{proof}
+    Siccome $\seqn*{a}$ è convergente, per la \autoref{prop:succ_conv=>limit} $\seqn*{a}$ è limitata, ovvero esiste $M > 0$ reale tale che \[
+        \abs*{a_n} \leq M.    
+    \] Inoltre per definizione di limite sappiamo che \begin{align}
+        &\forall \eta > 0. \quad \exists n_a \in \N. \quad \forall n \geq n_a. \quad \abs*{a_n - a} < \eta. \label{eq:prod_lim_succ_conv:1}\\
+        &\forall \eta > 0. \quad \exists n_b \in \N. \quad \forall n \geq n_b. \quad \abs*{b_n - b} < \eta. \label{eq:prod_lim_succ_conv:2}
+    \end{align}
+
+    Allora per ogni $n \geq \max \set{n_a, n_b}$ varrà che \begin{align*}
+        \abs*{a_nb_n - ab} &= \abs*{a_nb_n - a_nb + a_nb - ab} \\
+        &= \abs*{a_n(b_n - b) + b(a_n - a)} \tag{per \ref{def:distanza:dis_triang}}\\
+        &< \abs*{a_n}\abs*{b_n - b} + \abs*{b}\abs*{a_n - a} \tag{$\seqn*{a}$ è limitata}\\
+        &< M\abs*{b_n - b} + \abs*{b}\abs*{a_n - a} \tag{per \eqref{eq:prod_lim_succ_conv:1} e \eqref{eq:prod_lim_succ_conv:2}} \\
+        &< M\eta + \abs*{b}\eta\\
+        &= \eta(M + \abs*{b}).
+        \intertext{Sia ora $\eps > 0$ qualunque. Fissiamo $\eta = \dfrac{\eps}{M + \abs*{b}}$, da cui segue che}
+        \abs*{a_nb_n - ab} &< \frac{\eps}{M + \abs*{b}}(M + \abs*{b})\\
+        &< \eps,
+    \end{align*}
+    ovvero la successione $\left( a_n \cdot b_n \right)$ converge e $a_nb_n \to ab$.
+\end{proof}
+
+\begin{proposition}
+    [Limite del reciproco di una successione convergente] \label{prop:lim_recip_succ_conv}
+    Sia $\seqn*{a}$ una successione convergente tale che $a_n \to a$ con $a \neq 0$. Supponiamo inoltre che $a_n \neq 0$ definitivamente.
+
+    Allora la successione $\left(\dfrac{1}{a_n}\right)$ è convergente e \[
+        \frac{1}{a_n} \to \frac1a.    
+    \]
+\end{proposition}
+\begin{proof}
+    Innanzitutto mostro che $\left(\dfrac{1}{a_n}\right)$ è limitata. Per definizione di successione convergente sappiamo che \begin{equation}
+       \forall \eps > 0. \quad \exists n_a \in \N. \quad \forall n \geq n_a. \quad \abs*{a_n - a} < \eps. \label{eq:lim_recip_succ_conv:1}
+    \end{equation}
+    
+    Sia $\eps = \frac{1}{2}\abs*{a}$. Allora segue che \begin{align*}
+        \abs*{a} &= \abs*{a - a_n + a_n} \tag{per \ref{def:distanza:dis_triang}}\\
+        &= \abs*{a - a_n} + \abs*{a_n} \tag{per \eqref{eq:lim_recip_succ_conv:1}}\\
+        &< \frac{\abs*{a}}{2} + \abs*{a_n}\\
+        \iff \abs*{a_n} &> \abs*{a} - \frac{\abs*{a}}{2} \\
+        &= \frac{\abs*{a}}{2}.
+    \end{align*}
+    
+    Per ipotesi $a_n \neq 0$ definitivamente, ovvero per ogni $n \geq n_0$ per qualche $n_0 \in \N$. Dunque per ogni $n \geq \max \set{n_0, n_a}$ otteniamo che \begin{equation}
+        \abs*{\frac{1}{a_n}} < \frac{2}{\abs*{a}}. \label{eq:lim_recip_succ_conv:2}
+    \end{equation}
+
+    Allora (sempre per ogni $n \geq \max \set{n_0, n_a}$) varrà che \begin{align*}
+        \abs*{\frac{1}{a_n} - \frac{1}{a}} &= \abs*{\frac{a - a_n}{a \cdot a_n}}\\
+        &= \frac{\abs*{a_n - a}}{\abs{a}\abs{a_n}} \tag{per la \eqref{eq:lim_recip_succ_conv:2} e la \eqref{eq:lim_recip_succ_conv:1}}\\
+        &< \frac{2\eps}{\abs*{a}},
+    \end{align*}
+    ovvero la successione $\left(\dfrac{1}{a_n}\right)$ converge e $\dfrac{1}{a_n} \to \dfrac{1}{a}$.
+\end{proof}
+
+\begin{proposition}
+    [Limite del rapporto di successioni convergenti] \label{prop:rapp_lim_succ_conv}
+    Siano $\seqn*{a}, \seqn*{b}$ due successione convergente rispettivamente ad $a, b \in \R$ con $b \neq 0$. Supponiamo inoltre che $b_n \neq 0$ definitivamente.
+
+    Allora la successione $\left(\dfrac{a_n}{b_n}\right)$ è convergente e \[
+        \frac{a_n}{b_n} \to \frac{a}{b}.    
+    \]
+\end{proposition}
+\begin{proof}
+    Possiamo scrivere la successione come $\left(a_n \cdot \frac{1}{b_n}\right)$: allora dato che la successione $\seqn*{b}$ verifica le ipotesi della \autoref{prop:lim_recip_succ_conv}, dunque $\frac{1}{b_n} \to \frac1b$. Dunque la successione originale verifica le ipotesi della \autoref{prop:prod_lim_succ_conv}, da cui segue che $\dfrac{a_n}{b_n} \to \dfrac{a}{b}$.
+\end{proof}
+
+Questo esclude tutti i casi in cui una delle due successioni (o entrambe) siano divergenti. Le prossime tre proposizioni si occupano di studiare questi casi.
+
+\begin{proposition}
+    [Algebra degli Infiniti - Successione divergente positivamente] \label{prop:alg_inf_pos}
+    Siano $\seqn*{a}, \seqn*{b}$ due successioni, $a_n \to +\infty$.
+    \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
+        \item Se $\seqn*{b}$ è limitata inferiormente, allora $a_n + b_n \to +\infty$.
+        \item Se $\seqn*{b}$ converge a $b \in \R$, $b > 0$, allora $a_nb_n \to +\infty$.
+        \item Se $\seqn*{b}$ converge a $b \in \R$, $b < 0$, allora $a_nb_n \to -\infty$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Siccome $\seqn*{a}$ diverge positivamente, per definizione abbiamo che: \begin{equation}
+        \forall M \in \R. \quad \exists n_0 \in \N. \quad \forall n \geq n_0. \quad a_n \geq M.
+    \end{equation}
+    Dimostriamo separatamente le tre affermazioni.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Siccome $\seqn*{b}$ è limitata inferiormente allora dovrà esistere $L \in \R$ tale che $b_n \geq L$ per ogni $n \in \N$. 
+
+        Sia $N \in \R$ qualsiasi. Fisso $M = N - L$, da cui segue che definitivamente \begin{equation*}
+            a_n + b_n \geq M + L = N - L + L = N,
+        \end{equation*}
+        dunque per l'arbitrarietà di $N$ segue che $a_n + b_n \to +\infty$.
+        \item Siccome $b_n \to b > 0$ allora per definizione di limite \[
+            \forall \eps > 0. \quad \exists n_b \in \N. \quad \forall n \geq n_b. \quad \abs*{b_n - b} < \eps.
+        \] Fisso $\eps \deq \frac{b}{2}$, da cui segue che per ogni $n \geq n_b$ \[
+            0 < \frac{b}{2} < b_n < \frac{3b}{2}.
+        \]
+        
+        Sia $N \in \R$ qualsiasi; fisso $M \deq N\frac{2}{b}$. Allora per ogni $n \geq \max \set{n_0, n_b}$ vale che \begin{align*}
+            a_n &\geq M \tag{sappiamo che $b_n > 0$}\\
+            \implies a_nb_n &\geq Mb_n \tag{$b_n > \frac{b}{2}$}\\
+            &> M\frac{b}{2} \\
+            &= N \frac{2}{b}\frac{b}{2}\\
+            &= N,
+        \end{align*}
+        dunque per arbitrarietà di $N$ segue che $a_nb_n \to +\infty$.
+        \item Siccome $b_n \to b < 0$ allora per definizione di limite \[
+            \forall \eps > 0. \quad \exists n_b \in \N. \quad \forall n \geq n_b. \quad \abs*{b_n - b} < \eps.
+        \] Fisso $\eps \deq -\frac{b}{2}$, da cui segue che per ogni $n \geq n_b$ \[
+            \frac{3b}{2} < b_n < \frac{b}{2} < 0.
+        \]
+        
+        Sia $N \in \R$ qualsiasi; fisso $M \deq N\frac{2}{b}$. Allora per ogni $n \geq \max \set{n_0, n_b}$ vale che \begin{align*}
+            a_n &\geq M \tag{sappiamo che $b_n < 0$}\\
+            \implies a_nb_n &\leq Mb_n \tag{$b_n < \frac{b}{2}$}\\
+            &< M\frac{b}{2} \\
+            &= N \frac{2}{b}\frac{b}{2}\\
+            &= N,
+        \end{align*}
+        dunque per arbitrarietà di $N$ segue che $a_nb_n \to -\infty$. \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    [Algebra degli Infiniti - Successione divergente negativamente] \label{prop:alg_inf_neg}
+    Siano $\seqn*{a}, \seqn*{b}$ due successioni, $a_n \to -\infty$.
+    \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
+        \item Se $\seqn*{b}$ è limitata superiormente, allora $a_n + b_n \to -\infty$.
+        \item Se $\seqn*{b}$ converge a $b \in \R$, $b > 0$, allora $a_nb_n \to -\infty$.
+        \item Se $\seqn*{b}$ converge a $b \in \R$, $b < 0$, allora $a_nb_n \to +\infty$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    [Algebra degli Infiniti - Reciproci] \label{prop:alg_inf_recip}
+    Sia $\seqn*{a}$ una successione.
+    \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
+        \item Se $\seqn*{a}$ diverge (positivamente o negativamente), allora $\frac{1}{a_n} \to 0$.
+        \item Se $a_n \to 0$ e $a_n \neq 0$ definitivamente, allora $\frac{1}{\abs*{a_n}} \to +\infty$.
+        
+        In particolare \begin{itemize}
+            \item se $a_n > 0$ definitivamente, allora $\frac{1}{a_n} \to +\infty$,
+            \item se $a_n < 0$ definitivamente, allora $\frac{1}{a_n} \to -\infty$.
+        \end{itemize}
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo i vari casi separatamente.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Se $\seqn*{a}$ diverge allora il suo modulo dovrà divergere positivamente, ovvero \[
+            \forall M \in \R. \quad \exists n_0 \in \N. \quad \forall n \geq n_0. \quad \abs*{a_n} > M.    
+        \]
+
+        Per il \thmref{th:perm_segno_succ} $a_n > 0$ definitivamente, dunque $a_n \neq 0$ definitivamente. Allora dovrà valere (definitivamente) \begin{align*}
+            &\frac{1}{\abs*{a_n}} < \frac{1}{M} \\
+            % \iff -\frac{1}{M} < &\frac{1}{a_n} < \frac{1}{M}.\\
+            \intertext{Sia $\eps > 0$ qualsiasi. Fisso $M \deq \frac{1}{\eps}$, da cui segue}
+            \iff &\abs*{\frac{1}{a_n}} < \eps,
+        \end{align*}
+        ovvero $\dfrac{1}{a_n} \to 0$ per l'arbitrarietà di $\eps$.
+        \item Per definizione di successione convergente (a $0$)\[
+            \forall \eps > 0. \quad \exists n_a \in \N. \quad \forall n \geq n_a. \quad \abs*{a_n} < \eps.    
+        \] Siccome $a_n \neq 0$ definitivamente e $\eps > 0$ possiamo passare al reciproco: \[
+            \frac{1}{\abs*{a_n}} > \frac{1}{\eps}.
+        \] Sia $M \in \R$ qualsiasi; fisso allora $\eps \deq \frac{1}{\abs*{M}}$, da cui segue \begin{equation}
+             \frac{1}{\abs*{a_n}} > \abs*{M}, \label{eq:alg_inf_recip:1}
+        \end{equation} ovvero $\dfrac{1}{\abs*{a_n}} \to +\infty$.
+
+        Consideriamo ora i due casi particolari. Possiamo scrivere la \eqref{eq:alg_inf_recip:1} equivalentemente come \begin{equation}
+            \frac{1}{a_n} < -\abs*{M}, \quad \text{oppure} \quad \frac{1}{a_n} > \abs*{M}.
+        \end{equation}
+        \begin{itemize}
+            \item Se $a_n > 0$ definitivamente allora anche il suo reciproco sarà definitivamente positivo, dunque non potrà essere minore di $-\abs*{M}$ che è negativo. Segue quindi che \[
+                \frac{1}{a_n} > \abs*{M} \quad \text{definitivamente,}
+            \] dunque $\dfrac{1}{a_n} \to +\infty$.
+            \item Se $a_n < 0$ definitivamente allora anche il suo reciproco sarà definitivamente negativo, dunque non potrà essere maggiore di $\abs*{M}$ che è positivo. Segue quindi che \[
+                \frac{1}{a_n} < -\abs*{M} \quad \text{definitivamente,}
+            \] dunque $\dfrac{1}{a_n} \to \infty$. \qedhere
+        \end{itemize}
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    [Infinitesima per limitata è infinitesima] \label{prop:inf*lim=>inf}
+    Sia $\seqn*{a}$ una successione infinitesima (ovvero $a_n \to 0$) e $\seqn*{b}$ una successione limitata.
+
+    Allora la successione $(a_nb_n)$ è infinitesima.
+\end{proposition}
+\begin{proof}
+    Siccome $\seqn*{a}$ è infinitesima deve valere che \begin{equation*}
+        \forall \eta > 0. \quad \exists n_a \in \N. \quad \forall n \geq n_a. \quad \abs*{a_n} < \eta.
+    \end{equation*} Inoltre $\seqn*{b_n}$ è limitata, dunque deve esistere un $L \in \R$ positivo tale che $\abs*{b_n} < L$.
+
+    Moltiplicando la prima equazione per la seconda otteniamo che (per ogni $n \geq n_a$)
+    \begin{align*}
+        \abs*{a_nb_n} &< \eta \cdot L. \\
+        \intertext{Sia $\eps > 0$ qualunque. Allora fisso $\eta \deq \frac{\eps}{L}$, da cui segue che}
+        \abs*{a_nb_n} &< \frac{\eps}{L} \cdot L \\
+        &= \eps,
+    \end{align*}
+    ovvero $a_nb_n \to 0$ per l'arbitrarietà di $\eps$.
+\end{proof}
+
+\begin{unnamed}
+    [Teorema del Confronto a 2 per successioni] \label{th:confr_2_succ}
+    Siano $\seqn*{a}$, $\seqn*{b}$ due successioni convergenti tali che $a_n \to a$, $b_n \to b$.Allora \begin{enumerate}[label={(\roman*)}, ref={\nameref*{th:confr_2_succ} (\ref*{th:confr_2_succ}: (\roman*))}]
+        \item se $a < b$ allora vale che $a_n < b_n$ definitivamente.
+        \item se $a_n \leq b_n$ definitivamente segue che $a \leq b$.
+    \end{enumerate}
+\end{unnamed}
+\begin{proof}
+    Dimostriamo i due punti separatamente. \begin{enumerate}[label={(\roman*)}]
+        \item Consideriamo la successione $c_n \deq b_n - a_n$ per ogni $n \in \N$. Per \autoref{prop:sum_lim_succ_conv} segue che $c_n \to b - a > 0$, dunque per il \thmref{th:perm_segno_succ} vale che $c_n > 0$ definitivamente, da cui segue che $a_n < b_n$ definitivamente.
+        \item Supponiamo per assurdo che $a > b$. Allora per il punto precedente dovrebbe essere $a_n > b_n$ definitivamente, il che è contrario all'ipotesi che $a_n \leq b_n$ definitivamente. Dunque $a \leq b$. \qedhere
+    \end{enumerate}
+\end{proof}
+
+\subsection{Limiti di successioni elementari}
+
+Presentiamo ora alcuni limiti di successioni elementari.
+
+\paragraph{Successione costante} Consideriamo la successione definita da $a_n = k$ per qualche $k \in \R$. Mostriamo che $a_n \to k$.
+
+Sia $\eps > 0$ generico. Siccome $a_n = k$ per ogni $n \in \N$ allora la successione è sempre compresa tra $k - \eps$ e $k + \eps$, qualunque sia il valore di $\eps$.
+
+\paragraph{Successione lineare} Consideriamo la successione definita da $a_n = n$. Mostriamo che $a_n \to +\infty$.
+
+Sia $M \in \R$ generico: allora sicuramente per ogni $n > M$ vale che $a_n = n > M$, dunque $a_n \to +\infty$.
+
+\paragraph{Successione esponenziale} Consideriamo la successione definita da $a_n = b^n$ per qualche $b \in \R$ costante, $b > 0$, $b \neq 1$. Mostriamo che \[
+    a_n \to \begin{cases}
+        +\infty, &\text{se } a > 1\\
+        0, &\text{se } 0 \leq a < 1.
+    \end{cases}    
+\]
+
+\begin{description}
+    \item[(Caso $b > 1$)] Siccome $b > 1$ per la disuguaglianza di Bernoulli vale che \[
+        b^n = (1 + (b-1))^n \geq 1 + (b-1)n.    
+    \] Il membro destro tende a $+\infty$ per il teorema algebrico, dunque per il \thmref{th:confr_asint_succ} segue che $b_n \to +\infty$.
+    \item[(Caso $0 < b < 1$)] Sia $c \deq \frac{1}{b}$ con $c > 1$. Dunque \[
+        b^n = \left( \frac{1}{c} \right)^n = \frac{1}{c^n} \to 0    
+    \] per la \autoref{prop:alg_inf_recip}, in quanto $c^n \to +\infty$ per il caso precedente.
+\end{description}
+
+\paragraph{Radice $n$-esima} Consideriamo la successione definita da $a_n = \sqrt[n]{b}$ per qualche $b \in \R$ costante, $b > 0$. Mostriamo che $a_n \to 1$ qualunque sia $b$.
+
+Consideriamo la disuguaglianza di Bernoulli con termine generico $x$ e applichiamo la radice $n$-esima ad entrambi i membri: \[
+    1 + x \geq \sqrt[n]{1 + nx} 
+\] che sostituendo a $x$ il valore $\dfrac{b - 1}{n}$ diventa \[
+    1 + \frac{b-1}{n} \geq \sqrt[n]{b}.
+\]
+
+Distinguiamo ora due casi: \begin{description}
+    \item[(Caso $b \geq 1$)] Dato che la radice $n$-esima è strettamente crescente, avremo che \[
+        1 = \sqrt[n]{1} \leq \sqrt[n]{b} \leq 1 + \frac{b-1}{n}.
+    \] Ma il membro di destra tende a $1$, dunque per il \thmref{th:carab_succ} vale che $\sqrt[n]{b} \to 1$.
+    \item[(Caso $0 < b < 1$)] Sia $c \deq \frac{1}{b}$ con $c > 1$. Allora \[
+        \sqrt[n]{b} = \sqrt[n]{\frac{1}{c}} = \frac{1}{\sqrt[n]{c}} \to 1
+    \] per la \autoref{prop:lim_recip_succ_conv}, in quanto $\sqrt[n]{c} \to 1$ per il caso precedente.
+\end{description}
+
+\subsection{Criteri per le successioni}
+
+\begin{proposition}
+    [Criterio del rapporto] \label{prop:crit_rapporto_succ}
+    Sia $\seqn*{a}$ una successione tale che $a_n > 0$ definitivamente. Sia inoltre \[
+        l \deq \lim_{n \to +\infty} \frac{a_{n+1}}{a_n} \in \closure{\R}.    
+    \]
+
+    Allora \begin{enumerate}[label={(\roman*)}, ref={criterio del rapporto (\theproposition): (\roman*)}]
+        \item se $0 \leq l < 1$ allora $a_n \to 0$,
+        \item se $l > 1$ allora $a_n \to +\infty$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo separatamente i due casi.
+    \begin{description}
+        \item[($0 \leq l < 1$)] Sia $m \in \R$ tale che $l < m < 1$.
+        
+        Siccome $\dfrac{a_{n+1}}{a_n} \to l$ deve valere che (per ogni $\eps > 0$) $\dfrac{a_{n+1}}{a_n} \leq l + \eps$ definitivamente. In particolare poniamo $\eps = m - l$ (che è positivo in quanto $m > l$), ottenendo che esiste un $n_0 \in \N$ tale che \[
+            \frac{a_{n+1}}{a_n} \leq m \text{    per ogni } n \geq n_0.
+        \]
+        Dunque partendo da $n_0$ abbiamo che \begin{align*}
+            &\frac{a_{n_0+1}}{a_{n_0}} \leq m \tag{moltiplicando per $a_{n_0} > 0$}\\
+            \iff &a_{n_0+1} \leq m \cdot a_{n_0}\\
+            \iff &a_{n_0+2} \leq m \cdot a_{n_0 + 1} \leq m^2 \cdot a_{n_0}\\
+            \intertext{Dunque per induzione si può mostrare che per ogni $k \in \N$}
+            \iff &a_{n_0+k} \leq m^k \cdot a_{n_0}.
+        \end{align*}
+
+        Sia $k$ tale che $n = n_0 + k$, ovvero $k = n - n_0$. Allora \[
+            0 \stackrel{\text{Hp.}}{<} a_n \leq m^n \cdot m^{-n_0}a_{n_0}. 
+        \] Ma $m^n \cdot m^{-n_0}a_{n_0}$ è il prodotto di una successione infinitesima per una costante, dunque tende a $0$.
+
+        Per il Teorema dei Carabinieri \ref{th:carab_succ} segue che $a_n \to 0$.
+        \item[($l > 1$ reale)] Sia $m \in \R$ tale che $1 < m < l$.
+        
+        Siccome $\dfrac{a_{n+1}}{a_n} \to l$ deve valere che (per ogni $\eps > 0$) $\dfrac{a_{n+1}}{a_n} \geq l - \eps$ definitivamente. In particolare poniamo $\eps = l - m$ (che è positivo in quanto $m < l$), ottenendo che esiste un $n_0 \in \N$ tale che \[
+            \frac{a_{n+1}}{a_n} \geq m \text{    per ogni } n \geq n_0.
+        \]
+        Dunque partendo da $n_0$ abbiamo che \begin{align*}
+            &\frac{a_{n_0+1}}{a_{n_0}} \geq m \tag{moltiplicando per $a_{n_0} > 0$}\\
+            \iff &a_{n_0+1} \geq m \cdot a_{n_0}\\
+            \iff &a_{n_0+2} \geq m \cdot a_{n_0 + 1} \geq m^2 \cdot a_{n_0}\\
+            \intertext{Dunque per induzione si può mostrare che per ogni $k \in \N$}
+            \iff &a_{n_0+k} \geq m^k \cdot a_{n_0}.
+        \end{align*}
+
+        Sia $k$ tale che $n = n_0 + k$, ovvero $k = n - n_0$. Allora \[
+            a_n \geq m^n \cdot m^{-n_0}a_{n_0}. 
+        \] Ma $m^n \cdot m^{-n_0}a_{n_0}$ è il prodotto di una successione che divergente positivamente per una costante positiva, dunque tende a $+\infty$.
+
+        Per il Teorema del Confronto Asintotico \ref{th:confr_asint_succ} segue che $a_n \to +\infty$.
+        \item[($l = +\infty$)] Si dimostra analogamente al caso precedente scegliendo un $M > 1$ qualsiasi. \qedhere
+    \end{description}
+\end{proof}
+
+\begin{proposition}
+    [Criterio della radice] \label{prop:crit_radice_succ}
+    Sia $\seqn*{a}$ una successione tale che $a_n > 0$ definitivamente. Sia inoltre \[
+        l \deq \lim_{n \to +\infty} \sqrt[n]{a_{n}} \in \closure{\R}.    
+    \]
+
+    Allora \begin{enumerate}[label={(\roman*)}, ref={criterio della radice (\theproposition): (\roman*)}]
+        \item se $0 \leq l < 1$ allora $a_n \to 0$,
+        \item se $l > 1$ allora $a_n \to +\infty$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{description}
+        \item[($0 \leq l < 1$)] Sia $m \in \R$ tale che $l < m < 1$.
+        
+        Siccome $\sqrt[n]{a_n} \to l$ deve valere che (per ogni $\eps > 0$) $\sqrt[n]{a_n} \leq l + \eps$ definitivamente. In particolare poniamo $\eps = m - l$ (che è positivo in quanto $m > l$), ottenendo che esiste un $n_0 \in \N$ tale che \[
+            \sqrt[n]{a_n} \leq m \text{    per ogni } n \geq n_0.
+        \] Eleviamo entrambi i membri alla $n$, ottenendo che \[
+            0 \stackrel{\text{Hp.}}{\leq} a_n \leq m^n.    
+        \] Ma $m^n \to 0$ in quanto $m < 1$, da cui segue per il \thmref{th:carab_succ} che $a_n \to 0$.
+        \item[($l > 1$ reale)] Sia $m \in \R$ tale che $1 < m < l$.
+        
+        Siccome $\sqrt[n]{a_n} \to l$ deve valere che (per ogni $\eps > 0$) $\sqrt[n]{a_n} \geq l - \eps$ definitivamente. In particolare poniamo $\eps = l - m$ (che è positivo in quanto $m < l$), ottenendo che esiste un $n_0 \in \N$ tale che \[
+            \sqrt[n]{a_n} \geq m \text{    per ogni } n \geq n_0.
+        \] Eleviamo entrambi i membri alla $n$, ottenendo che \[
+            a_n \geq m^n.    
+        \] Ma $m^n \to +\infty$ poiché $m > 1$, dunque per il \thmref{th:confr_asint_succ} vale che $a_n \to +\infty$.
+        \item[($l = +\infty$)] Si dimostra analogamente al caso precedente scegliendo un $M > 1$ qualsiasi. \qedhere
+    \end{description} 
+\end{proof}
+
+\begin{proposition}
+    [Rapporto implica radice] \label{prop:rapp=>radice}
+    Sia $\seqn*{a}$ una successione tale che $a_n > 0$ definitivamente. Allora se esiste $l \in \closure{\R}$ tale che \[
+        l \deq \lim_{n \to +\infty} \frac{a_{n+1}}{a_n}    
+    \] segue che la successione $(\sqrt[n]{a_n})$ è convergente e \[
+        \lim_{n \to +\infty} \sqrt[n]{a_n} = l.
+    \]
+\end{proposition}
+\begin{proof}
+    Dato che $a_n > 0$ definitivamente segue che $l > 0$. 
+    
+    \paragraph{Caso (i)}Supponiamo inizialmente $l \in [0, +\infty)$.
+
+    Sia $\eps > 0$ qualsiasi. Per ipotesi esiste $n_0 \in \N$ tale che \[
+        l - \frac\eps{2} \leq \frac{a_{n+1}}{a_n} \leq l + \frac\eps{2}.  \quad \forall n \geq n_0  
+    \] Moltiplicando tutto per $a_n > 0$ otteniamo \[
+        a_n\left(l - \frac\eps{2}\right) \leq a_{n+1} \leq  a_n\left(l + \frac\eps{2}\right).
+    \] Partendo da $n = n_0$ si può mostrare per induzione su $k$ che \[
+        a_{n_0}\left(l - \frac\eps{2}\right)^k \leq a_{n_0 + k} \leq a_{n_0}\left(l + \frac\eps{2}\right)^k.
+    \] Sia $k \deq n - n_0$; segue che \[
+        a_{n_0}\left(l - \frac\eps{2}\right)^{n - n_0} \leq a_{n} \leq a_{n_0}\left(l + \frac\eps{2}\right)^{n - n_0}.
+    \] Facendo la radice $n$-esima di tutti i membri \[
+        \left(l - \frac{\eps}{2}\right)\sqrt[n]{a_{n_0}\left(l - \frac\eps{2}\right)^{n_0}} \leq \sqrt[n]{a_n} \leq \left(l + \frac{\eps}{2}\right)\sqrt[n]{a_{n_0}\left(l + \frac\eps{2}\right)^{n_0}}.
+    \]
+
+    Il membro destro tende a $l + \frac\eps{2}$ per $n \to +\infty$, dunque sarà definitivamente minore di $l + \eps$. Analogamente il membro sinistro sarà definitivamente maggiore di $l - \eps$. Dunque \[
+        l - \eps \leq \sqrt[n]{a_n} \leq l + \eps \quad \text{definitivamente,}    
+    \] da cui concludiamo che $\sqrt[n]{a_n} \to l$ per l'arbitrarietà di $\eps$.
+
+    \paragraph{Caso (ii)} Supponiamo invece $l = +\infty$.
+
+    Sia $M > 0$ qualsiasi; per ipotesi esiste $n_0 \in \N$ tale che \[
+        \frac{a_{n+1}}{a_n} \geq M.  \quad \forall n \geq n_0  
+    \] Moltiplicando entrambi i membri per $a_n > 0$ otteniamo \[
+        a_{n+1} \geq Ma_n. 
+    \] Per la stessa induzione del caso (i) possiamo mostrare che \[
+        a_n \geq  M^n \cdot a_{n_0}M^{-n_0}.
+    \] Il membro destro tende a $+\infty$, dunque per il \thmref{th:confr_asint_succ} vale che $a_n \to +\infty = l$.
+\end{proof}

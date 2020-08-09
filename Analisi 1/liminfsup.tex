@@ -1,0 +1,225 @@
+\section{Limite superiore e inferiore di successioni}
+
+\begin{definition}
+    [Maggioranti e minoranti definitivi] \label{def:magg_min_def}
+    Sia $\seqn*{a}$ una successione. 
+    
+    Allora si dice che $M \in \R$ è un \emph{maggiorante definitivo di $\seqn*{a}$} se esiste $n_0 \in \N$ tale che \begin{equation}
+        \label{eq:magg_def} a_n \leq M \quad \text{per ogni } n \geq n_0.
+    \end{equation}
+
+    Allo stesso modo si dice che $N \in \R$ è un \emph{minorante definitivo di $\seqn*{a}$} se \begin{equation}
+        \label{eq:min_def} a_n \geq N \quad \text{per ogni } n \geq n_0.
+    \end{equation}
+
+    L'insieme dei maggioranti definitivi si indica con $\defUppBound{a}$, mentre l'insieme dei minoranti definitivi si indica con $\defLowBound a$.
+\end{definition}
+
+Notiamo che se una successione è limitata superiormente, ovvero $\set {a_n \suchthat n \in \N}$ ammette un maggiorante $M$, allora tale maggiorante è anche un maggiorante definitivo: infatti $a_n \geq M$ per ogni $n$, dunque lo sarà anche definitivamente.
+Non vale necessariamente il contrario: ad esempio la successione definita da $a_n \deq \dfrac{10}{n}$ ammette $1$ come maggiorante definitivo (in quanto $a_n \leq 1$ per $n \geq 10$) ma non come maggiorante (poiché la disuguaglianza non vale per $n < 10$).
+
+\begin{definition} [Limite superiore e inferiore]
+    Sia $\seqn*{a}$ una successione e siano $\defUppBound{a}$, $\defLowBound a$ gli insiemi dei maggioranti e minoranti defininitivi. Allora definisco \begin{equation}
+        \label{def:lim_sup} \limsup_{n \to +\infty} a_n = \begin{cases}
+            +\infty, &\text{se $\seqn*{a}$ è illimitata superiormente,}\\
+            \inf \defUppBound a, &\text{altrimenti.}
+        \end{cases}
+    \end{equation}\begin{equation}
+        \label{def:lim_inf} \liminf_{n \to +\infty} a_n = \begin{cases}
+            -\infty, &\text{se $\seqn*{a}$ è illimitata inferiormente,}\\
+            \sup \defLowBound a, &\text{altrimenti.}
+        \end{cases}
+    \end{equation}
+\end{definition}
+
+\begin{remark}
+    Vale sempre che il limite inferiore è minore o uguale del limite superiore.
+\end{remark}
+
+Vediamo alcune caratterizzazioni alternative del limite superiore e inferiore.
+
+\begin{proposition} [Caratterizzazione I di limite superiore e inferiore]
+    \label{prop:caratt_1_limsupinf}
+    Sia $\seqn*{a}$ una successione limitata.
+    
+    Allora vale che \begin{align}
+        \limsup_{n \to +\infty} a_n &= \inf_{n \in \N} \sup \set{a_k \suchthat k \geq n}.\label{eq:caratt_1_limsup}\\
+        \liminf_{n \to +\infty} a_n &= \sup_{n \in \N} \inf \set{a_k \suchthat k \geq n}.\label{eq:caratt_1_liminf}
+    \end{align}
+\end{proposition}
+\begin{proof}
+    Dimostriamo la \eqref{eq:caratt_1_liminf}; la dimostrazione della \eqref{eq:caratt_1_limsup} è analoga.
+
+    Sia $\left( I^{(a)}_n \right)$ la successione definita da \[
+        I^{(a)}_n \deq \inf \set{a_k \suchthat k \geq n}.
+    \] Allora per ogni $n \in \N$ dovrà valere che $I^{(a)}_n$ è un minorante definitivo (infatti $a_k \geq I^{(a)}_n$ per ogni $k \geq n$, ovvero definitivamente).
+    Da ciò segue che \[
+        \liminf_{n\to +\infty} a_n \geq I^{(a)}_n \quad \forall n \in \N    
+    \] Dunque, siccome $\liminf a_n$ è un maggiorante dell'insieme $\set{I^{(a)}_n\suchthat n \in \N}$ allora dovrà essere maggiore o uguale all'estremo superiore dell'insieme, ovvero \[
+        \liminf_{n \to +\infty} a_n \geq \sup_{n \in \N} I^{(a_n)}.    
+    \]
+
+    Dimostriamo ora l'uguaglianza opposta.
+    Sia $N$ un minorante definitivo di $\left( I^{(a)}_n \right)$. Allora per definizione dovrà esistere un intero positivo $n_0 \in \N$ tale che $a_k \geq N$ per ogni $k \geq n_0$. 
+    
+    Siccome $N$ è minore o uguale ad ogni $a_k$ dovrà essere minore o uguale all'estremo inferiore dell'insieme, ovvero \[
+        N \leq \inf_{k \geq n_0} a_k = I^{(a)}_{n_0} \leq \sup_{n \in \N} I^{(a)}_n.
+    \] Ma questa disuguaglianza vale per qualsiasi minorante definitivo $N$, dunque \[
+        \liminf_{n \to +\infty} a_n \leq \sup_{n \in \N} I^{(a)}_n.    \qedhere
+    \]
+\end{proof}
+
+
+\begin{remark}
+    La successione $\left( I^{(a)}_n \right)$ definita nella dimostrazione precedente è debolmente crescente (stiamo calcolando l'estremo inferiore di un insieme via via più piccolo, ed in particolare sempre contenuto nei precedenti), dunque per il \autoref{cor:succ_cresc_limit} vale che \[
+        \lim_{n \to +\infty} I^{(a)}_n = \sup \set{I^{(a)}_n \suchthat n \in \N} = \liminf_{n \to +\infty} a_n.    
+    \] 
+    Similmente definiendo la successione $\left( S^{(a)}_n \right)$ tale che \[
+        S^{(a)}_n \deq \sup \set{a_k \suchthat k \geq n}.
+    \] notiamo che essa è debolmente decrescente, dunque per la \autoref{cor:succ_decr_limit} ammette limite reale e quindi \[
+        \lim_{n \to +\infty} S^{(a)}_n = \inf \set{S^{(a)}_n \suchthat n \in \N} = \limsup_{n \to +\infty} a_n.    
+    \] 
+\end{remark}
+Dunque si può questa definizione alternativa di limite superiore e limite inferiore:
+\begin{corollary}
+    [Caratterizzazione II di limite superiore e inferiore] \label{cor:caratt_2_limsupinf}
+    Sia $\seqn*{a}$ una successione. Allora vale che 
+    \begin{align}
+        \limsup_{n \to +\infty} a_n &= \begin{cases}
+            +\infty, &\text{se $\seqn*{a}$ è illim. sup.,}\\
+            \displaystyle \lim_{n \to +\infty} S^{(a)}_n , &\text{altrimenti.}
+        \end{cases} \label{def:limsup_II}\\
+        \liminf_{n \to +\infty} a_n &= \begin{cases}
+            -\infty, &\text{se $\seqn*{a}$ è illim. inf.,}\\
+            \displaystyle \lim_{n \to +\infty} I^{(a)}_n , &\text{altrimenti.} \label{def:liminf_II}
+        \end{cases}
+    \end{align}
+    dove $\left(S^{(a)}_n\right), \left(I^{(a)}_n\right)$ sono due successioni tali che \[
+        S^{(a)}_n = \sup \set{a_k \suchthat k \geq n}, \quad I^{(a)}_n = \inf \set{a_k \suchthat k \geq n}.   
+    \]
+\end{corollary}
+    
+Diamo una terza e ultima caratterizzazione dei limiti superiori ed inferiori.
+
+\begin{proposition}
+    [Caratterizzazione III del limite superiore]
+    \label{prop:caratt_3_limsup}
+    Sia $\seqn*{a}$ una successione. Allora $L \in \R$ è il limite superiore della successione $\seqn*{a}$ se e solo se
+    \begin{enumerate}[label={(\roman*)}]
+        \item per ogni $\eps > 0$ vale che $a_n < L + \eps$ definitivamente;
+        \item per ogni $\eps > 0$ vale che $a_n > L - \eps$ frequentemente.
+    \end{enumerate}
+
+    Invece nel caso la successione non sia limitata abbiamo che \begin{itemize}
+        \item $\limsup a_n = +\infty$ se e solo se per ogni $M \in \R$ vale che $a_n > M$ frequentemente;
+        \item $\limsup a_n = -\infty$ se e solo se per ogni $M \in \R$ vale che $a_n < M$ definitivamente, ovvero se $a_n \to -\infty$.
+    \end{itemize}
+\end{proposition}
+\begin{proof} 
+    Dimostriamo separatamente i casi in cui il limite superiore è un numero reale, è $+\infty$ oppure è $-\infty$.
+    
+    \paragraph{Limite superiore reale}
+    La (i) equivale ad affermare che ogni numero maggiore di $L$ è un maggiorante definitivo, ovvero che $L \geq \limsup a_n$
+
+    La (ii) invece equivale ad affermare che ogni numero minore di $L$ non è un maggiorante definitivo, in quanto $L - \eps < a_n$ per infiniti valori di $n$ (ovvero frequentemente), dunque $L \leq \limsup a_n$.
+
+    Concludiamo quindi che \[
+        L = \limsup_{n \to +\infty} a_n. 
+    \]
+
+    \paragraph{Limite superiore $+\infty$} Questo equivale ad affermare che la successione $a_n$ non è limitata superiormente per definizione, ovvero per ogni $M \in \R$ deve valere che $a_n > M$ per almeno un valore di $n \in \N$. Tuttavia se ciò accadesse un numero finito di volte la successione avrebbe massimo, ma ciò è assurdo in quanto la successione non è limitata superiormente, dunque $a_n > M$ per infiniti valori di $n$ (ovvero frequentemente).
+
+    \paragraph{Limite superiore $-\infty$}
+    Per definizione di limite superiore sappiamo che $\limsup a_n = -\infty$ se e solo se  $\inf \defUppBound{a} = -\infty$, ovvero se e solo se ogni $M \in \R$ è un maggiorante definitivo. Ma questo significa che $a_n \leq M$ definitivamente, ovvero $a_n \to -\infty$.
+\end{proof}
+
+Analogamente la proposizione per i limiti inferiori:
+\begin{proposition}
+    [Caratterizzazione III del limite inferiore]
+    \label{prop:caratt_3_liminf}
+    Sia $\seqn*{a}$ una successione. Allora $L \in \R$ è il limite inferiore della successione $\seqn*{a}$ se e solo se
+    \begin{enumerate}[label={(\roman*)}]
+        \item per ogni $\eps > 0$ vale che $a_n > L + \eps$ definitivamente;
+        \item per ogni $\eps > 0$ vale che $a_n < L - \eps$ frequentemente.
+    \end{enumerate}
+
+    Invece nel caso la successione non sia limitata abbiamo che \begin{itemize}
+        \item $\liminf a_n = -\infty$ se e solo se per ogni $M \in \R$ vale che $a_n < M$ frequentemente;
+        \item $\liminf a_n = +\infty$ se e solo se per ogni $M \in \R$ vale che $a_n > M$ definitivamente, ovvero se $a_n \to +\infty$.
+    \end{itemize}
+\end{proposition}
+
+\begin{theorem}
+    [Regolarità tramite limite inferiore e superiore]
+    Sia $\seqn*{a}$ una successione. Allora $\seqn*{a}$ è regolare se e solo se esiste $l \in \closure{\R}$ tale che \[
+        \limsup_{n \to +\infty} a_n = \liminf_{n \to +\infty} a_n = l.   
+    \]
+
+    In particolare varrà che \[
+        \lim_{n \to +\infty} a_n = l.
+    \]
+\end{theorem}
+\begin{proof}
+    Mostriamo entrambi i versi dell'implicazione.
+    \begin{description}
+        \item[($\impliedby$)] Se $a_n \to +\infty$ allora la funzione è illimitata superiormente (dunque $\limsup a_n = +\infty$) e l'insieme dei minoranti definitivi è tutto $\R$, dunque $\liminf a_n = \sup \defLowBound{a} = +\infty$ da cui la tesi.
+        
+        Analogo ragionamento se $a_n \to -\infty$.
+
+        Supponiamo quindi che $a_n \to l \in \R$. Allora per definizione di limite esisterà $\eps > 0$ tale che \[
+            l - \eps < a_n < l + \eps \quad \text{definitivamente.}    
+        \] Ma questo significa che $l + \eps$ è un maggiorante definitivo e $l - \eps$ è un minorante definitivo, dunque \[
+            l - \eps < \liminf_{n \to +\infty} a_n \leq \limsup_{n \to +\infty} a_n < l + \eps,
+        \] da cui segue che \[
+            \liminf_{n \to +\infty} a_n = \limsup_{n \to +\infty} a_n = l.
+        \]
+        \item[($\implies$)] Se $l = +\infty$ allora per la \autoref{prop:caratt_3_liminf} segue che $a_n \to +\infty$. Analogamente se $l = -\infty$ per la \autoref{prop:caratt_3_limsup} segue che $a_n \to -\infty$.
+        
+        Supponiamo ora che $l \in \R$. Siccome $l$ è il limite superiore, allora per il \autoref{prop:caratt_3_limsup} segue che per ogni $\eps > 0$ \[
+            a_n < l + \eps \quad \text{definitivamente.}
+        \] Allo stesso modo, siccome $l$ è il limite inferiore, per la \autoref{prop:caratt_3_liminf} varrà che  per ogni $\eps > 0$ \[
+            a_n > l - \eps \quad \text{definitivamente.}    
+        \] Dunque \[
+            l - \eps < a_n < l + \eps \quad \text{definitivamente,}    
+        \] ovvero $a_n \to l$. \qedhere
+    \end{description}
+\end{proof}
+
+\subsection{Teoremi in versione limite superiore/inferiore}
+
+\begin{theorem}
+    [Teorema del Confronto]
+    \label{th:confr_succ_limsupinf}
+    Siano $\seqn*{a}, \seqn*{b}$ due successioni tali che $a_n \leq b_n$ definitivamente. Allora valgono le seguenti:
+    \begin{enumerate}[label={(\roman*)}, ref={\thetheorem: (\roman*)}]
+        \item $\displaystyle \liminf_{n \to +\infty} a_n \leq \liminf_{n \to +\infty} b_n$ 
+        \item $\displaystyle \limsup_{n \to +\infty} a_n \leq \limsup_{n \to +\infty} b_n$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Supponiamo per semplicità che le successioni siano limitate. Per il \autoref{cor:caratt_2_limsupinf} possiamo considerare le successioni $\left(S^{(a)}_n\right)$ e $\left(S^{(b)}_n\right)$.
+
+    Per ipotesi $a_n \leq b_n$, dunque dovrà valere definitivamente che $S^{(a)}_n \leq S^{(a)}_n$, ovvero facendo i limiti a $+\infty$ per il \autoref{th:confr_2_succ} segue che \[
+        \limsup_{n \to +\infty} a_n \leq \limsup_{n \to +\infty} b_n.
+    \]
+
+    Analoga dimostrazione per il limite inferiore.
+\end{proof}
+
+\begin{theorem}
+    [Teorema dei Due Carabinieri]
+    \label{th:carab_limsupinf}
+    Siano $\seqn*{a}, \seqn*{b}, \seqn*{c}$ tre successioni tali che $a_n \leq b_n \leq c_n$ definitivamente.
+    Allora vale che \[
+        \liminf_{n\to +\infty} a_n \leq \liminf_{n\to +\infty} b_n \leq \limsup_{n\to +\infty} b_n \leq \limsup_{n\to +\infty} c_n.
+    \]
+\end{theorem}
+\begin{proof}
+    Abbiamo già osservato che $\liminf b_n \leq \limsup b_n$. Per il \autoref{th:confr_succ_limsupinf} avremo allora \begin{align*}
+        \liminf_{n \to +\infty} a_n &\leq \liminf_{n \to +\infty} b_n \tag{siccome $a_n \leq b_n$}\\
+        \limsup_{n \to +\infty} b_n &\leq \limsup_{n \to +\infty} c_n. \tag{siccome $b_n \leq c_n$}
+    \end{align*}
+    da cui segue che \[
+        \liminf_{n \to +\infty} a_n \leq \liminf_{n \to +\infty} b_n \leq \limsup_{n \to +\infty} b_n \leq \limsup_{n \to +\infty} c_n. \qedhere
+    \]
+\end{proof}

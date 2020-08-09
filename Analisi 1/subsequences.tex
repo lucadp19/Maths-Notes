@@ -1,0 +1,42 @@
+\section{Sottosuccessioni}
+
+\begin{definition}
+    [Successione di indici] \label{def:succ_indici}
+    Sia $\seqn*{a}$ una successione a valori in $\N$ strettamente crescente. Allora $\seqn*{a}$ si dice \emph{successione di indici}.
+\end{definition}
+
+Ad esempio le successioni $a_n \deq 2n$ (numeri pari) e $b_n \deq 2n + 1$ sono successioni di indici.
+
+\begin{definition}
+    [Sottosuccessione estratta] \label{def:sottosucc}
+    Siano $\seqn*{a}$, $\seqn*{b}$ due successioni.
+
+    Allora si dice che la successione $\seqn*{b}$ è una \emph{sottosuccessione estratta} da $\seqn*{a}$ (o semplicemente \emph{sottosuccessione} di $\seqn*{a}$) se esiste una successione di indici $\seqn*[k]{n}$ tale che \[
+        b_n = a_{n_k}.    
+    \]
+\end{definition}
+
+\begin{proposition}
+    [Le sottosucc. hanno lo stesso limite della successione originale] \label{prop:ssuc_conv_lim_succ}
+    Sia $\seqn*{a}$ una successione e $\seqn*[n]{b}$ una sua sottosuccessione.
+
+    Allora se $a_n \to l \in \closure{\R}$ segue che $b_{n} \to l$.
+\end{proposition}
+\begin{proof}
+    Supponiamo $l \in \R$. Allora per definizione di limite avremo che \[
+        \forall \eps > 0. \quad \exists n_0 \in \N. \quad \forall n \geq n_0. \quad \forall \abs*{a_n - l} < \eps.
+    \] Siccome $\seqn*{b}$ è una sottosuccessione di $\seqn*{a}$ dovrà esistere una successione di indici $\seqn*{k}$ tale che $b_n = a_{k_n}$. Dato che $\seqn*{k}$ è crescente varrà che $k_n \geq n$; dunque se $n \geq n_0$ a maggior ragione $k_n \geq n_0$, per cui \[
+        b_n = a_{k_n} \in (l - \eps, l+\eps),    
+    \] ovvero $b_n \to l$.
+
+    Analogo ragionamento nei casi $a_n \to +\infty$, $a_n \to -\infty$.
+\end{proof}
+
+\begin{corollary}
+    Sia $\seqn*{a}$ una successione e $\seqn*{b}, \seqn*{c}$ due sottosuccessioni estratte. Se \[
+        b_n \to \beta, \quad c_n \to \gamma     
+    \] con $\beta \neq \gamma$ allora vale che $\seqn*{a}$ non ha limite.
+\end{corollary}
+\begin{proof}
+    Supponiamo per assurdo che $a_n \to \alpha \in \closure{\R}$. Allora le sottosuccessioni estratte $\seqn*{b}, \seqn*{c}$ dovrebbero convergere ad $\alpha$ per la \autoref{prop:ssuc_conv_lim_succ}, il che è assurdo poiché convergono a due numeri diversi, dunque la tesi.
+\end{proof}

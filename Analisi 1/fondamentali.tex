@@ -1,0 +1,231 @@
+\chapter{Fondamentali}
+
+\section{Relazioni}
+
+\begin{definition}
+    [Relazione su un insieme]
+    Sia $X$ un insieme. Allora si dice \emph{relazione su $X$} un sottoinsieme $R \subseteq X \times X$. 
+    
+    Si indica che una coppia $(x, y)$ soddisfa $R$ scrivendo $xRy$. 
+\end{definition}
+
+\begin{definition}
+    [Relazione di equivalenza]
+    Sia $X$ un insieme e $\sim$ una relazione su $X$. Allora $\sim$ si dice \emph{relazione di equivalenza} se valgono i seguenti assiomi: \begin{enumerate}[label={(EQ\arabic*)}]
+        \item La relazione $\sim$ è \emph{riflessiva}:
+        
+        per ogni $x \in X$ vale che $x \sim x$.
+        \item La relazione $\sim$ è \emph{simmetrica}:
+        
+        per ogni $x, y \in X$, se $x \sim y$ allora necessariamente $y \sim x$.
+        \item La relazione $\sim$ è \emph{transitiva}:
+        
+        per ogni $x, y, z \in X$, se $x \sim y$ e $y \sim z$ allora necessariamente $x \sim z$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    [Relazione di ordinamento]
+    Sia $X$ un insieme e $\leq$ una relazione su $X$. Allora $\leq$ si dice \emph{relazione di ordinamento} se valgono i seguenti assiomi: \begin{enumerate}[label={(ORD\arabic*)}]
+        \item La relazione $\leq$ è \emph{riflessiva}:
+        
+        per ogni $a \in \K$ vale che $a \leq a$.
+        \item La relazione $\leq$ è \emph{antisimmetrica}:
+        
+        per ogni $a, b \in \K$, se $a \leq b$ e $b \leq a$ allora necessariamente $a = b$.
+        \item La relazione $\leq$ è \emph{transitiva}:
+        
+        per ogni $a, b, c \in \K$, se $a \leq b$ e $b \leq c$ allora necessariamente $a \leq c$.
+    \end{enumerate}
+
+    In particolare l'ordinamento si dice \emph{totale} se vale anche che
+    \begin{enumerate}[label={(O\arabic*)}, start=4]
+        \item La relazione $\leq$ è \emph{totale}:
+        
+        per ogni $a, b \in \K$ vale che $a \leq b$ oppure $b \leq a$.
+    \end{enumerate}
+\end{definition}
+
+\section{Funzioni}
+
+\begin{definition}[Funzione (operativamente)]
+    \label{def:funz_oper}
+    Si dice funzione una terna $(A, B, f)$ formata da:
+    \begin{itemize}
+        \item un insieme $A$ detto \emph{dominio};
+        \item un insieme $B$ detto \emph{codominio};
+        \item una legge $f : A \to B$ che associa ad ogni $a \in A$ un elemento $f(a) \in B$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    [Grafico di una funzione] \label{def:graph}
+    Sia $f : A \to B$ una funzione. Allora si dice \emph{grafico della funzione} l'insieme \[
+        \operatorname{graph}(f) = \set{(a, b) \in A \times B \suchthat b = f(a)}.    
+    \]
+\end{definition}
+
+\begin{definition}
+    [Funzione (rigorosamente)]
+    Si dice funzione da $A$ a $B$ un qualunque sottoinsieme $G \subseteq A \times B$ tale che \[
+        \forall a \in A.\quad \exists! b \in B. \quad (a, b) \in G.    
+    \]
+
+    Per ogni $a \in A$ si definisce quindi $f(a)$ come l'unico $b$ che rispetta la condizione sopra.
+\end{definition}
+
+\begin{definition}
+    [Funzione composta]
+    Siano $f : A \to B$, $g : B \to C$ due funzioni. Allora si dice \emph{funzione composta} la funzione $(g \circ f) : A \to C$ tale che per ogni $a \in A$ \[
+        (g \circ f)(a) = g(f(a)).    
+    \]
+\end{definition}
+
+\subsection{Iniettività, surgettività}
+
+\begin{definition}
+    [Funzione iniettiva]
+    Sia $f : A \to B$ una funzione. La funzione $f$ si dice \emph{iniettiva} se \[
+        \forall a_1, a_2 \in A. \quad a_1 \neq a_2 \implies f(a_1) \neq f(a_2)    
+    \] o equivalentemente
+    \[
+        \forall a_1, a_2 \in A. \quad f(a_1) = f(a_2) \implies a_1 = a_2.  
+    \]
+\end{definition}
+
+\begin{definition}
+    [Funzione surgettiva]
+    Sia $f : A \to B$ una funzione. Allora $f$ si dice \emph{surgettiva} se \[
+        \forall b \in B. \quad \exists a \in A. \quad f(a) = b.    
+    \]
+\end{definition}
+
+\begin{definition}
+    [Funzione bigettiva]
+    Sia $f : A \to B$ una funzione. Allora $f$ si dice \emph{bigettiva} se:
+    \begin{enumerate}[label={(\roman*)}]
+        \item $f$ è iniettiva;
+        \item $f$ è surgettiva.
+    \end{enumerate}
+
+    In tal caso la funzione risulta \emph{invertibile}, ovvero esiste \[
+        g : B \to A
+    \] tale che per ogni $a \in A$, $b \in B$ vale che
+    \begin{align*}
+        g(f(a)) &= a, \\
+        f(g(b)) &= b.
+    \end{align*}
+    Se l'inversa esiste, allora si indica con $f\inv : B \to A$.
+\end{definition}
+
+\begin{proposition}
+    Siano $f : A \to B$, $g : B \to C$ due funzioni.
+    Allora \begin{enumerate}[label={(\roman*)}]
+        \item se $f$, $g$ sono iniettive, allora $(g \circ f)$ è iniettiva;
+        \item se $f$, $g$ sono surgettive, allora $(g \circ f)$ è surgettiva;
+        \item se $(g \circ f)$ è iniettiva, allora $f$ è iniettiva;
+        \item se $(g \circ f)$ è surgettiva, allora $g$ è surgettiva.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo le quattro affermazioni. \begin{enumerate}
+        \item Siano $a_1, a_2 \in A$ con $a_1 \neq a_2$. Allora \[
+            a_1 \neq a_2 \overbrace{\implies}^{f \text{ iniett.}} f(a_1) \neq f(a_2) \overbrace{\implies}^{g \text{ iniett.}}  g(f(a_1)) \neq g(f(a_2)).
+        \]
+    \end{enumerate}
+\end{proof}
+
+\subsection{Immagine e controimmagine}
+
+\begin{definition}
+    [Immagine di un sottoinsieme]
+    Sia $f : A \to B$ una funzione e sia $E \subseteq A$. Allora si dice\emph {immagine di $E$ attraverso $f$} l'insieme\[
+        f(E) \deq \set{f(a) \suchthat a \in E} \subseteq B    
+    \]
+    o equivalentemente \[
+        f(E) \deq \set{b \in B \suchthat \exists a \in E \quad b = f(a)}.    
+    \]
+\end{definition}
+
+
+\begin{definition}
+    [Immagine di una funzione]
+    Sia $f : A \to B$ una funzione. Allora si dice \emph{immagine di $f$} l'insieme \[
+        \Imm{f} \deq f(A) = \set{f(a) \suchthat a \in A} \subseteq B.
+    \]
+\end{definition}
+
+\begin{remark}
+    Una funzione $f : A \to B$ è surgettiva se e solo se \[
+        \Imm{f} = B.    
+    \]
+\end{remark}
+
+\begin{definition}
+    [Controimmagine di un sottoinsieme]
+    Sia $f : A \to B$ una funzione e sia $F \subseteq B$. Allora si dice \emph{controimmagine di $F$ attraverso $f$} l'insieme \[
+        f\inv(F) \deq \set{a \in A \suchthat f(a) \in F} \subseteq A.    
+    \]
+\end{definition}
+
+\section{Numeri naturali e Induzione}
+
+\begin{unnamed}
+    [Assiomi di Peano]
+    Si dice \emph{insieme dei numeri naturali} l'insieme $\N$ che rispetta i seguenti 5 assiomi: \begin{enumerate}[label={(P\arabic*)}, ref={(P\arabic*)}]
+        \item Esiste il numero naturale $0$, ovvero $0 \in \N$.
+        \item Esiste una funzione $\sigma : \N \to \N$, detta \emph{successore}, definita per ogni naturale.
+        \item La funzione $\sigma$ è iniettiva, ovvero per ogni $n, m \in \N$, $n \neq m$ segue che $\sigma(n) \neq \sigma(m)$.
+        \item Nessun numero ha $0$ come proprio successore, ovvero $\sigma(n) \neq 0$ per ogni $n \in \N$. 
+        \item Se $A$ è un sottoinsieme di $\N$ tale che \begin{enumerate}
+            \item $0 \in A$
+            \item $n \in A$ implica $\sigma(n) \in A$
+        \end{enumerate}
+        allora $A = \N$.
+    \end{enumerate}
+\end{unnamed}
+
+La terna $(\N, 0, \sigma)$ dove $\sigma(n) \deq n+1$ è l'unica terna che rispetta gli assiomi di Peano a meno di isomorfismi: ogni altra terna $(X, a, \Sigma)$ è isomorfa ad essa.
+
+Il quinto assioma, detto \emph{Principio di Induzione}, può essere riformulato in modo da essere usato più comodamente nelle dimostrazioni. La formulazione alternativa è la seguente: 
+
+\begin{unnamed}[Principio di Induzione]
+    Sia $A = \set{n \in \N \suchthat n \geq n_0}$, $P : A \to \set{\TT, \FF}$ un predicato. Allora se \begin{enumerate}[label={(\roman*)}]
+        \item vale $P(n_0)$
+        \item $\forall n \geq n_0 \quad P(n) \implies P(n + 1)$
+    \end{enumerate}
+    segue che $P(n)$ vale per ogni $n \geq n_0$.
+\end{unnamed}
+
+\begin{example}
+    Dimostrare che per ogni $n \geq 0$ \begin{align}
+        &\sum_{k=0}^n k = \frac{n(n+1)}{2} \label{eq:somma_lineare}\\
+        &\sum_{k=0}^n k^2 = \frac{n(n+1)(2n+1)}{6} \label{eq:somma_quadrati}\\
+        &\sum_{k=0}^n a^k = \frac{a^{k+1}-1}{a-1} &&\forall a \neq 1. \label{eq:somma_geometrica}
+    \end{align}
+\end{example}
+\begin{proof}
+    Dimostriamo la $\ref{eq:somma_quadrati}$ per induzione su $n$.
+    \begin{description}
+        \item[Caso base] Sia $n = 0$. Allora \[
+            \sum_{k=0}^0 k^2 = 0 = \frac{0 \cdot 1 \cdot 1}{2}.  
+        \]
+        \item[Passo induttivo] Supponiamo che valga la tesi per $n$ e dimostriamola per $n+1$.
+        \begin{align*}
+            \sum_{k=0}^{n+1} k^2 &= (n+1)^2 + \sum_{k=0}^n k^2 \\
+            &= (n+1)^2 + \frac{n(n+1)(2n+1)}{6}\\
+            &= \frac{(n+1)^2 + n(n+1)(2n+1)}{6}\\
+            &= \frac{(n+1)(n+1 + 2n^2 + n)}{6}\\
+            &= \frac{(n+1)(2n^2 + 2n + 1)}{6}\\
+            &= \frac{(n+1)(n+2)(2n+2)}{6}.
+        \end{align*} 
+    \end{description}
+    Dunque per il principio di induzione la tesi vale per ogni $n \in \N$.
+\end{proof}
+
+% \begin{proposition}
+%     [Disuguaglianza di Bernoulli]\label{eq:bernoulli}
+%     \[
+
+%     \]
+% \end{proposition}

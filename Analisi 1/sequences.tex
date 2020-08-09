@@ -1,0 +1,389 @@
+\chapter{Successioni}
+
+\section{Limiti di successioni}
+
+\begin{definition}
+    [Predicati veri definitivamente e frequentemente]\label{def:definit_frequent}
+    Sia $P$ un predicato sui numeri naturali, ovvero $P : \N \to \set{\TT, \FF}$.
+
+    Allora si dice che:
+    \begin{itemize}
+        \item $P$ è vero \emph{definitivamente} se esiste un $n_0 \in \N$ tale che per ogni $n \geq n_0$ vale $P(n)$. In formule \begin{equation*}
+            \exists n_0 \in \N. \quad \forall n \geq n_0. \quad P(n) = \TT. \tag{definitivamente}
+        \end{equation*}
+        \item $P$ è vero \emph{frequentemente} se è vero per infiniti valori di $n$, ovvero se per ogni $n_0 \in \N$ esiste un $n \geq n_0$ tale che vale $P(n)$. In formule \begin{equation*}
+            \forall n_0 \in \N. \quad \exists n \geq n_0. \quad P(n) = \TT. \tag{frequentemente}
+        \end{equation*}
+    \end{itemize}
+\end{definition}
+
+Introduciamo ora il concetto di successione. 
+
+\begin{definition}
+    [Successione] \label{def:successione}
+    Sia $X$ un insieme. Allora si dice \emph{successione a valori in $X$} una funzione \[
+        a : \N \to X.    
+    \]
+
+    Non è necessario che il dominio sia $\N$, ma basta un qualsiasi sottoinsieme di $\N$ della forma \[
+        A = \set{n \in \N \suchthat n \geq n_0}    
+    \] per qualche $n_0 \in \N$. 
+
+    Spesso si scrive $a_i$ per indicare $a(i)$; inoltre per indicare l'intera successione si usa la notazione $(a_n)_{n \in A}$ oppure semplicemente $(a_n)$ se i valori degli indici sono facilmente deducibili dal contesto.
+\end{definition}
+
+\begin{definition}
+    [Limite di una successione] \label{def:lim_succ}
+    Sia $\seqn*{a}$ una successione a valori reali, definita anche solo definitivamente. 
+    \begin{enumerate}[label={(\arabic*)}, ref={(\arabic*)}]
+        \item \label{def:lim_succ:conv} Si dice che la successione tende a $l \in \R$, e si scrive \[
+            a_n \to l \quad \text{oppure} \quad \lim_{n \to \infty} a_n = l    
+        \] se vale che per ogni $\eps > 0$ vale che $\abs*{a_n - l} < \eps$ definitivamente.
+
+        In questo caso si dice inoltre che la successione \emph{converge} ad $l$.
+        \item \label{def:lim_succ:div_+inf} Si dice che la successione tende a $+\infty$, e si scrive \[
+            a_n \to +\infty \quad \text{oppure} \quad \lim_{n \to \infty} a_n = +\infty    
+        \] se vale che per ogni $M \in \R$ vale che $a_n \geq M$ definitivamente.
+
+        In questo caso si dice inoltre che la successione \emph{diverge positivamente}.
+        \item \label{def:lim_succ:div_-inf} Si dice che la successione tende a $-\infty$, e si scrive \[
+            a_n \to -\infty \quad \text{oppure} \quad \lim_{n \to \infty} a_n = -\infty    
+        \] se vale che per ogni $M \in \R$ vale che $a_n \leq M$ definitivamente.
+
+        In questo caso si dice inoltre che la successione \emph{diverge negativamente}.
+        \item \label{def:lim_succ:no_lim} Si dice che la successione è \emph{indeterminata} oppure che \emph{non ha limite} se non rientra in nessuno dei casi precedenti.
+    \end{enumerate}
+\end{definition}
+
+In particolare una successione convergente a $0$ si dice \emph{infinitesima}, mentre una successione divergente si dice \emph{infinita}.
+
+Da adesso in poi assumeremo che le successioni siano a valori reali (a meno che non venga specificato diversamente) e che siano definite anche solo definitivamente.
+
+\subsection{Primi teoremi sui limiti di successioni}
+
+\begin{theorem}
+    [Permanenza del segno] \label{th:perm_segno_succ}
+    Sia $\seqn*{a}$ una successione. Supponiamo che valga una tra \begin{itemize}
+        \item $a_n \to l \in \R$ per qualche $l > 0$,
+        \item $a_n \to +\infty$.
+    \end{itemize}
+
+    Allora $a_n > 0$ definitivamente.
+\end{theorem}
+\begin{proof}
+    Dimostriamo i due casi separatamente.
+    \begin{description}
+        \item[(Hp: $a_n \to l > 0$)]  Per definizione di limite \[
+            \forall \eps > 0. \quad \abs*{a_n - l} \leq \eps \quad \text{definitivamente.}
+        \]
+        Sia $\eps = \frac{l}{2}$. Allora \[
+            0 < \frac{l}{2} \leq a_n \leq \frac{3l}{2} \quad \text{definitivamente,}
+        \] da cui segue che $a_n > 0$ definitivamente.
+        \item[(Hp: $a_n \to +\infty$)] Per definizione di limite \[
+            \forall M \in \R. \quad a_n \geq M \quad \text{definitivamente.}
+        \]
+        Sia $M$ positivo, ad esempio $M = 1$. Allora \[
+            a_n \geq M = 1 > 0 \quad \text{definitivamente}
+        \] da cui segue che $a_n > 0$ definitivamente.\qedhere
+    \end{description}  
+\end{proof}
+
+Il teorema vale ovviamente anche per successioni che tendono ad un valore (finito o infinito) negativo: i valori assunti dalla successione saranno definitivamente negativi.
+
+\begin{theorem}
+    [Unicità del limite] \label{th:unic_lim_succ}
+    Sia $\seqn*{a}$ una successione. Allora $\seqn*{a}$ può assumere uno e uno solo dei comportamenti descritti in \ref{def:lim_succ}.
+
+    Inoltre se $\seqn*{a}$ converge segue che esiste un unico $l \in \R$ tale che $a_n \to l$.
+\end{theorem}
+
+Per dimostrare il teorema dimostriamo separatamente i seguenti lemmi.
+
+\begin{lemma} \label{lem:unic_lim_conv}
+    Sia $\seqn*{a}$ una successione. Allora se $a_n \to l \in \R$, tale limite è unico. Inoltre $\seqn*{a}$ non può divergere.
+\end{lemma}
+\begin{proof}
+    Supponiamo che esista $m \in \R$ tale che $a_n \to m$ e mostriamo che necessariamente $m = l$. Per definizione di limite avremo che \begin{align}
+        &\forall \eps > 0. \quad \exists n_1 \in \N. \quad \forall n \geq n_1. \quad \abs*{a_n - l} < \eps. \label{eq:unic_lim_conv:1}\\
+        &\forall \eps > 0. \quad \exists n_2 \in \N. \quad \forall n \geq n_2. \quad \abs*{a_n - m} < \eps. \label{eq:unic_lim_conv:2}
+    \end{align}
+
+    Sia ora $n_0 \deq \min \set{n_1, n_2}$. Allora per ogni $n \geq n_0$ dovranno valere sia la \eqref{eq:unic_lim_conv:1} che la \eqref{eq:unic_lim_conv:2}, ovvero \[
+        \abs*{a_n - l} < \eps, \quad  \abs*{a_n - m} < \eps.
+    \]
+
+    Allora dovrà valere che \begin{align*}
+        \abs*{l - m} &= \abs*{l - a_n + a_n - m} \tag{per \ref{def:distanza:dis_triang}}\\
+        &< \abs*{l - a_n} + \abs*{m - a_n}\\
+        &< 2\eps.
+    \end{align*}
+    Dunque per l'arbitrarietà di $\eps$ segue che $l = m$.
+
+    Dimostriamo ora che $\seqn*{a}$ non può divergere. Supponiamo per assurdo che $\seqn*{a}$ diverga positivamente, ovvero \begin{equation}
+        \label{eq:unic_lim_conv:3} \forall M \in \R. \quad \exists n_3 \in \N. \quad \forall n \geq n_3. \quad a_n \geq M.
+    \end{equation} Mostriamo che questa richiesta è incompatibile con la condizione \eqref{eq:unic_lim_conv:1}, che rappresenta l'ipotesi $a_n \to l \in \R$ e che possiamo scrivere anche nella forma $l - \eps < a_n < l + \eps$ (definitivamente).
+
+    Fissiamo un $\eps > 0$ e poniamo $M = l + \eps$. Allora combinando le condizioni della \eqref{eq:unic_lim_conv:1} e della \eqref{eq:unic_lim_conv:3} otteniamo che per ogni $n > \max \set{n_1, n_3}$ vale che \[
+        l + \eps = M \stackrel{\eqref{eq:unic_lim_conv:3}}{\leq} a_n \stackrel{\eqref{eq:unic_lim_conv:1}}{<} l + \eps   
+    \] che è assurdo. Analogo ragionamento per dimostrare che $\seqn*{a}$ non può divergere negativamente.
+\end{proof}
+
+\begin{lemma}\label{lem:unic_lim_div+}
+    Sia $\seqn*{a}$ una successione. Allora se $a_n \to +\infty$ segue che $\seqn*{a}$ non può né convergere né divergere negativamente.
+\end{lemma}
+\begin{proof}
+    È evidente che se $a_n \to +\infty$ segue che $\seqn*{a}$ non può divergere negativamente. Infatti se per assurdo divergesse negativamente allora per ogni $M \in \R$ varrebbe che $a_n < M$ definitivamente, mentre per ipotesi $a_n > M$ definitivamente.
+
+    Mostriamo ora che $\seqn*{a}$ non può convergere. Supponiamo per assurdo che $a_n \to l \in \R$; allora per definizione di successione convergente avremmo che \begin{equation}
+        \forall \eps > 0. \quad \exists n_1 \in \N. \quad \forall n \geq n_1. \quad l - \eps < a_n < l + \eps. \label{eq:unic_lim_div+:1}\\
+    \end{equation}
+    Per l'ipotesi che $\seqn*{a}$ diverga positivamente sappiamo inoltre che \begin{equation}
+        \forall M \in \R. \quad \exists n_2 \in \N. \quad \forall n \geq n_2. \quad a_n \geq M. \label{eq:unic_lim_div+:2}
+    \end{equation}
+
+    Fissiamo un $\eps > 0$ e poniamo $M = l + \eps$. Allora combinando le condizioni della \eqref{eq:unic_lim_div+:1} e della \eqref{eq:unic_lim_div+:2} otteniamo che per ogni $n > \max \set{n_1, n_2}$ vale che \[
+        l + \eps = M \stackrel{\eqref{eq:unic_lim_div+:2}}{\leq} a_n \stackrel{\eqref{eq:unic_lim_div+:1}}{<} l + \eps   
+    \] che è assurdo, dunque la tesi.
+\end{proof}
+
+\begin{lemma} \label{lem:unic_lim_div-}
+    Sia $\seqn*{a}$ una successione. Allora se $a_n \to +\infty$ segue che $\seqn*{a}$ non può né convergere né divergere positivamente.
+\end{lemma}
+\begin{proof}
+    È evidente che se $a_n \to -\infty$ segue che $\seqn*{a}$ non può divergere positivamente. Infatti se per assurdo divergesse positivamente allora per ogni $M \in \R$ varrebbe che $a_n > M$ definitivamente, mentre per ipotesi $a_n < M$ definitivamente.
+
+    Mostriamo ora che $\seqn*{a}$ non può convergere. Supponiamo per assurdo che $a_n \to l \in \R$; allora per definizione di successione convergente avremmo che \begin{equation}
+        \forall \eps > 0. \quad \exists n_1 \in \N. \quad \forall n \geq n_1. \quad l - \eps < a_n < l + \eps. \label{eq:unic_lim_div-:1}\\
+    \end{equation}
+    Per l'ipotesi che $\seqn*{a}$ diverga negativamente sappiamo inoltre che \begin{equation}
+        \forall M \in \R. \quad \exists n_2 \in \N. \quad \forall n \leq n_2. \quad a_n \leq M. \label{eq:unic_lim_div-:2}
+    \end{equation}
+
+    Fissiamo un $\eps > 0$ e poniamo $M = l - \eps$. Allora combinando le condizioni della \eqref{eq:unic_lim_div-:1} e della \eqref{eq:unic_lim_div-:2} otteniamo che per ogni $n > \max \set{n_1, n_2}$ vale che \[
+        l - \eps \stackrel{\eqref{eq:unic_lim_div-:1}}{<} a_n \stackrel{\eqref{eq:unic_lim_div-:2}}{\leq} M = l - \eps   
+    \] che è assurdo, dunque la tesi.
+\end{proof}
+
+I tre lemmi ci consentono di dimostrare il \autoref{th:unic_lim_succ}:
+\begin{proof}
+    Per il \autoref{lem:unic_lim_conv} sappiamo che se una successione è convergente allora non può divergere né positivamente né negativamente. Inoltre il limite reale è unico.
+
+    Per il \autoref{lem:unic_lim_div+} sappiamo che se una successione è divergente positivamente allora non può né convergere né divergere negativamente.
+
+    Per il \autoref{lem:unic_lim_div-} sappiamo che se una successione è divergente negativamente allora non può né convergere né divergere positivamente.
+
+    Infine se una successione è indeterminata allora per definizione non ha nessuno dei precedenti tre caratteri, dunque la tesi.
+\end{proof}
+
+\begin{theorem}
+    [Confronto Asintotico] \label{th:confr_asint_succ}
+    Siano $\seqn*{a}, \seqn*{b}$ due successioni tali che $a_n \leq b_n$ definitivamente.
+    Allora valgono le seguenti affermazioni: \begin{enumerate}[label={(\roman*)}, ref={thetheorem: (\roman*)}]
+        \item \label{th:confr_succ:a->+inf} se $a_n \to +\infty$ allora anche $b_n \to +\infty$;
+        \item \label{th:confr_succ:b->-inf} se $b_n \to -\infty$ allora anche $a_n \to -\infty$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Dimostriamo i due casi separatamente.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Supponiamo che $a_n \to +\infty$, ovvero che \[
+            \forall M \in \R. \quad \exists n_1 \in \N. \quad \forall n \geq n_0. \quad a_n \geq M. 
+        \] Inoltre per ipotesi dovrà esistere $n_2 \in \N$ tale che $a_n \leq b_n$ per ogni $n \geq n_2$.
+
+        Allora per ogni $n \geq \max \set{n_1, n_2}$ varrà che \[
+            b_n \geq a_n \geq M    
+        \] ovvero $\seqn*{b}$ diverge positivamente.
+        \item Supponiamo che $b_n \to -\infty$, ovvero che \[
+            \forall M \in \R. \quad \exists n_1 \in \N. \quad \forall n \geq n_0. \quad b_n \leq M. 
+        \] Inoltre per ipotesi dovrà esistere $n_2 \in \N$ tale che $a_n \leq b_n$ per ogni $n \geq n_2$.
+
+        Allora per ogni $n \geq \max \set{n_1, n_2}$ varrà che \[
+            a_n \leq b_n \leq M    
+        \] ovvero $\seqn*{a}$ diverge negativamente. \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    [Teorema dei Carabinieri] \label{th:carab_succ}
+    Siano $\seqn*{a}, \seqn*{b}, \seqn*{c}$ tre successioni tali che (per qualche $l \in \R$)\begin{enumerate}[label={(\roman*)}]
+        \item $a_n \to l$,
+        \item $c_n \to l$,
+        \item $a_n \leq b_n \leq c_n$ definitivamente.
+    \end{enumerate}
+    Allora segue che $b_n \to l$ e dunque in particolare $\seqn*{b}$ è convergente.
+\end{theorem}
+\begin{proof}
+    Per ipotesi sappiamo che \begin{align}
+        \forall \eps > 0 \quad &\exists n_1 \in \N \quad \forall n \geq n_1. \quad {}&&l-\eps \leq a_n \leq l+\eps \label{eq:carab_succ:1}\\ 
+        \forall \eps > 0 \quad &\exists n_2 \in \N \quad \forall n \geq n_2. \quad {}&&l-\eps \leq c_n \leq l+\eps \label{eq:carab_succ:2}\\
+        &\exists n_3 \in \N \quad \forall n \geq n_3. \quad {}&&a_n \leq b_n \leq c_n. \label{eq:carab_succ:3}
+    \end{align}
+
+    Dunque per ogni $n \geq \max \set{n_1, n_2, n_3}$ dovrà valere che \[
+        l-\eps \stackrel{\eqref{eq:carab_succ:1}}{\leq} a_n \stackrel{\eqref{eq:carab_succ:3}}{\leq} b_n \stackrel{\eqref{eq:carab_succ:3}}{\leq} c_n \stackrel{\eqref{eq:carab_succ:2}}{\leq} l - \eps
+    \] da cui segue che $b_n \to l$.
+\end{proof}
+
+\subsection{Limitatezza}
+
+Come per gli insiemi, possiamo definire il concetto di limitatezza per le successioni.
+
+\begin{definition}
+    [Successione limitata] \label{def:succ_limit}
+    Sia $\seqn*{a}$ una successione. 
+    Allora $\seqn*{a}$ si dice \begin{enumerate}[label={(\roman*)}]
+        \item \emph{limitata superiormente} se esiste $u \in \R$ tale che \begin{equation}
+            \label{def:succ_bound:sup} a_n \leq u \text{  per ogni } n \in \N.
+        \end{equation}
+        \item \emph{limitata inferiormente} se esiste $l \in \R$ tale che \begin{equation}
+            \label{def:succ_bound:inf} a_n \geq l \text{  per ogni } n \in \N.
+        \end{equation}
+        \item \emph{limitata} se è sia limitata inferiormente che superiormente, ovvero se esistono $l, u \in \R$ tali che \begin{equation}
+            \label{def:succ_bound:both} l \leq a_n \leq u \text{  per ogni } n \in \N.
+        \end{equation}
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    [Una successione convergente è limitata] \label{prop:succ_conv=>limit}
+    Sia $\seqn*{a}$ una successione tale che $a_n \to a \in \R$. Allora $\seqn*{a}$ è limitata.
+\end{proposition}
+\begin{proof}
+    Per definizione di successione convergente sappiamo che \[
+        \forall \eps > 0. \quad \exists n_0 \in \N. \quad \forall n \geq n_0. \quad \abs*{a_n - a} < \eps.    
+    \] Fissiamo $\eps = 1$; sia inoltre $M = \abs*{a_0} + \abs*{a_1} + \dots + \abs*{a_{n_0}} + \abs*{a} + 1$. Mostriamo che per ogni $n \in \N$ vale che $\abs*{a_n} < M$.
+
+    Se $n < n_0$ allora la disequazione è ovvia, in quanto \[
+        \abs*{a_n} < \abs*{a_0} + \dots + \abs*{a_n} + \dots + \abs*{a_{n_0}} + \abs*{a} + 1.    
+    \]
+
+    Invece se $n \geq n_0$ sappiamo che $\abs*{a_n - a} < 1$ (abbiamo fissato $\eps = 1$), da cui segue \begin{align*}
+        \abs*{a_n} &= \abs*{a_n - a + a} \\
+        &< \abs*{a_n - a} + \abs*{a} \\
+        &< 1 + \abs*{a} \\
+        &< M.
+    \end{align*}
+
+    Dunque $\abs*{a_n} < M$ per ogni $n \in \N$, ovvero $\seqn*{a}$ è limitata.
+\end{proof}
+
+\begin{proposition}
+    [Comportamento del limite di una successione conv. limitata]
+    \label{prop:comp_limite_succ_limit}
+    Sia $\seqn*{a}$ una successione tale che $a_n \to a \in \R$. Allora \begin{itemize}
+        \item se $\seqn*{a}$ è limitata superiormente da $U \in \R$ segue che $a \leq U$;
+        \item se $\seqn*{a}$ è limitata inferiormente da $L \in \R$ segue che $a \geq L$;
+        \item se $\seqn*{a}$ è limitata (ovvero $L \leq a_n \leq U$) segue che $L \leq a \leq U$.
+    \end{itemize}
+\end{proposition}
+\begin{proof}
+    Dimostriamo il primo caso, gli altri due sono analoghi.
+
+    Supponiamo per assurdo che $a > U$. Per definizione di successione convergente \[
+        \forall \eps > 0. \quad \exists n_0 \in \N. \quad \forall n \geq n_1. \quad a - \eps < a_n < a + \eps.   
+    \] Scegliamo $\eps = a - U$ (che è positivo in quanto $a > U$), da cui segue che \[
+        a_n > a - \eps = U    
+    \] che è assurdo. Dunque deve valere che $a \leq U$.
+\end{proof}
+
+\subsection{Monotonia}
+
+\begin{definition}
+    [Successioni monotone] \label{def:succ_monotona}
+    Sia $\seqn*{a}$ una successione. Allora $\seqn*{a}$ si dice \begin{enumerate}
+        \item \emph{strettamente crescente} se per ogni $n \in \N$ vale che $a_{n+1} > a_n$;
+        \item \emph{debolmente crescente} se per ogni $n \in \N$ vale che $a_{n+1} \geq a_n$;
+        \item \emph{strettamente decrescente} se per ogni $n \in \N$ vale che $a_{n+1} < a_n$;
+        \item \emph{debolmente decrescente} se per ogni $n \in \N$ vale che $a_{n+1} \leq a_n$.
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    [Comportamento di una successione crescente] \label{prop:succ_cresc}
+    Sia $\seqn*{a}$ una successione debolmente crescente. 
+    
+    Allora $\seqn*{a}$ converge oppure diverge positivamente. In entrambi i casi vale che \[
+        \lim_{n \to +\infty} a_n = \sup \set{a_n \suchthat n \in \N}.    
+    \]
+\end{proposition}
+\begin{proof}
+    Dimostriamo i due casi separatamente. \begin{itemize}
+        \item Supponiamo che $\sup \set{a_n \suchthat n \in \N} = +\infty$. 
+        
+        Sia $M \in \R$ qualsiasi. Dato che l'insieme $\set{a_n \suchthat n \in \N}$ è superiormente illimitato, dovrà esistere un $n_0 \in \N$ tale che $a_{n_0} \geq M$.
+
+        Per ipotesi $\seqn*{a}$ è debolmente crescente, dunque per ogni $n \geq n_0$ vale che \[
+            a_n \geq a_{n_0} \geq M
+        \] ovvero $a_n \to +\infty$.
+        \item Supponiamo che $\sup \set{a_n \suchthat n \in \N} = l \in \R$. 
+        
+        Per definizione di estremo superiore segue che $a_n \leq l$, dunque in particolare per qualsiasi $\eps > 0$ dovrà valere $a_n \leq l + \eps$.
+
+        Per caratterizzazione dell'estremo superiore inoltre dovrà esistere $n_0 \in \N$ tale che $a_{n_0} \geq l - \eps$ (altrimenti $l - \eps$ sarebbe un maggiorante minore dell'estremo superiore). Dunque per ogni $n \geq n_0$ dovrà valere \[
+            l - \eps \leq a_n \leq l + \eps, 
+        \] ovvero $a_n \to l$. \qedhere
+    \end{itemize}
+\end{proof}
+
+\begin{corollary} \label{cor:succ_cresc_limit}
+    Sia $\seqn*{a}$ una successione debolmente crescente e limitata superiormente. 
+    
+    Allora $\seqn*{a}$ è convergente e $a_n \to \sup \set{a_n \suchthat n \in \N}$.
+\end{corollary}
+\begin{proof}
+    Per la proposizione \ref{prop:succ_cresc} sappiamo che il limite della successione $\seqn*{a}$ è dato dal suo estremo superiore. Per ipotesi $\seqn*{a}$ è limitata superiormente, dunque $\sup \set{a_n \suchthat n \in \N} \in \R$, da cui segue che $\seqn*{a}$ è convergente.
+\end{proof}
+
+Enunciamo e dimostriamo ora le proposizioni analoghe per le successioni decrescenti.
+
+\begin{proposition}
+    [Comportamento di una funzione decrescente] \label{prop:succ_decresc}
+    Sia $\seqn*{a}$ una successione debolmente decrescente. 
+    
+    Allora $\seqn*{a}$ converge oppure diverge negativamente. In entrambi i casi vale che \[
+        \lim_{n \to +\infty} a_n = \inf \set{a_n \suchthat n \in \N}.    
+    \]
+\end{proposition}
+\begin{proof}
+    Dimostriamo i due casi separatamente. \begin{itemize}
+        \item Supponiamo che $\inf \set{a_n \suchthat n \in \N} = -\infty$. 
+        
+        Sia $M \in \R$ qualsiasi. Dato che l'insieme $\set{a_n \suchthat n \in \N}$ è inferiormente illimitato, dovrà esistere un $n_0 \in \N$ tale che $a_{n_0} \leq M$.
+
+        Per ipotesi $\seqn*{a}$ è debolmente crescente, dunque per ogni $n \geq n_0$ vale che \[
+            a_n \leq a_{n_0} \leq M
+        \] ovvero $a_n \to +\infty$.
+        \item Supponiamo che $\inf \set{a_n \suchthat n \in \N} = l \in \R$. 
+        
+        Per definizione di estremo inferiore segue che $a_n \geq l$, dunque in particolare per qualsiasi $\eps > 0$ dovrà valere $a_n \geq l - \eps$.
+
+        Per caratterizzazione dell'estremo inferiore inoltre dovrà esistere $n_0 \in \N$ tale che $a_{n_0} \leq l + \eps$ (altrimenti $l + \eps$ sarebbe un minorante maggiore dell'estremo inferiore). Dunque per ogni $n \geq n_0$ dovrà valere \[
+            l - \eps \leq a_n \leq l + \eps, 
+        \] ovvero $a_n \to l$. \qedhere
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}\label{cor:succ_decr_limit}
+    Sia $\seqn*{a}$ una successione debolmente decrescente e limitata inferiormente. 
+    
+    Allora $\seqn*{a}$ è convergente e $a_n \to \inf \set{a_n \suchthat n \in \N}$.
+\end{corollary}
+\begin{proof}
+    Per la proposizione \ref{prop:succ_decresc} sappiamo che il limite della successione $\seqn*{a}$ è dato dal suo estremo inferiore. Per ipotesi $\seqn*{a}$ è limitata inferiormente, dunque $\inf \set{a_n \suchthat n \in \N} \in \R$, da cui segue che $\seqn*{a}$ è convergente.
+\end{proof}
+
+\subsection{Numero di Nepero}
+
+Consideriamo la successione $\seqn*[n][\N\setminus\set{0}]{e}$ definita da \[
+    e_n \deq \left(1 + \frac{1}{n}\right)^n.    
+\]
+
+\begin{proposition} \label{prop:e}
+    La successione $\seqn*{e}$ \begin{enumerate}
+        \item verifica $2 \leq e_n \leq 3$ per ogni $n \geq 1$,
+        \item è strettamente crescente.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostro inizialmente che $e_n \geq 2$ per ogni $n \geq 1$. 
+\end{proof}

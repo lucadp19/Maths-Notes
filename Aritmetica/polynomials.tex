@@ -1,0 +1,116 @@
+\section{Anello dei polinomi}
+
+\begin{definition}
+    [Polinomi a coefficienti in un anello]
+    Sia $(A, +, \cdot)$ un anello commutativo con identità e consideriamo una successione $\left(a_i\right)$ di elementi di $A$ che sia definitivamente nulla, ovvero tale che esista un $n \in \N$ tale che \[
+        a_m = 0 \quad \text{per ogni } m > n.    
+    \]
+    Allora si dice \emph{polinomio nell'indeterminata $X$} la scrittura formale \[
+        p = p(X) = \sum_{i = 0}^{\infty} a_iX^i.    
+    \] Gli $a_i$ si dicono \emph{coefficienti del polinomio}.
+
+    L'insieme dei polinomi a coefficienti in $A$ si indica con $A[X]$.
+\end{definition}
+
+Dato che la successione che definisce il polinomio è definitivamente nulla, possiamo scrivere il polinomio come una sequenza finita di termini: basta prendere i termini fino al massimo indice per cui $a_i$ è diverso da $0$. Diamo però alcune definizioni preliminari.
+
+Innanzitutto d'ora in avanti $(A, +, \cdot)$ è un anello commutativo con identità a meno di ulteriori specifiche.
+
+\begin{definition}
+    [Polinomio nullo]
+    Si dice \emph{polinomio nullo in $A[X]$} il polinomio definito dalla successione costantemente nulla, e lo si indica come $p(X) = \bm{0}$.
+\end{definition}
+
+\begin{definition}
+    [Grado di un polinomio]
+    Sia $p \in A[X]$, $p(X) \neq \bm 0$. Allora si dice grado di $p$ il numero \[
+        \deg p = \max \set{n \in \N \suchthat a_n \neq 0}.    
+    \] Il polinomio $\bm 0$ non ha grado.
+\end{definition}
+
+Notiamo che i polinomi di grado $0$ sono tutti e solo della forma $p(X) = a_0$ per qualche $a_0 \in A$; ovvero sono tutte e sole le costanti dell'anello $A$.
+
+\begin{definition}
+    [Uguaglianza tra polinomi]
+    Siano $p, q \in A[X]$. Allora i polinomi $p$ e $q$ sono uguali se e solo se tutti i loro coefficienti sono uguali.
+\end{definition}
+
+Definiamo ora le operazioni di somma e prodotto tra polinomi.
+
+\begin{definition}
+    [Somma tra polinomi]
+    Siano $p, q \in A[X]$.
+    Allora definisco l'operazione di somma \begin{align*}
+        + : A[X] \times A[X] &\to A[X]\\
+        (p, q) &\mapsto p + q
+    \end{align*} nel seguente modo: \begin{align*}
+        \text{se } p(X) = \sum_{i = 0}^\infty a_iX^i, \;\; q(X) = \sum_{i = 0}^\infty b_iX^i, \text{ allora } (p + q)(X) = \sum_{i = 0}^\infty (a_i + b_i)X^i.
+    \end{align*}
+\end{definition}
+
+\begin{definition}
+    [Prodotto tra polinomi]
+    Siano $p, q \in A[X]$.
+    Allora definisco l'operazione di prodotto tra polinomi \begin{align*}
+        \cdot : A[X] \times A[X] &\to A[X]\\
+        (p, q) &\mapsto p \cdot q
+    \end{align*} nel seguente modo: \begin{align*}
+        \text{se } p(X) = \sum_{i = 0}^\infty a_iX^i, \;\; q(X) = \sum_{j = 0}^\infty b_jX^j, \text{ allora } (p \cdot q)(X) = \sum_{i = 0}^\infty \sum_{j = 0}^\infty a_ib_jX^{i+j}.
+    \end{align*}
+\end{definition}
+
+\begin{theorem}
+    [L'insieme dei polinomi è un anello]
+    La struttura $(A[X], +, \cdot)$ è un anello commutativo con identità (dove l'identità è il polinomio $\bm 1(X) = 1_A$).
+\end{theorem}
+
+\begin{proposition}
+    [Grado della somma e del prodotto]
+    \label{prop:deg_somma_prod_polinomi}
+    Siano $p, q \in A[X] \setminus \set{\bm 0}$. Allora vale che \begin{enumerate}[label={(\roman*)}]
+        \item $\deg (p + q) \leq \max \set{\deg p, \deg q}$.
+        \item se $A$ è un dominio, allora $\deg (pq) = \deg p + \deg q$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Siano i due polinomi \[
+        p(X) = \sum_{i = 0}^\infty a_iX^i, \quad q(X) = \sum_{i = 0}^\infty b_iX^i.   
+    \] e siano $n = \deg p$, $m = \deg q$.
+
+    \paragraph{Grado della somma} Sia $k = \max {n, m}$. Allora per ogni $i > k$ varrà che $a_i = b_i = 0$, ovvero $a_i + b_i = 0$, da cui $\deg (p + q) \leq k$.
+
+    \paragraph{Grado del prodotto} Il termine di grado massimo di $(pq)(X)$ deve essere quello in posizione $n + m$. 
+    
+    Mostriamo che per ogni $i > n$, $j > m$ vale che il coefficiente del termine di grado $i + j$ è uguale a $0$.
+    Infatti per definizione di grado segue che $a_i, b_j = 0$ se $i > n$ o $j > m$, dunque il prodotto $a_i \cdot b_j$ sarà $0$, ovvero il coefficiente di grado $i + j$ sarà nullo. Da ciò segue che $\deg (pq) \leq n + m$.
+
+    Inoltre essendo $A$ un dominio il termine $a_nb_m$ deve essere diverso da $0$, in quanto altrimenti uno tra $a_n$ e $b_m$ dovrebbe essere $0$, contro la definizione di grado.
+
+    Dunque $\deg (pq) = \deg p + \deg q$.
+\end{proof}
+
+\begin{corollary}
+    Se $A$ è un dominio, allora $A[X]$ è un dominio.
+\end{corollary}
+\begin{proof}
+    Siano $p, q \in A[X] \setminus \set{\bm 0}$, con $\deg p = n \geq 0$, $\deg q = m \geq 0$. Allora per la \autoref{prop:deg_somma_prod_polinomi} vale che \[
+        \deg (pq) = \deg p + \deg q = n + m \geq 0.    
+    \] Dunque il polinomio $(pq)(X)$ non può essere il polinomio nullo (che non ha grado), da cui segue che in $A[X]$ non vi sono divisori dello zero.
+\end{proof}
+
+\begin{corollary}
+    Se $A$ è un dominio, allora gli invertibili di $A[X]$ sono tutti e soli gli elementi invertibili di $A$, ovvero \[
+        \invertible{A[X]} = \invertible{A}. 
+    \]
+\end{corollary}
+\begin{proof}
+    Sia $p \in \invertible{A[X]}$ e sia $q \in A[X]$ il suo inverso, ovvero tale che $(pq)(X) = 1_A$.
+
+    Notiamo che $p, q \neq \bm 0$. Infatti se uno dei due fosse il polinomio nullo per la \autoref{prop:prop_anelli:per_0} il loro prodotto dovrebbe essere il polinomio nullo e non l'unità. Allora esistono $\deg p, \deg q \geq 0$ e vale che \[
+        \deg (pq) = \deg p + \deg q \seteq \deg 1 = 0.    
+    \]
+
+    Dato che i gradi di $p$ e $q$ sono positivi o nulli, il grado del prodotto è $0$ se e solo se entrambi i polinomi $p$ e $q$ sono di grado zero, ovvero se e solo se sono elementi dell'anello $A$.
+
+    Siano $a, b \in A$ tali che $f(X) = a$e $q(X) = b$. Allora $(pq)(X) = a\cdot b = 1$, ovvero $a$ è invertibile, cioè $a \in \invertible{A}$.
+\end{proof}

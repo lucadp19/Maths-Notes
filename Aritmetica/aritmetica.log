@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.7.23)  9 AUG 2020 18:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.7.23)  11 AUG 2020 20:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/luca/Documents/Uni/Aritmetica/aritmetica.tex
-(/home/luca/Documents/Uni/Aritmetica/aritmetica.tex
+**/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.tex
+(/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.tex
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-06-03> (/usr/share/texmf-dist/tex/latex/koma-script/scrbook.cls
 Document Class: scrbook 2020/04/19 v3.30 KOMA-Script document class (book)
@@ -1076,34 +1076,34 @@ Package cleveref Info: `amsthm' support loaded on input line 3026.
 Package thmtools Info: Key `numbered' (with value `no')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=remarkstyle' on input line 128.
- (/home/luca/Documents/Uni/Aritmetica/aritmetica.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 202.
-LaTeX Font Info:    ... okay on input line 202.
-LaTeX Info: Redefining \it@ocap on input line 202.
-LaTeX Info: Redefining \it@ccap on input line 202.
-LaTeX Info: Redefining \microtypecontext on input line 202.
+(thmtools)             that uses `style=remarkstyle' on input line 129.
+ (/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Info: Redefining \it@ocap on input line 206.
+LaTeX Info: Redefining \it@ccap on input line 206.
+LaTeX Info: Redefining \microtypecontext on input line 206.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 202.
+LaTeX Info: Redefining \showhyphens on input line 206.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1132,7 +1132,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box120
-Package hyperref Info: Link coloring ON on input line 202.
+Package hyperref Info: Link coloring ON on input line 206.
  (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1142,10 +1142,10 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count339
 )
-LaTeX Info: Redefining \ref on input line 202.
-LaTeX Info: Redefining \pageref on input line 202.
-LaTeX Info: Redefining \nameref on input line 202.
- (/home/luca/Documents/Uni/Aritmetica/aritmetica.out) (/home/luca/Documents/Uni/Aritmetica/aritmetica.out)
+LaTeX Info: Redefining \ref on input line 206.
+LaTeX Info: Redefining \pageref on input line 206.
+LaTeX Info: Redefining \nameref on input line 206.
+ (/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out) (/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out)
 \@outlinefile=\write4
 Class scrbook Info: loading recommended package `bookmark'.
 (scrbook)           Using `bookmark' together with `hyperref' is recommended,
@@ -1154,7 +1154,7 @@ Class scrbook Info: loading recommended package `bookmark'.
 (scrbook)           `bookmarkpackage=false' before \begin{document} and
 (scrbook)           you can avoid this message adding:
 (scrbook)             \usepackage{bookmark}
-(scrbook)           before \begin{document} on input line 202.
+(scrbook)           before \begin{document} on input line 206.
  (/usr/share/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
  (/usr/share/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
@@ -1163,7 +1163,7 @@ Package auxhook Info: \AddLineBeginMainAux comes a little late,
 (auxhook)             because the main .aux file is already opened on input line 168.
 \BKM@id=\count340
 )) ABD: EveryShipout initializing macros
-LaTeX Font Info:    Trying to load font information for T1+iwona on input line 207.
+LaTeX Font Info:    Trying to load font information for T1+iwona on input line 211.
  (/usr/share/texmf-dist/tex/latex/iwona/t1iwona.fd
 File: t1iwona.fd 2008/07/22 v0.995 font definition file for T1/iwona (MW)
 )
@@ -1171,19 +1171,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `iwona' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for U+zeur on input line 207.
+LaTeX Font Info:    Trying to load font information for U+zeur on input line 211.
  (/usr/share/texmf-dist/tex/latex/eulervm/uzeur.fd
 File: uzeur.fd 2005/01/11 v4.0 (WaS)
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-eur.cfg
 File: mt-eur.cfg 2006/07/31 v1.1 microtype config. file: AMS Euler Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeus on input line 207.
+LaTeX Font Info:    Trying to load font information for U+zeus on input line 211.
  (/usr/share/texmf-dist/tex/latex/eulervm/uzeus.fd
 File: uzeus.fd 2005/01/11 v4.0 (WaS)
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-eus.cfg
 File: mt-eus.cfg 2006/07/28 v1.2 microtype config. file: AMS Euler Script (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeuex on input line 207.
+LaTeX Font Info:    Trying to load font information for U+zeuex on input line 211.
  (/usr/share/texmf-dist/tex/latex/eulervm/uzeuex.fd
 File: uzeuex.fd 2005/01/11 v4.0 (WaS)
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
@@ -1193,7 +1193,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 207.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 211.
  (/usr/share/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
@@ -1206,19 +1206,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package tocbasic Info: character protrusion at toc deactivated on input line 208.
- (/home/luca/Documents/Uni/Aritmetica/aritmetica.toc
+Package tocbasic Info: character protrusion at toc deactivated on input line 212.
+ (/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.toc
 Package cleveref Info: loaded `italian' language definitions on input line 1.
 Package cleveref Info: loaded `italian' language definitions on input line 2.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/pplj/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 14.
+LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 19.
  (/usr/share/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 ))
 \tf@toc=\write5
- (/home/luca/Documents/Uni/Aritmetica/groups.tex
+ (/home/luca/Documents/Uni/Maths/Aritmetica/relations.tex
 Capitolo 1.
 [2
 
@@ -1228,35 +1228,58 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/iwona/m/sc/14.4'.
 (microtype)             Ignoring protrusion settings for this character.
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 6.
-Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 61.
+Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input line 41.
  [3
 
 
 ]
-Package cleveref Info: loaded `italian' language definitions on input line 119.
+Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 56.
+) (/home/luca/Documents/Uni/Maths/Aritmetica/naturals.tex
+Package hyperref Info: bookmark level for unknown axiom defaults to 0 on input line 13.
+Package cleveref Info: loaded `italian' language definitions on input line 14.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/iwona/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
  [4]
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 140.
-Package cleveref Info: loaded `italian' language definitions on input line 169.
- [5]) (/home/luca/Documents/Uni/Aritmetica/subgroups.tex
-Package cleveref Info: loaded `italian' language definitions on input line 20.
- [6]
-Package cleveref Info: loaded `italian' language definitions on input line 84.
+Package cleveref Info: loaded `italian' language definitions on input line 66.
+ [5]
+Package cleveref Info: loaded `italian' language definitions on input line 117.
+ [6]) (/home/luca/Documents/Uni/Maths/Aritmetica/divisibility.tex
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 12.
+Package cleveref Info: loaded `italian' language definitions on input line 47.
  [7]
+Overfull \hbox (21.45494pt too wide) detected at line 57
+\U/zeur/m/n/10 ax \U/zeus/m/n/10 « \U/zeur/m/n/10 by \U/zeus/m/n/10 ½ \U/zeur/m/n/10 a\U/zeus/m/n/10 ¨^^@\U/zeur/m/n/10 1 \U/zeus/m/n/10 ^^@ \U/zeur/m/n/10 b\U/zeus/m/n/10 © « \U/zeur/m/n/10 ab \U/zeus/m/n/10 ½ ^^@\U/zeur/m/n/10 a \U/zeus/m/n/10 ^^@ \U/zeur/m/n/10 ab \U/zeus/m/n/10 « \U/zeur/m/n/10 ab \U/zeus/m/n/10 ½ ^^@\U/zeur/m/n/10 a > 0   ‚[]\U/zeus/m/n/10 )   ^^@\U/zeur/m/n/10 a \U/zeus/m/n/10 2 \U/zeur/m/n/10 X\T1/pplj/m/n/10 .
+ []
+
+) (/home/luca/Documents/Uni/Maths/Aritmetica/groups.tex
+Capitolo 2.
+Package cleveref Info: loaded `italian' language definitions on input line 1.
+[8]
+Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 61.
+ [9
+
+
+]
+Package cleveref Info: loaded `italian' language definitions on input line 119.
+ [10]
+Package cleveref Info: loaded `italian' language definitions on input line 169.
+ [11]) (/home/luca/Documents/Uni/Maths/Aritmetica/subgroups.tex
+Package cleveref Info: loaded `italian' language definitions on input line 20.
+ [12]
+Package cleveref Info: loaded `italian' language definitions on input line 84.
+ [13]
 Package hyperref Info: bookmark level for unknown corollary defaults to 0 on input line 135.
 Package cleveref Info: loaded `italian' language definitions on input line 144.
- [8]) (/home/luca/Documents/Uni/Aritmetica/cyclic_groups.tex
+ [14]) (/home/luca/Documents/Uni/Maths/Aritmetica/cyclic_groups.tex
 Package cleveref Info: loaded `italian' language definitions on input line 13.
- [9]
+ [15]
 Package cleveref Info: loaded `italian' language definitions on input line 81.
- [10]
+ [16]
 Package cleveref Info: loaded `italian' language definitions on input line 138.
- [11]
-Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 169.
+ [17]
 Package cleveref Info: loaded `italian' language definitions on input line 206.
- [12]
+ [18]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/iwona/b/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1267,81 +1290,81 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 231.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 231.
 
 Package cleveref Info: loaded `italian' language definitions on input line 261.
-[13]
+[19]
 Package cleveref Info: loaded `italian' language definitions on input line 318.
- [14]
-Overfull \hbox (3.05928pt too wide) in paragraph at lines 332--333
-[][]  \T1/pplj/b/n/10 Ca-rat-te-riz-za-zio-ne dei sot-to-grup-pi di $\U/fplmbb/m/n/10 Z\U/zeur/m/n/10 =n\U/fplmbb/m/n/10 Z$\T1/pplj/b/n/10 . []\T1/pplj/m/it/10 (-20) Stu-dia-mo il grup-po $\U/zeus/m/n/10 ¨\U/fplmbb/m/n/10 Z\U/zeur/m/n/10 =n\U/fplmbb/m/n/10 Z\U/zeur/m/n/10 ; \U/zeus/m/n/10 «©$\T1/pplj/m/it/10 (-20) .
- []
-
+ [20]
 Package cleveref Info: loaded `italian' language definitions on input line 362.
-[15]) (/home/luca/Documents/Uni/Aritmetica/homo_groups.tex
+ [21]) (/home/luca/Documents/Uni/Maths/Aritmetica/homo_groups.tex
 Package cleveref Info: loaded `italian' language definitions on input line 58.
- [16]
+ [22]
 Package cleveref Info: loaded `italian' language definitions on input line 112.
- [17]
+ [23]
 Package cleveref Info: loaded `italian' language definitions on input line 166.
- [18]
+ [24]
 Overfull \hbox (6.83522pt too wide) detected at line 212
 \U/zeur/m/n/10 f\U/zeus/m/n/10 ¨\U/zeur/m/n/10 x\U/zeus/m/n/10 ©[] ½ \U/zeur/m/n/10 e[]  \U/zeus/m/n/10 ([])  \U/zeur/m/n/10 f\U/zeus/m/n/10 ¨\U/zeur/m/n/10 x\U/zeus/m/n/10 © \U/zeur/m/n/10 ? [] ? f\U/zeus/m/n/10 ¨\U/zeur/m/n/10 x\U/zeus/m/n/10 © ½ \U/zeur/m/n/10 e[]  \U/zeus/m/n/10 ([])  \U/zeur/m/n/10 f\U/zeus/m/n/10 ¨\U/zeur/m/n/10 x[]\U/zeus/m/n/10 © ½ \U/zeur/m/n/10 e[];
  []
 
 Package cleveref Info: loaded `italian' language definitions on input line 220.
-[19]
+[25]
 Package cleveref Info: loaded `italian' language definitions on input line 273.
- [20]
+ [26]
 Package cleveref Info: loaded `italian' language definitions on input line 318.
- [21]
+ [27]
 Package cleveref Info: loaded `italian' language definitions on input line 374.
- [22]
+ [28]
 Package cleveref Info: loaded `italian' language definitions on input line 428.
- [23]) (/home/luca/Documents/Uni/Aritmetica/rings.tex
-Capitolo 2.
+ [29]) (/home/luca/Documents/Uni/Maths/Aritmetica/rings.tex
+Capitolo 3.
 Package cleveref Info: loaded `italian' language definitions on input line 1.
-[24] [25
+[30] [31
 
 
 ]
 Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 87.
 Package cleveref Info: loaded `italian' language definitions on input line 136.
- [26]
+ [32]
 Package cleveref Info: loaded `italian' language definitions on input line 196.
- [27]) (/home/luca/Documents/Uni/Aritmetica/polynomials.tex
+ [33]) (/home/luca/Documents/Uni/Maths/Aritmetica/polynomials.tex
 Package cleveref Info: loaded `italian' language definitions on input line 7.
- [28]
+ [34]
 Package cleveref Info: loaded `italian' language definitions on input line 59.
- [29]
+ [35]
 Package cleveref Info: loaded `italian' language definitions on input line 111.
- [30])
-Package cleveref Info: loaded `italian' language definitions on input line 220.
- [31]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
- (/home/luca/Documents/Uni/Aritmetica/aritmetica.aux
+ [36])
+Package cleveref Info: loaded `italian' language definitions on input line 228.
+ [37]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 228.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 228.
+ (/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.aux
 Package cleveref Info: loaded `italian' language definitions on input line 23.
 Package cleveref Info: loaded `italian' language definitions on input line 24.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 228.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 228.
 Package rerunfilecheck Info: File `aritmetica.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 32413 strings out of 480478
- 634624 string characters out of 5905959
+ 32608 strings out of 480478
+ 638160 string characters out of 5905959
  1119389 words of memory out of 5000000
- 47067 multiletter control sequences out of 15000+600000
- 649192 words of font info for 380 fonts, out of 8000000 for 9000
+ 47140 multiletter control sequences out of 15000+600000
+ 651756 words of font info for 416 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,23n,98p,10172b,1331s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/iwona/ec-iwona-sc.enc}{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf-dist/fonts/enc/dvips/iwona/ec-iwona.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/share/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/share/texmf-dist/fonts/type1/nowacki/iwona/iwonab.pfb></usr/share/texmf-dist/fonts/type1/nowacki/iwona/iwonar.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on /home/luca/Documents/Uni/Aritmetica/aritmetica.pdf (31 pages, 338532 bytes).
+ 78i,23n,98p,10178b,1331s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/iwona/ec-iwona-sc.enc}{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf-dist/fonts/enc/dvips/iwona/ec-iwona.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/share/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplrij8a.pfb></usr/share/texmf-dist/fonts/type1/nowacki/iwona/iwonab.pfb></usr/share/texmf-dist/fonts/type1/nowacki/iwona/iwonar.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on /home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf (37 pages, 380018 bytes).
 PDF statistics:
- 768 PDF objects out of 1000 (max. 8388607)
- 699 compressed objects within 7 object streams
- 364 named destinations out of 1000 (max. 500000)
- 48741 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 907 PDF objects out of 1000 (max. 8388607)
+ 829 compressed objects within 9 object streams
+ 435 named destinations out of 1000 (max. 500000)
+ 48781 words of extra memory for PDF output out of 51595 (max. 10000000)
 

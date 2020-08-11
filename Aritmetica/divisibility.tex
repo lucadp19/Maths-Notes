@@ -1,0 +1,72 @@
+\section{Divisibilità}
+
+Consideriamo la relazione di divisibilità tra numeri interi:
+\begin{definition}
+    [Divisibilità]
+    Siano $a, b \in \Z$. Allora si dice che \emph{$a$ divide $b$} (e si indica con $a \divides b$) se \[
+        a = kb
+    \] per qualche $k \in \Z$.
+\end{definition}
+
+\begin{proposition}
+    [Divisibilità come relazione d'ordine]
+    La relazione di divisibilità tra numeri interi è una relazione di ordine parziale su $\N \setminus \set{0}$.
+\end{proposition}
+\begin{proof}
+    Per definizione di relazione d'ordine dobbiamo mostrare tre cose:
+    \begin{description}
+        \item[Riflessività] Sia $a \in \N$ non nullo. Allora $a \divides a$ poiché $a = 1\cdot a$.
+        \item[Simmetria] Siano $a, b \in \N$ non nulli e supponiamo che $a \divides b$ e $b \divides a$. Allora per definizione di divisibilità segue che \[
+            a = kb, \quad b = ha    
+        \]  per qualche $k, h \in \Z$. Sostituendo la seconda equazione nella prima otteniamo $a = kha$, ovvero $kh = 1$. Ma dato che $a, b \in \N$ segue che $k = h = 1$, dunque $a = b$.
+        \item[Transitività] Siano $a, b, c \in \N$ non nulli tali che $a \divides b$ e $b \divides c$. Allora per definizione vale che \[
+            a = kb, \quad b = hc    
+        \] per qualche $k, h \in \Z$.
+
+        Sostituendo la seconda nella prima ottengo quindi $a = khc$, ovvero $a \divides c$ in quanto $kh \in \Z$.
+    \end{description}
+\end{proof}
+
+La relazione di divisibilità può essere pensata anche come un ordinamento su $\Z \setminus {0}$, ma l'antisimmetria è "a meno del segno", ovvero \[
+    a \divides b, b \divides a \implies a = b \text{ oppure } a = -b.
+\] In questi casi scriveremo più semplicemente $a = \pm b$ per indicare che $a$ può essere $b$ oppure il suo opposto.
+
+\begin{definition}
+    [Massimo comun divisore]
+    Siano $a, b \in \Z$ non nulli. Si dice \emph{massimo comun divisore di $a,b$} il numero $d \in \Z$ tale che \begin{enumerate}[label={(\roman*)}]
+        \item $d \divides a$ e $d \divides b$;
+        \item se $c \divides a$ e $c \divides b$ allora $c \divides d$.
+    \end{enumerate}
+
+    Tale $d$ si indica anche con $\operatorname{mcd}\!(a, b)$, oppure con $\gcd(a, b)$ oppure anche con $\mcd{a}{b}$.
+\end{definition}
+
+\begin{theorem}
+    [Esistenza ed unicità del massimo comun divisore]
+    Siano $a, b \in \Z$ non nulli. Allora esiste ed è unico (a meno del segno) $d \in \Z$ tale che $d = \mcd{a}{b}$.
+\end{theorem}
+\begin{proof}
+    Mostriamo sia l'esistenza che l'unicità del massimo comun divisore.
+    \begin{description}
+        \item[Esistenza] Sia $X$ il sottoinsieme di $\Z$ tale che \[
+            X \deq \set{ax + by \suchthat x, y \in \Z}    
+        \] e sia $Y \deq X \inters \N \setminus \set{0}$. Notiamo che $Y \subseteq \N$ e $Y \neq \varnothing$, in quanto se $a > 0$ allora posso scegliere $x = 1 - b$, $y = a$ da cui segue che \[
+            ax + by = a(1-b)+ab = a - ab + ab = a > 0 \; \implies \; a \in X,
+        \] mentre se fosse $a < 0$ potrei scegliere $x = - 1 - b$ e $y = a$, da cui \[
+            ax + by = a(-1-b)+ab = -a - ab + ab = -a > 0 \; \implies \; -a \in X.
+        \]
+
+        Da ciò segue che per il Principio del Minimo l'insieme $Y$ ammette minimo. Sia $d \deq \min Y$. Mostro ora che $d = \mcd{a}{b}$.
+
+        Dato che $d \in Y$ allora dovranno esistere $x_0, y_0 \in \Z$ tali che $d = ax_0 + by_0$.
+        \begin{enumerate}[label={(\roman*)}]
+            \item Dimostro che $d \divides a$; per simmetria è sufficiente dimostrare questa parte.
+            
+            Per la divisione euclidea scrivo \begin{equation}
+                a = qd + r \quad \text{per qualche } 0 \leq r < \abs{a}.
+            \end{equation} Allora \begin{equation*}
+                0 \leq r = a - qd = a - q(ax_0 + by_0) = a(1 - qx_0) - b(qy_0)
+            \end{equation*}
+        \end{enumerate}
+    \end{description}
+\end{proof}

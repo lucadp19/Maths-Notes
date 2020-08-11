@@ -428,3 +428,34 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
     \end{align*}
     Seguendo la catena di equivalenze al contrario segue la tesi.
 \end{proof}
+
+\begin{proposition}
+    [Ordine nel prodotto diretto]
+    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $(G_1 \times G_2, \cdot)$ il loro prodotto diretto. Sia $(x, y) \in G_1 \times G_2$. Allora vale che \[
+        \ord[G_1 \times G_2]{(x, y)} = \mcm{\ord[G_1]{x}}{\ord[G_2]{y}}.    
+    \]
+\end{proposition}
+\begin{proof}
+    Sia $n = \ord{x}$, $m = \ord y$ e $d = \ord{(x, y)}$. Mostriamo che $d = \mcm{n}{m}$.
+    \begin{description}
+        \item[$d \divides \mcm{n}{m}$] Vale che \[
+            (x, y)^{\mcm{n}{m}} = (x^{\mcm{n}{m}}, y^{\mcm{n}{m}}).   
+        \] Siccome $\ord x = n \divides \mcm{n}{m}$ e stessa cosa per $\ord y = m$, per la Proposizione \ref{prop:sgr_generato:ord_div_n} segue che \begin{equation*}
+            (x^{\mcm{n}{m}}, y^{\mcm{n}{m}}) = (e_1, e_2)
+        \end{equation*}
+        da cui (per la Proposizione \ref{prop:sgr_generato:ord_div_n}) segue che $d \divides \mcm{n}{m}$.
+        \item[$\mcm{n}{m} \divides d$] Per definizione di potenza intera nel prodotto diretto sappiamo che $(x, y)^d = (x^d, y^d)$. Inoltre dato che $d$ è l'ordine di $(x, y)$ segue che $(x, y)^d = (e_1, e_2)$. Dunque \begin{align*}
+            &x^d = e_1, \; y^d = e_2\\
+            \iff &n \divides d, \; m \divides d \\
+            \iff &\mcm{n}{m} \divides d.
+        \end{align*}
+    \end{description}
+    Dunque $d = \mcm{n}{m}$, ovvero la tesi.
+\end{proof}
+
+\begin{theorem}
+    [Teorema Cinese del Resto (III forma)] \label{th:cinese_III}
+    Siano $n, m \in \Z$ entrambi non nulli. Allora vale che \[
+        \Zmod{nm} \cong \Zmod{n}\times \Zmod{m} \iff \mcd{n}{m} = 1.
+    \]
+\end{theorem}

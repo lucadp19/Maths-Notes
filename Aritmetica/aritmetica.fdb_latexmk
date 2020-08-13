@@ -1,14 +1,14 @@
 # Fdb version 3
-["pdflatex"] 1597171181 "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.tex" "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf" "aritmetica" 1597171188
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.aux" 1597171187 36202 c2bc152ee2e0ede557ee10a81858a2cf "pdflatex"
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out" 1597171183 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["pdflatex"] 1597351041 "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.tex" "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf" "aritmetica" 1597351049
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.aux" 1597351048 36866 a33c2f1718a6834fe662ce2392ec0763 "pdflatex"
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out" 1597351043 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.tex" 1597162488 6767 db3a4301226d9481a0ea7a8f77c931d2 ""
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.toc" 1597171188 2054 c4b3fc479b34f3edabb0bdb2304f15a2 "pdflatex"
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.toc" 1597351048 2056 e3890e6fa283eac8b3b7675a4ca62650 "pdflatex"
   "/home/luca/Documents/Uni/Maths/Aritmetica/cyclic_groups.tex" 1596985824 17127 b543fbf672d1959f493809709ccfdc2f ""
-  "/home/luca/Documents/Uni/Maths/Aritmetica/divisibility.tex" 1597162450 3906 5258c7accf3012be7dfe3c22d19d24f8 ""
+  "/home/luca/Documents/Uni/Maths/Aritmetica/divisibility.tex" 1597351031 5038 e97cf0fac219b53dff85b84b7d3af57a ""
   "/home/luca/Documents/Uni/Maths/Aritmetica/groups.tex" 1596985824 9936 c39db6a3c0fed773ef101c89e7357a58 ""
   "/home/luca/Documents/Uni/Maths/Aritmetica/homo_groups.tex" 1597073905 24611 53a3f14463340cc0c3d3860f9d7f289b ""
-  "/home/luca/Documents/Uni/Maths/Aritmetica/naturals.tex" 1597171172 5912 29c4112d3af97e25971bfe38200ac08f ""
+  "/home/luca/Documents/Uni/Maths/Aritmetica/naturals.tex" 1597351031 7249 fc128a97c7dbf7a2d5af18958b5a3120 ""
   "/home/luca/Documents/Uni/Maths/Aritmetica/polynomials.tex" 1596911760 5927 6a222b8aac0097f203466500f2d0586f ""
   "/home/luca/Documents/Uni/Maths/Aritmetica/relations.tex" 1597162450 5104 44e83dbad0d3d26ed5523be2f7847711 ""
   "/home/luca/Documents/Uni/Maths/Aritmetica/rings.tex" 1596886372 12251 18867f69d121ff5fe6cdee54b08ea32d ""
@@ -302,8 +302,8 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1595523627 4727905 1b81189106e2406a827797a37162c1c0 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1595523612 2514053 574340ade4d112a24e35565b898ad36c ""
   (generated)
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.toc"
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf"
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out"
   "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.aux"
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf"
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.toc"
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out"
   "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.log"

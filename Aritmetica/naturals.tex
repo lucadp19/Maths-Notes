@@ -9,12 +9,22 @@ In questa sezione studieremo il primo insieme numerico, l'insieme dei numeri nat
     \end{equation}
 \end{definition}
 
+\begin{definition}
+    [Operazione su un insieme] Sia $X$ un insieme. Allora si dice \emph{operazione su $X$} una funzione $X \times X \to X$.
+\end{definition}
+
+Esempi di operazioni sui numeri naturali sono la somma e il prodotto, mentre la sottrazione e la divisione non sono operazioni poiché non sono definite per qualsiasi coppia di naturali: la sottrazione $a - b$ è definita solo quando $a \geq b$, mentre la divisione è definita solo se il dividendo è un multiplo del divisore.
+
+Per caratterizzare l'insieme dei numeri naturali, enunciamo il seguente assioma.
+
 \begin{axiom}
-    [Principio del Minimo Intero] \label{ax:min_intero}Ogni sottoinsieme non vuoto dei numeri naturali ammette minimo, ovvero se $S \subseteq \N$, $S \neq \emptyset$, allora esiste $m \in S$ tale che $a \geq m$ per ogni $a \in S$.
+    [Principio del Minimo Intero] \label{ax:min_intero} Ogni sottoinsieme non vuoto dei numeri naturali ammette minimo, ovvero se $S \subseteq \N$, $S \neq \emptyset$, allora esiste $m \in S$ tale che $a \geq m$ per ogni $a \in S$.
 \end{axiom}
 
+Dal Principio del Minimo Intero seguono altri principi; in particolare segue il Principio di Induzione in entrambe le sue varianti.
+
 \begin{theorem}
-    [Principio di Induzione (debole)] Sia $n_0 \in \Z$, $n_0 \geq 0$ e sia $\PP$ un predicato definito per $n \geq n_0$. Se \begin{enumerate}
+    [Principio di Induzione (debole)] \label{th:induzione} Sia $n_0 \in \Z$, $n_0 \geq 0$ e sia $\PP$ un predicato definito per $n \geq n_0$. Se \begin{enumerate}
         \item vale $\PP(n_0)$,
         \item per ogni $n \geq n_0$ vale che $\PP(n) \implies \PP(n+1)$
     \end{enumerate}
@@ -41,12 +51,16 @@ In questa sezione studieremo il primo insieme numerico, l'insieme dei numeri nat
 \end{proof}
 
 \begin{theorem}
-    [Principio di Induzione (forte)] Sia $n_0 \in \N$ e sia $\PP$ un predicato definito per $n \geq n_0$. Se \begin{enumerate}
+    [Principio di Induzione (forte)] \label{th:induzione_forte} Sia $n_0 \in \N$ e sia $\PP$ un predicato definito per $n \geq n_0$. Se \begin{enumerate}
         \item vale $\PP(n_0)$,
         \item per ogni $n \geq n_0$ vale che $\PP(n_0), \PP(n_0 + 1), \dots, \PP(n) \implies \PP(n+1)$
     \end{enumerate}
     allora $\PP$ vale per ogni $n \geq n_0$.
 \end{theorem}
+
+\begin{remark}
+    Il \nameref{ax:min_intero}, il \nameref{th:induzione} e il \nameref{th:induzione_forte} sono logicamente equivalenti, ovvero ognuno di essi è vero se e solo se sono veri gli altri due.
+\end{remark}
 
 \section{Numeri interi}
 
@@ -114,7 +128,12 @@ Nei numeri interi possiamo definire una funzione che prende ogni numero e lo tra
         Dunque segue che $0 \leq r < \abs*{b}$.
         \item[Unicità] Siano $q_1, q_2, r_1, r_2 \in \Z$ tali che \[
             a = q_1b + r_1 = q_2b + r_2    
-        \] con $0 \leq r_1, r_2 < \abs*{b}$. Possiamo supporre senza perdita di generalità che $r_1 \geq r_2$.
-        
+        \] con $0 \leq r_1, r_2 < \abs*{b}$. Possiamo supporre senza perdita di generalità che $r_1 \leq r_2$.
+        Allora vale che \[
+            r_2 - r_1 = b(q_1 - q_2)  
+        \] e pertanto \begin{align*}
+            \abs*{b}\abs*{q_1 - q_2} = \abs*{b(q_1 - q_2)} = r_2 - r_1 \leq r_2 \leq \abs*{b}.
+        \end{align*} Se fosse $q_2 - q_1 \neq 0$ allora $\abs*{b} > \abs*{b}\abs*{q_1 - q_2}$, il che è assurdo.
+        Dunque segue che $q_1 = q_2$ e $r_1 = r_2$. \qedhere
     \end{description}
 \end{proof}

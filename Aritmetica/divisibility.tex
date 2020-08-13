@@ -38,7 +38,7 @@ La relazione di divisibilità può essere pensata anche come un ordinamento su $
         \item se $c \divides a$ e $c \divides b$ allora $c \divides d$.
     \end{enumerate}
 
-    Tale $d$ si indica anche con $\operatorname{mcd}\!(a, b)$, oppure con $\gcd(a, b)$ oppure anche con $\mcd{a}{b}$.
+    Tale $d$ si indica anche con $\operatorname{mcd}(a, b)$, oppure con $\gcd(a, b)$ oppure anche con $\mcd{a}{b}$.
 \end{definition}
 
 \begin{theorem}
@@ -50,23 +50,38 @@ La relazione di divisibilità può essere pensata anche come un ordinamento su $
     \begin{description}
         \item[Esistenza] Sia $X$ il sottoinsieme di $\Z$ tale che \[
             X \deq \set{ax + by \suchthat x, y \in \Z}    
-        \] e sia $Y \deq X \inters \N \setminus \set{0}$. Notiamo che $Y \subseteq \N$ e $Y \neq \varnothing$, in quanto se $a > 0$ allora posso scegliere $x = 1 - b$, $y = a$ da cui segue che \[
-            ax + by = a(1-b)+ab = a - ab + ab = a > 0 \; \implies \; a \in X,
-        \] mentre se fosse $a < 0$ potrei scegliere $x = - 1 - b$ e $y = a$, da cui \[
-            ax + by = a(-1-b)+ab = -a - ab + ab = -a > 0 \; \implies \; -a \in X.
-        \]
+        \] e sia $Y \deq X \inters \N \setminus \set{0}$. Notiamo che $Y \subseteq \N$ e $Y \neq \varnothing$, in quanto \begin{itemize}
+            \item se $a > 0$ allora posso scegliere $x = 1 - b$, $y = a$ da cui segue che \[
+                ax + by = a(1-b)+ab = a - ab + ab = a > 0
+            \] cioè $a \in X$,
+            \item se $a < 0$ posso scegliere $x = - 1 - b$ e $y = a$, da cui \[
+                ax + by = a(-1-b)+ab = -a - ab + ab = -a > 0 
+            \] da cui segue $-a \in X$.
+        \end{itemize}
 
         Da ciò segue che per il Principio del Minimo l'insieme $Y$ ammette minimo. Sia $d \deq \min Y$. Mostro ora che $d = \mcd{a}{b}$.
 
-        Dato che $d \in Y$ allora dovranno esistere $x_0, y_0 \in \Z$ tali che $d = ax_0 + by_0$.
+        NOtiamo che siccome $d \in Y$ allora dovranno esistere $x_0, y_0 \in \Z$ tali che $d = ax_0 + by_0$.
         \begin{enumerate}[label={(\roman*)}]
             \item Dimostro che $d \divides a$; per simmetria è sufficiente dimostrare questa parte.
             
             Per la divisione euclidea scrivo \begin{equation}
                 a = qd + r \quad \text{per qualche } 0 \leq r < \abs{a}.
             \end{equation} Allora \begin{equation*}
-                0 \leq r = a - qd = a - q(ax_0 + by_0) = a(1 - qx_0) - b(qy_0)
+                0 \leq r = a - qd = a - q(ax_0 + by_0) = a(1 - qx_0) + b(-qy_0)
             \end{equation*}
+            Dunque $r = 0$ oppure $r \in Y$. Tuttavia abbiamo supposto che $d$ fosse il minimo di $Y$, dunque siccome $r < d$ la seconda opzione è impossibile. Quindi $r = 0$, da cui segue che $a = qd$, ovvero $d \divides a$.
+            \item Dimostro ora che per ogni $c$ che divide sia $a$ che $b$ segue che $c \divides d$.
+            
+            Per definizione di divisibilità sappiamo che esistono $h, k \in \Z$ tali che \[
+                a = hc, \quad b = kc.    
+            \] Da ciò segue che \[
+                d = ax_0 + by_0 = c(hx_0 + ky_0)    
+            \] e siccome $hx_0 + ky_0 \in \Z$ segue che $c \divides d$.
+        \end{enumerate}
+        Dunque $d$ è il massimo comun divisore tra i numeri $a$ e $b$.
+        \item[Unicità] Supponiamo che esistano $d, d^\prime \in \Z$ che siano entrambi massimi comun divisiori di $a$ e $b$. Dunque dovranno valere le seguenti proprietà: siccome $d$ è un massimo comun divisore dovrà valere che \begin{enumerate}[label={(\roman*)}]
+            \item $d \divides a$ e $d \divides b$
         \end{enumerate}
     \end{description}
 \end{proof}

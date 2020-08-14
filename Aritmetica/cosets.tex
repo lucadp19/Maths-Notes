@@ -1,0 +1,43 @@
+\section{Classi laterali}
+
+Sia $(G, \cdot)$ un gruppo e sia $H \leq G$. Consideriamo la seguente relazione sugli elementi di $G$: diciamo che $x \sim_l y$ se e solo se $y\inv x \in H$.
+
+Questa relazione è una relazione di equivalenza, infatti \begin{itemize}
+    \item $\sim_l$ è riflessiva: $x\inv x = e_G \in H$, dunque $x \sim_l x$.
+    \item $\sim_l$ è simmetrica: se $x \sim_l y$, ovvero $y\inv x \in H$, allora il suo inverso $(y\inv x)\inv = x\inv (y\inv)\inv = x\inv y \in H$, dunque $y \sim_l x$.
+    \item $\sim_l$ è transitiva: supponiamo che $x \sim_l y$ e $y \sim_l z$ e mostriamo che $x \sim_l z$. Dalla prima sappiamo che $y\inv x \in H$, mentre dalla seconda segue che $z\inv y \in H$. Dato che $H$ è un sottogruppo, il prodotto di suoi elementi è ancora in $H$, dunque \[
+        z\inv y \cdot y\inv x = z\inv x \in H    
+    \] da cui segue che $x \sim_l z$.
+\end{itemize}
+
+Questa relazione di equivalenza forma delle classi di equivalenza che partizionano $G$: in particolare la classe di $x \in G$ sarà della forma \begin{align*}
+    \eqclass*{x}_l &= \set{g \in G \suchthat g \sim_l x}\\
+    &= \set{g \in G \suchthat x\inv g \in H}\\
+    &= \set{g \in G \suchthat x\inv g = h \text{ per qualche } h \in H}\\
+    &= \set{g \in G \suchthat g = xh \text{ per qualche } h \in H}.
+\end{align*}
+
+Notiamo che gli elementi della classe di $x$ sono quindi tutti e soli gli elementi del sottogruppo $h$ moltiplicati a sinistra per $x$.
+Diamo dunque la seguente definizione.
+\begin{definition}
+    [Classe laterale sinistra]
+    Sia $(G, \cdot)$ un gruppo e $H \leq G$ un suo sottogruppo. Sia inoltre $x \in G$.
+    
+    Allora si dice \emph{classe laterale sinistra di $H$ rispetto a $x$} l'insieme \[
+        xH \deq \set{xh \suchthat h \in H}. 
+    \]
+\end{definition}
+
+Allo stesso modo possiamo definire un'altra relazione di equivalenza $\sim_r$ tale che \[
+    x \sim_r y \iff xy\inv \in H.    
+\] Le classi di equivalenza di questa relazione sono della forma \[
+    \eqclass*{x}_r = \set{g \in G \suchthat g = hx \text{ per qualche } h \in H}.    
+\] Possiamo dunque definire anche le classi laterali destre nel seguente modo.
+\begin{definition}
+    [Classe laterale destra]
+    Sia $(G, \cdot)$ un gruppo e $H \leq G$ un suo sottogruppo. Sia inoltre $x \in G$.
+    
+    Allora si dice \emph{classe laterale destra di $H$ rispetto a $x$} l'insieme \[
+        Hx \deq \set{hx \suchthat h \in H}. 
+    \]
+\end{definition}

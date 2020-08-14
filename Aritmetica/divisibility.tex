@@ -59,20 +59,19 @@ La relazione di divisibilità può essere pensata anche come un ordinamento su $
             \] da cui segue $-a \in X$.
         \end{itemize}
 
-        Da ciò segue che per il Principio del Minimo l'insieme $Y$ ammette minimo. Sia $d \deq \min Y$. Mostro ora che $d = \mcd{a}{b}$.
+        Da ciò segue che per il \nameref{ax:min_intero} l'insieme $Y$ ammette minimo. Sia $d \deq \min Y$. Mostro ora che $d = \mcd{a}{b}$.
 
-        NOtiamo che siccome $d \in Y$ allora dovranno esistere $x_0, y_0 \in \Z$ tali che $d = ax_0 + by_0$.
+        Notiamo che siccome $d \in Y$ allora dovranno esistere $x_0, y_0 \in \Z$ tali che $d = ax_0 + by_0$.
         \begin{enumerate}[label={(\roman*)}]
-            \item Dimostro che $d \divides a$; per simmetria è sufficiente dimostrare questa parte.
+            \item Dimostro che $d \divides a$; per simmetria dimostrare ciò dimostra automaticamente che $d \divides b$.
             
             Per la divisione euclidea scrivo \begin{equation}
                 a = qd + r \quad \text{per qualche } 0 \leq r < \abs{a}.
-            \end{equation} Allora \begin{equation*}
+            \end{equation} Allora vale che\begin{equation*}
                 0 \leq r = a - qd = a - q(ax_0 + by_0) = a(1 - qx_0) + b(-qy_0)
             \end{equation*}
             Dunque $r = 0$ oppure $r \in Y$. Tuttavia abbiamo supposto che $d$ fosse il minimo di $Y$, dunque siccome $r < d$ la seconda opzione è impossibile. Quindi $r = 0$, da cui segue che $a = qd$, ovvero $d \divides a$.
             \item Dimostro ora che per ogni $c$ che divide sia $a$ che $b$ segue che $c \divides d$.
-            
             Per definizione di divisibilità sappiamo che esistono $h, k \in \Z$ tali che \[
                 a = hc, \quad b = kc.    
             \] Da ciò segue che \[
@@ -81,7 +80,107 @@ La relazione di divisibilità può essere pensata anche come un ordinamento su $
         \end{enumerate}
         Dunque $d$ è il massimo comun divisore tra i numeri $a$ e $b$.
         \item[Unicità] Supponiamo che esistano $d, d^\prime \in \Z$ che siano entrambi massimi comun divisiori di $a$ e $b$. Dunque dovranno valere le seguenti proprietà: siccome $d$ è un massimo comun divisore dovrà valere che \begin{enumerate}[label={(\roman*)}]
-            \item $d \divides a$ e $d \divides b$
+            \item $d \divides a$ e $d \divides b$,
+            \item per ogni $c$ che divide $a$ e $b$, allora $c \divides d$.
+        \end{enumerate} Siccome anche $d^\prime$ è un massimo comun divisore, dovranno valere le seguenti: \begin{enumerate}[label={(\roman*')}]
+            \item $d^\prime \divides a$ e $d^\prime \divides b$,
+            \item per ogni $c$ che divide $a$ e $b$, allora $c \divides d^\prime$.
         \end{enumerate}
+
+        Allora sfruttando la (i) e la (ii') otteniamo che \[
+            d \divides a, d \divides b \implies d \divides d^\prime,    
+        \] mentre sfruttando la (i') e la (ii) otteniamo che \[
+            d^\prime \divides a, d^\prime \divides b \implies d^\prime \divides d.   
+        \] Concludiamo quindi che $d$ e $d^\prime$ sono uguali (a meno del segno), ovvero che il massimo comun divisore è unico a meno del segno. \qedhere
+    \end{description}
+\end{proof}
+
+\subsection{Algoritmo di Euclide}
+
+Per trovare il massimo comun divisore di due numeri possiamo sfruttare il seguente algoritmo, detto \emph{algoritmo di Euclide}.
+
+Siano $a, b \in \Z$ non entrambi nulli (supponiamo senza perdita di generalità $b \neq 0$). L'algoritmo di Euclide mappa la coppia $(a, b) \in \Z^2$ alla tripla $(d, x_0, y_0) \in \Z^3$ dove $d = \mcd{a}{b}$ e $x_0, y_0$ sono tali che \begin{equation}
+    d = ax_0 + by_0. \label{eq:bézout}
+\end{equation} Quest'ultima identità viene detta \emph{identità di Bézout}.
+
+Il procedimento si basa su divisioni euclidee iterate: poniamo $r_0 \deq b$ e applichiamo la divisione euclidea sui resti ottenuti nel seguente modo.
+\begin{align*}
+    a &= q_1r_0 + r_1 \quad &&\text{con } 0 \leq r_1 < b \\
+    r_0 &= q_2r_1 + r_2 \quad &&\text{con } 0 \leq r_2 < r_1 \\
+    r_1 &= q_3r_2 + r_3 \quad &&\text{con } 0 \leq r_3 < r_2 \\
+    &\vdots &&\vdots\\
+    r_{n-1} &= q_{n+1}r_n + r_{n+1} \quad &&\text{con } 0 \leq r_{n+1} < r_n.
+\end{align*}
+Supponiamo che $r_n$ sia l'ultimo resto diverso da $0$ (ovvero $r_n \neq 0$, $r_{n+1} = 0$). Allora vale che $d = r_n$.
+
+Prima di mostrare questo fatto, dimostriamo un lemma importante.
+
+\begin{lemma}\label{lem:mcd_diff}
+    Siano $a, b \in \Z$ non entrambi nulli. Allora per ogni $k \in \Z$ vale che \begin{equation}
+        \mcd{a}{b} = \pm\mcd{a}{b-ka}.    
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Siano $d, d^\prime \in \Z$ tali che \[
+        d = \mcd{a}{b}, \quad d^\prime = \mcd{a}{b-ka}.    
+    \] Mostriamo che $d \divides d^\prime$ e $d^\prime \divides d$.
+
+    \begin{description}
+        \item[($d \divides d^\prime$)] Siano $s, t \in \Z$ tali che \[
+            a = ds, \quad b = dt.    
+        \] Allora varrà che \[
+            b - ka = dt - kds = d(t - ks),    
+        \] dunque siccome $t - ks \in \Z$ segue che $d \divides b - ka$.
+        Allora $d$ divide sia $a$ che $b - ka$, dunque dovrà dividere il loro massimo comun divisore $d^\prime$.
+        \item[($d^\prime \divides d$)] Segue automaticamente per simmetria: sia $\beta = b - ka$, allora vale che \[
+            d^\prime = \mcd{a}{\beta} \divides \mcd{a}{\beta + ka} = \mcd{a}{b} = d,  
+        \] dove il secondo passaggio è giustificato dal punto precedente, sostituendo $-k$ al posto di $k$.
+    \end{description}
+    Concludiamo che $d = \pm d^\prime$, come volevasi dimostrare.
+\end{proof}
+
+\begin{theorem}
+    [Correttezza e terminazione dell'algoritmo di Euclide]
+    Siano $a, b \in \Z$ non entrambi nulli. Allora l'algoritmo di Euclide termina in un numero finito di passi e restituisce una terna $(d, x_0, y_0)$ tale che \begin{itemize}
+        \item $d$ è il massimo comun divisore di $a$ e $b$,
+        \item vale che $\mcd{a}{b} = ax_0 + by_0$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Mostriamo separatamente che l'algoritmo termina e che produce la terna desiderata.
+    \begin{description}
+        \item[Terminazione] Consideriamo la successione $(r_i)_{i\geq 0}$. Essa è una successione strettamente decrescente di numeri naturali. Sia $r_n$ il minimo numero positivo della successione (esiste per il \nameref{ax:min_intero}), ovvero \[
+            r_n = \min \set{r_i \suchthat i \geq 0, r_i > 0}.    
+        \] Ma essendo $(r_i)$ strettamente decrescente avremo $r_{n+1} < r_n$, dunque dovrà valere che $r_{n+1} = 0$.
+        \item[Correttezza] Dimostriamo la correttezza dell'algoritmo per induzione sul numero di passi $N$: se $r_n$ è l'ultimo resto non nullo, allora diciamo che il numero di passi necessari per eseguire l'algoritmo è $N \deq n+1$. 
+        \begin{description}
+            \item[Caso base] Se $N \deq 1$, ovvero $r_1 = 0$, allora $a = q_1b$, da cui segue che $\mcd{a}{b} = b$. Infatti
+            \begin{enumerate}[label={\roman*}]
+                \item $b \divides a$ e $b \divides b$ (ovvio)
+                \item se $c \divides a$ e $c \divides b$ allora $c \divides \mcd{a}{b} = b$ (ovvio).
+            \end{enumerate} 
+            \item[Passo induttivo] Supponiamo che il caso con $N - 1$ passi termini e restituisca il risultato corretto.
+            
+            Siano $a, b \in \Z$ e siano $q_1, r_1$ rispettivamente il quoziente e il resto della divisione euclidea di $a$ per $b$, ovvero \[
+                a = bq_1 - r_1.    
+            \]
+            
+            Supponiamo che per calcolare $\operatorname{A.E.}(a, b)$ siano necessari $N$ passi: allora per calcolare $\operatorname{A.E.}(b, r_1)$ ne servono $N-1$, quindi per ipotesi induttiva l'algoritmo termina e dà come risultato la tripla \[
+                (\mcd{b}{r_1}, x_1, y_1) 
+            \] dove $\mcd{b}{r_1} = bx_1 + r_1y_1$(identità di Bézout).
+
+            Per il \autoref{lem:mcd_diff} segue che \[
+                \mcd{b}{r_1} = \mcd{b}{a - q_1b} = \mcd{b}{a} = \mcd{a}{b}.
+            \] Inoltre segue che \begin{align*}
+                \mcd{a}{b} &= \mcd{b}{r_1} \\
+                &= bx_1 + r_1y_1 \\
+                &= bx_1 + (a - q_1b)y_1 \\
+                &= a(y_1) + b(x_1 - q_1y_1).
+            \end{align*}
+
+            Dunque la tripla \[
+                (\mcd{b}{r_1}, y_1, x_1 - q_1y_1)    
+            \] è il risultato dell'algoritmo di Euclide in $N$ passi, come volevasi dimostrare. \qedhere
+        \end{description} 
     \end{description}
 \end{proof}

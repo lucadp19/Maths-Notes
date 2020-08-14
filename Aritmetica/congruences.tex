@@ -1,0 +1,90 @@
+\chapter{Congruenze tra interi}
+
+\section{Definizione di congruenza}
+
+\begin{definition}
+    [Congruenza modulo $n$]
+    Siano $a, b, n \in \Z$ con $n \geq 2$. Allora si dice che $a$ è \emph{congruo a $b$ modulo $n$}, e si scrive \[
+        a \congr b \pmod{n},  \quad \text{oppure }  a \congr b \Mod{n}
+    \] se vale che $n \divides a - b$. 
+\end{definition}
+
+\begin{proposition}
+    [La congruenza modulo $n$ è un'equivalenza]
+    Sia $n \in \Z$, $n \geq 2$. Allora la relazione di congruenza modulo $n$ è una relazione di equivalenza su $\Z$.
+\end{proposition}
+\begin{proof}
+    Dimostriamo che valgono le proprietà delle relazioni di equivalenza.
+    \begin{description}
+        \item[Riflessività] Sia $a \in \Z$. Allora $a \congr a \Mod{n}$ in quanto $n \divides a-a = 0$.
+        \item[Simmetria] Siano $a, b \in \Z$ tali che $a \congr b \Mod{n}$, ovvero $n \divides a - b$. Ma allora $n \divides b-a$, dunque $b \congr a \Mod{n}$.
+        \item[Transitività] Siano $a, b, c \in \Z$ tali che \[
+            a \congr b \Mod n, \quad b \congr c \Mod n.    
+        \] Per definizione allora $n \divides a - b$ e $n \divides b-c$, ovvero esistono $k, h \in \Z$ tali che $a - b = nk$ e $b - c = nh$.
+        Allora vale che \begin{align*}
+            a - c &= a - b + b - c \\
+            &= nk + nh \\
+            &= n(k + h),
+        \end{align*} ovvero $n \divides a - c$, da cui segue che $a \congr c \Mod n$. \qedhere
+    \end{description}
+\end{proof}
+
+Le classi di equivalenza rispetto alla relazione di congruenza vengono dette \emph{classi di congruenza modulo $n$}, e si indicano con \[
+    [a]_n \deq \set{b \in \Z \suchthat a \congr b \Mod n}.    
+\] Quando il modulo è deducibile dal contesto possiamo usare la scrittura abbreviata $\eqclass a$.
+
+\begin{proposition}[Caratterizzazione della relazione di congruenza] \label{prop:caratt_congr}
+    Siano $a, b, n \in \Z$, $n \geq 2$. Allora sono fatti equivalenti:
+    \begin{enumerate}[label={(\roman*)}]
+        \item $a \congr b \Mod{n}$,
+        \item esiste un $k_0 \in \Z$ tale che $a = b + nk_0$,
+        \item la progressione aritmetica di ragione $n$ che passa per $a$ passa anche per il punto $b$, ovvero \[
+            \left(nk + a\right)_{k \in \Z} = \left(nk + b\right)_{k \in \Z},
+        \]
+        \item $a$ e $b$ hanno lo stesso resto nella divisione euclidea per $n$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo la catena di implicazioni $(i) \implies (ii) \implies (iii) \implies (iv) \implies (i)$.
+    \begin{description}
+        \item[($(i) \implies (ii)$)] Siccome $n \divides a-b$ allora per qualche $k_0 \in \Z$ vale che $a-b = nk_0$, ovvero $a = b + nk_0$.
+        \item[($(ii) \implies (iii)$)] Per la $(ii)$ vale che $a = b+nk_0$, dunque \begin{align*}
+            \left(nk + a\right)_{k \in \Z} &= \left(nk + nk_0 + b\right)_{k \in \Z} \\
+            &= \left(n(k + k_0) + b\right)_{k \in \Z} \tag{pongo $h \deq k + k_0$}\\
+            &= \left(nh + b\right)_{h \in \Z}.
+        \end{align*}
+        \item[($(iii) \implies (iv)$)] Per la divisione euclidea esistono $q, r \in \Z$ tali che $a = qn + r$ con $0 \leq r < n$.
+        
+        Dunque $r \in \left(nk + a\right)_{k \in \Z} = \left(nk + b\right)_{k \in \Z}$, ovvero esiste $k_0 \in \Z$ tale che $r = b + k_0n$, ovvero $b = (-k_0)n + r$. 
+
+        Questa espressione è la divisione euclidea di $b$ per $n$ (infatti $0 \leq r < n$), dunque essendo essa unica (per il \autoref{th:esist_unic_div_euclidea}) segue che $r$ è il resto della divisione euclidea di $b$ per $n$.
+        \item[($(iv) \implies (i)$)] Per ipotesi \[
+            a = q_1n + r, \quad b = q_2n + r.    
+        \] Ma allora \begin{align*}
+            a - b &= q_1n + r - q_2n - r\\
+            &= (q_1 + q_2)n,
+        \end{align*} ovvero $n \divides a - b$, cioè $a \congr b \Mod n$. \qedhere
+    \end{description}
+\end{proof}
+
+Sappiamo dalla sezione sulle relazioni di equivalenza che le classi di equivalenza da essa indotte sono a due a due disgiunte. Se scegliamo un rappresentante per ogni classe e lo includiamo nell'insieme $R$ dei rappresentanti, otteniamo che \[
+    \Z = \bigsqcup_{a \in \R} [a]_n. 
+\]
+
+L'insieme dei rappresentati più naturale per la relazione di congruenza modulo $n$ è l'insieme $\set{0, 1, \dots, n-1}$. Essi rappresentano tutte le classi di congruenza possibili e rappresentano tutte classi disgiunte, come ci viene garantito dal prossimo corollario.
+
+\begin{corollary}
+    I numeri $0, 1, \dots, n-1$ sono un insieme di rappresentati delle classi di congruenza modulo $n$, ovvero per ogni $m \in \Z$ esiste un unico $r \in \set{0, \dots, n-1}$ tale che $m \congr r \Mod{n}$.
+\end{corollary}
+\begin{proof}
+    Per la \autoref{prop:caratt_congr} sappiamo che $a \congr b \Mod n$ se e solo se $a$ e $b$ hanno lo stesso resto nella divisione euclidea per $n$.
+
+    Dunque l'insieme dei possibili resti forma sicuramente un insieme di rappresentanti (ogni numero è congruo al suo resto); inoltre due resti distinti non possono essere nella stessa classe di congruenza, altrimenti dovrebbero essere uguali.
+\end{proof}
+
+\begin{definition}
+    [Insieme $\Zmod{n}$]
+    Sia $n \in \Z$, $n \geq 2$. Si indica con $\Zmod n$ l'insieme di tutte le classi di congruenza modulo $n$, ovvero l'insieme quoziente ottenuto da $\Z$ attraverso la relazione di congruenza modulo $n$: \begin{equation}
+        \Zmod n \deq \set{[0]_n, [1]_n, \dots, [n-1]_n} = \set{[a]_n \suchthat a \in \Z}.
+    \end{equation}
+\end{definition}

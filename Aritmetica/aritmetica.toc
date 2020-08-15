@@ -21,15 +21,16 @@
 \contentsline {section}{\numberline {3.3}{Generatori e gruppi ciclici}}{23}{section.3.3}%
 \contentsline {paragraph}{{Parte 1.}}{25}{paragraph*.58}%
 \contentsline {paragraph}{{Parte 2.}}{26}{paragraph*.59}%
-\contentsline {subsection}{\numberline {3.3.1}{Il gruppo ciclico $\PazoBB {Z}/_{n\PazoBB {Z}}$}}{27}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.1}{Il gruppo ciclico ${\PazoBB {Z}}/_{n\PazoBB {Z}}$}}{27}{subsection.3.3.1}%
 \contentsline {section}{\numberline {3.4}{Omomorfismi di gruppi}}{30}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}{Isomorfismi}}{34}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}{Prodotto diretto di gruppi}}{37}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}{Classi laterali}}{38}{section.3.5}%
-\contentsline {chapter}{\numberline {4}{Anelli e campi}}{40}{chapter.4}%
-\contentsline {section}{\numberline {4.1}{Anelli}}{40}{section.4.1}%
-\contentsline {paragraph}{{$\varphi _x$ è iniettiva}}{43}{paragraph*.102}%
-\contentsline {paragraph}{{$\varphi _x$ è surgettiva}}{43}{paragraph*.103}%
-\contentsline {section}{\numberline {4.2}{Anello dei polinomi}}{44}{section.4.2}%
-\contentsline {paragraph}{{Grado della somma}}{45}{paragraph*.104}%
-\contentsline {paragraph}{{Grado del prodotto}}{45}{paragraph*.105}%
+\contentsline {section}{\numberline {3.5}{Classi laterali e gruppo quoziente}}{38}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}{Sottogruppi normali e gruppo quoziente}}{42}{subsection.3.5.1}%
+\contentsline {chapter}{\numberline {4}{Anelli e campi}}{43}{chapter.4}%
+\contentsline {section}{\numberline {4.1}{Anelli}}{43}{section.4.1}%
+\contentsline {paragraph}{{$\varphi _x$ è iniettiva}}{46}{paragraph*.106}%
+\contentsline {paragraph}{{$\varphi _x$ è surgettiva}}{46}{paragraph*.107}%
+\contentsline {section}{\numberline {4.2}{Anello dei polinomi}}{47}{section.4.2}%
+\contentsline {paragraph}{{Grado della somma}}{48}{paragraph*.108}%
+\contentsline {paragraph}{{Grado del prodotto}}{48}{paragraph*.109}%

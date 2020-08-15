@@ -235,18 +235,18 @@ Gli omomorfismi bigettivi sono particolarmente importanti e vanno sotto il nome 
     [Isomorfismo] \label{def:isomorfismo}
     Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $\phi : G_1 \to G_2$ un omomorfismo.
 
-    Allora se $\phi$ è bigettivo si dice che $\phi$ è un \emph{isomorfismo}. Inoltre i gruppi $G_1$ e $G_2$ si dicono \emph{isomorfi} e si scrive $G_1 \cong G_2$.
+    Allora se $\phi$ è bigettivo si dice che $\phi$ è un \emph{isomorfismo}. Inoltre i gruppi $G_1$ e $G_2$ si dicono \emph{isomorfi} e si scrive $G_1 \isomorph G_2$.
 \end{definition}
 
 \begin{corollary}[Transitività della relazione di isomorfismo]\label{prop:trans_isomorf}
-    Siano $(G_1, *)$, $(G_2, \star)$, $(G_3, \cdot)$ tre gruppi tali che $G_1 \cong G_2$ e $G_2 \cong G_3$.
+    Siano $(G_1, *)$, $(G_2, \star)$, $(G_3, \cdot)$ tre gruppi tali che $G_1 \isomorph G_2$ e $G_2 \isomorph G_3$.
 
-    Allora $G_1 \cong G_3$.
+    Allora $G_1 \isomorph G_3$.
 \end{corollary}
 \begin{proof}
-    Dato che $G_1 \cong G_2$ e $G_2 \cong G_3$ dovranno esistere due isomorfismi $\phi : G_1 \to G_2$ e $\psi : G_2 \to G_3$.
+    Dato che $G_1 \isomorph G_2$ e $G_2 \isomorph G_3$ dovranno esistere due isomorfismi $\phi : G_1 \to G_2$ e $\psi : G_2 \to G_3$.
 
-    Per la proposizione \ref{prop:comp_omo} la funzione $\psi \circ \phi$ è ancora un isomorfismo; inoltre la composizione di funzioni bigettive è ancora bigettiva, da cui segue che $\psi \circ \phi$ è un isomorfismo tra $G_1$ e $G_3$ e quindi $G_1 \cong G_3$.
+    Per la proposizione \ref{prop:comp_omo} la funzione $\psi \circ \phi$ è ancora un isomorfismo; inoltre la composizione di funzioni bigettive è ancora bigettiva, da cui segue che $\psi \circ \phi$ è un isomorfismo tra $G_1$ e $G_3$ e quindi $G_1 \isomorph G_3$.
 \end{proof}
 
 Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiamenti di forma". In particolare gli isomorfismi inducono naturalmente una bigezione sui sottogruppi dei due gruppi isomorfi, come ci dice la seguente proposizione.
@@ -281,8 +281,8 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
 \begin{theorem}
     [Isomorfismi di gruppi ciclici]\label{th:iso_ciclico}
     Sia $(G, \cdot)$ un gruppo ciclico. Allora \begin{enumerate}[label={(\roman*)}, ref={\thetheorem: (\roman*)}]
-        \item se $\abs G = +\infty$ segue che $G \cong \Z$;
-        \item se $\abs G = n < +\infty$ segue che $G \cong \Zmod n$.
+        \item se $\abs G = +\infty$ segue che $G \isomorph \Z$;
+        \item se $\abs G = n < +\infty$ segue che $G \isomorph \Zmod n$.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -297,7 +297,7 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
             \phi(k + h) = g^{k + h} = g^kg^h = \phi(k)\phi(h).    
         \]
 
-        Dunque $\phi$ è un isomorfismo e $G \cong \Z$.
+        Dunque $\phi$ è un isomorfismo e $G \isomorph \Z$.
         \item Dato che $\abs{G} = n$ per la proposizione \ref{prop:sgr_generato} sappiamo che $\ord g = n$, ovvero che $g^n = e_G$. Sia allora \begin{align*}
             \phi : \Zmod n &\to G\\
             \eqclass a &\mapsto g^a
@@ -314,7 +314,7 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
             \]
         \end{itemize}
         Ma $\abs*{\Zmod n} = \abs*{G}$, dunque per cardinalità $\phi$ è anche iniettiva e dunque è bigettiva. 
-        Quindi $\phi$ è un isomorfismo e $G \cong \Zmod n$.
+        Quindi $\phi$ è un isomorfismo e $G \isomorph \Zmod n$.
     \end{enumerate}
 \end{proof}
 
@@ -456,6 +456,6 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
 \begin{theorem}
     [Teorema Cinese del Resto (III forma)] \label{th:cinese_III}
     Siano $n, m \in \Z$ entrambi non nulli. Allora vale che \[
-        \Zmod{nm} \cong \Zmod{n}\times \Zmod{m} \iff \mcd{n}{m} = 1.
+        \Zmod{nm} \isomorph \Zmod{n}\times \Zmod{m} \iff \mcd{n}{m} = 1.
     \]
 \end{theorem}

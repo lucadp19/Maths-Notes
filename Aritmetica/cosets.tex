@@ -1,17 +1,17 @@
-\section{Classi laterali}
+\section{Classi laterali e gruppo quoziente}
 
-Sia $(G, \cdot)$ un gruppo e sia $H \leq G$. Consideriamo la seguente relazione sugli elementi di $G$: diciamo che $x \sim_l y$ se e solo se $y\inv x \in H$.
+Sia $(G, \cdot)$ un gruppo e sia $H \leq G$. Consideriamo la seguente relazione sugli elementi di $G$: diciamo che $x \sim_L y$ se e solo se $y\inv x \in H$.
 
 Questa relazione è una relazione di equivalenza, infatti \begin{itemize}
-    \item $\sim_l$ è riflessiva: $x\inv x = e_G \in H$, dunque $x \sim_l x$.
-    \item $\sim_l$ è simmetrica: se $x \sim_l y$, ovvero $y\inv x \in H$, allora il suo inverso $(y\inv x)\inv = x\inv (y\inv)\inv = x\inv y \in H$, dunque $y \sim_l x$.
-    \item $\sim_l$ è transitiva: supponiamo che $x \sim_l y$ e $y \sim_l z$ e mostriamo che $x \sim_l z$. Dalla prima sappiamo che $y\inv x \in H$, mentre dalla seconda segue che $z\inv y \in H$. Dato che $H$ è un sottogruppo, il prodotto di suoi elementi è ancora in $H$, dunque \[
+    \item $\sim_L$ è riflessiva: $x\inv x = e_G \in H$, dunque $x \sim_L x$.
+    \item $\sim_L$ è simmetrica: se $x \sim_L y$, ovvero $y\inv x \in H$, allora il suo inverso $(y\inv x)\inv = x\inv (y\inv)\inv = x\inv y \in H$, dunque $y \sim_L x$.
+    \item $\sim_L$ è transitiva: supponiamo che $x \sim_L y$ e $y \sim_L z$ e mostriamo che $x \sim_L z$. Dalla prima sappiamo che $y\inv x \in H$, mentre dalla seconda segue che $z\inv y \in H$. Dato che $H$ è un sottogruppo, il prodotto di suoi elementi è ancora in $H$, dunque \[
         z\inv y \cdot y\inv x = z\inv x \in H    
-    \] da cui segue che $x \sim_l z$.
+    \] da cui segue che $x \sim_L z$.
 \end{itemize}
 
 Questa relazione di equivalenza forma delle classi di equivalenza che partizionano $G$: in particolare la classe di $x \in G$ sarà della forma \begin{align*}
-    \eqclass*{x}_l &= \set{g \in G \suchthat g \sim_l x}\\
+    \eqclass*{x}_L &= \set{g \in G \suchthat g \sim_L x}\\
     &= \set{g \in G \suchthat x\inv g \in H}\\
     &= \set{g \in G \suchthat x\inv g = h \text{ per qualche } h \in H}\\
     &= \set{g \in G \suchthat g = xh \text{ per qualche } h \in H}.
@@ -28,10 +28,10 @@ Diamo dunque la seguente definizione.
     \]
 \end{definition}
 
-Allo stesso modo possiamo definire un'altra relazione di equivalenza $\sim_r$ tale che \[
-    x \sim_r y \iff xy\inv \in H.    
+Allo stesso modo possiamo definire un'altra relazione di equivalenza $\sim_R$ tale che \[
+    x \sim_R y \iff xy\inv \in H.    
 \] Le classi di equivalenza di questa relazione sono della forma \[
-    \eqclass*{x}_r = \set{g \in G \suchthat g = hx \text{ per qualche } h \in H}.    
+    \eqclass*{x}_R = \set{g \in G \suchthat g = hx \text{ per qualche } h \in H}.    
 \] Possiamo dunque definire anche le classi laterali destre nel seguente modo.
 \begin{definition}
     [Classe laterale destra]
@@ -41,3 +41,139 @@ Allo stesso modo possiamo definire un'altra relazione di equivalenza $\sim_r$ ta
         Hx \deq \set{hx \suchthat h \in H}. 
     \]
 \end{definition}
+
+\begin{remark}
+    Siccome le classi laterali sinistre (o destre) rappresentano le classi di equivalenza rispetto alla relazione $\sim_L$ (risp. $\sim_R$) possiamo definire un insieme di rappresentanti $R$ per cui \begin{equation}
+        G = \bigdisjunion_{a \in R} aH. \quad \text{(risp. $Ha$)}
+    \end{equation}
+\end{remark}
+
+\begin{theorem}
+    [Teorema di Lagrange] \label{th:lagrange}
+    Sia $(G, \cdot)$ un gruppo finito e sia $H \leq G$ qualsiasi. Allora vale che \[
+        \abs*{H} \divides \abs*{G}.    
+    \]
+\end{theorem}
+
+In breve, il Teorema di Lagrange afferma che per ogni gruppo finito l'ordine di un suo qualsiasi sottogruppo divide l'ordine del gruppo. Prima di dimostrarlo, dimostriamo un lemma che ci tornerà utile.
+
+\begin{lemma}\label{lem:ord_classilat=ord_sgr}
+    Sia $(G, \cdot)$ un gruppo e sia $H$ un suo sottogruppo. Allora per qualsiasi $g \in G$ vale che \[
+        \abs*{gH} = \abs*{H} = \abs*{Hg}.     
+    \]
+\end{lemma}
+\begin{proof}
+    Per dimostrare che $\abs*{gH} = \abs*{H}$ consideriamo la mappa \begin{align*}
+        \phi : H &\to gH \\   
+        h &\mapsto gh 
+    \end{align*} e facciamo vedere che è bigettiva.
+    \begin{description}
+        \item[Iniettività] Supponiamo che per qualche $h, k \in H$ valga che $\phi(h) = \phi(k)$, ovvero $gh = gk$. Siccome $gh, gk \in G$ vale la \hyperref[prop:prop_grp:canc:sx]{legge di cancellazione sinistra}, dunque segue che $h = k$, ovvero $\phi$ è iniettiva.
+        \item[Surgettività] Segue naturalmente dalla definizione di $gH$. 
+    \end{description}
+    Dunque $\phi$ è bigettiva e quindi gli insiemi $gH$ e $H$ hanno la stessa cardinalità. Analogamente si mostra che la funzione \begin{align*}
+        \psi : H &\to Hh \\   
+        h &\mapsto hg 
+    \end{align*} è bigettiva, dunque segue la tesi.
+\end{proof}
+
+Dimostriamo ora il Teorema di Lagrange
+\begin{proof}[Dimostrazione del \autoref{th:lagrange}]
+    Per l'osservazione precendente sappiamo che se $R$ è un insieme di rappresentanti della relazione di equivalenza $\sim_L$ allora \[
+        G = \bigdisjunion_{a \in R} aH,
+    \] dunque passando alle cardinalità \begin{align*}
+        \abs*{G} &= \sum_{a \in R} \abs*{aH}.  \\
+        \intertext{Per il \autoref{lem:ord_classilat=ord_sgr} segue quindi che}  
+        &= \sum_{a \in R} \abs*{H}\\
+        &= \abs*{R}\cdot \abs*{H}. 
+    \end{align*}  Dunque $\abs*{H} \divides \abs*{G}$, dunque la tesi.
+\end{proof}
+
+\begin{remark}
+    Osserviamo che in generale le classi laterali di un sottogruppo del gruppo $G$ non sono sottogruppi di $G$: dato che partizionano il gruppo una sola di esse contiene l'elemento neutro del gruppo.
+\end{remark}
+
+\begin{proposition}
+    Sia $(G, \cdot)$ un gruppo, sia $H \leq G$ e sia $g \in G$ qualsiasi. Allora i seguenti fatti sono equivalenti:
+    \begin{enumerate}[label={(\roman*)}]
+        \item $gH \leq G$,
+        \item $g \in H$,
+        \item $H = gH$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo la catena di implicazioni $(i) \implies (ii) \implies (iii) \implies (i)$.
+    \begin{description}
+        \item[($(i) \implies (ii)$)] Supponiamo che $gH \leq G$. Allora $e_G \in gH$, ovvero esiste $h \in H$ tale che $gh = e_G$. Ma tale $h$ è $g\inv$, dunque se $g\inv \in H$ segue che $g \in H$.
+        \item[($(ii) \implies (iii)$)] Supponiamo che $g \in H$. 
+        \begin{description}
+            \item[($gH \subseteq H$)] Supponiamo $gh \in gH$ per qualche $h \in H$. Ma essendo $g \in H$ per ipotesi il prodotto $gh$ sarà un elemento di $H$, dunque $gH \subseteq H$.
+            \item[($H \subseteq gH$)] Sia $h \in H$. Siccome $g \in H$ e $H$ è un gruppo segue che $g\inv \in H$, dunque $g\inv h \in H$. Ma questo significa che $g\cdot(g\inv h) = h \in gH$, dunque $H \subseteq gH$.
+        \end{description}
+        Concludiamo che $gH = H$.
+        \item[($(iii) \implies (i)$)] Siccome $gH = H$ e $H \leq G$ allora $gH \leq G$. \qedhere 
+    \end{description}
+\end{proof}
+
+Siccome ogni elemento di una classe è un possibile rappresentante della classe stessa, la proposizione precedente ci dice che l'unica classe laterale (sinisra) di $H$ che è un sottogruppo di $G$ è quella che contiene l'identità, ovvero la classe $e_GH = H$.
+
+\begin{corollary}[Corollario al Teorema di Lagrange] \label{cor:lagrange}
+    Sia $(G, \cdot)$ un gruppo finito. Allora valgono i seguenti fatti:
+    \begin{enumerate}[label={(\roman*)}, ref={\thecorollary: (\roman*)}]
+        \item \label{cor:ord_el_divide_ord_gruppo} per ogni $g \in G$ vale che $\ord[G]{g} \divides \abs*{G}$,
+        \item \label{cor:x_alla_ordG=e_G} per ogni $x \in G$ vale che $x^{\abs*{G}} = e_G$.
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    \begin{enumerate}[label={(\roman*)}]
+        \item Siccome $\cycl*{g} \leq G$, per il \nameref{th:lagrange} vale che \[
+            \ord[G]{g} = \abs*{\cycl*{g}} \divides \abs*{G}.    
+        \]
+        \item Sia $n \deq \abs*{G}$ e $k \deq \ord[G]{g}$. Per il punto precedente vale che $k \divides n$, ovvero che esiste $m \in \Z$ tale che \[
+            n = km.    
+        \] Dunque segue che \begin{align*}
+            g^{\abs*{G}} &= g^n \\
+            &= (g^k)^m \tag{per def. di \hyperref[def:ord_grp]{ordine}}\\
+            &= e^m \\
+            &= e. \tag*{\qedhere}
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}[I gruppi di ordine primo sono ciclici]
+    Sia $(G, \cdot)$ un gruppo tale che $\abs*{G} = p$ per qualche $p \in \Z$, $p$ primo. Allora $G$ è ciclico ed in particolare \[
+        G \isomorph \Zmod{p}.    
+    \]
+\end{corollary}
+\begin{proof}
+    Sia $x \in G$, $x \neq e_G$. Allora $\cycl*{x} \neq \set{e_G}$, da cui segue che \[
+        1 \neq \ord[G]{x} \divides p = \abs*{G}.
+    \] Dunque per definizione di numero primo $\ord[G]{x} = p$, ma siccome l'ordine del sottogruppo $\cycl*{x}$ è uguale all'ordine di $G$ segue che $G = \cycl*{x}$.
+    
+    Dunque $G$ è ciclico e per il \autoref{th:iso_ciclico} è isomorfo a $\Zmod{p}$.
+\end{proof}
+
+Il teorema di Lagrange ci consente inoltre di dimostrare molto semplicemente il Teorema di Eulero-Fermat.
+\begin{proof}
+    Segue dal \autoref{cor:lagrange} (in particolare dal \hyperref[cor:x_alla_ordG=e_G]{punto (ii)}) considerando come gruppo $(\invertible{\Zmod{n}}, \cdot)$: infatti per definizione $\phi(n) = \abs*{\invertible{\Zmod{n}}}$, da cui la tesi.
+\end{proof}
+
+\subsection{Sottogruppi normali e gruppo quoziente}
+
+\begin{definition}
+    [Sottogruppo normale] \label{def:sgr_normale}
+    Sia $(G, \cdot)$ un gruppo e sia $H \leq G$. Allora si dice che $H$ è un \emph{sottogruppo normale} di $G$ se per ogni $g \in G$ vale che \begin{equation} \label{eq:def_normale}
+        gH = Hg.
+    \end{equation} 
+    
+    Se $H$ è normale si scrive $H \normal G$.
+\end{definition}
+
+\begin{remark}
+    Se $G$ è abeliano allora tutti i suoi sottogruppi sono normali.
+\end{remark}
+\begin{remark}
+    Se un sottogruppo $H$ è normale non significa che per ogni $h \in H$ vale che $gh = hg$, ma soltanto che per ogni $h \in H$ esiste un $h^\prime \in H$ tale che \[
+        gh = h^\prime g.    
+    \]
+\end{remark}

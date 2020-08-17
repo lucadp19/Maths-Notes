@@ -1,11 +1,11 @@
 # Fdb version 3
-["pdflatex"] 1597527391 "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.tex" "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf" "aritmetica" 1597527400
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.aux" 1597527399 46164 82a964f858dd8958b50c714b442eafb5 "pdflatex"
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out" 1597527394 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.tex" 1597501861 7096 ce2c4786c42b6cc0943b53f880589339 ""
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.toc" 1597527399 2684 b87923e177f24d63dd978c3938badea1 "pdflatex"
+["pdflatex"] 1597601868 "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.tex" "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf" "aritmetica" 1597601879
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.aux" 1597601878 47907 a35d9ac90c24c3721c761b9d2c1e9f49 "pdflatex"
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out" 1597601871 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.tex" 1597594596 7182 a761830f6b23ce403bcfcec08ae9e7eb ""
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.toc" 1597601878 2684 56752503feb6ff5d128703aef017fbda "pdflatex"
   "/home/luca/Documents/Uni/Maths/Aritmetica/congruences.tex" 1597501296 5497 119eee798b5e58147a3a7a7c447eda4d ""
-  "/home/luca/Documents/Uni/Maths/Aritmetica/cosets.tex" 1597527380 9596 50c67b2bf7f66d586b47583c25bea03c ""
+  "/home/luca/Documents/Uni/Maths/Aritmetica/cosets.tex" 1597601855 15592 a8bdcdfa4b7a4059f31c1b05d38564bf ""
   "/home/luca/Documents/Uni/Maths/Aritmetica/cyclic_groups.tex" 1597501296 17127 b543fbf672d1959f493809709ccfdc2f ""
   "/home/luca/Documents/Uni/Maths/Aritmetica/diophantine.tex" 1597428359 5267 00037e7cda1c92e3006e40b908c7596a ""
   "/home/luca/Documents/Uni/Maths/Aritmetica/divisibility.tex" 1597406032 11181 2cd4c05951a6d618e3cb2b3412580e8c ""
@@ -321,8 +321,8 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1595523627 4727905 1b81189106e2406a827797a37162c1c0 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1595523612 2514053 574340ade4d112a24e35565b898ad36c ""
   (generated)
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.log"
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf"
   "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.aux"
   "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.toc"
-  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf"
+  "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.log"
   "/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out"

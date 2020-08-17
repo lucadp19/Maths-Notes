@@ -151,6 +151,12 @@
 \renewcommand{\rho}{\varrho}
 \renewcommand{\phi}{\varphi}
 
+\DeclarePairedDelimiter{\braces}{[}{]}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\ang}{\langle}{\rangle}
+\DeclarePairedDelimiter{\cycl}{\langle}{\rangle}
+
 \let\oldre\Re
 \let\oldim\Im
 \renewcommand{\Re}[1]{\operatorname{Re}(#1)}
@@ -166,16 +172,13 @@
 \newcommand{\ncongr}{\not\congr} % non congruo
 \newcommand{\isomorph}{\cong}
 \newcommand{\normal}{\trianglelefteqslant}
+\newcommand{\grindex}[2]{\braces*{#1\;:\;#2}}
 
 \newcommand{\Mod}[1]{\ \left(#1\right)}
 \newcommand{\mcm}[2]{\left[#1, #2\right]}
 \newcommand{\mcd}[2]{\left(#1, #2\right)}
 \newcommand{\ord}[2][]{\operatorname{ord}_{#1}\!\left( #2 \right)}
 
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
-\DeclarePairedDelimiter{\ang}{\langle}{\rangle}
-\DeclarePairedDelimiter{\cycl}{\langle}{\rangle}
 
 % \renewcommand{\prime}{^\prime}
 \newcommand{\inv}{^{-1}}

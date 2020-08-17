@@ -27,10 +27,10 @@
 \contentsline {subsection}{\numberline {3.4.2}{Prodotto diretto di gruppi}}{37}{subsection.3.4.2}%
 \contentsline {section}{\numberline {3.5}{Classi laterali e gruppo quoziente}}{38}{section.3.5}%
 \contentsline {subsection}{\numberline {3.5.1}{Sottogruppi normali e gruppo quoziente}}{42}{subsection.3.5.1}%
-\contentsline {chapter}{\numberline {4}{Anelli e campi}}{43}{chapter.4}%
-\contentsline {section}{\numberline {4.1}{Anelli}}{43}{section.4.1}%
-\contentsline {paragraph}{{$\varphi _x$ è iniettiva}}{46}{paragraph*.106}%
-\contentsline {paragraph}{{$\varphi _x$ è surgettiva}}{46}{paragraph*.107}%
-\contentsline {section}{\numberline {4.2}{Anello dei polinomi}}{47}{section.4.2}%
-\contentsline {paragraph}{{Grado della somma}}{48}{paragraph*.108}%
-\contentsline {paragraph}{{Grado del prodotto}}{48}{paragraph*.109}%
+\contentsline {chapter}{\numberline {4}{Anelli e campi}}{45}{chapter.4}%
+\contentsline {section}{\numberline {4.1}{Anelli}}{45}{section.4.1}%
+\contentsline {paragraph}{{$\varphi _x$ è iniettiva}}{48}{paragraph*.114}%
+\contentsline {paragraph}{{$\varphi _x$ è surgettiva}}{48}{paragraph*.115}%
+\contentsline {section}{\numberline {4.2}{Anello dei polinomi}}{49}{section.4.2}%
+\contentsline {paragraph}{{Grado della somma}}{50}{paragraph*.116}%
+\contentsline {paragraph}{{Grado del prodotto}}{50}{paragraph*.117}%

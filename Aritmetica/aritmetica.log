@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.7.23)  15 AUG 2020 23:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.7.23)  16 AUG 2020 20:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1083,32 +1083,32 @@ Package thmtools Info: Key `numbered' (with value `no')
 (thmtools)             Will pass this to every \declaretheorem
 (thmtools)             that uses `style=remarkstyle' on input line 130.
  (/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 211.
-LaTeX Font Info:    ... okay on input line 211.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 211.
-LaTeX Font Info:    ... okay on input line 211.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 211.
-LaTeX Font Info:    ... okay on input line 211.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 211.
-LaTeX Font Info:    ... okay on input line 211.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 211.
-LaTeX Font Info:    ... okay on input line 211.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 211.
-LaTeX Font Info:    ... okay on input line 211.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 211.
-LaTeX Font Info:    ... okay on input line 211.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 211.
-LaTeX Font Info:    ... okay on input line 211.
-LaTeX Info: Redefining \it@ocap on input line 211.
-LaTeX Info: Redefining \it@ccap on input line 211.
-LaTeX Info: Redefining \microtypecontext on input line 211.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 214.
+LaTeX Font Info:    ... okay on input line 214.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 214.
+LaTeX Font Info:    ... okay on input line 214.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 214.
+LaTeX Font Info:    ... okay on input line 214.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 214.
+LaTeX Font Info:    ... okay on input line 214.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 214.
+LaTeX Font Info:    ... okay on input line 214.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 214.
+LaTeX Font Info:    ... okay on input line 214.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 214.
+LaTeX Font Info:    ... okay on input line 214.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 214.
+LaTeX Font Info:    ... okay on input line 214.
+LaTeX Info: Redefining \it@ocap on input line 214.
+LaTeX Info: Redefining \it@ccap on input line 214.
+LaTeX Info: Redefining \microtypecontext on input line 214.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 211.
+LaTeX Info: Redefining \showhyphens on input line 214.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1137,7 +1137,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box120
-Package hyperref Info: Link coloring ON on input line 211.
+Package hyperref Info: Link coloring ON on input line 214.
  (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1147,9 +1147,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count339
 )
-LaTeX Info: Redefining \ref on input line 211.
-LaTeX Info: Redefining \pageref on input line 211.
-LaTeX Info: Redefining \nameref on input line 211.
+LaTeX Info: Redefining \ref on input line 214.
+LaTeX Info: Redefining \pageref on input line 214.
+LaTeX Info: Redefining \nameref on input line 214.
  (/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out) (/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.out)
 \@outlinefile=\write4
 Class scrbook Info: loading recommended package `bookmark'.
@@ -1159,7 +1159,7 @@ Class scrbook Info: loading recommended package `bookmark'.
 (scrbook)           `bookmarkpackage=false' before \begin{document} and
 (scrbook)           you can avoid this message adding:
 (scrbook)             \usepackage{bookmark}
-(scrbook)           before \begin{document} on input line 211.
+(scrbook)           before \begin{document} on input line 214.
  (/usr/share/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
  (/usr/share/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
@@ -1168,7 +1168,7 @@ Package auxhook Info: \AddLineBeginMainAux comes a little late,
 (auxhook)             because the main .aux file is already opened on input line 168.
 \BKM@id=\count340
 )) ABD: EveryShipout initializing macros
-LaTeX Font Info:    Trying to load font information for T1+iwona on input line 216.
+LaTeX Font Info:    Trying to load font information for T1+iwona on input line 219.
  (/usr/share/texmf-dist/tex/latex/iwona/t1iwona.fd
 File: t1iwona.fd 2008/07/22 v0.995 font definition file for T1/iwona (MW)
 )
@@ -1176,19 +1176,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `iwona' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for U+zeur on input line 216.
+LaTeX Font Info:    Trying to load font information for U+zeur on input line 219.
  (/usr/share/texmf-dist/tex/latex/eulervm/uzeur.fd
 File: uzeur.fd 2005/01/11 v4.0 (WaS)
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-eur.cfg
 File: mt-eur.cfg 2006/07/31 v1.1 microtype config. file: AMS Euler Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeus on input line 216.
+LaTeX Font Info:    Trying to load font information for U+zeus on input line 219.
  (/usr/share/texmf-dist/tex/latex/eulervm/uzeus.fd
 File: uzeus.fd 2005/01/11 v4.0 (WaS)
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-eus.cfg
 File: mt-eus.cfg 2006/07/28 v1.2 microtype config. file: AMS Euler Script (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeuex on input line 216.
+LaTeX Font Info:    Trying to load font information for U+zeuex on input line 219.
  (/usr/share/texmf-dist/tex/latex/eulervm/uzeuex.fd
 File: uzeuex.fd 2005/01/11 v4.0 (WaS)
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
@@ -1198,9 +1198,9 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 216.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 219.
  (/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 216.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 219.
  (/usr/share/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
@@ -1213,7 +1213,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package tocbasic Info: character protrusion at toc deactivated on input line 217.
+Package tocbasic Info: character protrusion at toc deactivated on input line 220.
  (/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.toc
 Package cleveref Info: loaded `italian' language definitions on input line 1.
 Package cleveref Info: loaded `italian' language definitions on input line 2.
@@ -1357,33 +1357,37 @@ Overfull \hbox (3.15265pt too wide) in paragraph at lines 71--72
 Package cleveref Info: loaded `italian' language definitions on input line 110.
 [40]
 Package cleveref Info: loaded `italian' language definitions on input line 159.
- [41]) (/home/luca/Documents/Uni/Maths/Aritmetica/rings.tex
+ [41]
+Package cleveref Info: loaded `italian' language definitions on input line 230.
+ [42]
+Package cleveref Info: loaded `italian' language definitions on input line 287.
+ [43]) (/home/luca/Documents/Uni/Maths/Aritmetica/rings.tex
 Capitolo 4.
 Package cleveref Info: loaded `italian' language definitions on input line 1.
-[42] [43
+[44] [45
 
 
 ]
 Package cleveref Info: loaded `italian' language definitions on input line 136.
- [44]
-Package cleveref Info: loaded `italian' language definitions on input line 196.
- [45]) (/home/luca/Documents/Uni/Maths/Aritmetica/polynomials.tex
-Package cleveref Info: loaded `italian' language definitions on input line 7.
  [46]
+Package cleveref Info: loaded `italian' language definitions on input line 196.
+ [47]) (/home/luca/Documents/Uni/Maths/Aritmetica/polynomials.tex
+Package cleveref Info: loaded `italian' language definitions on input line 7.
+ [48]
 Package cleveref Info: loaded `italian' language definitions on input line 59.
- [47]
-Package cleveref Info: loaded `italian' language definitions on input line 111.
- [48])
-Package cleveref Info: loaded `italian' language definitions on input line 239.
  [49]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 239.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
+Package cleveref Info: loaded `italian' language definitions on input line 111.
+ [50])
+Package cleveref Info: loaded `italian' language definitions on input line 242.
+ [51]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 242.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 242.
  (/home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.aux
 Package cleveref Info: loaded `italian' language definitions on input line 23.
 Package cleveref Info: loaded `italian' language definitions on input line 24.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 239.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 239.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 242.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 242.
 Package rerunfilecheck Info: File `aritmetica.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1393,18 +1397,18 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 33191 strings out of 480478
- 647263 string characters out of 5905959
+ 33242 strings out of 480478
+ 648264 string characters out of 5905959
  1118613 words of memory out of 5000000
- 47555 multiletter control sequences out of 15000+600000
+ 47576 multiletter control sequences out of 15000+600000
  666223 words of font info for 472 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  78i,23n,98p,10178b,1331s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/iwona/ec-iwona-sc.enc}{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf-dist/fonts/enc/dvips/iwona/ec-iwona.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/share/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/share/texmf-dist/fonts/type1/public/fpl/fplrij8a.pfb></usr/share/texmf-dist/fonts/type1/nowacki/iwona/iwonab.pfb></usr/share/texmf-dist/fonts/type1/nowacki/iwona/iwonar.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on /home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf (49 pages, 439265 bytes).
+Output written on /home/luca/Documents/Uni/Maths/Aritmetica/aritmetica.pdf (51 pages, 447894 bytes).
 PDF statistics:
- 1142 PDF objects out of 1200 (max. 8388607)
- 1045 compressed objects within 11 object streams
- 545 named destinations out of 1000 (max. 500000)
+ 1189 PDF objects out of 1200 (max. 8388607)
+ 1090 compressed objects within 11 object streams
+ 575 named destinations out of 1000 (max. 500000)
  52421 words of extra memory for PDF output out of 61914 (max. 10000000)
 

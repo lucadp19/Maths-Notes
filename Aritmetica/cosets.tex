@@ -177,3 +177,132 @@ Il teorema di Lagrange ci consente inoltre di dimostrare molto semplicemente il 
         gh = h^\prime g.    
     \]
 \end{remark}
+
+\begin{proposition} \label{prop:normale_sse_chiuso_per_coniugio}
+    Sia $(G, \cdot)$ un gruppo e $H \leq G$.
+    Allora $H$ è normale se e solo se è chiuso per coniugio, ovvero se e solo se per ogni $g \in G$ vale che \[
+        gHg\inv \subseteq H.    
+    \]
+\end{proposition}
+\begin{proof}
+    Mostriamo entrambi i versi dell'implicazione.
+    \begin{description}
+        \item[($\implies$)] Supponiamo che $H \normal G$, ovvero che per ogni $g \in G$ vale che \[
+            gH = Hg,
+        \] ovvero per ogni $h \in H$ esiste un $h^\prime \in H$ tale che \[
+            gh = h^\prime g.    
+        \] Moltiplicando a destra per $g\inv$ si ottiene che \[
+            ghg\inv = h^\prime \in H,   
+        \] da cui $gHg\inv \subseteq H$.
+        % \item[($\impliedby$)] Supponiamo che $ghg\inv \in H$, ovvero esista $h^\prime$ tale che $ghg\inv = h^\prime$, il che è equivalente ad affermare $gh = h^\prime g \in Hg$. Questo significa che $gH \subseteq Hg$. Mostriamo ora che vale anche l'inclusione contraria.
+        
+        % Dato che la relazione deve valere per quasliasi $g$, dovrà valere anche per $g\inv \in G$
+    \end{description}
+\end{proof}
+
+\begin{definition}
+    [Indice di un sottogruppo]
+    Sia $(G, \cdot)$ un gruppo e sia $H \leq G$. Allora si dice \emph{indice di $H$ in $G$} il numero di classi laterali sinistre di $H$, e si indica con \begin{equation}
+        \grindex{G}{H}.
+    \end{equation}
+\end{definition}
+
+\begin{proposition}
+    Sia $(G, \cdot)$ un gruppo, $H \leq G$. Allora se $\grindex{G}{H} = 2$ segue che $H \normal G$.
+\end{proposition}
+
+\begin{proposition}
+    [Nucleo di omomorfismi e normalità]
+    \label{prop:rel_kernel_sgr_normali}
+    Siano $(G, \cdot)$, $(G^\prime, *)$ due gruppi e sia $f : G \to G^\prime$ un omomorfismo. 
+    
+    Valgono le seguenti affermazioni.
+    \begin{enumerate}[label={(\roman*)}]
+        \item $\ker f \normal G$,
+        \item per ogni $x, y \in G$ vale che $f(x) = f(y)$ se e solo se $x\ker f = y\ker f$, ovvero se $x, y$ appartengono alla stessa classe laterale del nucleo,
+        \item se $z \in \Imm f$ (ovvero $f(x) = z$ per qualche $x \in G$) allora $f\inv(\set{z}) = x\ker f$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}[label={(\roman*)}]
+        \item Per la \autoref{prop:normale_sse_chiuso_per_coniugio} la tesi è equivalente a dimostrare che \[
+            g(\ker f) g\inv \subseteq \ker f   
+        \] per ogni $g \in G$.
+        
+        Sia $x \in \ker f$ qualsiasi: mostriamo che $gxg\inv \in \ker f$. Per definizione di kernel, questo significa mostrare che $f(gxg\inv) = e_G$, ovvero (siccome $f$ è un omomorfismo) \[
+            f(g) * f(x) * f(g\inv) = e_G.    
+        \] Per ipotesi $x \in \ker f$, dunque $f(x) = e_G$; inoltre per la \hyperref[prop:prop_omo:inv_passa_dentro]{Proposizione \ref*{prop:prop_omo:inv_passa_dentro}} sappiamo che $f(g\inv) = f(g)\inv$.
+        
+        Dunque segue che \begin{align*}
+            f(g) * f(x) * f(g\inv) &= f(g) * e_G * f(g)\inv\\
+            &= f(g) * f(g)\inv \\
+            &= e_G
+        \end{align*} che è la tesi.
+        \item Supponiamo $f(x) = f(y)$. Moltiplicando a destra per $f(y)\inv$ segue che \begin{align*}
+            &f(x) * f(y)\inv = e_G \\
+            \iff &f(x) * f(y\inv) = e_G \\
+            \iff &f(xy\inv) = e_g\\
+            \iff &xy\inv \in \ker f\\
+            \iff &x \sim_L y.
+        \end{align*}
+        
+        Dunque le classi di equivalenza di $x$ e $y$ sono uguali, ovvero \[
+            x\ker f = y\ker f.    
+        \]
+        \item Per definizione di controimmagine: \begin{align*}
+            f\inv(z) &= \set{g \in G \suchthat f(g) = z} \tag{hp: $f(x) = z$} \\
+            &= \set{g \in G \suchthat f(g) = f(x)} \tag{per il punto (ii)}\\
+            &= x\ker f. \tag*{\qedhere}
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+
+Consideriamo ora l'insieme di tutte le possibili classi laterali sinistre di un sottogruppo $H \leq G$ e chiamiamo questo insieme $\quot{G}{H}$: \begin{equation}
+    \quot{G}{H} \deq \set{gH \suchthat g \in G}.
+\end{equation}
+
+Se $H \normal G$ possiamo definire un'operazione su $\quot{G}{H}$: \begin{align} \label{eq:op_gruppo_quoziente}
+    \begin{split}
+        \cdot : \quot{G}{H} &\times \quot{G}{H} \to \quot{G}{H} \\
+        (aH, bH) &\mapsto abH.
+    \end{split}
+\end{align}
+
+La struttura $(\quot{G}{H}, \cdot)$ si definisce \emph{gruppo quoziente}.
+
+\begin{proposition}
+    Sia $(G, \cdot)$ un gruppo e sia $N \normal G$. Allora la struttura $(\quot{G}{N}, *)$ (dove l'operazione è definita come in \eqref{eq:op_gruppo_quoziente}) è un gruppo.
+\end{proposition}
+\begin{proof}
+    Mostriamo innanzitutto che l'operazione $*$ è ben definita.
+    Supponiamo che $xN = x^\prime N$ e $yN = y^\prime N$ e mostriamo che $xyN = x^\prime y^\prime N$.
+
+    Siano $n_1, n_2$ tali che \[
+        x^\prime = xn_1, \quad y^\prime = yn_2.    
+    \] Allora vale che \begin{align*}
+        x^\prime y^\prime &= xn_1 yn_2.\\
+        \intertext{Siccome $N \normal G$ segue che $Ny = yN$, ovvero che esiste un $n_3 \in N$ tale che $n_1y = yn_3$. Dunque}
+        &= xy n_3n_2 \tag{$N$ è chiuso rispetto a $\cdot$}
+        &\in xyN.
+    \end{align*}
+    Per simmetria dunque $xyN = x^\prime y^\prime N$.
+
+    Mostriamo ora che valgono gli assiomi di gruppo.
+\end{proof}
+
+\begin{proposition}\label{prop:kernel_proiezione}
+    Sia $(G, \cdot)$ un gruppo e sia $N \normal G$. Allora la mappa \begin{align}
+        \begin{split}
+            \pi_N : G &\to \quot{G}{N}\\
+            x &\mapsto xN
+        \end{split}
+    \end{align}
+    è un omomorfismo di gruppi e $\ker \pi_N = N$.
+\end{proposition}
+
+\begin{corollary}
+    I sottogruppi normali di $G$ sono tutti e solo i nuclei degli omomorfismi definiti su $G$.
+\end{corollary}
+\begin{proof}
+    Infatti se $N \normal G$ allora per la \autoref{prop:kernel_proiezione} segue che $N = \ker \pi_N$; se $N = \ker \phi$ per la \autoref{prop:rel_kernel_sgr_normali} $N$ è normale.
+\end{proof}

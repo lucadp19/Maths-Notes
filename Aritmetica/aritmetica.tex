@@ -26,6 +26,7 @@
     
     \usepackage{thmtools}
     \usepackage[framemethod=TikZ]{mdframed}
+    \usepackage{tikz-cd}
     \usepackage{hyperref} % penultimo package da caricare!
     \usepackage{cleveref} % ultimo package da caricare!
 
@@ -170,7 +171,8 @@
 \newcommand{\ndivides}{\not\mid} % non divide esattamente
 \newcommand{\congr}{\equiv} % congruo 
 \newcommand{\ncongr}{\not\congr} % non congruo
-\newcommand{\isomorph}{\cong}
+% \newcommand{\isomorph}{\cong}
+\newcommand{\isomorph}{\simeq}
 \newcommand{\normal}{\trianglelefteqslant}
 \newcommand{\grindex}[2]{\braces*{#1\;:\;#2}}
 
@@ -188,6 +190,9 @@
 \newcommand{\compl}[1]{#1^C}
 
 \newcommand{\Mat}[2]{\operatornamewithlimits{Mat}_{#1 \times #1}\!(#2)}
+\newcommand{\Hom}[2]{\operatorname{Hom}\left(#1, #2\right)}
+\newcommand{\Aut}[1]{\operatorname{Aut}\left(#1\right)}
+\DeclareMathOperator{\id}{id}
 
 \NewDocumentCommand{\eqclass}{sm}{
     \IfBooleanTF{#1}{
@@ -197,9 +202,11 @@
     }
 }
 \newcommand{\quot}[2]{{#1}/_{#2}}
+% \newcommand{\quot}[2]{\faktor{#1}{#2}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Zmod}[1]{\quot{\Z}{#1\Z}}
+\newcommand{\Zmod}[1]{\Z/_{#1\Z}}
+% \newcommand{\Zmod}[1]{\quot{\Z}{#1\Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
@@ -220,23 +227,24 @@
 \tableofcontents
 
 % \include{chapter_1}
-\input{relations}
-\input{naturals}
-\input{divisibility}
-\input{diophantine}
-\input{primes}
+\input{Integers/relations}
+\input{Integers/naturals}
+\input{Integers/divisibility}
+\input{Integers/diophantine}
+\input{Integers/primes}
 
 % CAPITOLO - CONGRUENZE
-\input{congruences}
+\input{Integers/congruences}
 
 % CAPITOLO - GRUPPI
-\input{groups}
-\input{subgroups}
-\input{cyclic_groups}
-\input{homo_groups}
-\input{cosets}
+\input{Groups/groups}
+\input{Groups/subgroups}
+\input{Groups/cyclic_groups}
+\input{Groups/homo_groups}
+\input{Groups/cosets}
+\input{Groups/iso_theorems}
 
-\input{rings}
-\input{polynomials}
+\input{Rings/rings}
+\input{Rings/polynomials}
 
 \end{document}

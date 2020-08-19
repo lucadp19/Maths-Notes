@@ -88,3 +88,17 @@ L'insieme dei rappresentati più naturale per la relazione di congruenza modulo 
         \Zmod n \deq \set{[0]_n, [1]_n, \dots, [n-1]_n} = \set{[a]_n \suchthat a \in \Z}.
     \end{equation}
 \end{definition}
+
+\begin{proposition}
+    Valgono le seguenti proprietà per le congruenze.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Se $a \congr b \Mod n$ e $c \congr d \mod n$ allora vale che \[
+            a+c \congr b + d \Mod{n}, \quad ac \cong bd \Mod n.   
+        \]
+        \item Se $a \congr b \Mod n$ e $a \congr b \Mod m$ allora $a \congr b \Mod{\mcm{n}{m}}$.
+        \item Se $a \congr b \Mod{n}$ allora $\mcd{a}{n} = \mcd{b}{n}$.
+        \item Se $a \congr b \Mod n$ e $d \divides n$ allora $a \congr b \Mod d$.
+        \item Se $ra \congr rb \Mod n$ allora $a \congr b \Mod{\nicefrac{n}{\mcd{n}{r}}}$.
+        \item Se $a \congr b \Mod n$ allora $ka \congr kb \Mod n$ per ogni $k \in \Z$.
+    \end{enumerate}
+\end{proposition}

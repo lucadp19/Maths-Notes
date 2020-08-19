@@ -28,6 +28,16 @@ Diamo dunque la seguente definizione.
     \]
 \end{definition}
 
+\begin{remark}
+    Nel caso di gruppi additivi le classi laterali si scrivono in notazione additiva, ovvero nella forma $x + H$ per $x \in G$, $H \leq G$.
+\end{remark}
+
+\begin{example}
+    Ad esempio le classi laterali di $n\Z \leq \Z$ sono della forma \[
+        a + n\Z \deq \set{a + nk \suchthat k \in \Z}.
+    \] La classe $a + n\Z$ denota tutti i numeri congrui ad $a$ modulo $n$.
+\end{example}
+
 Allo stesso modo possiamo definire un'altra relazione di equivalenza $\sim_R$ tale che \[
     x \sim_R y \iff xy\inv \in H.    
 \] Le classi di equivalenza di questa relazione sono della forma \[
@@ -59,7 +69,7 @@ In breve, il Teorema di Lagrange afferma che per ogni gruppo finito l'ordine di 
 
 \begin{lemma}\label{lem:ord_classilat=ord_sgr}
     Sia $(G, \cdot)$ un gruppo e sia $H$ un suo sottogruppo. Allora per qualsiasi $g \in G$ vale che \[
-        \abs*{gH} = \abs*{H} = \abs*{Hg}.     
+        \abs*{gH} = \abs*{H} = \abs*{Hg}.
     \]
 \end{lemma}
 \begin{proof}
@@ -93,7 +103,7 @@ Dimostriamo ora il Teorema di Lagrange
     Osserviamo che in generale le classi laterali di un sottogruppo del gruppo $G$ non sono sottogruppi di $G$: dato che partizionano il gruppo una sola di esse contiene l'elemento neutro del gruppo.
 \end{remark}
 
-\begin{proposition}
+\begin{proposition}\label{prop:cond_laterale_è_sgrp}
     Sia $(G, \cdot)$ un gruppo, sia $H \leq G$ e sia $g \in G$ qualsiasi. Allora i seguenti fatti sono equivalenti:
     \begin{enumerate}[label={(\roman*)}]
         \item $gH \leq G$,
@@ -271,7 +281,7 @@ Se $H \normal G$ possiamo definire un'operazione su $\quot{G}{H}$: \begin{align}
 La struttura $(\quot{G}{H}, \cdot)$ si definisce \emph{gruppo quoziente}.
 
 \begin{proposition}
-    Sia $(G, \cdot)$ un gruppo e sia $N \normal G$. Allora la struttura $(\quot{G}{N}, *)$ (dove l'operazione è definita come in \eqref{eq:op_gruppo_quoziente}) è un gruppo.
+    Sia $(G, \cdot)$ un gruppo e sia $N \normal G$. Allora la struttura $(\quot{G}{N}, \star)$ (dove l'operazione è definita come in \eqref{eq:op_gruppo_quoziente}) è un gruppo.
 \end{proposition}
 \begin{proof}
     Mostriamo innanzitutto che l'operazione $*$ è ben definita.
@@ -288,7 +298,31 @@ La struttura $(\quot{G}{H}, \cdot)$ si definisce \emph{gruppo quoziente}.
     Per simmetria dunque $xyN = x^\prime y^\prime N$.
 
     Mostriamo ora che valgono gli assiomi di gruppo.
+    \begin{description}
+        \item[Associatività] Siano $xN, yN, zN \in \quot{G}{N}$. Mostriamo che vale la proprietà associativa.
+        \begin{align*}
+            xN \star (yN \star zN) &= xN \star yzN \\
+            &= x(yz)N \tag{ass. in $G$}\\
+            &= (xy)zN \\
+            &= xyN \star zN \\
+            &= (xN \star yN) \star zN.
+        \end{align*}
+        \item[Elemento neutro] L'elemento neutro del gruppo è $e_GN$. Infatti per qualsiasi $xN \in \quot{G}{N}$ \begin{align*}
+            &e_GN \star xN = e_GxN = xN.\\
+            &xN \star e_GN = xe_GN = xN.
+        \end{align*}
+        \item[Invertibilità] Sia $xN \in \quot{G}{N}$. Mostriamo che il suo inverso rispetto a $\star$ è $x\inv N$.
+        \begin{align*}
+            &xN \star x\inv N = xx\inv N = e_GN.\\
+            &x\inv N \star xN = x\inv xN = e_GN.
+        \end{align*} 
+    \end{description}
+    Dunque $(\quot{G}{N}, \star)$ è un gruppo.
 \end{proof}
+
+\begin{example}
+    Se consideriamo il gruppo $\Z$ e il suo sottogruppo normale $n\Z$ il gruppo quoziente $\Zmod{n}$ è esattamente il gruppo delle classi resto modulo $n$.
+\end{example}
 
 \begin{proposition}\label{prop:kernel_proiezione}
     Sia $(G, \cdot)$ un gruppo e sia $N \normal G$. Allora la mappa \begin{align}
@@ -299,10 +333,22 @@ La struttura $(\quot{G}{H}, \cdot)$ si definisce \emph{gruppo quoziente}.
     \end{align}
     è un omomorfismo di gruppi e $\ker \pi_N = N$.
 \end{proposition}
+\begin{proof}
+    Mostriamo innanzitutto che $\pi_N$ è un omomorfismo. \begin{align*}
+        \pi_N(xy) &= xyN \\
+        &= xN \cdot yN\\
+        &= \pi_N(x) \cdot \pi_N(y).
+    \end{align*}
+    Inoltre per definizione \begin{align*}
+        \ker \pi_N &= \set{x \in G \suchthat \pi_N(x) = xN = N} \\
+        &= \set{x \in G \suchthat x \in N}\\
+        &= N,  
+    \end{align*} dove il secondo segno di uguaglianza viene dalla \autoref{prop:cond_laterale_è_sgrp} (in particolare per l'equivalenza tra i punti (ii) e (iii)).
+\end{proof}
 
 \begin{corollary}
     I sottogruppi normali di $G$ sono tutti e solo i nuclei degli omomorfismi definiti su $G$.
 \end{corollary}
 \begin{proof}
-    Infatti se $N \normal G$ allora per la \autoref{prop:kernel_proiezione} segue che $N = \ker \pi_N$; se $N = \ker \phi$ per la \autoref{prop:rel_kernel_sgr_normali} $N$ è normale.
+    Infatti se $N \normal G$ allora per la \autoref{prop:kernel_proiezione} segue che $N = \ker \pi_N$; invece dato un omomorfismo di gruppi $\phi : G \to G^\prime$ vale che $\ker \phi$ è normale per la \autoref{prop:rel_kernel_sgr_normali}.
 \end{proof}

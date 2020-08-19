@@ -3,9 +3,10 @@
 \begin{definition}[Omomorfismo tra gruppi] \label{def:omo_gruppi}
     Siano $(G_1, *)$, $(G_2, \star)$ due gruppi. Allora la funzione \[
         f : G_1 \to G_2    
-    \] si dice \emph{omomorfismo di gruppi} se per ogni $x, y \in G_1$ vale che \[
+    \] si dice \emph{omomorfismo di gruppi} se per ogni $x, y \in G_1$ vale che \begin{equation}
         f(x * y) = f(x) \star f(y).
-    \]
+    \end{equation}
+    L'insieme di tutti gli omomorfismi da $G_1$ a $G_2$ si indica con $\Hom{G_1}{G_2}$.
 \end{definition}
 
 \begin{example}
@@ -363,6 +364,54 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
     \end{enumerate}
 \end{proof}
 
+\begin{definition}[Automorfismo]
+    Sia $(G, \cdot)$ un gruppo e sia $\phi : G \to G$ un isomorfismo. Allora $\phi$ viene detto \emph{automorfismo} e l'insieme di tutti gli automorfismi di un gruppo $G$ si denota con $\Aut{G}$.
+\end{definition}
+
+\begin{proposition}[Gruppo degli automorfismi]
+    Sia $(G, \cdot)$ un gruppo. Allora la struttura $(\Aut{G}, \circ)$ (dove $\circ$ è la composizione di funzioni) è un gruppo.
+\end{proposition}
+\begin{proof}
+    Mostriamo che valgono gli assiomi di gruppo.
+    \begin{description}
+        \item[Chiusura] La composizione di funzioni è un'operazione su $\Aut{G}$ in quanto la composizione di due omomorfismi è un omomorfismo (per la \autoref{prop:comp_omo}) e la composizione di due funzioni bigettive è ancora bigettiva, dunque la composizione di due automorfismi è ancora un automorfismo.
+        \item[Associatività] La composizione di funzioni è associativa.
+        \item[Elemento neutro] L'elemento neutro di $\Aut{G}$ è \begin{align*}
+            \id_G : G &\to G \\
+            g &\mapsto g.
+        \end{align*}  Infatti $\id_G$ è un automorfismo di $G$ e inoltre per ogni $f \in \Aut{G}$ vale che\[
+            \id_G \circ f = f = f \circ \id_G.
+        \]
+        \item[Invertibilità] Le funzioni in $\Aut{G}$ sono bigettive, dunque invertibili, e le loro inverse sono ancora automorfismi.
+    \end{description}
+    Dunque $(\Aut{G}, \circ)$ è un gruppo.
+\end{proof}
+
+\subsection{Omomorfismi di gruppi ciclici}
+
+Studiamo ora gli insiemi $\Hom{G_1}{G_2}$ dove $G_1$ e $G_2$ sono gruppi ciclici. Per il \autoref{th:iso_ciclico} è sufficiente studiare gli omomorfismi tra i gruppi $\Z$ e $\Zmod{n}$ (con $n \in \N$ qualunque).
+
+\paragraph{Omomorfismi con dominio $\Z$} Consideriamo l'insieme $\Hom{\Z}{G}$ dove $(G, \cdot)$ è un gruppo ciclico qualunque (quindi può essere isomorfo a $\Z$ oppure a $\Zmod n$ per qualche $n \in \N$). 
+
+Sia $g \deq f(1)$. Allora possiamo mostrare per induzione che $f(n) = g^n$ per ogni $n \geq 0$. Per i negativi siccome $f$ è un omomorfismo vale che \[
+    f(-n) = f(n)\inv = (g^n)\inv = g^{-n},    
+\] da cui segue che gli omomorfismi $\Z \to G$ sono tutti della forma \[
+    f(k) = g^k \quad \forall k \in \Z
+\] e sono tutti identificati univocamente dal valore di $f(1)$.
+
+Viceversa, per ogni $g \in G$ esiste un omomorfismo \begin{align*}
+    \phi_g : \Z &\to G \\
+    k &\mapsto g^k.
+\end{align*} Questa funzione è un omomorfismo poiché \[
+    \phi_g(k_1 + k_2) = g^{k_1 + k_2} = g^{k_1}g^{k_2} = \phi_g(k_1)\phi_g(k_2).
+\]
+
+Vi è dunque una bigezione tra $\Hom{\Z}{G}$ e $G$, data dalle due mappe \begin{align*}
+    \Hom{\Z}{G} &\leftrightarrow G\\
+    f &\mapsto f(1)\\
+    \phi_g &\mapsfrom g.
+\end{align*}
+
 \subsection{Prodotto diretto di gruppi}
 
 \begin{definition}
@@ -431,6 +480,7 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
 
 \begin{proposition}
     [Ordine nel prodotto diretto]
+    \label{prop:ord_prod_diretto}
     Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $(G_1 \times G_2, \cdot)$ il loro prodotto diretto. Sia $(x, y) \in G_1 \times G_2$. Allora vale che \[
         \ord[G_1 \times G_2]{(x, y)} = \mcm{\ord[G_1]{x}}{\ord[G_2]{y}}.    
     \]
@@ -459,3 +509,110 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
         \Zmod{nm} \isomorph \Zmod{n}\times \Zmod{m} \iff \mcd{n}{m} = 1.
     \]
 \end{theorem}
+\begin{proof}
+    Sia $G = \Zmod n \times \Zmod m$. Siccome $\abs*{G} = nm$ in virtù del \autoref{th:iso_ciclico} per mostrare che $G \isomorph \Zmod{nm}$ è sufficiente mostrare che $G$ è ciclico.
+
+    Un gruppo è ciclico se e solo se esiste $g \in G$ tale che $\ord{g} = \abs G$: infatti per ogni $g \in G$ vale che $\cycl*{g} \leq G$, dunque se i due insiemi hanno anche la stessa cardinalità devono essere uguali.
+
+    Siano $\eqclass x \in \Zmod n, \eqclass y \in \Zmod m$ tali che $g = (\eqclass x, \eqclass y)$. Per la \autoref{prop:ord_prod_diretto} vale che \[
+        \ord{g} = \ord{(\eqclass x, \eqclass y)} = \mcm{\ord{\eqclass x}}{\ord{\eqclass y}}.    
+    \]
+    D'altro canto però $\ord{\eqclass x} = \dfrac{n}{\mcd{n}{x}}$, $\ord{\eqclass y} = \dfrac{m}{\mcd{m}{y}}$ (dove $x, y$ sono rappresentanti qualsiasi delle classi $\eqclass x$, $\eqclass y$ rispettivamente), dunque \[
+        \ord g = \mcm{\dfrac{n}{\mcd{n}{x}}}{\dfrac{m}{\mcd{m}{y}}} \leq \mcm{n}{m}. 
+    \]
+
+    Possiamo dunque distinguere i due casi: \begin{enumerate}
+        \item se $\mcd{n}{m} = d > 1$ allora per la PROPOSIZIONE DA INSERIRE per ogni $g \in G$ vale che \[
+            \ord g \leq \mcm{n}{m} = \frac{mn}{d} < mn    
+        \] da cui segue che $G$ non può essere ciclico;
+        \item se $\mcd{n}{m} = 1$ allora per ogni $g \in G$ vale che \[
+            \ord g \leq \mcm{n}{m} = mn.    
+        \] In particolare se consideriamo $g = (\eqclass 1, \eqclass 1)$ si ha che \[
+            \ord(\eqclass 1, \eqclass 1) = \mcm{\frac{n}{\mcd{n}{1}}}{\frac{m}{\mcd{m}{1}}} = \mcm{m}{n} = mn  
+        \], dunque $G = \cycl*{(\eqclass 1, \eqclass 1)}$, da cui segue che \[
+            G \isomorph \Zmod{nm}    
+        \] per il \autoref{th:iso_ciclico}. \qedhere
+    \end{enumerate} 
+\end{proof}
+
+\begin{remark}
+    Per il Teorema Cinese del Resto (II Forma) sappiamo che la funzione 
+    \begin{align} \label{eq:iso_Znm->Zn_x_Zm}
+        \begin{split}
+            \phi : \Zmod{nm} &\to \Zmod n \times \Zmod m\\
+            [a]_{nm} &\mapsto ([a]_n, [a]_m)
+        \end{split}
+    \end{align} è bigettiva. Inoltre \begin{align*}
+        \phi([a]_{nm} + [b]_{nm}) &= \phi([a+b]_{nm})\\
+        &= ([a+b]_n, [a+b]_m)\\
+        &= ([a]_n + [b]_n, [a]_m + [b]_m)\\
+        &= ([a]_n, [a]_m) + ([b]_n, [b]_m)\\
+        &= \phi([a]_{nm}) + \phi([b]_{nm}),
+    \end{align*} ovvero $\phi$ è un omomorfismo di gruppi. Dunque $\phi$ è un isomorfismo di gruppi e \[
+        \Zmod{nm} \isomorph \Zmod{n}\times \Zmod{m}.  
+    \]
+\end{remark}
+
+\begin{corollary}
+    [Isomorfismo tra i gruppi degli invertibili] Siano $n, m \in \Z$ entrambi non nulli. Allora se $\mcd{n}{m} = 1$ segue che \begin{equation}
+        \invertible{\Zmod{nm}} \isomorph \invertible{\Zmod{n}} \times \invertible{\Zmod{m}}.
+    \end{equation}
+\end{corollary}
+\begin{proof}
+    Consideriamo la funzione \begin{align*}
+        \phi^* : \invertible{\Zmod{nm}} &\to \invertible{\Zmod{n}} \times \invertible{\Zmod{m}}\\
+        [a]_{nm} &\mapsto [a]_n \times [a]_m.
+    \end{align*}
+    Essa è ben definita: infatti se $[a]_{nm} \in \invertible{\Zmod{nm}}$ significa che $\mcd{a}{mn} = 1$. Siccome per ipotesi $\mcd{m}{n} = 1$ per la PROPOSIZIONE NON SCRITTA segue che $\mcd{m}{n} = \mcd{a}{m} = 1$, ovvero $[a]_n \in \invertible{\Zmod n}$ e $[a]_m \in \invertible{\Zmod m}$.
+
+    Inoltre questa funzione è una restrizione della $\phi$ definita in \eqref{eq:iso_Znm->Zn_x_Zm}, dunque è iniettiva. Inoltre \[
+        \abs*{\Zmod{nm}} = \phi(nm) = \phi(n)\phi(m) = \abs*{\Zmod{n} \times \Zmod{m}}    
+    \] siccome $\mcd{n}{m} = 1$, dunque $\phi$ è anche surgettiva e quindi è bigettiva.
+
+    Tramite passaggi analoghi a quelli visti nell'osservazione precedente si dimostra che $\phi^*$ è un omomorfismo, dunque essendo bigettiva è anche un isomorfismo di gruppi, da cui segue la tesi.
+\end{proof}
+
+\subsection{Prodotto di sottogruppi}
+
+\begin{definition}
+    Sia $(G, \cdot)$ un gruppo e siano $H,K \leq G$. Allora si definisce il \emph{prodotto tra $H$ e $K$} come \begin{equation}
+        HK \deq \set{h\cdot k \suchthat h \in H, k \in K}.
+    \end{equation} Analogamente si definisce il \emph{prodotto tra $K$ e $H$} come \begin{equation}
+        KH \deq \set{k \cdot h \suchthat k \in K, h \in H}.
+    \end{equation}
+\end{definition}
+
+\begin{remark}
+    Se il gruppo è in notazione additiva il prodotto di sottogruppi diventa somma di sottogruppi e si indica $H + K$ (o $K + H$).
+\end{remark}
+
+\begin{proposition}
+    [Condizione per cui il prodotto tra sottogruppi è un sottogruppo] Sia $(G, \cdot)$ un gruppo e siano $H,K \leq G$.
+
+    Allora l'insieme $HK$ è un sottogruppo di $G$ se e solo se $HK = KH$.
+\end{proposition}
+\begin{proof}
+    Dimostriamo entrambi i versi dell'implicazione.
+    \begin{description}
+        \item[($\impliedby$)] Siccome entrambi gli insiemi contengono $e_G$, per la \autoref{prop:cond_sgr} mi basta mostrare che $HK$ è chiuso rispetto all'operazione $\cdot$ e che contiene l'inverso di ogni suo elemento. 
+        \begin{description}
+            \item[Chiusura] Siano $h_1k_1, h_2k_2 \in HK$. Voglio mostrare che $(h_1k_1) \cdot (h_2k_2) \in HK$. Per associatività, posso scriverlo come \[
+                h_1 \cdot (k_1h_2) \cdot k_2.    
+            \] Siccome $KH = HK$ esisteranno $h_3 \in H, k_3 \in K$ tali che $k_1h_2 = h_3k_3$. Da ciò segue che \[
+                h_1 \cdot (k_1h_2) \cdot k_2 = h_1h_3k_3k_2 \in HK.
+            \]
+            \item[Invertibilità] Sia $hk \in HK$ e mostriamo che anche il suo inverso $(hk)\inv = k\inv h\inv$ è in $HK$. Siccome $k\inv h\inv \in KH$ e $KH = HK$, segue la tesi.
+        \end{description}
+        \item[($\implies$)] Dimostriamo che $HK = KH$ mostrando che $HK \subseteq KH$ e $KH \subseteq HK$.
+        \begin{description}
+            \item[($KH \subseteq HK$)] Banalmente $H \subseteq HK$ (infatti $H \ni h = he_G \in HK$) e $K \subseteq HK$. Ma allora per ogni $h, k \in HK$ segue che $k \cdot h \in HK$ (in quanto $HK \leq G$) dunque $KH \subseteq HK$.
+            \item[($HK \subseteq KH$)] Consideriamo la funzione \begin{align*}
+                f : HK &\to KH\\
+                x &\mapsto x\inv.
+            \end{align*} Questa funzione è ben definita, in quanto se $x \in HK$, ovvero se $x = hk$ per qualche $h \in H, k \in K$ allora \[
+                x\inv = (hk)\inv = k\inv h\inv \in KH    
+            \] poiché $k\inv \in K$ e $h\inv \in H$. Inoltre questa funzione è ovviamente iniettiva, da cui segue che $HK \subseteq KH$.
+        \end{description}
+    \end{description}
+    Dunque $HK$ è sottogruppo se e solo se $HK = KH$.
+\end{proof}

@@ -1,0 +1,111 @@
+\section{Teoremi di Omomorfismo}
+
+\begin{theorem}
+    [Primo Teorema degli Omomorfismi] \label{th:first_iso}
+    Siano $(G, \cdot)$, $(G^\prime, *)$ due gruppi e sia $f : G \to G^\prime$ un omomorfismo di gruppi. Sia inoltre $N \normal G$, $N \subseteq \ker f$.
+
+    Allora esiste un unico omomorfismo $\phi : \quot{G}{N} \to G^\prime$ per cui il seguente diagramma commuta:
+    \begin{equation}
+        \begin{tikzcd}
+            G \arrow[d, swap, "\pi_N"] \arrow[r, "f"] & G^\prime \\
+            \quot{G}{N} \arrow[ur, swap, "\phi"] &
+        \end{tikzcd}
+    \end{equation}
+    Inoltre vale che \begin{align*}
+        \Imm{f} = \Imm{\phi}, \quad \ker \phi = \quot{\ker f}{N}.
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    Notiamo che se $\phi$ esiste allora è necessariamente unica. Infatti se $\phi$ rende il diagramma commutativo significa che $f = \phi \circ \pi_N$, da cui segue che per ogni $x \in G$ \begin{align*}
+        f(x) &= (\phi \circ \pi_N)(x) \\
+        &= \phi(\pi_N(x))\\
+        &= \phi(xN).
+    \end{align*}
+    Questa equazione assegna a $\phi$ un valore per ogni elemento del dominio $\quot{G}{N}$, da cui segue l'unicità.
+
+    Mostriamo dunque che la funzione \begin{align*}
+        \phi : \quot{G}{N} &\to G^\prime \\
+        gH &\mapsto f(g)
+    \end{align*} è ben definita ed è un omomorfismo di gruppi. Inoltre verifichiamo le due proprietà dell'immagine e del nucleo.
+    \begin{description}
+        \item[Buona definizione] Siano $x, y$ tali che $xN = yN$. Dato che esse rappresentano classi di equivalenza, ciò significa che $x \in yN$. 
+        
+        Sia dunque $n \in N$ tale che $x = yn$. Allora vale che \begin{align*}
+            f(x) &= f(yn) \tag{$f$ è omo.}\\
+            &= f(y) * f(n) \tag{$N \subseteq \ker f$}\\
+            &= f(y) * e^\prime \\
+            &= f(y).
+        \end{align*} Dunque segue che \begin{align*}
+            \phi(xN) = f(x) = f(y) = \phi(yN),
+        \end{align*} ovvero $\phi$ è ben definita.
+        \item[Omomorfismo] Siano $xN, yN \in \quot{G}{N}$ e mostriamo che \[
+            \phi(xN \cdot yN) = \phi(xN) * \phi(yN).    
+        \] Infatti vale che \begin{align*}
+            \phi(xN \cdot yN) &= \phi(xyN)\\
+            &= f(xy) \tag{$f$ è omo.}\\
+            &= f(x) * f(y)\\
+            &= \phi(xN) * \phi(yN).
+        \end{align*}
+        \item[Proprietà delle immagini] Per definizione \begin{align*}
+            \Imm \phi &= \set{\phi(xN) \suchthat xN \in \quot{G}{N}}\\
+            &= \set{f(x) \suchthat xN \in \quot{G}{N}}.
+            \intertext{Tuttavia, come abbiamo verificato nella parte relativa alla buona definizione di $\phi$, se $xN = yN$ allora $f(x) = f(y)$, dunque vale che}
+            \Imm \phi &= \set{f(x) \suchthat x \in G}\\
+            &= \Imm f.
+        \end{align*}
+        \item[Proprietà dei nuclei] Per definizione \begin{align*}
+            \ker \phi &= \set{xN \in \quot{G}{N} \suchthat \phi(xN) = e^\prime}\\
+            &= \set{xN \in \quot{G}{N} \suchthat f(x) = e^\prime}\\
+            &= \set{xN \in \quot{G}{N} \suchthat x \in \ker f}\\
+            &= \quot{\ker f}{N}. \tag*{\qedhere}
+        \end{align*}
+    \end{description}
+\end{proof}
+
+Nel caso particolare in cui $N = \ker f$ abbiamo che $\phi$ è iniettiva: infatti $\phi(x\ker f) = e^\prime$ se e solo se $f(x) = e^\prime$, ovvero se e solo se $x \in \ker f$. Dunque il nucleo di $\phi$ è $\ker f$, che è l'elemento neutro del gruppo $\quot{G}{\ker f}$, da cui segue che $\phi$ è iniettiva. 
+
+Da ciò segue che ogni omomorfismo è fattorizzabile in un omomorfismo surgettivo (ovvero $\pi_{\ker f}$) e uno iniettivo $\phi$, come mostra il seguente diagramma commutativo.
+\begin{equation}
+    \begin{tikzcd}
+        G \arrow[d, swap, "\pi_{\ker f}"] \arrow[r, "f"] & G^\prime \\
+        \quot{G}{\ker f} \arrow[ur, hook, swap, "\phi"] &
+    \end{tikzcd}
+\end{equation}
+
+\begin{theorem}
+    [Secondo Teorema degli Omomorfismi]
+    Sia $(G, \cdot)$ un gruppo e siano $H, K \normal G$, con $H \subseteq K$. Allora \begin{equation}
+        \nicefrac{\quot{G}{H}}{\quot{K}{H}} \isomorph \quot{G}{K}.
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    Consideriamo le proiezioni canoniche $\pi_H$ e $\pi_K$. Siccome $H \subseteq K = \ker \pi_K$ possiamo applicare il \nameref{th:first_iso} alle funzioni $\pi_K$ e $\pi_H$. Dunque esiste un'unica funzione \begin{align*}
+        \phi : \quot{G}{H} &\to \quot{G}{K}\\
+        gH &\mapsto gK
+    \end{align*} che fa commutare il seguente diagramma:
+    \begin{equation*}
+        \begin{tikzcd}
+            G \arrow[d, swap, "\pi_{H}"] \arrow[r, "\pi_K"] & \quot{G}{K} \\
+            \quot{G}{H} \arrow[ur, two heads, swap, "\phi"] &
+        \end{tikzcd}
+    \end{equation*}
+    Tale funzione è anche surgettiva, in quanto per il \nameref{th:first_iso} sappiamo che $\Imm \phi = \Imm \pi_K$, e $\pi_K$ è surgettiva. Inoltre \[
+        \ker \phi = \quot{\ker \pi_K}{H} = \quot{K}{H}.    
+    \]
+
+    Consideriamo ora i gruppi $\quot{G}{H}$ e $\quot{G}{K}$ e il sottogruppo $\nicefrac{\quot{G}{H}}{\ker \phi}$, che corrisponde a $\nicefrac{\quot{G}{H}}{\quot{K}{H}}$. Per il \nameref{th:first_iso} esiste un unico omomorfismo \begin{align*}
+        \tilde{\phi} : \nicefrac{\quot{G}{H}}{\quot{K}{H}} &\to \quot{G}{K}
+    \end{align*} che fa commutare il seguente diagramma:
+    \begin{equation*}
+        \begin{tikzcd}
+            \quot{G}{H} \arrow[r, two heads, "\phi"] \arrow[d, swap, "\pi_{\quot{K}{H}}"] & \quot{G}{K} \\
+            \nicefrac{\quot{G}{H}}{\quot{K}{H}} \arrow[ur, hook, two heads, swap, "\tilde{\phi}"] &
+        \end{tikzcd}
+    \end{equation*}
+
+    $\tilde{\phi}$ è un isomorfismo di gruppi: infatti essendo $\phi$ surgettivo anche $\tilde{\phi}$ lo è; inoltre la proiezione $\pi_{\quot{K}{H}}$ porta il gruppo $\quot{G}{H}$ nel quoziente modulo $\ker \phi = \quot{K}{H}$, dunque $\tilde{\phi}$ è iniettiva.
+
+    Segue quindi che \[
+        \nicefrac{\quot{G}{H}}{\quot{K}{H}} \isomorph \quot{G}{K}. \qedhere 
+    \]
+\end{proof}

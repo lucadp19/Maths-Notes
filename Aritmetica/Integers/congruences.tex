@@ -89,7 +89,7 @@ L'insieme dei rappresentati più naturale per la relazione di congruenza modulo 
     \end{equation}
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:caratt_congr}
     Valgono le seguenti proprietà per le congruenze.
     \begin{enumerate}[label={(\arabic*)}]
         \item Se $a \congr b \Mod n$ e $c \congr d \mod n$ allora vale che \[
@@ -102,3 +102,56 @@ L'insieme dei rappresentati più naturale per la relazione di congruenza modulo 
         \item Se $a \congr b \Mod n$ allora $ka \congr kb \Mod n$ per ogni $k \in \Z$.
     \end{enumerate}
 \end{proposition}
+\begin{proof}
+    Dimostriamo singolarmente le varie proprietà.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Per ipotesi $a - b \divides n$, $c - d \divides n$, ovvero esistono $k, h \in \Z$ tali che \[
+            a - b = nk, \quad c - d = nh,    
+        \] da cui segue che 
+        \begin{alignat*}{1}
+            (a + c) - (b + d) &= (a - b) + (c - d) \\
+            &= nk + nh = n(k+h) \\
+            \implies a+c &\congr b+d \Mod n.\\
+            ac &= (b + nk)(d +nh)\\
+             &= bd + n(kd + hb + nkh) \\
+            \implies &ac \congr bd \Mod n.
+        \end{alignat*}
+        \item Per ipotesi $n \divides a-b$, $m\divides a - b$, dunque per definizione di minimo comune multiplo \[
+            \mcm{a}{b} \divides a - b    
+        \] ovvero $a \congr b \Mod{\mcm{a}{b}}$.
+        \item Per la \autoref{prop:caratt_congr} l'ipotesi equivale a dire che $a, b$ hanno lo stesso resto $r$ nella divisione euclidea per $n$, ovvero \[
+            a = qn + r, \quad b = q^\prime n + r    
+        \] per qualche $q, q^\prime \in \Z$.
+
+        Allora segue che \begin{align*}
+            \mcd{a}{n} = \mcd{qn + r}{n} \tag{per il \autoref{lem:mcd_diff}}\\
+            = \mcd{r}{n} \tag{per il \autoref{lem:mcd_diff}}\\
+            = \mcd{q^\prime n + r}{n}\\ 
+            = \mcd{b}{n}.
+        \end{align*}
+        \item Per ipotesi $n \divides a - b$, ma $d \divides n$ dunque per transitività $d \divides a - b$, ovvero $a \congr b \Mod d$.
+        \item Per ipotesi $n \divides r(a - b)$, ovvero $r(a-b) = kn$ per qualche $k \in \Z$. Dividendo entrambi i membri per $\mcd{n}{r}$ (che ovviamente divide sia il membro sinistro che il membro destro) otteniamo \[
+            \frac{r}{\mcd{n}{r}}(a-b) = \frac{n}{\mcd{n}{r}}k,   
+        \] ovvero \[
+            \frac{n}{\mcd{n}{r}} \divides \frac{r}{\mcd{n}{r}}(a-b).
+        \] Inoltre per LEMMA DA INSERIRE sappiamo che \[
+            \mcd{\frac{r}{\mcd{n}{r}}}{\frac{n}{\mcd{n}{r}}} = 1,    
+        \] dunque per LEMMA DA INSERIRE segue che \[
+            \frac{n}{\mcd{n}{r}} \divides a - b,    
+        \] da cui segue la tesi.
+        \item Per la \autoref{prop:caratt_congr} l'ipotesi equivale a dire $a = b + nh$ per qualche $h \in \Z$. Moltiplicando tutto per $k$ segue che $ka = kb + n(kh)$, ovvero $ka \congr kb \Mod n$.
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    Ogni numero è congruo alla somma delle sue cifre modulo $3$.
+
+    Infatti se $n = a_k \dots a_1a_0$ in notazione posizionale, ovvero \[
+        n = a_k\cdot 10^k + \dots + a_1\cdot 10 + a_0,   
+    \] e sapendo che $10 \congr 1 \Mod 3$, segue che \begin{align*}
+        n &\congr a_k\cdot 10^k + \dots + a_1\cdot 10 + a_0 \Mod{3}\\
+        &\congr a_k \cdot 1^k + \dots + a_1 \cdot 1^1 + a_0\\
+        &\congr a_k + \dots + a_1 + a_0.
+    \end{align*}
+\end{example}
+

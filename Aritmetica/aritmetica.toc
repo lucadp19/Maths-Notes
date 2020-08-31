@@ -11,30 +11,32 @@
 \contentsline {section}{\numberline {1.6}{Numeri primi}}{13}{section.1.6}%
 \contentsline {chapter}{\numberline {2}{Congruenze tra interi}}{15}{chapter.2}%
 \contentsline {section}{\numberline {2.1}{Definizione di congruenza}}{15}{section.2.1}%
-\contentsline {chapter}{\numberline {3}{Gruppi}}{18}{chapter.3}%
-\contentsline {section}{\numberline {3.1}{Introduzione ai gruppi}}{18}{section.3.1}%
-\contentsline {section}{\numberline {3.2}{Sottogruppi}}{21}{section.3.2}%
-\contentsline {paragraph}{{$Z(G)$ è un sottogruppo}}{22}{paragraph*.36}%
-\contentsline {paragraph}{{$Z(G) = G$ se e solo se $G$ abeliano}}{23}{paragraph*.55}%
-\contentsline {paragraph}{{Parte 1.}}{24}{paragraph*.56}%
-\contentsline {paragraph}{{Parte 2.}}{24}{paragraph*.57}%
-\contentsline {section}{\numberline {3.3}{Generatori e gruppi ciclici}}{24}{section.3.3}%
-\contentsline {paragraph}{{Parte 1.}}{26}{paragraph*.58}%
-\contentsline {paragraph}{{Parte 2.}}{27}{paragraph*.59}%
-\contentsline {subsection}{\numberline {3.3.1}{Il gruppo ciclico $\PazoBB {Z}/_{n\PazoBB {Z}}$}}{28}{subsection.3.3.1}%
-\contentsline {section}{\numberline {3.4}{Omomorfismi di gruppi}}{31}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}{Isomorfismi}}{35}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}{Omomorfismi di gruppi ciclici}}{38}{subsection.3.4.2}%
-\contentsline {paragraph}{{Omomorfismi con dominio $\PazoBB {Z}$}}{38}{paragraph*.82}%
-\contentsline {subsection}{\numberline {3.4.3}{Prodotto diretto di gruppi}}{39}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}{Prodotto di sottogruppi}}{42}{subsection.3.4.4}%
-\contentsline {section}{\numberline {3.5}{Classi laterali e gruppo quoziente}}{42}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}{Sottogruppi normali e gruppo quoziente}}{46}{subsection.3.5.1}%
-\contentsline {section}{\numberline {3.6}{Teoremi di Omomorfismo}}{49}{section.3.6}%
-\contentsline {chapter}{\numberline {4}{Anelli e campi}}{52}{chapter.4}%
-\contentsline {section}{\numberline {4.1}{Anelli}}{52}{section.4.1}%
-\contentsline {paragraph}{{$\varphi _x$ è iniettiva}}{55}{paragraph*.125}%
-\contentsline {paragraph}{{$\varphi _x$ è surgettiva}}{55}{paragraph*.126}%
-\contentsline {section}{\numberline {4.2}{Anello dei polinomi}}{56}{section.4.2}%
-\contentsline {paragraph}{{Grado della somma}}{57}{paragraph*.127}%
-\contentsline {paragraph}{{Grado del prodotto}}{57}{paragraph*.128}%
+\contentsline {chapter}{\numberline {3}{Gruppi}}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}{Introduzione ai gruppi}}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}{Sottogruppi}}{22}{section.3.2}%
+\contentsline {paragraph}{{$Z(G)$ è un sottogruppo}}{23}{paragraph*.40}%
+\contentsline {paragraph}{{$Z(G) = G$ se e solo se $G$ abeliano}}{24}{paragraph*.59}%
+\contentsline {paragraph}{{Parte 1.}}{25}{paragraph*.60}%
+\contentsline {paragraph}{{Parte 2.}}{25}{paragraph*.61}%
+\contentsline {section}{\numberline {3.3}{Generatori e gruppi ciclici}}{25}{section.3.3}%
+\contentsline {paragraph}{{Parte 1.}}{27}{paragraph*.62}%
+\contentsline {paragraph}{{Parte 2.}}{28}{paragraph*.63}%
+\contentsline {subsection}{\numberline {3.3.1}{Il gruppo ciclico $\PazoBB {Z}/_{n\PazoBB {Z}}$}}{29}{subsection.3.3.1}%
+\contentsline {section}{\numberline {3.4}{Omomorfismi di gruppi}}{32}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}{Isomorfismi}}{36}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}{Omomorfismi di gruppi ciclici}}{39}{subsection.3.4.2}%
+\contentsline {paragraph}{{Omomorfismi con dominio $\PazoBB {Z}$}}{39}{paragraph*.86}%
+\contentsline {subsection}{\numberline {3.4.3}{Prodotto diretto di gruppi}}{40}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}{Prodotto di sottogruppi}}{43}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.5}{Classi laterali e gruppo quoziente}}{43}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}{Sottogruppi normali e gruppo quoziente}}{47}{subsection.3.5.1}%
+\contentsline {section}{\numberline {3.6}{Teoremi di Omomorfismo}}{50}{section.3.6}%
+\contentsline {paragraph}{{Iniettività di $\varphi $}}{52}{paragraph*.115}%
+\contentsline {chapter}{\numberline {4}{Anelli e campi}}{55}{chapter.4}%
+\contentsline {section}{\numberline {4.1}{Anelli}}{55}{section.4.1}%
+\contentsline {paragraph}{{$\varphi _x$ è iniettiva}}{58}{paragraph*.130}%
+\contentsline {paragraph}{{$\varphi _x$ è surgettiva}}{58}{paragraph*.131}%
+\contentsline {section}{\numberline {4.2}{Anello dei polinomi}}{59}{section.4.2}%
+\contentsline {paragraph}{{Grado della somma}}{60}{paragraph*.132}%
+\contentsline {paragraph}{{Grado del prodotto}}{60}{paragraph*.133}%
+\contentsline {subsection}{\numberline {4.2.1}{Polinomi a coefficienti in un campo}}{61}{subsection.4.2.1}%

@@ -75,6 +75,7 @@
     bodyfont=\itshape\normalsize,
     headformat={\llap{\smash{\parbox[t]{1.1in}{\centering \NAME\\ \NUMBER}}} \NOTE},
     headpunct={},
+    % qed={$lrcorner$},
     postheadspace=10pt
 ]{thmstyle}
 \declaretheorem[numberwithin=section, style=thmstyle]{principle}
@@ -107,7 +108,7 @@
     bodyfont=\normalfont\normalsize,
     headformat={\llap{\smash{\parbox[t]{1.1in}{\centering \NAME\\ \NUMBER}}} \NOTE},
     headpunct={},
-    % qed={$\triangleright$},
+    % qed={$\lrcorner$},
     postheadspace=10pt
 ]{defstyle}
 \declaretheorem[name=Definizione, sibling=theorem, style=defstyle]{definition}
@@ -116,6 +117,7 @@
     headfont=\scshape,
     notefont=\normalfont, notebraces={ - }{.},
     bodyfont=\normalfont,
+    % qed={$\lrcorner$},
     postheadspace=1em
 ]{exmplstyle}
 \declaretheorem[name=Esempio, sibling=theorem, style=exmplstyle]{example}
@@ -135,6 +137,17 @@
 
 \newcolumntype{z}{r<{{}}}
 \newcolumntype{o}{@{}>{{}}c<{{}}@{}}
+
+% \newenvironment{FuncDef}[1]
+%     {  \begin{split} \begin{align} } 
+%     {  \end{align} \end{split} }
+% \newenvironment{FuncDefN}[1]{
+%     \begin{split*}
+%         \begin{align*}
+%             #1
+%         \end{align*}
+%     \end{split*}
+% }
 
 % Set related symbols
 \newcommand{\set}[1]{\left\{\;#1\;\right\}}
@@ -212,9 +225,10 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\K}{\mathbb{K}}
 
-
+\newcommand{\GG}{\mathcal{G}}
 \newcommand{\HH}{\mathcal{H}}
 \newcommand{\KK}{\mathcal{K}}
+\newcommand{\NN}{\mathcal{N}}
 \renewcommand{\SS}{\mathcal{S}}
 \newcommand{\PP}{\mathcal{P}}
 

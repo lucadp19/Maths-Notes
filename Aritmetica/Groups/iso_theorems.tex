@@ -62,24 +62,71 @@
     \end{description}
 \end{proof}
 
-Nel caso particolare in cui $N = \ker f$ abbiamo che $\phi$ è iniettiva: infatti $\phi(x\ker f) = e^\prime$ se e solo se $f(x) = e^\prime$, ovvero se e solo se $x \in \ker f$. Dunque il nucleo di $\phi$ è $\ker f$, che è l'elemento neutro del gruppo $\quot{G}{\ker f}$, da cui segue che $\phi$ è iniettiva. 
+Nel caso particolare in cui $N = \ker f$ abbiamo che $\phi$ è iniettiva, come ci assicura il seguente corollario.
 
-Da ciò segue che ogni omomorfismo è fattorizzabile in un omomorfismo surgettivo (ovvero $\pi_{\ker f}$) e uno iniettivo $\phi$, come mostra il seguente diagramma commutativo.
+\begin{corollary}
+    Siano $(G, \cdot)$, $(G^\prime, *)$ due gruppi e sia $f : G \to G^\prime$ un omomorfismo di gruppi. 
+    
+    Allora esiste un unico omomorfismo $\phi$ tale che il seguente diagramma commuta:
+    \begin{equation}
+        \begin{tikzcd}
+            G \arrow[d, swap, "\pi_{\ker f}"] \arrow[r, "f"] & G^\prime \\
+            \quot{G}{\ker f} \arrow[ur, hook, swap, "\phi"] &
+        \end{tikzcd}
+    \end{equation}
+
+    In particolare $\phi$ è iniettivo, dunque ogni omomorfismo è fattorizzabile come composizione di un omomorfismo surgettivo e uno iniettivo.
+\end{corollary}
+\begin{proof}
+    Siccome $\ker f \subseteq \ker f$ e $\ker f \normal G$ possiamo applicare il \nameref{th:first_iso}, da cui segue che esiste un unico omomorfismo $\phi$ tale che \[
+        f = \phi \circ \pi_{\ker f}.    
+    \]
+
+    \paragraph{Iniettività di $\phi$} Per definizione di $\phi$ vale che $\phi(x\ker f) = e_{G^\prime}$ se e solo se $f(x) = e_{G^\prime}$, ovvero se e solo se $x \in \ker f$. Dunque il nucleo di $\phi$ è $\ker f$, che è l'elemento neutro del gruppo quoziente $\quot{G}{\ker f}$, da cui segue che $\phi$ è iniettiva. 
+
+    Essendo inoltre $\pi_{\ker f}$ surgettivo segue la tesi.
+\end{proof}
+
+La fattorizzazione definita dal precedente corollario può essere resa ancora più precisa specificando un oggetto intermedio, l'immagine di $f$: l'omomorfismo $f$ viene quindi scomposto nella composizione di un omomorfismo surgettivo (la proiezione canonica modulo il kernel, ovvero $\pi_{\ker f}$), un isomorfismo e infine un omomorfismo iniettivo (l'inclusione canonica $\iota : \Imm f \to G^\prime$, $\iota(g) = g$). 
+
+L'isomorfismo è proprio l'omomorfismo $\phi$ del \nameref{th:first_iso}: infatti per l'osservazione precedente $\phi$ è iniettivo; inoltre restringendo il codominio a $\Imm f$ e sapendo che $\Imm \phi = \Imm f$ segue che $\phi$ è anche surgettivo, rendendolo un isomorfismo.
+
+Il seguente diagramma dunque commuta:
 \begin{equation}
     \begin{tikzcd}
-        G \arrow[d, swap, "\pi_{\ker f}"] \arrow[r, "f"] & G^\prime \\
-        \quot{G}{\ker f} \arrow[ur, hook, swap, "\phi"] &
+        G \arrow[r, swap, two heads, "\pi_{\ker f}"] \arrow[rrr, bend left, "f"] 
+        & \quot{G}{\ker f} \arrow[r, hook, two heads, swap, "\phi"] 
+        & \Imm f \arrow[r, hook, swap, "\iota"] 
+        & G^\prime
     \end{tikzcd}
 \end{equation}
 
+Vale dunque il seguente corollario.
+\begin{corollary}\label{cor:G/ker=Imm}
+    Siano $(G, \cdot)$, $(G^\prime, *)$ due gruppi e sia $f : G \to G^\prime$ un omomorfismo di gruppi. Allora \begin{equation}
+        \quot{G}{\ker f} \isomorph \Imm f.
+    \end{equation}
+\end{corollary}
+% \begin{proof}RIVEDI QUESTA PARTE
+%     Consideriamo il seguente diagramma commutativo (che segue dal \nameref{th:first_iso} applicato all'omomorfismo $f$ e al sottogruppo normale $\ker f \normal G$):
+%     \begin{equation}
+%         \begin{tikzcd}
+%             G \arrow[d, swap, "\pi_{\ker f}"] \arrow[r, "f"] & G^\prime \\
+%             \quot{G}{\ker f} \arrow[ur, hook, two heads, swap, "\phi"] &
+%         \end{tikzcd}
+%     \end{equation}
+    
+%     Per l'osservazione precedente, $\phi$ è iniettivo; per il \nameref{th:first_iso} $\Imm \phi = \Imm f = G^\prime$, dunque $\phi$ è surgettivo. Possiamo quindi concludere che $\phi$ è un isomorfismo di gruppi, da cui la tesi.
+% \end{proof}
+
 \begin{theorem}
-    [Secondo Teorema degli Omomorfismi]
+    [Secondo Teorema degli Omomorfismi] \label{th:second_iso}
     Sia $(G, \cdot)$ un gruppo e siano $H, K \normal G$, con $H \subseteq K$. Allora \begin{equation}
         \nicefrac{\quot{G}{H}}{\quot{K}{H}} \isomorph \quot{G}{K}.
     \end{equation}
 \end{theorem}
 \begin{proof}
-    Consideriamo le proiezioni canoniche $\pi_H$ e $\pi_K$. Siccome $H \subseteq K = \ker \pi_K$ possiamo applicare il \nameref{th:first_iso} alle funzioni $\pi_K$ e $\pi_H$. Dunque esiste un'unica funzione \begin{align*}
+    Consideriamo le proiezioni canoniche $\pi_H$ e $\pi_K$. Siccome $H \subseteq K = \ker \pi_K$ possiamo applicare il \nameref{th:first_iso} all'omomorfismo $\pi_K$ e al sottogruppo normale $H \normal G$ (tramite la proiezione $\pi_H$). Dunque esiste un unico omomorfismo \begin{align*}
         \phi : \quot{G}{H} &\to \quot{G}{K}\\
         gH &\mapsto gK
     \end{align*} che fa commutare il seguente diagramma:
@@ -99,13 +146,83 @@ Da ciò segue che ogni omomorfismo è fattorizzabile in un omomorfismo surgettiv
     \begin{equation*}
         \begin{tikzcd}
             \quot{G}{H} \arrow[r, two heads, "\phi"] \arrow[d, swap, "\pi_{\quot{K}{H}}"] & \quot{G}{K} \\
-            \nicefrac{\quot{G}{H}}{\quot{K}{H}} \arrow[ur, hook, two heads, swap, "\tilde{\phi}"] &
+            \nicefrac{\quot{G}{H}}{\quot{K}{H}} \arrow[ur, hook, two heads, swap, "\widetilde{\phi}"] &
         \end{tikzcd}
     \end{equation*}
 
-    $\tilde{\phi}$ è un isomorfismo di gruppi: infatti essendo $\phi$ surgettivo anche $\tilde{\phi}$ lo è; inoltre la proiezione $\pi_{\quot{K}{H}}$ porta il gruppo $\quot{G}{H}$ nel quoziente modulo $\ker \phi = \quot{K}{H}$, dunque $\tilde{\phi}$ è iniettiva.
+    $\widetilde{\phi}$ è un isomorfismo di gruppi: infatti essendo $\phi$ surgettivo anche $\widetilde{\phi}$ lo è; inoltre la proiezione $\pi_{\quot{K}{H}}$ porta il gruppo $\quot{G}{H}$ nel quoziente modulo $\ker \phi = \quot{K}{H}$, dunque l'omomorfismo $\widetilde{\phi}$ è iniettivo ed è dunque un isomorfismo di gruppi.
 
     Segue quindi che \[
         \nicefrac{\quot{G}{H}}{\quot{K}{H}} \isomorph \quot{G}{K}. \qedhere 
     \]
 \end{proof}
+
+\begin{theorem}
+    [Terzo Teorema degli Omomorfismi] Sia $(G, \cdot)$ un gruppo e siano $H \leq G$,$N \normal G$. 
+    Valgono le seguenti affermazioni: \begin{itemize}
+        \item $N$ è un sottogruppo normale di $HN$,
+        \item $H \inters N$ è un sottogruppo normale di $H$,
+        \item inoltre \begin{equation}
+            \frac{H}{H \inters N} \isomorph \frac{HN}{N}.
+        \end{equation}
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Dimostriamo innanzitutto le due condizioni di normalità.
+    \begin{description}
+        \item[($N \normal HN$)] Mostriamo innanzitutto che $HN$ è un sottogruppo di $G$. Per la \autoref{prop:cond_prod_sgr_e'_sgr}, è sufficiente mostrare che $HN = NH$. 
+        Siccome $N$ è normale in $G$ segue che $gN = Ng$ per ogni $g \in G$. Dato che $H \subseteq G$ segue che $hN = Nh$ per ogni $h \in H$, ovvero $HN = NH$.
+        Dunque $HN$ è un sottogruppo di $G$.
+
+        Notiamo inoltre che $N \subseteq HN$ (basta scegliere tutti gli elementi della forma $e_Gn$ al variare di $n \in N$), dunque essendo $N$ normale in $G$ segue che $N$ è normale in ogni sottogruppo di $G$ che lo contiene; in particolare $N \normal HN$.
+        \item[($H \inters N \normal H$)] Sia $n \in H \inters N$ e sia $g \in H$.
+        
+        Ovviamente $gng\inv \in H$, in quanto $n$ ed $g$ sono entrambi elementi di $H$. Inoltre essendo $N$ un sottogruppo normale di $G$ segue che $gng\inv \in N$ per ogni $g \in G$, dunque a maggior ragione per ogni $g \in H \subseteq G$. 
+        
+        Dunque $gng\inv \in H \inters N$, da cui segue che $H \inters N$ è normale in $H$.
+    \end{description}
+    Consideriamo ora l'applicazione 
+    \begin{align*}
+        \begin{split}
+            f : H &\to \quot{HN}{N} \\
+            h &\mapsto hN.
+        \end{split}
+    \end{align*}  
+
+    Quest'applicazione è una restrizione all'insieme $H \subseteq HN$ della proiezione canonica \[
+        \pi_{N} : HN \to \quot{HN}{N};    
+    \] questo ci garantisce che $f$ è ben definita e che è un omomorfismo di gruppi.
+    
+    Inoltre $f$ è surgettiva: basta mostrare che \begin{align*}
+        &\Imm f = \quot{HN}{N}\\
+        \iff &\set{hN \in \quot{HN}{N} \suchthat h \in H} = \set{yN \in \quot{HN}{N} \suchthat y \in HN}
+    \end{align*}
+    L'inclusione $\Imm f \subseteq \quot{HN}{N}$ è data dalla definizione; l'inclusione contraria viene dal fatto che se $yN \in \quot{HN}{N}$, ovvero $y = hn$ per qualche $hn \in HN$, allora $yN = hnN \in \set{hN \suchthat h \in H}$ in quanto $nN = N$.
+
+    Inoltre \begin{align*}
+        \ker f &= \set{h \in H \suchthat f(h) = N} \\
+        &= \set{h \in H \suchthat hN = N} \\
+        &= \set{h \in H \suchthat h \in N} \\
+        &= H \inters N.
+    \end{align*}
+
+    Dunque per il \hyperref[cor:G/ker=Imm]{Corollario al Primo Teorema degli Omomorfismi} segue che \[
+        \frac{H}{H \inters N} \isomorph \Imm f = \frac{HN}{N}. \qedhere    
+    \]
+\end{proof}
+
+
+\begin{theorem}[Teorema di Corrispondenza tra Sottogruppi]
+    Sia $(G, \cdot)$ un gruppo e $N \normal G$. Sia $\GG$ l'insieme dei sottogruppi di $G$ che contengono $N$ e $\NN$ l'insieme dei sottogruppi di $\quot{G}{N}$.
+
+    Allora esiste una corrispondenza biunivoca tra $\GG$ e $\NN$ che preserva l'indice di sottogruppo e i sottogruppi normali, ovvero esiste una funzione \begin{align*}
+        \begin{split}
+            \psi : \GG &\to \NN\\
+            A &\mapsto \quot{A}{N}
+        \end{split}
+    \end{align*}    
+    tale che \begin{itemize}
+        \item $\grindex{G}{A} = \grindex{\quot{G}{N}}{\quot{A}{N}}$,
+        \item se $A \normal G$ allora $\quot{A}{N} \normal \quot{G}{N}$.
+    \end{itemize}
+\end{theorem}

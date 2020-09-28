@@ -1,0 +1,32 @@
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\vspace {-\cftbeforepartskip }
+\contentsline {part}{\numberline {i}{Aritmetica}}{3}{part.1}%
+\contentsline {chapter}{\numberline {1}{Gruppi}}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}{Introduzione ai gruppi}}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}{Sottogruppi}}{7}{section.1.2}%
+\contentsline {paragraph}{{$Z(G)$ è un sottogruppo}}{8}{paragraph*.33}%
+\contentsline {paragraph}{{$Z(G) = G$ se e solo se $G$ abeliano}}{9}{paragraph*.52}%
+\contentsline {paragraph}{{Parte 1.}}{10}{paragraph*.53}%
+\contentsline {paragraph}{{Parte 2.}}{10}{paragraph*.54}%
+\contentsline {section}{\numberline {1.3}{Generatori e gruppi ciclici}}{10}{section.1.3}%
+\contentsline {paragraph}{{Parte 1.}}{12}{paragraph*.55}%
+\contentsline {paragraph}{{Parte 2.}}{13}{paragraph*.56}%
+\contentsline {subsection}{\numberline {1.3.1}{Il gruppo ciclico $\PazoBB {Z}/_{n\PazoBB {Z}}$}}{14}{subsection.1.3.1}%
+\contentsline {section}{\numberline {1.4}{Omomorfismi di gruppi}}{17}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}{Isomorfismi}}{21}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}{Omomorfismi di gruppi ciclici}}{24}{subsection.1.4.2}%
+\contentsline {paragraph}{{Omomorfismi con dominio $\PazoBB {Z}$}}{24}{paragraph*.79}%
+\contentsline {subsection}{\numberline {1.4.3}{Prodotto diretto di gruppi}}{25}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}{Prodotto di sottogruppi}}{28}{subsection.1.4.4}%
+\contentsline {section}{\numberline {1.5}{Classi laterali e gruppo quoziente}}{28}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}{Sottogruppi normali e gruppo quoziente}}{32}{subsection.1.5.1}%
+\contentsline {section}{\numberline {1.6}{Teoremi di Omomorfismo}}{35}{section.1.6}%
+\contentsline {paragraph}{{Iniettività di $\varphi $}}{37}{paragraph*.108}%
+\contentsline {part}{\numberline {ii}{Algebra I}}{40}{part.2}%
+\contentsline {chapter}{\numberline {2}{Teoria dei gruppi}}{41}{chapter.2}%
+\contentsline {section}{\numberline {2.1}{Gruppi e generatori}}{41}{section.2.1}%
+\contentsline {section}{\numberline {2.2}{Gruppo diedrale}}{42}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}{Sottogruppi del gruppo diedrale}}{44}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}{Azioni di gruppo}}{45}{section.2.3}%
+\contentsline {subsubsection}{{Classe di equivalenza definita da un'azione}}{46}{subsubsection*.109}%

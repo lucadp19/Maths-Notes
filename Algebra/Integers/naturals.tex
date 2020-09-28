@@ -1,0 +1,139 @@
+\section{I numeri naturali}
+
+In questa sezione studieremo il primo insieme numerico, l'insieme dei numeri naturali.
+
+\begin{definition}
+    [Numeri naturali]
+    Si dice \emph{insieme dei numeri naturali} l'insieme $\N$ formato dal numero $0$ e da tutti i suoi successori, ovvero \begin{equation}
+        \N = \set{0, 1, 2, 3, \dots}.
+    \end{equation}
+\end{definition}
+
+\begin{definition}
+    [Operazione su un insieme] Sia $X$ un insieme. Allora si dice \emph{operazione su $X$} una funzione $X \times X \to X$.
+\end{definition}
+
+Esempi di operazioni sui numeri naturali sono la somma e il prodotto, mentre la sottrazione e la divisione non sono operazioni poiché non sono definite per qualsiasi coppia di naturali: la sottrazione $a - b$ è definita solo quando $a \geq b$, mentre la divisione è definita solo se il dividendo è un multiplo del divisore.
+
+Per caratterizzare l'insieme dei numeri naturali, enunciamo il seguente assioma.
+
+\begin{axiom}
+    [Principio del Minimo Intero] \label{ax:min_intero} Ogni sottoinsieme non vuoto dei numeri naturali ammette minimo, ovvero se $S \subseteq \N$, $S \neq \emptyset$, allora esiste $m \in S$ tale che $a \geq m$ per ogni $a \in S$.
+\end{axiom}
+
+Dal Principio del Minimo Intero seguono altri principi; in particolare segue il Principio di Induzione in entrambe le sue varianti.
+
+\begin{theorem}
+    [Principio di Induzione (debole)] \label{th:induzione} Sia $n_0 \in \Z$, $n_0 \geq 0$ e sia $\PP$ un predicato definito per $n \geq n_0$. Se \begin{enumerate}
+        \item vale $\PP(n_0)$,
+        \item per ogni $n \geq n_0$ vale che $\PP(n) \implies \PP(n+1)$
+    \end{enumerate}
+    allora $\PP$ vale per ogni $n \geq n_0$.
+\end{theorem}
+\begin{proof}
+    Dimostriamo che il Principio di Induzione segue dal \nameref{ax:min_intero}.
+
+    Sia $S$ il seguente insieme: \[
+        S \deq \set{n \in \N \suchthat n\geq n_0, \PP(n) \text{ è falsa}}.    
+    \] Supponiamo per assurdo $S \neq \varnothing$. Allora per il \nameref{ax:min_intero} $S$ ammette minimo. 
+    
+    Sia $m \deq \min S$. Per definizione di $S$ dovrà essere $m \geq n_0$; inoltre per ipotesi $\PP(n_0)$ è vera, dunque $m > n_0$.
+
+    Siccome $m = \min S$ allora $m - 1 \notin S$. Questo può accadere per tre motivi: \begin{itemize}
+        \item $m - 1 \notin \Z$, il che è impossibile;
+        \item $m - 1 < n_0$, che è impossibile in quanto $m > n_0$;
+        \item vale $\PP(m-1)$.
+    \end{itemize}
+
+    Dunque $\PP(m-1)$ è vera. Per la seconda ipotesi siccome vale $\PP(m-1)$ (e $m - 1 \geq n_0$ dovrà valere $\PP(m)$, il che è assurdo in quanto $m \in S$.
+
+    Dunque segue che $S$ è vuoto, che è la tesi.
+\end{proof}
+
+\begin{theorem}
+    [Principio di Induzione (forte)] \label{th:induzione_forte} Sia $n_0 \in \N$ e sia $\PP$ un predicato definito per $n \geq n_0$. Se \begin{enumerate}
+        \item vale $\PP(n_0)$,
+        \item per ogni $n \geq n_0$ vale che $\PP(n_0), \PP(n_0 + 1), \dots, \PP(n) \implies \PP(n+1)$
+    \end{enumerate}
+    allora $\PP$ vale per ogni $n \geq n_0$.
+\end{theorem}
+
+\begin{remark}
+    Il \nameref{ax:min_intero}, il \nameref{th:induzione} e il \nameref{th:induzione_forte} sono logicamente equivalenti, ovvero ognuno di essi è vero se e solo se sono veri gli altri due.
+\end{remark}
+
+\section{Numeri interi}
+
+Costruiamo i numeri interi a partire dai naturali tramite una particolare relazione di equivalenza.
+
+Sia $\sim$ una relazione sulle coppie di naturali (ovvero su $\N \times \N$) tale che \[
+    (a, b) \sim (c, d) \iff a + d = b + c.
+\]
+Questa è una relazione di equivalenza, in quanto \begin{itemize}
+    \item $\sim$ è riflessiva: infatti per ogni $(a, b) \in \N \times \N$ vale che $a + b = b + a$.
+    \item $\sim$ è simmetrica: se vale che $(a, b) \sim (c, d)$ (ovvero $a + d = b + c$) allora varrà anche che $c + b = d + a$, ovvero $(c, d) \sim (a, b)$.
+    \item $\sim$ è transitiva. Siano $(a, b), (c, d), (e, f) \in \N \times \N$ e supponiamo che $(a, b) \sim (c, d)$ e $(c, d) \sim (e, f)$. Allora \[
+        a + d = b + c, \quad c + f = d + e.    
+    \] Sommando le due equazioni membro a membro otteniamo \begin{align*}
+        &a + c + f + d = b + d + e + c \\
+        \iff &a + f = b + e  
+    \end{align*} ovvero $(a, b) \sim (e, f)$.
+\end{itemize}
+
+Notiamo che se $a \geq b$ la coppia $(a, b)$ è equivalente alla coppia $(a-b, 0)$, mentre se $a < b$ la stessa coppia è equivalente a $(0, b-a)$.
+
+L'insieme quoziente $(\N \times \N)/_{\sim}$ è l'insieme dei numeri interi: basta identificare tutte le coppie equivalenti ad $(a, 0)$ con il numero intero $+a$, mentre tutte le coppie equivalenti a $(0, a)$ vengono identificate con il numero intero $-b$.
+
+\begin{definition}
+    [Numeri interi]
+    Si dice insieme dei numeri interi l'insieme \[
+        \Z = \set{\dots, -2, -1, 0, 1, 2, \dots}.    
+    \]
+\end{definition}
+
+Nei numeri interi possiamo definire una funzione che prende ogni numero e lo trasforma nel numero naturale corrispondente, ovvero privato del segno:
+\begin{definition}
+    [Valore assoluto]
+    Si dice valore assoluto la funzione $\abs*{\cdot} : \Z \to \N$ tale che \[
+        \abs*{a} = \begin{cases}
+            a, &\text{se } a \geq 0\\
+            -a, &\text{se } a < 0.
+        \end{cases}    
+    \]
+\end{definition}
+
+\begin{theorem}
+    [Esistenza e unicità della divisione euclidea] \label[th]{th:esist_unic_div_euclidea}
+    Siano $a, b \in \Z$ con $b$ non nullo. Allora esistono e sono unici $q, r \in \Z$ tali che \[
+        a = bq + r, \quad \text{con } 0 \leq r < \abs*{b}.    
+    \]
+
+    La scrittura $bq + r$ si dice \emph{divisione euclidea di $a$ per $b$}.
+\end{theorem}
+\begin{proof}
+    Dimostriamo prima l'esistenza di $q, r$ e poi la loro unicità.
+    \begin{description}
+        \item[Esistenza] Supponiamo che $b > 0$, la dimostrazione è analoga nel caso $b < 0$. 
+        
+        Sia \[
+            X = \set{a - kb \in \Z \suchthat a-kb \geq 0, k \in \Z};
+        \] siccome $a-kb \geq 0$ per ogni $k$ varrà che $X \subseteq \N$; inoltre ponendo $k = -\abs*{a}$ otteniamo $a+ \abs*{a}b \geq 0$, dunque l'insieme $X$ non è vuoto.
+
+        Per il \nameref{ax:min_intero} segue che esiste $r \in X$ tale che $r = \min X$. Sia inoltre $q \in \Z$ tale che $r = a - bq$ (ovvero $a = bq + r$).
+
+        Mostriamo che $r < \abs*{b}$. Suppniamo per assurdo $r \geq \abs*{b} = b$: allora segue che \[
+            0 \leq r - b = a - qb - b = a - (q+1)b.   
+        \] Siccome $q+1 \in \Z$ e $a - (q+1)b \geq 0$ segue che $r^\prime = a-(q+1)b \in X$; ma ciò è impossibile in quanto $r^\prime < r$ e abbiamo supposto che $r$ fosse il minimo di $X$.
+
+        Dunque segue che $0 \leq r < \abs*{b}$.
+        \item[Unicità] Siano $q_1, q_2, r_1, r_2 \in \Z$ tali che \[
+            a = q_1b + r_1 = q_2b + r_2    
+        \] con $0 \leq r_1, r_2 < \abs*{b}$. Possiamo supporre senza perdita di generalità che $r_1 \leq r_2$.
+        Allora vale che \[
+            r_2 - r_1 = b(q_1 - q_2)  
+        \] e pertanto \begin{align*}
+            \abs*{b}\abs*{q_1 - q_2} = \abs*{b(q_1 - q_2)} = r_2 - r_1 \leq r_2 \leq \abs*{b}.
+        \end{align*} Se fosse $q_2 - q_1 \neq 0$ allora $\abs*{b} > \abs*{b}\abs*{q_1 - q_2}$, il che è assurdo.
+        Dunque segue che $q_1 = q_2$ e $r_1 = r_2$. \qedhere
+    \end{description}
+\end{proof}

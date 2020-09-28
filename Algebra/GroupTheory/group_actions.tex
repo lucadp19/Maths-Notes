@@ -1,0 +1,101 @@
+\section{Azioni di gruppo}
+
+\begin{definition}
+    [Azione di un gruppo su un insieme] Sia $(G, \cdot)$ un gruppo e $X$ un insieme qualunque. Si dice \emph{azione di G su X} un omomorfismo di gruppi \begin{align*}
+        \phi : G &\to \SS(X)\\
+        g &\mapsto \phi_g.
+    \end{align*}
+\end{definition}
+
+Altre notazioni che useremo per la permutazione degli elementi di $X$ definita da $g$ sono $gx$ e $x^g$.
+
+\begin{example}
+    Se $X = G$ un possibile esempio è dato dal coniugio per $g$: l'applicazione $g \mapsto \phi_g$ dove $\phi_g(x) = gxg\inv$ è un omomorfismo tra il gruppo $G$ e il gruppo delle permutazioni degli elementi di $G$, dunque è un'azione di $G$ su $G$.
+\end{example}
+\begin{example}
+    Sia $V$ un $\K$-spazio vettoriale. Allora l'applicazione \begin{align*}
+        \phi : \invert{\K} &\to \SS(V)\\
+        \lambda &\mapsto \phi_\lambda
+    \end{align*} e $\phi_\lambda(\vec{v}) = \lambda\cdot \vec v$ è un'azione del gruppo degli scalari sullo spazio vettoriale. Più in generale, potremmo definire uno spazio vettoriale come un gruppo abeliano additivo su cui è definita un'azione di $\invert{\K}$ su $V$.
+\end{example}
+
+\subsubsection{Classe di equivalenza definita da un'azione}
+Sia $\phi : G \to \SS(V)$ un'azione di gruppo. $\phi$ definisce su $X$ la seguente relazione: \begin{equation}\label{eq:eq_rel_group_action}
+    x \sim y \iff \exists g \in G \text{ tale che } \phi_g(x) = y.    
+\end{equation}
+
+\begin{proposition}
+    La relazione definita da un'azione di gruppo è una relazione di equivalenza.
+\end{proposition}
+\begin{proof}
+    Sia $G$ un gruppo, $X$ l'insieme su cui $G$ agisce. Mostriamo che la relazione $\sim$ definita nella \eqref{eq:eq_rel_group_action} è una relazione di equivalenza.
+    \begin{description}
+        \item[Riflessività] Sia $x \in X$. Siccome $\phi$ è un omomorfismo di gruppi segue che $\phi(e_G) = \phi_e = \id$, da cui \[
+            \phi_e(x) = \id(x) = x.    
+        \]
+        \item[Simmetria] Siano $x, y \in X$ tali che $x \sim y$, ovvero $\phi_g(x) = y$ per qualche $g \in G$. Mostriamo che $\phi_{g\inv}(y) = x$: applicando $\phi_{g\inv}$ ad entrambi i membri otteniamo \begin{align*}
+            \phi_{g\inv}(y) &= \phi_{g\inv}\parens[\big]{\phi_g(x)} \\
+            &= (\phi_{g\inv} \circ \phi_g)(x)\\
+            &= (\phi(g\inv) \circ \phi(g))(x)\\
+            &= (\phi(g)\inv \circ \phi(g))(x)\\
+            &= x,
+        \end{align*} da cui segue $y \sim x$.
+        \item[Transitività] Siano $x, y, z \in X$ tali che $x \sim y$ e $y \sim z$, ovvero $\phi_g(x) = y$ e $\phi_h(y) = z$ per qualche $g, h \in G$. Allora vale che \begin{align*}
+            z &= \phi_h\parens[\big]{\phi_g(x)}\\
+            &= (\phi_{h} \circ \phi_g)(x)\\
+            &= (\phi(h) \circ \phi(g))(x)\\
+            &= \phi(hg)(x)\\
+            &= \phi_{hg}(x),
+        \end{align*} da cui segue che $x \sim z$.
+    \end{description}
+\end{proof}
+
+\begin{remark}
+    Notiamo che siccome $\phi$ è un omomorfismo di gruppi, se $\phi_g$ e $\phi_h$ sono le azioni di $g$ e $h$ sull'insieme $X$, allora la loro composizione sarà l'azione \[
+        \phi_g \circ \phi_h = \phi(g) \circ \phi(h) = \phi(gh) = \phi_{gh}.    
+    \] Invece, data l'azione $\phi_g$ di $g$ su $X$, segue che la sua inversa è $\phi_{g\inv}$: \begin{gather*}
+        \phi_{g\inv} \circ \phi_g = \phi(g\inv) \circ \phi(g) = \phi(g)\inv \circ \phi(g) = \id.\\   
+        \phi_g \circ \phi_{g\inv} = \phi(g) \circ \phi(g\inv) = \phi(g) \circ \phi(g)\inv = \id.\\ 
+    \end{gather*}
+\end{remark}
+
+\begin{definition}[Orbita]
+    Sia $G$ un gruppo che agisce sull'insieme $X$. Dato $x \in X$ si dice \emph{orbita di $x$} l'insieme \[
+        \orb{x} \deq \set{\phi_g(x) \suchthat g \in G} \subseteq X.    
+    \]
+\end{definition}
+
+\begin{remark}
+    L'orbita di $x$ è esattamente la classe di equivalenza data dalla relazione di equivalenza definita in \eqref{eq:eq_rel_group_action}. In particolare se $R$ è un insieme di rappresentanti vale che \[
+        X = \bigsqcup_{x \in R} \orb{x}.    
+    \]
+\end{remark}
+
+\begin{definition}[Stabilizzatore]
+    Sia $G$ un gruppo che agisce sull'insieme $X$. Dato $x \in X$ si dice \emph{stabilizzatore di $x$} l'insieme \[
+        \St{x} \deq \set{g \in G \suchthat \phi_g(x) = x} \subseteq G.    
+    \]
+\end{definition}
+
+\begin{proposition}
+    [Lo stabilizzatore è un sottogruppo]
+    Sia $G$ un gruppo che agisce sull'insieme $X$; sia inoltre $x \in X$. Allora vale che \[
+        \St{x} \sgr G.    
+    \]
+\end{proposition}
+\begin{proof}
+    Innanzitutto $e_G \in \St{x}$ in quanto $\phi_e(x) = x$ (l'azione dell'identità è sempre l'identità).
+
+    Supponiamo che $g \in \St{x}$, ovvero $\phi_g(x) = x$: mostriamo che anche $g\inv \in \St{x}$, ovvero $\phi_{g\inv} \in \St{x}$. Applichiamo ad entrambi i membri l'azione $(\phi_g)\inv$, ottenendo \begin{align*}
+        (\phi_g)\inv(x) = (\phi_g)\inv\parens[\big]{\phi_g(x)} = x.
+    \end{align*} Come abbiamo osservato precedentemente, $(\phi_g)\inv = \phi_{g\inv}$, da cui segue che $x = \phi_{g\inv}(x)$ e quindi $g\inv \in \St{x}$.
+
+    Supponiamo infine che $g, h \in \St{x}$ e mostriamo che $hg \in \St{x}$. Infatti \begin{align*}
+        \phi_{hg}(x) &= (\phi_h \circ \phi_g)(x)\\
+        &= \phi_h\parens[\big]{\phi_g(x)}\\
+        &= \phi_h(x)\\
+        &= x.
+    \end{align*}
+
+    Dunque $\St(x)$ è un sottogruppo di $G$.
+\end{proof}

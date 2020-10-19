@@ -7,15 +7,15 @@
 \end{definition}
 
 \begin{remark}
-    Se $c = \mcd{a}{b}$ la soluzione della diofantea ci è data dall'algoritmo di Euclide e in particolare dall'identità di Bézout.
+    Se $c = \gcd{a}{b}$ la soluzione della diofantea ci è data dall'algoritmo di Euclide e in particolare dall'identità di Bézout.
 \end{remark}
 
 \begin{proposition}[Condizione necessaria e sufficiente per le diofantee]
     \label{prop:cond_nec_suff_diofantee}
-    L'equazione diofantea $ax + by = c$ ha soluzione se e solo se $\mcd{a}{b} \divides c$.
+    L'equazione diofantea $ax + by = c$ ha soluzione se e solo se $\gcd{a}{b} \divides c$.
 \end{proposition}
 \begin{proof}
-    Sia $d \deq \mcd{a}{b}$. Mostriamo entrambi i versi dell'implicazione.
+    Sia $d \deq \gcd{a}{b}$. Mostriamo entrambi i versi dell'implicazione.
     \begin{description}
         \item[($\implies$)] Sia $(\bar x, \bar y) \in \Z^2$ una soluzione della diofantea $ax + by = c$. Dato che $d \divides a$ e $d \divides b$ segue che esistono $h, k \in \Z$ tali che \[
             a = kd, \quad b = hd.    
@@ -31,27 +31,27 @@
 \end{proof}
 
 \begin{corollary} \label{cor:mcd=1_sse_comb_lin_1}
-    Siano $a, b \in \Z$ non entrambi nulli. Allora vale che $\mcd{a}{b} = 1$ se e solo se esistono $x_0, y_0 \in \Z$ tali che $ax_0 + by_0 = 1$.
+    Siano $a, b \in \Z$ non entrambi nulli. Allora vale che $\gcd{a}{b} = 1$ se e solo se esistono $x_0, y_0 \in \Z$ tali che $ax_0 + by_0 = 1$.
 \end{corollary}
 \begin{proof}
     Dimostriamo entrambe le implicazioni.
     \begin{description}
         \item[($\implies$)] È l'identità di Bézout.
-        \item[($\impliedby$)] $ax + by = c$ ha soluzione, dunque per la \autoref{prop:cond_nec_suff_diofantee} segue che $\mcd{a}{b} \divides 1$, ovvero $\mcd{a}{b} = 1$.
+        \item[($\impliedby$)] $ax + by = c$ ha soluzione, dunque per la \autoref{prop:cond_nec_suff_diofantee} segue che $\gcd{a}{b} \divides 1$, ovvero $\gcd{a}{b} = 1$.
     \end{description}
 \end{proof}
 
 \begin{corollary}
-    Siano $a, b \in \Z$ non entrambi nulli. Sia inoltre $d \deq \mcd{a}{b}$.
+    Siano $a, b \in \Z$ non entrambi nulli. Sia inoltre $d \deq \gcd{a}{b}$.
 
-    Allora se $a_1, b_1 \in \Z$ sono tali che $a = da_1$ e $b = db_1$ segue che $\mcd{a_1}{b_1} = 1$.
+    Allora se $a_1, b_1 \in \Z$ sono tali che $a = da_1$ e $b = db_1$ segue che $\gcd{a_1}{b_1} = 1$.
 \end{corollary}
 \begin{proof}
     Per la \autoref{prop:cond_nec_suff_diofantee} l'equazione $ax + by = d$ ha soluzione, ovvero esistono $x_0, y_0 \in \Z$ tali che \[
         ax_0 + by_0 = d.
     \] Siccome $a = da_1$ e $b = db_1$ possiamo dividere entrambi i membri per $d$, ottenendo \[
         a_1x_0 + b_1y_0 = 1,    
-    \] dunque per il \autoref{cor:mcd=1_sse_comb_lin_1} segue che $\mcd{a_1}{b_1} = 1$.
+    \] dunque per il \autoref{cor:mcd=1_sse_comb_lin_1} segue che $\gcd{a_1}{b_1} = 1$.
 \end{proof}
 
 Notiamo tuttavia che la soluzione di una diofantea non è in generale unica: dobbiamo quindi sfruttare le equazioni omogenee associate per trovare tutte le soluzioni.
@@ -84,7 +84,7 @@ Notiamo tuttavia che la soluzione di una diofantea non è in generale unica: dob
 Dunque per risolvere un'equazione non omogenea ci basta trovare una soluzione particolare e sommare ad essa le soluzioni dell'omogenea associata. Prima di spiegare come si trovino le soluzioni dell'omogenea associata enunciamo e dimostriamo un lemma che ci sarà utile anche in futuro.
 
 \begin{lemma} \label{lem:divide_prod_coprimo_col_primo}
-    Se $m \divides ab$ e $\mcd{m}{a} = 1$ segue che $m \divides b$.
+    Se $m \divides ab$ e $\gcd{m}{a} = 1$ segue che $m \divides b$.
 \end{lemma}
 \begin{proof}
     Per il \autoref{cor:mcd=1_sse_comb_lin_1} sappiamo che esistono $x_0, y_0 \in \Z$ tali che \[
@@ -99,6 +99,6 @@ Dunque per risolvere un'equazione non omogenea ci basta trovare una soluzione pa
 \begin{proposition}
     [Soluzioni di una diofantea omogenea]
     Sia $ax+by = 0$ un'equazione diofantea omogenea. Allora le sue soluzioni sono tutte e sole della forma \begin{equation}
-        \left(-\frac{b}{\mcd{a}{b}}t, \frac{a}{\mcd{a}{b}}t \right)
+        \left(-\frac{b}{\gcd{a}{b}}t, \frac{a}{\gcd{a}{b}}t \right)
     \end{equation} al variare di $t \in \Z$.
 \end{proposition}

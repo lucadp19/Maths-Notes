@@ -11,20 +11,19 @@ Questa relazione è una relazione di equivalenza, infatti \begin{itemize}
 \end{itemize}
 
 Questa relazione di equivalenza forma delle classi di equivalenza che partizionano $G$: in particolare la classe di $x \in G$ sarà della forma \begin{align*}
-    \eqcl*{x}_L &= \set{g \in G \suchthat g \sim_L x}\\
-    &= \set{g \in G \suchthat x\inv g \in H}\\
-    &= \set{g \in G \suchthat x\inv g = h \text{ per qualche } h \in H}\\
-    &= \set{g \in G \suchthat g = xh \text{ per qualche } h \in H}.
+    \eqcl*{x}_L &= \set*{g \in G \given g \sim_L x}\\
+    &= \set*{g \in G \given x\inv g \in H}\\
+    &= \set*{g \in G \given x\inv g = h \text{ per qualche } h \in H}\\
+    &= \set*{g \in G \given g = xh \text{ per qualche } h \in H}.
 \end{align*}
 
 Notiamo che gli elementi della classe di $x$ sono quindi tutti e soli gli elementi del sottogruppo $h$ moltiplicati a sinistra per $x$.
 Diamo dunque la seguente definizione.
 \begin{definition}
     [Classe laterale sinistra]
-    Sia $(G, \cdot)$ un gruppo e $H \sgr G$ un suo sottogruppo. Sia inoltre $x \in G$.
-    
+    Sia $(G, \cdot)$ un gruppo, $H \sgr G$ un suo sottogruppo e $x \in G$ un elemento del gruppo $G$.
     Allora si dice \emph{classe laterale sinistra di $H$ rispetto a $x$} l'insieme \[
-        xH \deq \set{xh \suchthat h \in H}. 
+        xH \deq \set*{xh \given h \in H}. 
     \]
 \end{definition}
 
@@ -34,21 +33,20 @@ Diamo dunque la seguente definizione.
 
 \begin{example}
     Ad esempio le classi laterali di $n\Z \sgr \Z$ sono della forma \[
-        a + n\Z \deq \set{a + nk \suchthat k \in \Z}.
+        a + n\Z \deq \set*{a + nk \given k \in \Z}.
     \] La classe $a + n\Z$ denota tutti i numeri congrui ad $a$ modulo $n$.
 \end{example}
 
 Allo stesso modo possiamo definire un'altra relazione di equivalenza $\sim_R$ tale che \[
     x \sim_R y \iff xy\inv \in H.    
 \] Le classi di equivalenza di questa relazione sono della forma \[
-    \eqcl*{x}_R = \set{g \in G \suchthat g = hx \text{ per qualche } h \in H}.    
+    \eqcl*{x}_R = \set*{g \in G \given g = hx \text{ per qualche } h \in H}.    
 \] Possiamo dunque definire anche le classi laterali destre nel seguente modo.
 \begin{definition}
     [Classe laterale destra]
-    Sia $(G, \cdot)$ un gruppo e $H \sgr G$ un suo sottogruppo. Sia inoltre $x \in G$.
-    
+    Sia $(G, \cdot)$ un gruppo, $H \sgr G$ un suo sottogruppo e $x \in G$ un elemento del gruppo $G$.
     Allora si dice \emph{classe laterale destra di $H$ rispetto a $x$} l'insieme \[
-        Hx \deq \set{hx \suchthat h \in H}. 
+        Hx \deq \set*{hx \given h \in H}. 
     \]
 \end{definition}
 
@@ -130,16 +128,16 @@ Siccome ogni elemento di una classe è un possibile rappresentante della classe 
 \begin{corollary}[Corollario al Teorema di Lagrange] \label{cor:lagrange}
     Sia $(G, \cdot)$ un gruppo finito. Allora valgono i seguenti fatti:
     \begin{enumerate}[label={(\roman*)}, ref={\thecorollary: (\roman*)}]
-        \item \label{cor:ord_el_divide_ord_gruppo} per ogni $g \in G$ vale che $\ord[G]{g} \divides \abs*{G}$,
+        \item \label{cor:ord_el_divide_ord_gruppo} per ogni $g \in G$ vale che $\ord(G){g} \divides \abs*{G}$,
         \item \label{cor:x_alla_ordG=e_G} per ogni $x \in G$ vale che $x^{\abs*{G}} = e_G$.
     \end{enumerate}
 \end{corollary}
 \begin{proof}
     \begin{enumerate}[label={(\roman*)}]
         \item Siccome $\gen*{g} \sgr G$, per il \nameref{th:lagrange} vale che \[
-            \ord[G]{g} = \abs*{\gen*{g}} \divides \abs*{G}.    
+            \ord(G){g} = \abs*{\gen*{g}} \divides \abs*{G}.    
         \]
-        \item Sia $n \deq \abs*{G}$ e $k \deq \ord[G]{g}$. Per il punto precedente vale che $k \divides n$, ovvero che esiste $m \in \Z$ tale che \[
+        \item Sia $n \deq \abs*{G}$ e $k \deq \ord(G){g}$. Per il punto precedente vale che $k \divides n$, ovvero che esiste $m \in \Z$ tale che \[
             n = km.    
         \] Dunque segue che \begin{align*}
             g^{\abs*{G}} &= g^n \\
@@ -151,21 +149,22 @@ Siccome ogni elemento di una classe è un possibile rappresentante della classe 
 \end{proof}
 
 \begin{corollary}[I gruppi di ordine primo sono ciclici]
+    \label{cor:cardG=p_implies_cyclic_G}
     Sia $(G, \cdot)$ un gruppo tale che $\abs*{G} = p$ per qualche $p \in \Z$, $p$ primo. Allora $G$ è ciclico ed in particolare \[
         G \isomorph \Zmod{p}.    
     \]
 \end{corollary}
 \begin{proof}
-    Sia $x \in G$, $x \neq e_G$. Allora $\gen*{x} \neq \set{e_G}$, da cui segue che \[
-        1 \neq \ord[G]{x} \divides p = \abs*{G}.
-    \] Dunque per definizione di numero primo $\ord[G]{x} = p$, ma siccome l'ordine del sottogruppo $\gen*{x}$ è uguale all'ordine di $G$ segue che $G = \gen*{x}$.
+    Sia $x \in G$, $x \neq e_G$. Allora $\gen*{x} \neq \set*{e_G}$, da cui segue che \[
+        1 \neq \ord(G){x} \divides p = \abs*{G}.
+    \] Dunque per definizione di numero primo $\ord(G){x} = p$, ma siccome l'ordine del sottogruppo $\gen*{x}$ è uguale all'ordine di $G$ segue che $G = \gen*{x}$.
     
     Dunque $G$ è ciclico e per il \autoref{th:iso_ciclico} è isomorfo a $\Zmod{p}$.
 \end{proof}
 
 Il teorema di Lagrange ci consente inoltre di dimostrare molto semplicemente il Teorema di Eulero-Fermat.
 \begin{proof}
-    Segue dal \autoref{cor:lagrange} (in particolare dal \hyperref[cor:x_alla_ordG=e_G]{punto (ii)}) considerando come gruppo $(\invert{\Zmod{n}}, \cdot)$: infatti per definizione $\phi(n) = \abs*{\invert{\Zmod{n}}}$, da cui la tesi.
+    Segue dal \autoref{cor:lagrange} (in particolare dal \hyperref[cor:x_alla_ordG=e_G]{punto (ii)}) considerando come gruppo $(\units{\Zmod{n}}, \cdot)$: infatti per definizione $\phi(n) = \abs*{\units{\Zmod{n}}}$, da cui la tesi.
 \end{proof}
 
 \subsection{Sottogruppi normali e gruppo quoziente}
@@ -204,9 +203,15 @@ Il teorema di Lagrange ci consente inoltre di dimostrare molto semplicemente il 
         \] Moltiplicando a destra per $g\inv$ si ottiene che \[
             ghg\inv = h^\prime \in H,   
         \] da cui $gHg\inv \subseteq H$.
-        % \item[($\impliedby$)] Supponiamo che $ghg\inv \in H$, ovvero esista $h^\prime$ tale che $ghg\inv = h^\prime$, il che è equivalente ad affermare $gh = h^\prime g \in Hg$. Questo significa che $gH \subseteq Hg$. Mostriamo ora che vale anche l'inclusione contraria.
-        
-        % Dato che la relazione deve valere per quasliasi $g$, dovrà valere anche per $g\inv \in G$
+        \item[($\impliedby$)] Supponiamo che $gHg\inv \subseteq H$, ovvero che per ogni $h \in H$ valga che $ghg\inv \in H$.
+            Questo significa che per qualchea $h^\prime \in H$ vale che $ghg\inv = h^\prime$, 
+            il che è equivalente ad affermare $gh = h^\prime g \in Hg$, da cui segue che $gH \subseteq Hg$.
+
+            Mostriamo ora che vale anche l'inclusione contraria.
+            Dato che la relazione deve valere per quasliasi $g$, dovrà valere anche per $g\inv \in G$: dunque $g\inv Hg \subseteq H$.
+            Moltiplicando a sinistra per $g\inv$ e a destra per $g$ si ottiene $H \subseteq gHg\inv$.
+
+            Dunque $gHg\inv = H$, da cui $gH = Hg$, ovvero la tesi. \qedhere
     \end{description}
 \end{proof}
 
@@ -216,17 +221,36 @@ Il teorema di Lagrange ci consente inoltre di dimostrare molto semplicemente il 
         Z(G) \normal G.    
     \]
 \end{proposition}
+\begin{proof}
+    Per mostrare che il centro di $G$ è normale in $G$, è sufficiente mostrare che $gZ(G)g\inv \in Z(G)$.
+    Sia quindi $g \in G$, $x \in \Z(G)$ qualunque. Allora
+    \begin{align*}
+        gxg\inv = gg\inv x = x \in Z(G),    
+    \end{align*} da cui segue che $gZ(G)g\inv \subseteq Z(G)$, ovvero $Z(G) \normal G$.
+\end{proof}
 
 \begin{definition}
     [Indice di un sottogruppo]
     Sia $(G, \cdot)$ un gruppo e sia $H \sgr G$. Allora si dice \emph{indice di $H$ in $G$} il numero di classi laterali sinistre di $H$, e si indica con \begin{equation}
-        \grindex{G}{H}.
+        \GrpIndex{G:H}.
     \end{equation}
 \end{definition}
 
+Tornando alla dimostrazione del Teorema di Lagrange, notiamo che la classe di rappresentanti $R$ dovrà contenere esattamente un elemento per ogni classe laterale di $H$. Dunque vale il seguente risultato:
+\begin{equation}
+    \label{eq:index}
+    \abs*{G} = \GrpIndex{G:H} \cdot \abs*{H}, 
+\end{equation} o equivalentemente, l'indice di un sottogruppo $H$ in un gruppo $G$ è dato dal rapporto tra la cardinalità di $G$ e quella di $H$.
+
 \begin{proposition}\label{prop:norm_se_indice2}
-    Sia $(G, \cdot)$ un gruppo, $H \sgr G$. Allora se $\grindex{G}{H} = 2$ segue che $H \normal G$.
+    Sia $(G, \cdot)$ un gruppo, $H \sgr G$. Allora se $\GrpIndex{G:H} = 2$ segue che $H \normal G$.
 \end{proposition}
+\begin{proof}
+    Osserviamo che la classe $eH = H$ è sempre una classe laterale di $H$.
+    Siccome le classi laterali formano una partizione dell'insieme $G$ e l'indice di $H$ in $G$ è $2$, segue che esiste una singola altra classe laterale
+    data da $gH = G \setminus H$, per qualche $g \notin H$.
+    Questo implica che $Hg \neq H$, in quanto altrimenti avremmo $g \in G$: dunque $gH = Hg$ poiché $gH$ è l'unica classe laterale diversa da $H$, da cui $H \normal G$.
+\end{proof}
 
 \begin{proposition}
     [Nucleo di omomorfismi e normalità]
@@ -237,7 +261,7 @@ Il teorema di Lagrange ci consente inoltre di dimostrare molto semplicemente il 
     \begin{enumerate}[label={(\roman*)}]
         \item $\ker f \normal G$,
         \item per ogni $x, y \in G$ vale che $f(x) = f(y)$ se e solo se $x\ker f = y\ker f$, ovvero se $x, y$ appartengono alla stessa classe laterale del nucleo,
-        \item se $z \in \Imm f$ (ovvero $f(x) = z$ per qualche $x \in G$) allora $f\inv(\set{z}) = x\ker f$.
+        \item se $z \in \Imm f$ (ovvero $f(x) = z$ per qualche $x \in G$) allora $f\inv(\set*{z}) = x\ker f$.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -267,15 +291,15 @@ Il teorema di Lagrange ci consente inoltre di dimostrare molto semplicemente il 
             x\ker f = y\ker f.    
         \]
         \item Per definizione di controimmagine: \begin{align*}
-            f\inv(z) &= \set{g \in G \suchthat f(g) = z} \tag{hp: $f(x) = z$} \\
-            &= \set{g \in G \suchthat f(g) = f(x)} \tag{per il punto (ii)}\\
+            f\inv(z) &= \set*{g \in G \given f(g) = z} \tag{hp: $f(x) = z$} \\
+            &= \set*{g \in G \given f(g) = f(x)} \tag{per il punto (ii)}\\
             &= x\ker f. \tag*{\qedhere}
         \end{align*}
     \end{enumerate}
 \end{proof}
 
 Consideriamo ora l'insieme di tutte le possibili classi laterali sinistre di un sottogruppo $H \sgr G$ e chiamiamo questo insieme $\quot{G}{H}$: \begin{equation}
-    \quot{G}{H} \deq \set{gH \suchthat g \in G}.
+    \quot{G}{H} \deq \set*{gH \given g \in G}.
 \end{equation}
 
 Se $H \normal G$ possiamo definire un'operazione su $\quot{G}{H}$: \begin{align} \label{eq:op_gruppo_quoziente}
@@ -285,7 +309,7 @@ Se $H \normal G$ possiamo definire un'operazione su $\quot{G}{H}$: \begin{align}
     \end{split}
 \end{align}
 
-La struttura $(\quot{G}{H}, \cdot)$ si definisce \emph{gruppo quoziente}.
+La struttura $(\quot{G}{H}, \cdot)$ si definisce \emph{gruppo quoziente} di $G$ \emph{modulo} $H$.
 
 \begin{proposition}
     Sia $(G, \cdot)$ un gruppo e sia $N \normal G$. Allora la struttura $(\quot{G}{N}, \star)$ (dove l'operazione è definita come in \eqref{eq:op_gruppo_quoziente}) è un gruppo.
@@ -332,7 +356,8 @@ La struttura $(\quot{G}{H}, \cdot)$ si definisce \emph{gruppo quoziente}.
 \end{example}
 
 \begin{proposition}\label{prop:kernel_proiezione}
-    Sia $(G, \cdot)$ un gruppo e sia $N \normal G$. Allora la mappa \begin{align}
+    Sia $(G, \cdot)$ un gruppo e sia $N \normal G$. Allora la mappa 
+    \begin{align} \label{eq:proiezione_gruppi}
         \begin{split}
             \pi_N : G &\to \quot{G}{N}\\
             x &\mapsto xN
@@ -347,15 +372,71 @@ La struttura $(\quot{G}{H}, \cdot)$ si definisce \emph{gruppo quoziente}.
         &= \pi_N(x) \cdot \pi_N(y).
     \end{align*}
     Inoltre per definizione \begin{align*}
-        \ker \pi_N &= \set{x \in G \suchthat \pi_N(x) = xN = N} \\
-        &= \set{x \in G \suchthat x \in N}\\
+        \ker \pi_N &= \set*{x \in G \given \pi_N(x) = xN = N} \\
+        &= \set*{x \in G \given x \in N}\\
         &= N,  
     \end{align*} dove il secondo segno di uguaglianza viene dalla \autoref{prop:cond_laterale_è_sgrp} (in particolare per l'equivalenza tra i punti (ii) e (iii)).
 \end{proof}
+
+L'omomorfismo $\pi_N$ viene chiamato \emph{proiezione canonica al quoziente}.
 
 \begin{corollary}
     I sottogruppi normali di $G$ sono tutti e solo i nuclei degli omomorfismi definiti su $G$.
 \end{corollary}
 \begin{proof}
     Infatti se $N \normal G$ allora per la \autoref{prop:kernel_proiezione} segue che $N = \ker \pi_N$; invece dato un omomorfismo di gruppi $\phi : G \to G^\prime$ vale che $\ker \phi$ è normale per la \autoref{prop:rel_kernel_sgr_normali}.
+\end{proof}
+
+\subsubsection{Altri risultati derivanti dai gruppi quozienti}
+In questa sezione esporremo alcuni importanti risultati che possono essere ottenuto sfruttando particolari quozienti.
+
+\begin{theorem}
+    [Teorema di Cauchy per gruppi abeliani]
+    Sia $(G, \cdot)$ un gruppo abeliano finito e sia $p \in \Z$ un primo tale che $p \divides \abs*{G}$. 
+    Allora esiste $g \in G$ tale che $\ord(G){g} = p$.
+\end{theorem}
+\begin{proof}
+    Ragioniamo per induzione forte su $n \deq \abs*{G}$.
+    \paragraph{Caso base}
+    Se $G$ ha ordine $p$, allora per il \autoref{cor:cardG=p_implies_cyclic_G} segue che $G \isomorph \Zmod{p}$, dunque ogni elemento invertibile ha ordine $p$.
+
+    \paragraph{Passo induttivo} Supponiamo $n > p$,  $p \divides n$.
+
+    Se $G$ è ciclico, allora $G \isomorph \Zmod{n}$. Per il \autoref{cor:cons_ord_in_Z/nZ} sappiamo che ci sono $\phi(p) = p-1$ elementi di ordine $p$ in $\Zmod{n}$, dunque in particolare vi è almeno un elemento di ordine $p$.
+
+    Sia ora $G$ un gruppo generico, $g \in G \setminus \set*{e_G}$ un elemento diverso dall'identità. 
+    Se l'ordine di $g$ è multiplo di $p$, allora $\#\gen{g}$ è un multiplo di  $p$, da cui segue che c'è almeno un elemento di ordine $p$ in $\gen*{g}$ 
+    (poiché $\gen*{g}$ è ciclico continua a valere la proposizione \autoref{cor:cons_ord_in_Z/nZ}) e quindi in $G$.
+
+    Se l'ordine di $g$ non è multiplo di $p$ considero il gruppo $H \deq \quot{G}{\gen{g}}$: 
+    $H$ è un gruppo in quanto $G$ è abeliano e tutti i sottogruppi di un gruppo abeliano sono normali. 
+    Per la \eqref{eq:index} segue che \[
+        \abs*{H} = \frac{\abs*{G}}{\abs*{\gen{g}}} < n;
+    \] inoltre siccome $p \divides \abs*{G}$ e $p \ndivides \abs*{\gen{g}}$
+    segue che $p \divides \frac{\abs*{G}}{\abs*{\gen{g}}}$. Per ipotesi induttiva segue quindi che $H$ contiene un elemento di ordine $p$: chiamiamolo $h$.
+
+    Sia $\pi_H : G \to H$ la proiezione canonica al quoziente; scelgo $t \in G$ tale che $\pi_H(t) = h$.
+    Essendo $\pi_H$ surgettiva, tale elemento sicuramente esiste (anche se non è detto che sia unico). Per la \autoref{prop:omo_ord} segue che  \[
+        p = \ord(H){h} = \ord(H){\pi_H(t)} \divides \ord(G){t}, 
+    \] da cui $\gen*{t} \sgr G$ è un sottogruppo di ordine multiplo di $p$, da cui si procede come prima.    
+\end{proof}
+
+\begin{proposition}\label{prop:G/Z(G)_cyclic=>abelian_G}
+    Sia $(G, \cdot)$ un gruppo tale che $\quot{G}{Z(G)}$ è ciclico. Allora $G$ è abeliano.
+\end{proposition}
+\begin{proof}
+    Siccome $\quot{G}{Z(G)}$ è ciclico, deve esistere $a \in G$ tale che $\quot{G}{Z(G)} = \gen*{aZ(G)}$. Sia $H = \quot{G}{Z(G)}$.
+
+    Se $a \in Z(G)$ allora $aZ(G) = Z(G)$, da cui $\quot{G}{Z(G)} = \gen*{e_H} = \set*{e_H}$. Questo implica che $Z(G) = G$, ovvero $G$ è abeliano.
+
+    Supponiamo quindi che $a \notin Z(G)$: questo significa che esiste un $b \in G$ tale che $ab \neq ba$.
+    Sia $\pi_H : G \to H$ la proiezione canonica sul quoziente. Allora vale che \[
+        \pi_H(b) = bZ(G) = a^kZ(G),
+    \] dove l'ultima uguaglianza è data dal fatto che $aZ(G)$ è un generatore di $H$. 
+    Questo significa in particolare che $a^kb\inv \in Z(G)$, ovvero esiste $z \in Z$ tale che $z = a^kb\inv$ (ovvero $b = a^kz\inv$, $a^k=zb$).
+    \begin{align*}
+        ab = aa^kz\inv = a^{k+1}z\inv\\
+        ba = a^kz\inv a = a^{k+1}z\inv 
+    \end{align*} dove l'ultima uguaglianza segue dal fatto che $z\inv \in Z(G)$. Dunque $ab = ba$, il che è assurdo, dunque segue che $a \in Z(G)$ e quindi $G$ è abeliano.
+
 \end{proof}

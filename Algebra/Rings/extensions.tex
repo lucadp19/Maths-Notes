@@ -1,23 +1,23 @@
 \section{Estensioni di campi}
 
 \begin{definition}
-    [Estensione di campi] Siano $K, F$ campi con $K \subseteq F$. Allora $F$ si dice \emph{estensione} di $K$ e l'estensione si indica con $\ext{F}{K}$.
+    [Estensione di campi] Siano $K, F$ campi con $K \subseteq F$. Allora $F$ si dice \emph{estensione} di $K$ e l'estensione si indica con $\ext{F/K}$.
 \end{definition}
 
 \begin{definition}
-    [Elementi algebrici e trascendenti] Sia $\ext{F}{K}$ un'estensione di campi. $\alpha \in F$ si dice \emph{algebrico su $K$} se esiste un polinomio $f \in \K[X] \setminus \set{0_{\K[X]}}$ tale che $f(\alpha) = 0$. Se $\alpha$ non è algebrico si dice \emph{trascendente}.
+    [Elementi algebrici e trascendenti] Sia $\ext{F/K}$ un'estensione di campi. $\alpha \in F$ si dice \emph{algebrico su $K$} se esiste un polinomio $f \in \K[X] \setminus \set*{0_{\K[X]}}$ tale che $f(\alpha) = 0$. Se $\alpha$ non è algebrico si dice \emph{trascendente}.
 \end{definition}
 
 \begin{definition}
-    [Estensioni algebriche] Sia $\ext{F}{K}$ un'estensione di campi. $\ext{F}{K}$ si dice \emph{algebrica} se ogni $\alpha \in F$ è algebrico su $K$.
+    [Estensioni algebriche] Sia $\ext{F/K}$ un'estensione di campi. $\ext{F/K}$ si dice \emph{algebrica} se ogni $\alpha \in F$ è algebrico su $K$.
 \end{definition}
 
 Dato un valore $\alpha \in F$ possiamo valutare tutti i polinomi di $K[X]$ in $\alpha$ per verificare il loro valore: l'immagine di questa funzione è l'insieme \[
-    K[\alpha] \deq \set{f(\alpha) \suchthat f \in K[X]}.    
+    K[\alpha] \deq \set*{f(\alpha) \given f \in K[X]}.    
 \] Siccome $f(\alpha) \in F$ questo insieme è un sottoinsieme di $F$. In particolare essendo un sottoinsieme di un campo possiamo indurre due operazioni sugli elementi di $K[\alpha]$ (una somma e un prodotto) che si comportano esattamente come si comportano in $F$. Vale quindi la seguente proposizione.
 
 \begin{proposition}
-    Sia $\ext{F}{K}$ un'estensione di campi, $\alpha \in F$. Allora $(K[\alpha], +, \cdot)$ è un anello.
+    Sia $\ext{F/K}$ un'estensione di campi, $\alpha \in F$. Allora $(K[\alpha], +, \cdot)$ è un anello.
 \end{proposition}
 
 La funzione che porta ogni elemento di $K[X]$ nella sua valutazione in $\alpha$ si dice \emph{omomorfismo di valutazione}, ed è definito da \begin{align*}
@@ -26,7 +26,7 @@ La funzione che porta ogni elemento di $K[X]$ nella sua valutazione in $\alpha$ 
 \end{align*} Esso è un omomorfismo tra l'anello dei polinomi $K[X]$ e l'anello $K[\alpha]$. Osserviamo inoltre che è un omomorfismo surgettivo, in quanto $K[\alpha] = \Imm \phi_\alpha$.
 
 \begin{proposition}\label{prop:KX/ker_valutazione_isomorfo_Kalpha}
-    Sia $\ext{F}{K}$ un'estensione di campi, $\alpha \in F$. Allora vale che \[
+    Sia $\ext{F/K}$ un'estensione di campi, $\alpha \in F$. Allora vale che \[
         \quot{K[X]}{\ker{\phi_\alpha}} \isomorph K[\alpha].    
     \]
 \end{proposition}
@@ -57,14 +57,14 @@ La funzione che porta ogni elemento di $K[X]$ nella sua valutazione in $\alpha$ 
 
 \begin{remark}
     L'omomorfismo di valutazione ci consente di descrivere gli elementi algebrici e quelli trascendenti sfruttando le proprietà degli omomorfismi. Infatti \[
-        \ker \phi_\alpha = \set{f(X) \in K[X] \suchthat \phi_\alpha(f(X)) = f(\alpha) = 0}.    
-    \] Dunque un elemento $\alpha \in F$ è algebrico su $K$ se e solo se $\ker \phi_\alpha \neq \set{0}$, ovvero se e solo se $\phi_\alpha$ non è iniettivo.
+        \ker \phi_\alpha = \set*{f(X) \in K[X] \given \phi_\alpha(f(X)) = f(\alpha) = 0}.    
+    \] Dunque un elemento $\alpha \in F$ è algebrico su $K$ se e solo se $\ker \phi_\alpha \neq \set*{0}$, ovvero se e solo se $\phi_\alpha$ non è iniettivo.
 
     In particolare se $\alpha$ è trascendente vale che $\quot{K[X]}{\ker \phi_\alpha} = K[X]$, dunque $K[\alpha] \isomorph K[X]$.
 \end{remark}
 
 \subsection{Polinomio minimo di un elemento algebrico}
-Sia $\ext{F}{K}$ un'estensione di campi e sia $\alpha \in F$ un elemento algebrico su $K$, ovvero $\ker \phi_\alpha \neq \set{0}$.
+Sia $\ext{F/K}$ un'estensione di campi e sia $\alpha \in F$ un elemento algebrico su $K$, ovvero $\ker \phi_\alpha \neq \set*{0}$.
 Notiamo che siccome $\ker \phi_\alpha$ non è banale, esso contiene almeno un polinomio diverso dal polinomio nullo, dunque l'insieme dei gradi dei polinomi non nulli nel nucleo di $\phi_\alpha$ è un sottoinsieme di $\N$ non vuoto, perciò ha minimo.
 
 \begin{proposition}\label{prop:caratt_polinomio_minimo}
@@ -83,7 +83,7 @@ Notiamo che siccome $\ker \phi_\alpha$ non è banale, esso contiene almeno un po
             \mu_\alpha(\alpha) = a(\alpha)b(\alpha) = 0 \in F.
         \] Siccome $F$ è un campo vale la \hyperref[prop:ann_prod_dominio]{legge di annullamento del prodotto}, dunque $a(\alpha) = 0$ oppure $b(\alpha) = 0$. Ma ciò è assurdo in quanto $\mu_\alpha$ è di grado minimo tra i polinomi che si annullano in $\alpha$, mentre $a$ e $b$ hanno grado minore. Dunque $\mu_\alpha$ è irriducibile.
         \item Per definizione l'ideale generato da $\mu_\alpha$ è \[
-            \ideal[\big]{\mu_\alpha(X)} = \set{a(X)\mu_\alpha(X) \suchthat a(X) \in K[X].} 
+            \ideal[\big]{\mu_\alpha(X)} = \set*{a(X)\mu_\alpha(X) \given a(X) \in K[X].} 
         \] Siccome $\mu_\alpha \in \ker \phi_\alpha$ segue che $\ideal[\big]{\mu_\alpha(X)} \subseteq \ker \phi_\alpha$: infatti per ogni $a(X) \in K[X]$ vale che \begin{align*}
             \phi_\alpha\parens*{a(X)\mu_\alpha(X)} &= \phi_\alpha\parens*{a(X)}\phi_\alpha\parens*{\mu_\alpha(X)}\\
             &= a(\alpha)\mu_\alpha(\alpha)\\
@@ -102,22 +102,22 @@ Notiamo che siccome $\ker \phi_\alpha$ non è banale, esso contiene almeno un po
         \] da cui segue che $\ker \phi_\alpha = \mu_\alpha$.
         \item Sia $f \in K[X]$ un polinomio che si annulla in $\alpha$, monico e irriducibile: dimostriamo che $f = \mu_\alpha$.
         
-        Siccome per il punto precedente tutti i polinomi che si annullano in $\alpha$ sono nell'ideale generato da $\mu_\alpha$, segue che $f(X) = g(X)\mu_\alpha(X)$ per qualche $g \in K[X]$. Tuttavia se $\deg g \geq 1$ allora $f$ sarebbe riducibile, dunque $\deg g = 0$, ovvero $g(X) = k_0$ per qualche $k_0 \in \invert{K}$. Ma $f$ deve essere monico, e siccome $\mu_\alpha$ è monico segue che $k_0 = 1$, da cui $f = \mu_\alpha$. \qedhere
+        Siccome per il punto precedente tutti i polinomi che si annullano in $\alpha$ sono nell'ideale generato da $\mu_\alpha$, segue che $f(X) = g(X)\mu_\alpha(X)$ per qualche $g \in K[X]$. Tuttavia se $\deg g \geq 1$ allora $f$ sarebbe riducibile, dunque $\deg g = 0$, ovvero $g(X) = k_0$ per qualche $k_0 \in \units{K}$. Ma $f$ deve essere monico, e siccome $\mu_\alpha$ è monico segue che $k_0 = 1$, da cui $f = \mu_\alpha$. \qedhere
     \end{enumerate}
 \end{proof}
 
 \begin{definition}
-    [Polinomio minimo] Sia $\ext{F}{K}$ un'estensione di campi, $\alpha \in F$ algebrico su $K$. L'unico polinomio monico e irriducibile di $K[X]$ che si annulla in $\alpha$ viene detto \emph{polinomio minimo} di $\alpha$ su $K$.
+    [Polinomio minimo] Sia $\ext{F/K}$ un'estensione di campi, $\alpha \in F$ algebrico su $K$. L'unico polinomio monico e irriducibile di $K[X]$ che si annulla in $\alpha$ viene detto \emph{polinomio minimo} di $\alpha$ su $K$.
 \end{definition}
 
 \begin{example}
-    Data l'estensione $\ext{\R}{\Q}$, $\alpha = \sqrt[3]{2} \in \R$, vogliamo trovare il polinomio minimo $\mu_\alpha \in \Q[X]$.
+    Data l'estensione $\ext{\R / \Q}$, $\alpha = \sqrt[3]{2} \in \R$, vogliamo trovare il polinomio minimo $\mu_\alpha \in \Q[X]$.
 
     Sicuramente $X^3 - 2 \in \ideal[\big]{\mu_\alpha(X)}$ in quanto $\parens*{\sqrt[3]{2}}^3 - 2 = 0$, dunque $\mu_\alpha(X) \divides X^3 - 2$. Inoltre $X^3 - 2$ è monico ed irriducibile in $\Q[X]$, in quanto per il Criterio di Eisenstein (con $p = 2$) è irriducibile su $\Z$ e dunque per il Lemma di Gauss lo è su $\Q$. Da ciò segue che $\mu_\alpha(X) = X^3 - 2$.
 \end{example}
 
 \begin{proposition}
-    Sia $\ext{F}{K}$ un'estensione di campi, $\alpha \in F$ algebrico su $K$ e $\mu_\alpha \in \K[X]$ il polinomio minimo di $\alpha$ su $K$. Allora vale che \[
+    Sia $\ext{F/K}$ un'estensione di campi, $\alpha \in F$ algebrico su $K$ e $\mu_\alpha \in \K[X]$ il polinomio minimo di $\alpha$ su $K$. Allora vale che \[
         K[\alpha] \isomorph \quot{K[X]}{\ideal[\big]{\mu_\alpha}}
     \] e $K[\alpha]$ è un campo.
 \end{proposition}
@@ -127,7 +127,7 @@ Notiamo che siccome $\ker \phi_\alpha$ non è banale, esso contiene almeno un po
 
 \begin{remark}
     Sia $K(\alpha)$ l'insieme \[
-        K(\alpha) \deq \set{\frac{f(\alpha)}{g(\alpha)} \suchthat f,\ g \in K[X],\ g(\alpha) \neq 0}.    
+        K(\alpha) \deq \set*{\frac{f(\alpha)}{g(\alpha)} \given f,\ g \in K[X],\ g(\alpha) \neq 0}.    
     \] Se $\alpha$ è algebrico su $K$ possiamo mostrare che $K[\alpha] = K(\alpha)$.
 
     Infatti innanzitutto esiste un'inclusione canonica \begin{align*}
@@ -140,13 +140,13 @@ Notiamo che siccome $\ker \phi_\alpha$ non è banale, esso contiene almeno un po
 
 \begin{definition}
     [Grado dell'estensione]
-    Sia $\ext{F}{K}$ un'estensione di campi. Si dice \emph{grado di} $\ext{F}{K}$ il numero naturale \[
-        \extdeg{F}{K} \deq \dim_K F.    
+    Sia $\ext{F/K}$ un'estensione di campi. Si dice \emph{grado di} $\ext{F/K}$ il numero naturale \[
+        \ExtDegree{F : K} \deq \dim_K F.    
     \]
 \end{definition}
 
 \begin{proposition}
-    Sia $\ext{F}{K}$ un'estensione di campi, $\alpha \in F$. Allora vale che \[
+    Sia $\ext{F/K}$ un'estensione di campi, $\alpha \in F$. Allora vale che \[
         \dim_K K[\alpha] = \begin{cases}
             +\infty, &\text{se $\alpha$ è trascendente su $K$}\\
             \deg \mu_\alpha, &\text{se $\alpha$ è algebrico su $K$.}
@@ -155,9 +155,9 @@ Notiamo che siccome $\ker \phi_\alpha$ non è banale, esso contiene almeno un po
 \end{proposition}
 \begin{proof}
     Se $\alpha$ è trascendente allora $K[\alpha] \isomorph K[X]$, dunque \[
-        \extdeg{K[\alpha]}{K} = \extdeg{K[X]}{K} = \dim_K K[X] = +\infty.
+        \ExtDegree{K[\alpha]: K} = \ExtDegree{K[X]: K} = \dim_K K[X] = +\infty.
     \] Invece se $\alpha$ è algebrico su $K$ vale che $K[\alpha] \isomorph \quot{K[X]}{\ideal[\big]{\mu_\alpha(X)}}$, da cui segue che \[
-        \extdeg{K[\alpha]}{K} = \extdeg{\quot{K[X]}{\ideal[\big]{\mu_\alpha(X)}}}{K} = \deg \mu_\alpha
+        \ExtDegree{K[\alpha]: K} = \ExtDegree{\quot{K[X]}{\ideal[\big]{\mu_\alpha(X)}} : K} = \deg \mu_\alpha
     \] per il secondo punto della \autoref{th:caratt_quot_polinomi}. In particolare una $K$-base di $K[\alpha]$ può essere ottenuta sfruttando una $K$-base del quoziente e l'isomorfismo: \[
         \parens*{\eqcl 1,\ \eqcl{x}, \dots,\ \eqcl{x^{n-1}}} \xmapsto{\bar\phi} \parens*{1,\ \alpha, \dots,\ \alpha^{n-1}}.    
     \]

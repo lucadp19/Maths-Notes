@@ -1,0 +1,44 @@
+\section{Presentazioni di gruppo}
+
+Abbiamo visto studiando il gruppo diedrale $D_n$ che se vogliamo esprimere un gruppo in termini dei suoi generatori è necessario esplicitare anche quali condizioni devono essere rispettate dai generatori: se non lo facessimo, il gruppo non sarebbe necessariamente univoco. Per formalizzare il concetto di \emph{presentazione} abbiamo bisogno di alcune definizioni iniziali.
+
+\begin{definition}
+    [Gruppo libero su un insieme] Sia $X = \set*{x_1, x_2, \dots}$ un insieme di simboli e poniamo $X\inv \deq \set*{x_1\inv, x_2\inv, \dots}$ l'insieme dei loro inversi formali.
+
+    Poniamo $\LL \deq X \union X\inv$; una \emph{parola} è un elemento di \[
+        \bigunion_{n \geq 0} \LL^n;
+    \] ovvero è sequenza finita (ma arbitrariamente lunga) di elementi di $\LL$.
+
+    Una parola si dice \emph{ridotta} se non contiene consecutivamente i simboli $x_i$ e $x_i\inv$ (o viceversa).
+
+    Un gruppo $G \supseteq X$ si dice \emph{libero su $X$} se $G$ è generato da $X$ e tutte le parole ridotte rappresentano elementi diversi di $G$.
+\end{definition}
+
+\begin{remark}
+    Se $X = \set*{x}$ allora le parole ridotte sono delle seguenti forme:
+    \begin{itemize}
+        \item la parola è vuota;
+        \item la parola è della forma $xxx\dots x$, che può essere rappresentata con $x^n$ (dove $n$ è la lunghezza della sequenza);
+        \item la parola è della forma $x\inv x\inv x\inv \dots x\inv$, che può essere rappresentata con $x^{-n}$ (dove $n$ è la lunghezza della sequenza). 
+    \end{itemize}
+
+    Quindi $G$ è libero su $X$ se e solo se le parole sono tutte delle tre forme precedenti; dunque $G$ deve essere isomorfo a $\Z$: questo ci mostra che $\Z$ è un gruppo libero sull'insieme $X = \set*{1}$.
+\end{remark}
+
+Avevamo già osservato che se $H$ è un gruppo qualsiasi, allora esiste una bigezione tra gli elementi di $H$ e gli omomorfismi $\Z \to H$: questa bigezione è data da \begin{align*}
+    \Hom{\Z, H} &\leftrightarrow H\\
+    (n \mapsto h^n) &\mapsfrom h.
+\end{align*}
+
+Questa osservazione può essere estesa ai gruppi liberi con più generatori: se $G$ è libero su $X$ e $H$ è un gruppo qualunque allora esiste una bigezione tra gli omomorfismi $G \to H$ e le funzioni $X \to H$, dato da
+\begin{align*}
+    \Hom{G, H} &\biject \set*{f : X \to H}\\
+    (x_{i_1}^{\pm 1}\cdots x_{i_k}^{\pm 1} \mapsto h_{i_1}^{\pm 1}\cdots h_{i_k}^{\pm 1}) &\mapsfrom \begin{pmatrix}
+        x_1 \mapsto h_1 \\
+        x_2 \mapsto h_2 \\
+        \vdotswithin{\mapsto}
+    \end{pmatrix}
+\end{align*}
+Le funzioni $X \to H$ ci dicono dove vengono mappati i generatori (ovvero gli elementi di $X$): questo determina univocamente un omomorfismo da $G$ in $H$ che mappa ogni parola in modo da rispettare la mappa $X \to H$.
+
+\paragraph{Costruzione della presentazione di un gruppo} Consideriamo ora un gruppo $H$ generato da $g_1, \dots, g_n$. Per l'osservazione precedente deve esistere un omomorfismo 

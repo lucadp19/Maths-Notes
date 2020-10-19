@@ -49,7 +49,7 @@ Il seguente Lemma ci permette di studiare la fattorizzazione su $\Q$ e su $\Z$ a
     [Radici razionali di un polinomio a coefficienti interi]
     Sia $f(X) \in \Z[X]$ un polinomio a coefficienti interi tale che \[
         f(X) = a_0 + a_1x + a_2x^2 + \dots + a_nx^n.    
-    \] Sia $\frac{c}{d} \in \Q$ ridotta ai minimi termini (ovvero $\mcd{c}{d} = 1$). 
+    \] Sia $\frac{c}{d} \in \Q$ ridotta ai minimi termini (ovvero $\gcd{c, d} = 1$). 
     
     Allora se $\frac{c}{d}$ è una radice di $f$ segue che $c \divides a_0$ e $d \divides a_n$.
 \end{proposition}
@@ -65,7 +65,7 @@ Il seguente Lemma ci permette di studiare la fattorizzazione su $\Q$ e su $\Z$ a
     \]
     \begin{align*}
         \iff &a_nc^n \congr 0 \Mod{d} \\
-        \intertext{Dato che $\mcd{c}{d} = 1$, allora $c^n$ è invertibile modulo $d$)}
+        \intertext{Dato che $\gcd{c, d} = 1$, allora $c^n$ è invertibile modulo $d$)}
         \iff &a_n \congr 0 \Mod{d}\\
         \iff &d \divides a_n.
     \end{align*}
@@ -83,7 +83,7 @@ Il seguente Lemma ci permette di studiare la fattorizzazione su $\Q$ e su $\Z$ a
 Un altro metodo per scomporre i polinomi a coefficienti interi è quello di sfruttare le congruenze. Sia $p \in \Z$ primo; chiamiamo \emph{riduzione modulo $p$} la seguente funzione:
 \begin{align*}
     \pi_p : \Z[X] &\to \Zmod{p}[X]\\
-    \sum_{i=0}^n a_iX^i &\mapsto \sum_{i=0}^n \eqcl{a_i}X^i.
+    \sum_{i=0}^n a_iX^i &\mapsto \sum_{i=0}^n \eqcl+{a_i}X^i.
 \end{align*}
 Si può verificare molto semplicemente che questa funzione è un omomorfismo di anelli; inoltre se $p \ndivides a_n$ segue che $\deg f = \deg \pi_p f$.
 
@@ -128,10 +128,10 @@ Si può verificare molto semplicemente che questa funzione è un omomorfismo di 
     \] e i gradi di $\pi_p(g)$, $\pi_p(h)$ sono uguali ai gradi di $g$ e di $h$, rispettivamente.
 
     Dal fatto che $p$ divide tutti i coefficienti di $f$ tranne $a_n$ segue che \[
-        \pi_p(f(X)) = \eqcl{a_n}X^n.
-    \] Siccome in $\Zmod{p}$ vale il \nameref{th:fatt_unica} (poiché $\Zmod{p}$ è un campo) gli unici fattori di $\eqcl{a_n}X^n$ sono della forma $X^k$ per qualche costante. 
+        \pi_p(f(X)) = \eqcl+{a_n}X^n.
+    \] Siccome in $\Zmod{p}$ vale il \nameref{th:fatt_unica} (poiché $\Zmod{p}$ è un campo) gli unici fattori di $\eqcl+{a_n}X^n$ sono della forma $X^k$ per qualche costante. 
     
-    Da ciò segue che $\pi_p\parens*{g(X)} = \eqcl{b_n}X^m$, $\pi_p\parens*{h(X)} = \eqcl{c_n}X^m$, dove $\eqcl{b}\eqcl{c} = \eqcl{a_n}$. In particolare questo significa che i termini noti di $g$ e di $h$ (rispettivamente $b_0$ e $c_0$) devono essere divisibili per $p$, il che implica \[
+    Da ciò segue che $\pi_p\parens*{g(X)} = \eqcl+{b_n}X^m$, $\pi_p\parens*{h(X)} = \eqcl+{c_n}X^m$, dove $\eqcl+{b}\eqcl+{c} = \eqcl+{a_n}$. In particolare questo significa che i termini noti di $g$ e di $h$ (rispettivamente $b_0$ e $c_0$) devono essere divisibili per $p$, il che implica \[
         p^2 \divides b_0c_0 = a_0;
     \] ma ciò è assurdo, dunque $f$ è irriducibile.
 \end{proof}

@@ -1,5 +1,6 @@
 \section{Teoremi di Omomorfismo}
 
+\subsection{Primo Teorema degli Omomorfismi}
 \begin{theorem}
     [Primo Teorema degli Omomorfismi] \label{th:first_iso}
     Siano $(G, \cdot)$, $(G^\prime, *)$ due gruppi e sia $f : G \to G^\prime$ un omomorfismo di gruppi. Sia inoltre $N \normal G$, $N \subseteq \ker f$.
@@ -47,16 +48,16 @@
             &= \phi(xN) * \phi(yN).
         \end{align*}
         \item[Proprietà delle immagini] Per definizione \begin{align*}
-            \Imm \phi &= \set{\phi(xN) \suchthat xN \in \quot{G}{N}}\\
-            &= \set{f(x) \suchthat xN \in \quot{G}{N}}.
+            \Imm \phi &= \set*{\phi(xN) \given xN \in \quot{G}{N}}\\
+            &= \set*{f(x) \given xN \in \quot{G}{N}}.
             \intertext{Tuttavia, come abbiamo verificato nella parte relativa alla buona definizione di $\phi$, se $xN = yN$ allora $f(x) = f(y)$, dunque vale che}
-            \Imm \phi &= \set{f(x) \suchthat x \in G}\\
+            \Imm \phi &= \set*{f(x) \given x \in G}\\
             &= \Imm f.
         \end{align*}
         \item[Proprietà dei nuclei] Per definizione \begin{align*}
-            \ker \phi &= \set{xN \in \quot{G}{N} \suchthat \phi(xN) = e^\prime}\\
-            &= \set{xN \in \quot{G}{N} \suchthat f(x) = e^\prime}\\
-            &= \set{xN \in \quot{G}{N} \suchthat x \in \ker f}\\
+            \ker \phi &= \set*{xN \in \quot{G}{N} \given \phi(xN) = e^\prime}\\
+            &= \set*{xN \in \quot{G}{N} \given f(x) = e^\prime}\\
+            &= \set*{xN \in \quot{G}{N} \given x \in \ker f}\\
             &= \quot{\ker f}{N}. \tag*{\qedhere}
         \end{align*}
     \end{description}
@@ -107,18 +108,8 @@ Vale dunque il seguente corollario.
         \quot{G}{\ker f} \isomorph \Imm f.
     \end{equation}
 \end{corollary}
-% \begin{proof}RIVEDI QUESTA PARTE
-%     Consideriamo il seguente diagramma commutativo (che segue dal \nameref{th:first_iso} applicato all'omomorfismo $f$ e al sottogruppo normale $\ker f \normal G$):
-%     \begin{equation}
-%         \begin{tikzcd}
-%             G \arrow[d, swap, "\pi_{\ker f}"] \arrow[r, "f"] & G^\prime \\
-%             \quot{G}{\ker f} \arrow[ur, hook, two heads, swap, "\phi"] &
-%         \end{tikzcd}
-%     \end{equation}
-    
-%     Per l'osservazione precedente, $\phi$ è iniettivo; per il \nameref{th:first_iso} $\Imm \phi = \Imm f = G^\prime$, dunque $\phi$ è surgettivo. Possiamo quindi concludere che $\phi$ è un isomorfismo di gruppi, da cui la tesi.
-% \end{proof}
 
+\subsection{Secondo Teorema degli Omomorfismi}
 \begin{theorem}
     [Secondo Teorema degli Omomorfismi] \label{th:second_iso}
     Sia $(G, \cdot)$ un gruppo e siano $H, K \normal G$, con $H \subseteq K$. Allora \begin{equation}
@@ -157,6 +148,7 @@ Vale dunque il seguente corollario.
     \]
 \end{proof}
 
+\subsection{Terzo Teorema degli Omomorfismi}
 \begin{theorem}
     [Terzo Teorema degli Omomorfismi] Sia $(G, \cdot)$ un gruppo e siano $H \sgr G$,$N \normal G$. 
     Valgono le seguenti affermazioni: \begin{itemize}
@@ -193,16 +185,17 @@ Vale dunque il seguente corollario.
         \pi_{N} : HN \to \quot{HN}{N};    
     \] questo ci garantisce che $f$ è ben definita e che è un omomorfismo di gruppi.
     
-    Inoltre $f$ è surgettiva: basta mostrare che \begin{align*}
-        &\Imm f = \quot{HN}{N}\\
-        \iff &\set{hN \in \quot{HN}{N} \suchthat h \in H} = \set{yN \in \quot{HN}{N} \suchthat y \in HN}
-    \end{align*}
-    L'inclusione $\Imm f \subseteq \quot{HN}{N}$ è data dalla definizione; l'inclusione contraria viene dal fatto che se $yN \in \quot{HN}{N}$, ovvero $y = hn$ per qualche $hn \in HN$, allora $yN = hnN \in \set{hN \suchthat h \in H}$ in quanto $nN = N$.
+    Inoltre $f$ è surgettiva: basta mostrare che \begin{gather*}
+        \Imm f = \quot{HN}{N}\\
+        \intertext{il che equivale a}
+        \set*{hN \in \quot{HN}{N} \given h \in H} = \set*{yN \in \quot{HN}{N} \given y \in HN}.
+    \end{gather*}
+    L'inclusione $\Imm f \subseteq \quot{HN}{N}$ è data dalla definizione; l'inclusione contraria viene dal fatto che se $yN \in \quot{HN}{N}$, ovvero $y = hn$ per qualche $hn \in HN$, allora $yN = hnN \in \set*{hN \given h \in H}$ in quanto $nN = N$.
 
     Inoltre \begin{align*}
-        \ker f &= \set{h \in H \suchthat f(h) = N} \\
-        &= \set{h \in H \suchthat hN = N} \\
-        &= \set{h \in H \suchthat h \in N} \\
+        \ker f &= \set*{h \in H \given f(h) = N} \\
+        &= \set*{h \in H \given hN = N} \\
+        &= \set*{h \in H \given h \in N} \\
         &= H \inters N.
     \end{align*}
 
@@ -211,6 +204,14 @@ Vale dunque il seguente corollario.
     \]
 \end{proof}
 
+Prima di studiare il Teorema di Corrispondenza, introduciamo un lemma che ci sarà utile:
+\begin{lemma}\label{lem:controimm_normal}
+    Siano $(G, \cdot)$, $(G^\prime, \cdot)$ due gruppi e sia $f : G \to G^\prime$ un omomorfismo. Se $K \normal G^\prime$, allora $f\inv(K) \normal G$.
+
+    Inoltre se $f$ è surgettivo e $H \normal G$ segue che \[
+        f(H) \normal G^\prime = f(G).    
+    \]
+\end{lemma}
 
 \begin{theorem}[Teorema di Corrispondenza tra Sottogruppi]
     Sia $(G, \cdot)$ un gruppo e $N \normal G$. Sia $\GG$ l'insieme dei sottogruppi di $G$ che contengono $N$ e $\NN$ l'insieme dei sottogruppi di $\quot{G}{N}$.
@@ -222,7 +223,61 @@ Vale dunque il seguente corollario.
         \end{split}
     \end{align*}    
     tale che \begin{itemize}
-        \item $\grindex{G}{A} = \grindex{\quot{G}{N}}{\quot{A}{N}}$,
+        \item $\GrpIndex{G:A} = \GrpIndex{\quot{G}{N} : \quot{A}{N}}$,
         \item se $A \normal G$ allora $\quot{A}{N} \normal \quot{G}{N}$.
     \end{itemize}
 \end{theorem}
+Prima di iniziare la dimostrazione, osserviamo che siccome la proiezione canonica è un omomorfismo, vale che \[
+    \pi(H) \sgr \quot{G}{N}, \qquad \pi\inv(K) \sgr G    
+\] per ogni $H \sgr G$, $K \sgr \quot{G}{N}$.
+\begin{proof}
+    Siano $\alpha$ e $\beta$ le mappe date da:
+    \begin{align*}
+        X &\biject Y\\
+        H &\xmapsto{\alpha} \quot{H}{N} = \pi_N(H)\\
+        \pi_N\inv(K) &\xmapsfrom{\beta} K.
+    \end{align*}
+
+    \paragraph{Buona definizione} $\alpha$ è ben definita poiché l'immagine di un sottogruppo attraverso la proiezione canonica è un sottogruppo: \[
+        \alpha(H) = \pi_N(H) = \quot{H}{N} \sgr \quot{G}{N}.    
+    \] Mostriamo quindi che $\beta$ è ben definita: sia $K \sgr \quot{G}{N}$ e mostriamo che $\beta(K) = \pi_N\inv(K)$ è un sottogruppo di $G$ che contiene $N$. Siccome $\quot{G}{N}$ è il quoziente modulo $N$ la sua identità è $N = eN$; per definizione di sottogruppo ogni elemento di $\NN$ dovrà contenere l'identità del gruppo, ovvero $N$. Segue quindi che \[
+        N = \pi_N\inv(N) \subseteq \pi_N\inv(K),
+    \] da cui $\pi_N\inv(K) \in \GG$.
+
+    \paragraph{Le due funzioni sono una l'inversa dell'altra} Mostriamo che $\alpha \circ \beta = \id$. Sia $K \in \NN$: allora \[
+        (\alpha \circ \beta)(K) = \alpha\parens[\big]{\pi\inv(K)} = \pi\parens[\big]{\pi\inv(K)} = K,
+    \] dove il penultimo passaggio viene dal fatto che $\pi$ è surgettiva, e quindi invertibile da destra.
+
+    Mostriamo ora che $\beta \circ \alpha = \id$. Sia $H \in \GG$: allora
+    \begin{align*}
+           (\beta \circ \alpha)(H) 
+        &= \beta(\pi(H))\\
+        &= \beta\parens[\big]{\quot{H}{N}} \\
+        &= \pi_N\inv\parens[\big]{\quot{H}{N}}\\
+        &= \set*{x \in G \given \pi_N(x) \in \quot{H}{N}}\\
+        &= \set*{x \in G \given xN \in \quot{H}{N}}\\
+        &= \set*{x \in G \given x \in H}\\
+        &= H.
+    \end{align*}
+
+    \paragraph{La bigezione preserva i sottogruppi normali} Sia $H \in \GG$; mostriamo che \[
+        H \normal G \iff \quot{H}{N} \normal \quot{G}{N}.    
+    \] \begin{description}
+        \item[($\implies$)] Segue dal \nameref{th:second_iso}. Infatti siccome $N, H \normal G$ e $N \subseteq H$ segue che \[
+            \frac{\quot{G}{N}}{\quot{H}{N}} \isomorph \quot{G}{H}.    
+        \] Ma questo significa che $\dfrac{\quot{G}{N}}{\quot{H}{N}}$ è un gruppo, da cui segue che \[
+            \quot{H}{N} \normal \quot{G}{N}.
+        \]
+        \item[($\impliedby$)] Segue dal \autoref{lem:controimm_normal}.
+    \end{description}
+
+    \paragraph{La bigezione conserva l'indice di sottogruppo} Sia $H \in \GG$: mostriamo che \[
+        \GrpIndex{G : H} = \GrpIndex{\quot{G}{N} : \quot{H}{N}}.    
+    \] Siano $x, y \in G$ qualsiasi. Mostriamo che le classi laterali $xH$ e $yH$ sono uguali se e solo se \[
+        (xN)\quot{H}{N} = (yN)\quot{H}{N}.    
+    \] Per definizione \[
+        (xN)\quot{H}{N} = \set*{xNhN \given h \in H} = \set*{xhN \given h \in H};    
+    \] allo stesso modo \[
+        (yN)\quot{H}{N} = \set*{yhN \given h \in H}.    
+    \] FINIRE
+\end{proof}

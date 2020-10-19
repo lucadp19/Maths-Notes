@@ -39,7 +39,7 @@ Un sottogruppo particolarmente importante di qualsiasi gruppo è il \emph{centro
 \begin{definition}
     [Centro di un gruppo] \label{def:centro}
     Sia $(G, *)$ un gruppo. Allora si definisce \emph{centro di $G$} l'insieme \[
-        Z(G) \deq \set{x \in G \suchthat g*x = x*g \;\;\forall g \in G}.    
+        Z(G) \deq \set*{x \in G \given g*x = x*g \;\;\forall g \in G}.    
     \]
 \end{definition}
 
@@ -99,7 +99,7 @@ Un altro esempio è dato dai sottogruppi di $(\Z, +)$.
 \begin{definition}
     [Insieme dei multipli interi]
     Sia $n \in \Z$. Allora chiamo $n\Z$ l'insieme dei multipli interi di $n$ \[
-         n\Z \deq \set{nk \suchthat k \in \Z}.
+         n\Z \deq \set*{nk \given k \in \Z}.
     \]
 \end{definition}
 
@@ -146,13 +146,13 @@ Un altro esempio è dato dai sottogruppi di $(\Z, +)$.
     \begin{description}
         \item[($\implies$)] Supponiamo $n\Z \subseteq m\Z$, ovvero che per ogni $x \in n\Z$ allora $x \in m\Z$.
         
-        Sia $k \in \Z$ tale che $\mcd{k}{m} = 1$ e sia $x = nk$.
+        Sia $k \in \Z$ tale che $\gcd{k}{m} = 1$ e sia $x = nk$.
         
         Per definizione di $n\Z$ segue che $x \in n\Z$, dunque $x \in m\Z$. Allora dovrà esistere $h \in \Z$ tale che \begin{align*}
             &x = mh \\
             \iff\ &nk = mh \\
             \implies\ &m \divides nk
-            \intertext{Ma abbiamo scelto $k$ tale che $\mcd{k}{m} = 1$, dunque}
+            \intertext{Ma abbiamo scelto $k$ tale che $\gcd{k}{m} = 1$, dunque}
             \implies\ &m \divides n.
         \end{align*}
         \item[($\impliedby$)] Supponiamo che $m \divides n$, ovvero $n = mh$ per qualche $h \in \Z$. Allora \[

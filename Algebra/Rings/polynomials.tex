@@ -24,7 +24,7 @@ Innanzitutto d'ora in avanti $(A, +, \cdot)$ è un anello commutativo con identi
 \begin{definition}
     [Grado di un polinomio]
     Sia $p \in A[X]$, $p(X) \neq 0_{A[X]}$. Allora si dice grado di $p$ il numero \[
-        \deg p = \max \set{n \in \N \suchthat a_n \neq 0}.    
+        \deg p = \max \set*{n \in \N \given a_n \neq 0}.    
     \] Il polinomio $0_{A[X]}$ non ha grado.
 \end{definition}
 
@@ -72,8 +72,8 @@ Definiamo ora le operazioni di somma e prodotto tra polinomi.
 \begin{proposition}
     [Grado della somma e del prodotto]
     \label{prop:deg_somma_prod_polinomi}
-    Siano $p, q \in A[X] \setminus \set{0_{A[X]}}$. Allora vale che \begin{enumerate}[label={(\roman*)}]
-        \item $\deg (p + q) \leq \max \set{\deg p, \deg q}$.
+    Siano $p, q \in A[X] \setminus \set*{0_{A[X]}}$. Allora vale che \begin{enumerate}[label={(\roman*)}]
+        \item $\deg (p + q) \leq \max \set*{\deg p, \deg q}$.
         \item se $A$ è un dominio, allora $\deg (pq) = \deg p + \deg q$.
     \end{enumerate}
 \end{proposition}
@@ -98,18 +98,18 @@ Definiamo ora le operazioni di somma e prodotto tra polinomi.
     Se $A$ è un dominio, allora $A[X]$ è un dominio.
 \end{corollary}
 \begin{proof}
-    Siano $p, q \in A[X] \setminus \set{0_{A[X]}}$, con $\deg p = n \geq 0$, $\deg q = m \geq 0$. Allora per la \autoref{prop:deg_somma_prod_polinomi} vale che \[
+    Siano $p, q \in A[X] \setminus \set*{0_{A[X]}}$, con $\deg p = n \geq 0$, $\deg q = m \geq 0$. Allora per la \autoref{prop:deg_somma_prod_polinomi} vale che \[
         \deg (pq) = \deg p + \deg q = n + m \geq 0.    
     \] Dunque il polinomio $(pq)(X)$ non può essere il polinomio nullo (che non ha grado), da cui segue che in $A[X]$ non vi sono divisori dello zero.
 \end{proof}
 
 \begin{corollary}
     Se $A$ è un dominio, allora gli invertibili di $A[X]$ sono tutti e soli gli elementi invertibili di $A$, ovvero \[
-        \invert{A[X]} = \invert{A}. 
+        \units{A[X]} = \units{A}. 
     \]
 \end{corollary}
 \begin{proof}
-    Sia $p \in \invert{A[X]}$ e sia $q \in A[X]$ il suo inverso, ovvero tale che $(pq)(X) = 1_A$.
+    Sia $p \in \units{A[X]}$ e sia $q \in A[X]$ il suo inverso, ovvero tale che $(pq)(X) = 1_A$.
 
     Notiamo che $p, q \neq 0_{A[X]}$. Infatti se uno dei due fosse il polinomio nullo per la \autoref{prop:prop_anelli:per_0} il loro prodotto dovrebbe essere il polinomio nullo e non l'unità. Allora esistono $\deg p, \deg q \geq 0$ e vale che \[
         \deg (pq) = \deg p + \deg q \seteq \deg 1 = 0.    
@@ -117,14 +117,14 @@ Definiamo ora le operazioni di somma e prodotto tra polinomi.
 
     Dato che i gradi di $p$ e $q$ sono positivi o nulli, il grado del prodotto è $0$ se e solo se entrambi i polinomi $p$ e $q$ sono di grado zero, ovvero se e solo se sono elementi dell'anello $A$.
 
-    Siano $\alpha, \beta \in A$ tali che $f(X) = \alpha$ e $q(X) = \beta$. Allora $(pq)(X) = \alpha \cdot \beta = 1$, ovvero $\alpha$ è invertibile, cioè $\alpha \in \invert{A}$.
+    Siano $\alpha, \beta \in A$ tali che $f(X) = \alpha$ e $q(X) = \beta$. Allora $(pq)(X) = \alpha \cdot \beta = 1$, ovvero $\alpha$ è invertibile, cioè $\alpha \in \units{A}$.
 \end{proof}
 
 Dopo aver caratterizzato gli elementi invertibili in $A[X]$ possiamo definire il concetto di \emph{elementi associati}.
 
 \begin{definition}
     [Polinomi associati]
-    Siano $f, g \in A[X]$. Allora $f$, $g$ si dicono \emph{associati} se esiste $\alpha \in \invert{A[X]}$ (ovvero in $\invert{A}$) tale che \[
+    Siano $f, g \in A[X]$. Allora $f$, $g$ si dicono \emph{associati} se esiste $\alpha \in \units{A[X]}$ (ovvero in $\units{A}$) tale che \[
         f(X) = \alpha g(X).    
     \]
 \end{definition}
@@ -226,7 +226,7 @@ In questa sezione studieremo l'anello $\K[X]$, dove $\K$ è un campo generico. Q
     Siano $f, g \in \K[X]$ non entrambi nulli. Allora \begin{itemize}
         \item esiste $d \in \K[X]$ tale che $d$ è un massimo comun divisore di $f$ e $g$;
         \item esistono $a, b \in \K[X]$ tali che $d(X) = a(X)f(X) + b(X)g(X)$;
-        \item se $d^\prime \in \K[X]$ è un altro massimo comun divisore di $f$ e $g$, allora $d$ e $d^\prime$ sono polinomi associati, ovvero esiste un $\gamma \in \invert{A}$ tale che $d(X) = \gamma d^\prime(X)$.
+        \item se $d^\prime \in \K[X]$ è un altro massimo comun divisore di $f$ e $g$, allora $d$ e $d^\prime$ sono polinomi associati, ovvero esiste un $\gamma \in \units{A}$ tale che $d(X) = \gamma d^\prime(X)$.
     \end{itemize}
 \end{theorem}
 
@@ -235,7 +235,7 @@ Anche nell'anello dei polinomi possiamo definire il concetto di \emph{elemento p
 \begin{definition}
     [Polinomio irriducibile]
     Sia $f \in \K[X]$, $\deg f > 1$. Allora $f$ si dice \emph{irriducibile} in $\K[X]$ se \[
-        f(X) = g(X)h(X) \implies g \in \invert{\K[X]} \text{ oppure } h \in \invert{\K}.
+        f(X) = g(X)h(X) \implies g \in \units{\K[X]} \text{ oppure } h \in \units{\K}.
     \]
 \end{definition}
 

@@ -65,7 +65,7 @@ Facciamo alcuni esempi di gruppi.
 \end{example}
 \begin{example}
     è un gruppo la struttura $(\mu_n, \cdot)$ dove \[
-        \mu_n \deq \set{x \in \C \suchthat x^n = 1}.    
+        \mu_n \deq \set*{x \in \C \given x^n = 1}.    
     \]
 \end{example}
 \begin{proof}
@@ -86,29 +86,29 @@ Facciamo alcuni esempi di gruppi.
     Da ciò segue che $\mu_n$ è un gruppo abeliano.
 \end{proof}
 \begin{example}
-    $(\invert{\Z}, \cdot)$ dove \[
-        \invert{\Z} \deq \set{n \in \Z \suchthat n \text{ è invertibile rispetto a } \cdot} = \set{\pm 1}
+    $(\units{\Z}, \cdot)$ dove \[
+        \units{\Z} \deq \set*{n \in \Z \given n \text{ è invertibile rispetto a } \cdot} = \set*{\pm 1}
     \] è un gruppo abeliano;
 \end{example}
 \begin{example}
-    $(\invert{\Zmod{n}}, \cdot)$ dove \[
-        \invert{\Zmod{n}} \deq \set{\eqcl n \in \Zmod{n} \suchthat \eqcl n \text{ è invertibile rispetto a } \cdot}
+    $(\units{\Zmod{n}}, \cdot)$ dove \[
+        \units{\Zmod{n}} \deq \set*{\eqcl n \in \Zmod{n} \given \eqcl n \text{ è invertibile rispetto a } \cdot}
     \] è un gruppo abeliano.
 \end{example}
 \begin{proof}
     Infatti \begin{enumerate}[label={(G\arabic*)}, start=0]
     % \setcounter{enumi}{-1}
         \item $\cdot$ è un'operazione su $\Zmod{n}$. Infatti se $\eqcl x, \eqcl y \in \Zmod{n}$ allora segue anche che $\eqcl{xy}$ è invertibile in $\Zmod{n}$ e il suo inverso è $\eqcl{x\inv} \cdot \eqcl{y\inv}$, da cui $\eqcl{xy} \in \Zmod n$;
-        \item $\cdot$ è associativa in $\Zmod{n}$, dunque lo è in $\invert{\Zmod{n}} \subseteq \Zmod{n}$;
-        \item $1 \in \Zmod{n}$ è l'elemento neutro di $\cdot$ e $1 \in \invert{\Zmod{n}}$ in quanto $1$ è invertibile e il suo inverso è $1$;
-        \item ogni elemento di $\invert{\Zmod{n}}$ ammette inverso per definizione;
-        \item inoltre $\cdot$ è commutativa in $\Zmod{n}$, dunque lo è in $\invert{\Zmod{n}} \subseteq \Zmod{n}$.
+        \item $\cdot$ è associativa in $\Zmod{n}$, dunque lo è in $\units{\Zmod{n}} \subseteq \Zmod{n}$;
+        \item $1 \in \Zmod{n}$ è l'elemento neutro di $\cdot$ e $1 \in \units{\Zmod{n}}$ in quanto $1$ è invertibile e il suo inverso è $1$;
+        \item ogni elemento di $\units{\Zmod{n}}$ ammette inverso per definizione;
+        \item inoltre $\cdot$ è commutativa in $\Zmod{n}$, dunque lo è in $\units{\Zmod{n}} \subseteq \Zmod{n}$.
     \end{enumerate}
     Da ciò segue che $\Zmod{n}$ è un gruppo abeliano.
 \end{proof}
 \begin{example}
     Se $X$ è un insieme e $\SS(X)$ è l'insieme \[
-        \SS(X) \deq \set{f : X \to X \suchthat f \text{ è bigettiva}}    
+        \SS(X) \deq \set*{f : X \to X \given f \text{ è bigettiva}}    
     \] allora $(\SS(X), \circ)$ è un gruppo (dove $\circ$ è l'operazione di composizione tra funzioni).
 \end{example}
 \begin{proof}
@@ -130,7 +130,7 @@ Esempi di strutture che non rispettano le proprietà di un gruppo sono invece:
     \item $(\N, +)$ poichè nessun numero ha inverso ($-n \notin \N$);
     \item $(\Z, \cdot)$, $(\Q, \cdot)$, $(\R, \cdot)$ e $(\C, \cdot)$ non sono gruppi in quanto $0$ non ha inverso moltiplicativo;
     \item l'insieme \[
-        \set{x \in \C \suchthat x^n = 2}    
+        \set*{x \in \C \given x^n = 2}    
     \] in quanto il prodotto due elementi di questo insieme non appartiene più all'insieme.
 \end{itemize}
 

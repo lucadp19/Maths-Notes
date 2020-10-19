@@ -17,16 +17,47 @@
 \contentsline {subsection}{\numberline {1.4.1}{Isomorfismi}}{21}{subsection.1.4.1}%
 \contentsline {subsection}{\numberline {1.4.2}{Omomorfismi di gruppi ciclici}}{24}{subsection.1.4.2}%
 \contentsline {paragraph}{{Omomorfismi con dominio $\PazoBB {Z}$}}{24}{paragraph*.79}%
-\contentsline {subsection}{\numberline {1.4.3}{Prodotto diretto di gruppi}}{25}{subsection.1.4.3}%
-\contentsline {subsection}{\numberline {1.4.4}{Prodotto di sottogruppi}}{28}{subsection.1.4.4}%
-\contentsline {section}{\numberline {1.5}{Classi laterali e gruppo quoziente}}{28}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}{Sottogruppi normali e gruppo quoziente}}{32}{subsection.1.5.1}%
-\contentsline {section}{\numberline {1.6}{Teoremi di Omomorfismo}}{35}{section.1.6}%
-\contentsline {paragraph}{{Iniettività di $\varphi $}}{37}{paragraph*.108}%
-\contentsline {part}{\numberline {ii}{Algebra I}}{40}{part.2}%
-\contentsline {chapter}{\numberline {2}{Teoria dei gruppi}}{41}{chapter.2}%
-\contentsline {section}{\numberline {2.1}{Gruppi e generatori}}{41}{section.2.1}%
-\contentsline {section}{\numberline {2.2}{Gruppo diedrale}}{42}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}{Sottogruppi del gruppo diedrale}}{44}{subsection.2.2.1}%
-\contentsline {section}{\numberline {2.3}{Azioni di gruppo}}{45}{section.2.3}%
-\contentsline {subsubsection}{{Classe di equivalenza definita da un'azione}}{46}{subsubsection*.109}%
+\contentsline {section}{\numberline {1.5}{Prodotto diretto di gruppi}}{25}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}{Prodotto interno di sottogruppi}}{28}{subsection.1.5.1}%
+\contentsline {section}{\numberline {1.6}{Classi laterali e gruppo quoziente}}{29}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}{Sottogruppi normali e gruppo quoziente}}{32}{subsection.1.6.1}%
+\contentsline {subsubsection}{{Altri risultati derivanti dai gruppi quozienti}}{36}{subsubsection*.100}%
+\contentsline {paragraph}{{Caso base}}{36}{paragraph*.101}%
+\contentsline {paragraph}{{Passo induttivo}}{36}{paragraph*.102}%
+\contentsline {section}{\numberline {1.7}{Teoremi di Omomorfismo}}{37}{section.1.7}%
+\contentsline {subsection}{\numberline {1.7.1}{Primo Teorema degli Omomorfismi}}{37}{subsection.1.7.1}%
+\contentsline {paragraph}{{Iniettività di $\varphi $}}{39}{paragraph*.111}%
+\contentsline {subsection}{\numberline {1.7.2}{Secondo Teorema degli Omomorfismi}}{39}{subsection.1.7.2}%
+\contentsline {subsection}{\numberline {1.7.3}{Terzo Teorema degli Omomorfismi}}{40}{subsection.1.7.3}%
+\contentsline {paragraph}{{Buona definizione}}{42}{paragraph*.112}%
+\contentsline {paragraph}{{Le due funzioni sono una l'inversa dell'altra}}{42}{paragraph*.113}%
+\contentsline {paragraph}{{La bigezione preserva i sottogruppi normali}}{42}{paragraph*.114}%
+\contentsline {paragraph}{{La bigezione conserva l'indice di sottogruppo}}{43}{paragraph*.115}%
+\contentsline {chapter}{\numberline {2}{Anelli e campi}}{44}{chapter.2}%
+\contentsline {section}{\numberline {2.1}{Anelli}}{44}{section.2.1}%
+\contentsline {paragraph}{{$\varphi _x$ è iniettiva}}{47}{paragraph*.130}%
+\contentsline {paragraph}{{$\varphi _x$ è surgettiva}}{47}{paragraph*.131}%
+\contentsline {section}{\numberline {2.2}{Anello dei polinomi}}{48}{section.2.2}%
+\contentsline {paragraph}{{Grado della somma}}{49}{paragraph*.132}%
+\contentsline {paragraph}{{Grado del prodotto}}{49}{paragraph*.133}%
+\contentsline {subsection}{\numberline {2.2.1}{Polinomi a coefficienti in un campo}}{50}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}{Fattorizzazione di polinomi}}{53}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}{Fattorizzazione sui complessi}}{53}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}{Fattorizzazione sugli interi e sui razionali}}{53}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}{Quozienti di anelli polinomiali}}{56}{section.2.4}%
+\contentsline {section}{\numberline {2.5}{Estensioni di campi}}{58}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}{Polinomio minimo di un elemento algebrico}}{60}{subsection.2.5.1}%
+\contentsline {part}{\numberline {ii}{Algebra I}}{63}{part.2}%
+\contentsline {chapter}{\numberline {3}{Teoria dei gruppi}}{64}{chapter.3}%
+\contentsline {section}{\numberline {3.1}{Gruppi e generatori}}{64}{section.3.1}%
+\contentsline {section}{\numberline {3.2}{Gruppo diedrale}}{65}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}{Sottogruppi del gruppo diedrale}}{67}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}{Automorfismi di un gruppo}}{68}{section.3.3}%
+\contentsline {section}{\numberline {3.4}{Azioni di gruppo}}{70}{section.3.4}%
+\contentsline {subsubsection}{{Classe di equivalenza definita da un'azione}}{70}{subsubsection*.137}%
+\contentsline {subsubsection}{{Azione di coniugio}}{72}{subsubsection*.138}%
+\contentsline {subsubsection}{{Coniugio di sottogruppi}}{73}{subsubsection*.139}%
+\contentsline {subsection}{\numberline {3.4.1}{Formula delle classi}}{74}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}{$p$-Gruppi}}{75}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}{Presentazioni di gruppo}}{76}{section.3.5}%
+\contentsline {paragraph}{{Costruzione della presentazione di un gruppo}}{77}{paragraph*.140}%

@@ -6,7 +6,7 @@
     \] si dice \emph{omomorfismo di gruppi} se per ogni $x, y \in G_1$ vale che \begin{equation}
         f(x * y) = f(x) \star f(y).
     \end{equation}
-    L'insieme di tutti gli omomorfismi da $G_1$ a $G_2$ si indica con $\Hom{G_1}{G_2}$.
+    L'insieme di tutti gli omomorfismi da $G_1$ a $G_2$ si indica con $\Hom{G_1, G_2}$.
 \end{definition}
 
 \begin{example}
@@ -53,13 +53,13 @@ Dato che un omomorfismo è una funzione, possiamo definire i soliti concetti di 
     Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $f : G_1 \to G_2$ un omomorfismo.
 
     Siano $H \sgr G_1$, $K \sgr G_2$. Allora definiamo l'insieme \[
-        f(H) \deq \set{f(h) \in G_2 \suchthat h \in H} \subseteq G_2    
+        f(H) \deq \set*{f(h) \in G_2 \given h \in H} \subseteq G_2    
     \] detto \emph{immagine di $f$ attraverso $H$}, e l'insieme \[
-        f\inv(K) \deq \set{g \in G_1 \suchthat f(g) \in K} \subseteq G_1
+        f\inv(K) \deq \set*{g \in G_1 \given f(g) \in K} \subseteq G_1
     \] detto \emph{controimmagine di $f$ attraverso $K$}.
 
     Definiamo inoltre l'\emph{immagine dell'omomorfismo $f$} come \[
-        \Imm f \deq f(G_1) = \set{f(g) \in G_2 \suchthat g \in G_1}.     
+        \Imm f \deq f(G_1) = \set*{f(g) \in G_2 \given g \in G_1}.     
     \]
 \end{definition}
 
@@ -70,12 +70,12 @@ Per gli omomorfismi definiamo inoltre un concetto nuovo, il \emph{nucleo} o \emp
     Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $f : G_1 \to G_2$ un omomorfismo.
 
     Allora si dice \emph{kernel} o \emph{nucleo} dell'omomorfismo $f$ l'insieme \[
-        \ker f \deq \set{g \in G_1 \suchthat f(g) = e_2} \subseteq G_1.    
+        \ker f \deq \set*{g \in G_1 \given f(g) = e_2} \subseteq G_1.    
     \]
 \end{definition}
 
-Osserviamo che possiamo anche esprimere il nucleo di un omomorfismo in termini della controimmagine del sottogruppo banale $\set{e_2}$: \[
-    \ker f = f\inv(\set{e_2}).
+Osserviamo che possiamo anche esprimere il nucleo di un omomorfismo in termini della controimmagine del sottogruppo banale $\set*{e_2}$: \[
+    \ker f = f\inv(\set*{e_2}).
 \]
 
 \begin{proposition}
@@ -89,7 +89,7 @@ Osserviamo che possiamo anche esprimere il nucleo di un omomorfismo in termini d
         \item \label{prop:prop_omo:f(H)_sgr_cod} per ogni $H \sgr G_1$ vale che $f(H) \sgr G_2$;
         \item \label{prop:prop_omo:f\inv(K)_sgr_dom}  per ogni $K \sgr G_2$ vale che $f\inv(K) \sgr G_1$;
         \item \label{prop:prop_omo:imm_ker_sgr}$f(G_1) \sgr G_2$ e $\ker f \sgr G_1$;
-        \item \label{prop:prop_omo:cond_iniett}$f$ è iniettivo se e solo se $\ker f = \set{e_1}$.
+        \item \label{prop:prop_omo:cond_iniett}$f$ è iniettivo se e solo se $\ker f = \set*{e_1}$.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -156,19 +156,19 @@ Osserviamo che possiamo anche esprimere il nucleo di un omomorfismo in termini d
         Dunque $f\inv(K) \sgr G_1$.
         \item Dato che $G_1 \sgr G_1$ per il punto \ref{prop:prop_omo:f(H)_sgr_cod} segue che $\Imm f = f(G_1) \sgr G_2$.
         
-        Per definizione $\ker f = f\inv(\set{e_2})$; inoltre $\set{e_1} \sgr G_2$, dunque per il punto \ref{prop:prop_omo:f\inv(K)_sgr_dom} segue che $\ker f \sgr G_1$.
+        Per definizione $\ker f = f\inv(\set*{e_2})$; inoltre $\set*{e_1} \sgr G_2$, dunque per il punto \ref{prop:prop_omo:f\inv(K)_sgr_dom} segue che $\ker f \sgr G_1$.
         \item Dimostriamo entrambi i versi dell'implicazione.
         \begin{description}
-            \item[($\implies$)] Supponiamo che $f$ sia iniettivo. Allora $\abs*{f\inv(\set{e_2})} = 1$.
+            \item[($\implies$)] Supponiamo che $f$ sia iniettivo. Allora $\abs*{f\inv(\set*{e_2})} = 1$.
             
-            Tuttavia sicuramente $e_1 \in f\inv(\set{e_2}) = \ker f$ (in quanto $f(e_1) = e_2$), dunque dovrà necessariamente essere $\ker f = \set {e_1}$.
-            \item[($\impliedby$)] Supponiamo che $\ker f = \set{e_1}$.
+            Tuttavia sicuramente $e_1 \in f\inv(\set*{e_2}) = \ker f$ (in quanto $f(e_1) = e_2$), dunque dovrà necessariamente essere $\ker f = \set* {e_1}$.
+            \item[($\impliedby$)] Supponiamo che $\ker f = \set*{e_1}$.
             
             Siano $x, y \in G_1$ tali che $f(x) = f(y)$. Moltiplicando entrambi i membri (ad esempio a destra) per $f(y)\inv \in G_2$ otteniamo \begin{align*}
                 &f(x)\star f(y)\inv = f(y)\star f(y)\inv \tag{per la \ref{prop:prop_omo:inv_passa_dentro}}\\
                 \iff &f(x)\star f(y\inv) = e_2 \tag{$f$ è omomorf.}\\
                 \iff &f(x* y\inv) = e_2 \tag{def. di $\ker f$}\\
-                \iff &x* y\inv \in \ker f \tag{ipotesi: $\ker f = \set{e_1}$}\\
+                \iff &x* y\inv \in \ker f \tag{ipotesi: $\ker f = \set*{e_1}$}\\
                 \iff &x*y\inv = e_1 \tag{moltiplico a dx per $y$}\\
                 \iff &x = y.
             \end{align*}
@@ -183,8 +183,8 @@ Osserviamo che possiamo anche esprimere il nucleo di un omomorfismo in termini d
     Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $f : G_1 \to G_2$ omomorfismo.
 
     Allora valgono le seguenti due affermazioni \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
-        \item \label{prop:omo_ord:ord_f_div_ord_x} per ogni $x \in G$ vale che $\ord[G_2]{f(x)} \divides \ord[G_1]{x}$;
-        \item \label{prop:omo_ord:inj_sse_ord_f=ord_x} $f$ è iniettivo se e solo se $\ord[G_2]{f(x)} = \ord[G_1]{x}$.
+        \item \label{prop:omo_ord:ord_f_div_ord_x} per ogni $x \in G$ vale che $\ord(G_2){f(x)} \divides \ord(G_1){x}$;
+        \item \label{prop:omo_ord:inj_sse_ord_f=ord_x} $f$ è iniettivo se e solo se $\ord(G_2){f(x)} = \ord(G_1){x}$.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -212,7 +212,7 @@ Osserviamo che possiamo anche esprimere il nucleo di un omomorfismo in termini d
                     f(x)^m = e_2 \iff f(x) \star \dots \star f(x) = e_2 \iff f(x^m) = e_2,    
                 \] ovvero $x^m \in \ker f$.
 
-                Ma $f$ è iniettiva, dunque per \ref{prop:prop_omo:cond_iniett} $\ker f = \set{e_1}$, da cui segue che $x^m = e_1$. 
+                Ma $f$ è iniettiva, dunque per \ref{prop:prop_omo:cond_iniett} $\ker f = \set*{e_1}$, da cui segue che $x^m = e_1$. 
                 Dunque per la proposizione \ref{prop:sgr_generato:ord_div_n} segue che \[
                     \ord x \divides m = \ord{f(x)}.    
                 \]
@@ -220,10 +220,10 @@ Osserviamo che possiamo anche esprimere il nucleo di un omomorfismo in termini d
                 Inoltre per il punto \ref{prop:omo_ord:ord_f_div_ord_x} sappiamo che $\ord{f(x)} \divides \ord x$, dunque $\ord{f(x)} = \ord x$.
             \end{itemize} 
             \item[($\impliedby$)] Sia $x \in \ker f$, ovvero $f(x) = e_2$. Allora \[
-                1 = \ord[G_2]{e_2} = \ord{f(x)} \stackrel{\text{hp.}}{=} \ord[G_1]{x}.
+                1 = \ord(G_2){e_2} = \ord{f(x)} \stackrel{\text{hp.}}{=} \ord(G_1){x}.
             \] 
             
-            Ma $\ord x = 1$ se e solo se $x = e_1$, ovvero $\ker f = \set{e_1}$, dunque per la proposizione \ref{prop:prop_omo:cond_iniett} $f$ è iniettiva.
+            Ma $\ord x = 1$ se e solo se $x = e_1$, ovvero $\ker f = \set*{e_1}$, dunque per la proposizione \ref{prop:prop_omo:cond_iniett} $f$ è iniettiva.
         \end{description}
     \end{enumerate}
 \end{proof}
@@ -240,9 +240,7 @@ Gli omomorfismi bigettivi sono particolarmente importanti e vanno sotto il nome 
 \end{definition}
 
 \begin{corollary}[Transitività della relazione di isomorfismo]\label{prop:trans_isomorf}
-    Siano $(G_1, *)$, $(G_2, \star)$, $(G_3, \cdot)$ tre gruppi tali che $G_1 \isomorph G_2$ e $G_2 \isomorph G_3$.
-
-    Allora $G_1 \isomorph G_3$.
+    Siano $(G_1, *)$, $(G_2, \star)$, $(G_3, \cdot)$ tre gruppi tali che $G_1 \isomorph G_2$ e $G_2 \isomorph G_3$: allora $G_1 \isomorph G_3$.
 \end{corollary}
 \begin{proof}
     Dato che $G_1 \isomorph G_2$ e $G_2 \isomorph G_3$ dovranno esistere due isomorfismi $\phi : G_1 \to G_2$ e $\psi : G_2 \to G_3$.
@@ -257,7 +255,7 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
     Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $\phi : G_1 \to G_2$ un isomorfismo.
 
     Siano inoltre $\HH$ e $\KK$ tali che \begin{align*}
-        \HH = \set{H \suchthat H \sgr G_1}, \quad \KK = \set{K \suchthat K \sgr G_2}.
+        \HH = \set*{H \given H \sgr G_1}, \quad \KK = \set*{K \given K \sgr G_2}.
     \end{align*}
 
     Allora la funzione \begin{align*}
@@ -287,7 +285,7 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    Per ipotesi $G = \gen*{g} = \set{g^k \suchthat k \in \Z}$ per qualche $g \in G$.
+    Per ipotesi $G = \gen*{g} = \set*{g^k \given k \in \Z}$ per qualche $g \in G$.
     \begin{enumerate}[label={(\roman*)}]
         \item Se $\abs G = +\infty$ allora $\abs*{\gen*{g}} = +\infty$, ovvero per ogni $k, h \in \Z$ con $k \neq h$ segue che $g^k \neq g^h$. Sia allora \begin{align*}
             \phi : \Z &\to G\\
@@ -311,7 +309,7 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
             \item Mostriamo che $\phi$ è un omomorfismo. \[
                 \phi(\eqcl a + \eqcl b) = g^{a + b} = g^ag^b = \phi(\eqcl a)\phi(\eqcl b).
             \] \item Mostriamo che $\phi$ è surgettiva. \[
-                \Im \phi = \phi(\Zmod n) = \set{g^0, g^1, \dots, g^n} = \gen g = G.    
+                \Im \phi = \phi(\Zmod n) = \set*{g^0, g^1, \dots, g^n} = \gen g = G.    
             \]
         \end{itemize}
         Ma $\abs*{\Zmod n} = \abs*{G}$, dunque per cardinalità $\phi$ è anche iniettiva e dunque è bigettiva. 
@@ -333,7 +331,7 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
         \item i sottogruppi di $\Z$ sono tutti e soli della forma $n\Z$ al variare di $n \in \N$ per la \autoref{prop:sgr_Z},
         \item i sottogruppi di $\Zmod{n}$ hanno tutti cardinalità che divide $n$ per la \autoref{prop:sgr_Z/nZ:ciclico_ord_d}. Inoltre, per ogni $d$ che divide $n$ vi è uno e un solo sottogruppo di $\Zmod{n}$ di cardinalità $d$, per la \autoref{prop:sgr_Z/nZ:unosolo_ord_d}.
         \item per la \autoref{prop:big_sottogrp_isom} sappiamo che se $f : G_1 \to G_2$ è un isomorfismo, allora \[
-            \set{K \suchthat K \sgr G_2} = \set{f(H) \suchthat H \sgr G_1}. 
+            \set*{K \given K \sgr G_2} = \set*{f(H) \given H \sgr G_1}. 
         \]
     \end{enumerate}
 
@@ -347,7 +345,7 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
         Per la bigezione tra i sottogruppi di $\Z$ e $G$ allora ogni sottogruppo di $G$ dovrà essere scritto come immagine di qualche sottogruppo di $\Z$, ma come abbiamo osservato sopra i sottogruppi di $\Z$ sono tutti e solo della forma $n\Z$ per qualche $n \in \N$.
         
         Dunque i sottogruppi di $G$ sono \[
-            \set{K \suchthat K \sgr G} = \set{\phi(n\Z) = \gen*{g^n} \suchthat n \in \N}.    
+            \set*{K \given K \sgr G} = \set*{\phi(n\Z) = \gen*{g^n} \given n \in \N}.    
         \]
         \item Se $G$ è ciclico ed è finito, allora $G = \gen*{g}$ per qualche $g \in G$, e inoltre $\abs*{G} = \ord{g} = n$ per qualche $n$ finito.
         
@@ -357,9 +355,9 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
         \end{align*}
 
         Per l'osservazione 2) sopra i sottogruppi di $\Zmod n$ sono tutti e solo della forma $\displaystyle \gen*{\eqcl{d}}$, dunque per l'osservazione 3) segue che \[
-            \set{K \suchthat K \sgr G} = \set{
+            \set*{K \given K \sgr G} = \set*{
                 \psi(\gen*{\eqcl{d}}) 
-            = \gen*{g^{d}} \suchthat d \divides n}. \qedhere   
+            = \gen*{g^{d}} \given d \divides n}. \qedhere   
         \] 
     \end{enumerate}
 \end{proof}
@@ -380,7 +378,7 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
             \id_G : G &\to G \\
             g &\mapsto g.
         \end{align*}  Infatti $\id_G$ è un automorfismo di $G$ e inoltre per ogni $f \in \Aut{G}$ vale che\[
-            \id_G \circ f = f = f \circ \id_G.
+            \id_G \circ{} f = f = f \circ \id_G.
         \]
         \item[Invertibilità] Le funzioni in $\Aut{G}$ sono bigettive, dunque invertibili, e le loro inverse sono ancora automorfismi.
     \end{description}
@@ -389,9 +387,9 @@ Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiament
 
 \subsection{Omomorfismi di gruppi ciclici}
 
-Studiamo ora gli insiemi $\Hom{G_1}{G_2}$ dove $G_1$ e $G_2$ sono gruppi ciclici. Per il \autoref{th:iso_ciclico} è sufficiente studiare gli omomorfismi tra i gruppi $\Z$ e $\Zmod{n}$ (con $n \in \N$ qualunque).
+Studiamo ora gli insiemi $\Hom{G_1, G_2}$ dove $G_1$ e $G_2$ sono gruppi ciclici. Per il \autoref{th:iso_ciclico} è sufficiente studiare gli omomorfismi tra i gruppi $\Z$ e $\Zmod{n}$ (con $n \in \N$ qualunque).
 
-\paragraph{Omomorfismi con dominio $\Z$} Consideriamo l'insieme $\Hom{\Z}{G}$ dove $(G, \cdot)$ è un gruppo ciclico qualunque (quindi può essere isomorfo a $\Z$ oppure a $\Zmod n$ per qualche $n \in \N$). 
+\paragraph{Omomorfismi con dominio $\Z$} Consideriamo l'insieme $\Hom{\Z. G}$ dove $(G, \cdot)$ è un gruppo ciclico qualunque (quindi può essere isomorfo a $\Z$ oppure a $\Zmod n$ per qualche $n \in \N$). 
 
 Sia $g \deq f(1)$. Allora possiamo mostrare per induzione che $f(n) = g^n$ per ogni $n \geq 0$. Per i negativi siccome $f$ è un omomorfismo vale che \[
     f(-n) = f(n)\inv = (g^n)\inv = g^{-n},    
@@ -406,213 +404,9 @@ Viceversa, per ogni $g \in G$ esiste un omomorfismo \begin{align*}
     \phi_g(k_1 + k_2) = g^{k_1 + k_2} = g^{k_1}g^{k_2} = \phi_g(k_1)\phi_g(k_2).
 \]
 
-Vi è dunque una bigezione tra $\Hom{\Z}{G}$ e $G$, data dalle due mappe \begin{align*}
-    \Hom{\Z}{G} &\leftrightarrow G\\
+Vi è dunque una bigezione tra $\Hom{\Z, G}$ e $G$, data dalle due mappe \begin{align*}
+    \Hom{\Z, G} &\leftrightarrow G\\
     f &\mapsto f(1)\\
     \phi_g &\mapsfrom g.
 \end{align*}
 
-\subsection{Prodotto diretto di gruppi}
-
-\begin{definition}
-    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi. Consideriamo il loro prodotto cartesiano \[
-        G_1 \times G_2 = \set{(g_1, g_2) \suchthat g_1 \in G_1, g_2 \in G_2}    
-    \] e un'operazione $\cdot$ su $G_1 \times G_2$ tale che \begin{align*}
-    \cdot : (G_1 \times G_2) \times (G_1 \times G_2) &\to (G_1 \times G_2)\\
-    ((x, y), (z, w)) &\mapsto (x * z, y \star w).
-    \end{align*}
-    
-    La struttura $(G_1 \times G_2, \cdot)$ si dice \emph{prodotto diretto dei gruppi $G_1$ e $G_2$}.
-\end{definition}
-
-\begin{proposition}
-    [Il prodotto diretto di gruppi è un gruppo]
-    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi. Allora il prodotto diretto $(G_1 \times G_2, \cdot)$ è un gruppo. 
-\end{proposition}
-\begin{proof}
-    Sappiamo già che $\cdot$ è un'operazione su $G_1 \times G_2$, quindi basta mostrare i tre assiomi di gruppo.
-    \begin{description}
-        \item[Associatività] Siano $(x, y), (z, w), (h, k) \in G_1 \times G_2$. Mostriamo che vale la proprietà associativa.
-        \begin{align*}
-            &(x, y) \cdot ((z, w) \cdot (h, k)) \tag{def. di $\cdot$}\\
-            &=\ (x, y) \cdot (z * h, w \star k)\tag{def. di $\cdot$}\\
-            &=\ (x * (z * h), y \star (w \star k))\tag{ass. di $*$ e $\star$}\\
-            &=\ ((x * z) * h, (y \star w) \star k) \\
-            &=\ (x * z, y \star w) \cdot (h, k) \\
-            &=\ ((x, y) \cdot (z, w)) \cdot (h, k).
-        \end{align*}  
-        \item[Elemento neutro] Siano $e_1 \in G_1, e_2 \in G_2$ gli elementi neutri dei due gruppi. Mostro che $(e_1, e_2)$ è l'elemento neutro del prodotto diretto.
-        
-        Sia $(x, y) \in G_1 \times G_2$ qualsiasi. Allora \begin{align*}
-            &(x, y) \cdot (e_1, e_2) = (x * e_1, y \star e_2) = (x, y)\\
-            &(e_1, e_2)\cdot (x, y)  = (e_1 * x, e_2 \star y) = (x, y).
-        \end{align*}
-        \item[Invertibilità] Sia $(x, y) \in G_1 \times G_2$. Mostriamo che $(x, y)$ è invertibile e il suo inverso è $(x\inv, y\inv) \in G_1 \times G_2$, dove $x\inv$ è l'inverso di $x$ in $G_1$ e $y\inv$ è l'inverso di $y$ in $G_2$.
-        \begin{align*}
-            &(x, y) \cdot (x\inv, y\inv) = (x * x\inv, y \star y\inv) = (e_1, e_2)\\
-            &(x\inv, y\inv)\cdot (x, y)  = (x\inv * x, y\inv \star y) = (e_1, e_2).
-        \end{align*} 
-    \end{description}
-    Dunque il prodotto diretto $(G_1 \times G_2, \cdot)$ è un gruppo.
-\end{proof}
-
-\begin{proposition}
-    [Il centro del prodotto diretto è il prodotto diretto dei centri]
-    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $(G_1 \times G_2, \cdot)$ il loro prodotto diretto.
-    Allora vale che \[
-        Z(G_1 \times G_2) = Z(G_1) \times Z(G_2).
-    \]
-\end{proposition}
-\begin{proof}
-    Per definizione di centro sappiamo che \begin{multline*}
-        Z(G_1 \times G_2) = \left\{\;(x, y) \in G_1 \times G_2 \suchthat \right. \\
-        \left. (g_1, g_2) \cdot (x, y) = (x, y) \cdot (g_1, g_2) \quad \forall(g_1,g_2) \in G_1 \times G_2\;\right\}.  
-    \end{multline*}
-    Sia $(x, y) \in Z(G_1 \times G_2)$. Allora per ogni $ (g_1,g_2) \in G_1 \times G_2$ vale che \begin{align*}
-        &(g_1, g_2) \cdot (x, y) = (x, y) \cdot (g_1, g_2) \\
-        \iff &(g_1 * x, g_2 \star y) = (x * g_1, y \star g_2)\\
-        \iff &g_1 * x = x*g_1 \text{ e } g_2 \star y = y \star g_2\\
-        \iff &x \in Z(G_1) \text{ e } y \in Z(G_2)\\
-        \iff &(x, y) \in Z(G_1) \times Z(G_2).
-    \end{align*}
-    Seguendo la catena di equivalenze al contrario segue la tesi.
-\end{proof}
-
-\begin{proposition}
-    [Ordine nel prodotto diretto]
-    \label{prop:ord_prod_diretto}
-    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $(G_1 \times G_2, \cdot)$ il loro prodotto diretto. Sia $(x, y) \in G_1 \times G_2$. Allora vale che \[
-        \ord[G_1 \times G_2]{(x, y)} = \mcm{\ord[G_1]{x}}{\ord[G_2]{y}}.    
-    \]
-\end{proposition}
-\begin{proof}
-    Sia $n = \ord{x}$, $m = \ord y$ e $d = \ord{(x, y)}$. Mostriamo che $d = \mcm{n}{m}$.
-    \begin{description}
-        \item[$d \divides \mcm{n}{m}$] Vale che \[
-            (x, y)^{\mcm{n}{m}} = (x^{\mcm{n}{m}}, y^{\mcm{n}{m}}).   
-        \] Siccome $\ord x = n \divides \mcm{n}{m}$ e stessa cosa per $\ord y = m$, per la Proposizione \ref{prop:sgr_generato:ord_div_n} segue che \begin{equation*}
-            (x^{\mcm{n}{m}}, y^{\mcm{n}{m}}) = (e_1, e_2)
-        \end{equation*}
-        da cui (per la Proposizione \ref{prop:sgr_generato:ord_div_n}) segue che $d \divides \mcm{n}{m}$.
-        \item[$\mcm{n}{m} \divides d$] Per definizione di potenza intera nel prodotto diretto sappiamo che $(x, y)^d = (x^d, y^d)$. Inoltre dato che $d$ è l'ordine di $(x, y)$ segue che $(x, y)^d = (e_1, e_2)$. Dunque \begin{align*}
-            &x^d = e_1, \; y^d = e_2\\
-            \iff &n \divides d, \; m \divides d \\
-            \iff &\mcm{n}{m} \divides d.
-        \end{align*}
-    \end{description}
-    Dunque $d = \mcm{n}{m}$, ovvero la tesi.
-\end{proof}
-
-\begin{theorem}
-    [Teorema Cinese del Resto (III forma)] \label{th:cinese_III}
-    Siano $n, m \in \Z$ entrambi non nulli. Allora vale che \[
-        \Zmod{nm} \isomorph \Zmod{n}\times \Zmod{m} \iff \mcd{n}{m} = 1.
-    \]
-\end{theorem}
-\begin{proof}
-    Sia $G = \Zmod n \times \Zmod m$. Siccome $\abs*{G} = nm$ in virtù del \autoref{th:iso_ciclico} per mostrare che $G \isomorph \Zmod{nm}$ è sufficiente mostrare che $G$ è ciclico.
-
-    Un gruppo è ciclico se e solo se esiste $g \in G$ tale che $\ord{g} = \abs G$: infatti per ogni $g \in G$ vale che $\gen*{g} \sgr G$, dunque se i due insiemi hanno anche la stessa cardinalità devono essere uguali.
-
-    Siano $\eqcl x \in \Zmod n, \eqcl y \in \Zmod m$ tali che $g = (\eqcl x, \eqcl y)$. Per la \autoref{prop:ord_prod_diretto} vale che \[
-        \ord{g} = \ord{(\eqcl x, \eqcl y)} = \mcm{\ord{\eqcl x}}{\ord{\eqcl y}}.    
-    \]
-    D'altro canto però $\ord{\eqcl x} = \dfrac{n}{\mcd{n}{x}}$, $\ord{\eqcl y} = \dfrac{m}{\mcd{m}{y}}$ (dove $x, y$ sono rappresentanti qualsiasi delle classi $\eqcl x$, $\eqcl y$ rispettivamente), dunque \[
-        \ord g = \mcm{\dfrac{n}{\mcd{n}{x}}}{\dfrac{m}{\mcd{m}{y}}} \sgr \mcm{n}{m}. 
-    \]
-
-    Possiamo dunque distinguere i due casi: \begin{enumerate}
-        \item se $\mcd{n}{m} = d > 1$ allora per la PROPOSIZIONE DA INSERIRE per ogni $g \in G$ vale che \[
-            \ord g \sgr \mcm{n}{m} = \frac{mn}{d} < mn    
-        \] da cui segue che $G$ non può essere ciclico;
-        \item se $\mcd{n}{m} = 1$ allora per ogni $g \in G$ vale che \[
-            \ord g \sgr \mcm{n}{m} = mn.    
-        \] In particolare se consideriamo $g = (\eqcl 1, \eqcl 1)$ si ha che \[
-            \ord(\eqcl 1, \eqcl 1) = \mcm{\frac{n}{\mcd{n}{1}}}{\frac{m}{\mcd{m}{1}}} = \mcm{m}{n} = mn  
-        \], dunque $G = \gen*{(\eqcl 1, \eqcl 1)}$, da cui segue che \[
-            G \isomorph \Zmod{nm}    
-        \] per il \autoref{th:iso_ciclico}. \qedhere
-    \end{enumerate} 
-\end{proof}
-
-\begin{remark}
-    Per il Teorema Cinese del Resto (II Forma) sappiamo che la funzione 
-    \begin{align} \label{eq:iso_Znm->Zn_x_Zm}
-        \begin{split}
-            \phi : \Zmod{nm} &\to \Zmod n \times \Zmod m\\
-            [a]_{nm} &\mapsto ([a]_n, [a]_m)
-        \end{split}
-    \end{align} è bigettiva. Inoltre \begin{align*}
-        \phi([a]_{nm} + [b]_{nm}) &= \phi([a+b]_{nm})\\
-        &= ([a+b]_n, [a+b]_m)\\
-        &= ([a]_n + [b]_n, [a]_m + [b]_m)\\
-        &= ([a]_n, [a]_m) + ([b]_n, [b]_m)\\
-        &= \phi([a]_{nm}) + \phi([b]_{nm}),
-    \end{align*} ovvero $\phi$ è un omomorfismo di gruppi. Dunque $\phi$ è un isomorfismo di gruppi e \[
-        \Zmod{nm} \isomorph \Zmod{n}\times \Zmod{m}.  
-    \]
-\end{remark}
-
-\begin{corollary}
-    [Isomorfismo tra i gruppi degli invertibili] Siano $n, m \in \Z$ entrambi non nulli. Allora se $\mcd{n}{m} = 1$ segue che \begin{equation}
-        \invert{\Zmod{nm}} \isomorph \invert{\Zmod{n}} \times \invert{\Zmod{m}}.
-    \end{equation}
-\end{corollary}
-\begin{proof}
-    Consideriamo la funzione \begin{align*}
-        \phi^* : \invert{\Zmod{nm}} &\to \invert{\Zmod{n}} \times \invert{\Zmod{m}}\\
-        [a]_{nm} &\mapsto [a]_n \times [a]_m.
-    \end{align*}
-    Essa è ben definita: infatti se $[a]_{nm} \in \invert{\Zmod{nm}}$ significa che $\mcd{a}{mn} = 1$. Siccome per ipotesi $\mcd{m}{n} = 1$ per la PROPOSIZIONE NON SCRITTA segue che $\mcd{m}{n} = \mcd{a}{m} = 1$, ovvero $[a]_n \in \invert{\Zmod n}$ e $[a]_m \in \invert{\Zmod m}$.
-
-    Inoltre questa funzione è una restrizione della $\phi$ definita in \eqref{eq:iso_Znm->Zn_x_Zm}, dunque è iniettiva. Inoltre \[
-        \abs*{\Zmod{nm}} = \phi(nm) = \phi(n)\phi(m) = \abs*{\Zmod{n} \times \Zmod{m}}    
-    \] siccome $\mcd{n}{m} = 1$, dunque $\phi$ è anche surgettiva e quindi è bigettiva.
-
-    Tramite passaggi analoghi a quelli visti nell'osservazione precedente si dimostra che $\phi^*$ è un omomorfismo, dunque essendo bigettiva è anche un isomorfismo di gruppi, da cui segue la tesi.
-\end{proof}
-
-\subsection{Prodotto di sottogruppi}
-
-\begin{definition}
-    Sia $(G, \cdot)$ un gruppo e siano $H,K \sgr G$. Allora si definisce il \emph{prodotto tra $H$ e $K$} come \begin{equation}
-        HK \deq \set{h\cdot k \suchthat h \in H, k \in K}.
-    \end{equation} Analogamente si definisce il \emph{prodotto tra $K$ e $H$} come \begin{equation}
-        KH \deq \set{k \cdot h \suchthat k \in K, h \in H}.
-    \end{equation}
-\end{definition}
-
-\begin{remark}
-    Se il gruppo è in notazione additiva il prodotto di sottogruppi diventa somma di sottogruppi e si indica $H + K$ (o $K + H$).
-\end{remark}
-
-\begin{proposition}\label{prop:cond_prod_sgr_e'_sgr}
-    [Condizione per cui il prodotto tra sottogruppi è un sottogruppo] Sia $(G, \cdot)$ un gruppo e siano $H,K \sgr G$.
-
-    Allora l'insieme $HK$ è un sottogruppo di $G$ se e solo se $HK = KH$.
-\end{proposition}
-\begin{proof}
-    Dimostriamo entrambi i versi dell'implicazione.
-    \begin{description}
-        \item[($\impliedby$)] Siccome entrambi gli insiemi contengono $e_G$, per la \autoref{prop:cond_sgr} mi basta mostrare che $HK$ è chiuso rispetto all'operazione $\cdot$ e che contiene l'inverso di ogni suo elemento. 
-        \begin{description}
-            \item[Chiusura] Siano $h_1k_1, h_2k_2 \in HK$. Voglio mostrare che $(h_1k_1) \cdot (h_2k_2) \in HK$. Per associatività, posso scriverlo come \[
-                h_1 \cdot (k_1h_2) \cdot k_2.    
-            \] Siccome $KH = HK$ esisteranno $h_3 \in H, k_3 \in K$ tali che $k_1h_2 = h_3k_3$. Da ciò segue che \[
-                h_1 \cdot (k_1h_2) \cdot k_2 = h_1h_3k_3k_2 \in HK.
-            \]
-            \item[Invertibilità] Sia $hk \in HK$ e mostriamo che anche il suo inverso $(hk)\inv = k\inv h\inv$ è in $HK$. Siccome $k\inv h\inv \in KH$ e $KH = HK$, segue la tesi.
-        \end{description}
-        \item[($\implies$)] Dimostriamo che $HK = KH$ mostrando che $HK \subseteq KH$ e $KH \subseteq HK$.
-        \begin{description}
-            \item[($KH \subseteq HK$)] Banalmente $H \subseteq HK$ (infatti $H \ni h = he_G \in HK$) e $K \subseteq HK$. Ma allora per ogni $h, k \in HK$ segue che $k \cdot h \in HK$ (in quanto $HK \sgr G$) dunque $KH \subseteq HK$.
-            \item[($HK \subseteq KH$)] Consideriamo la funzione \begin{align*}
-                f : HK &\to KH\\
-                x &\mapsto x\inv.
-            \end{align*} Questa funzione è ben definita, in quanto se $x \in HK$, ovvero se $x = hk$ per qualche $h \in H, k \in K$ allora \[
-                x\inv = (hk)\inv = k\inv h\inv \in KH    
-            \] poiché $k\inv \in K$ e $h\inv \in H$. Inoltre questa funzione è ovviamente iniettiva, da cui segue che $HK \subseteq KH$.
-        \end{description}
-    \end{description}
-    Dunque $HK$ è sottogruppo se e solo se $HK = KH$.
-\end{proof}

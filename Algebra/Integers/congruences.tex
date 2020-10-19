@@ -30,7 +30,7 @@
 \end{proof}
 
 Le classi di equivalenza rispetto alla relazione di congruenza vengono dette \emph{classi di congruenza modulo $n$}, e si indicano con \[
-    [a]_n \deq \set{b \in \Z \suchthat a \congr b \Mod n}.    
+    [a]_n \deq \set*{b \in \Z \given a \congr b \Mod n}.    
 \] Quando il modulo è deducibile dal contesto possiamo usare la scrittura abbreviata $\eqcl a$.
 
 \begin{proposition}[Caratterizzazione della relazione di congruenza] \label{prop:caratt_congr}
@@ -71,10 +71,10 @@ Sappiamo dalla sezione sulle relazioni di equivalenza che le classi di equivalen
     \Z = \bigsqcup_{a \in \R} [a]_n. 
 \]
 
-L'insieme dei rappresentati più naturale per la relazione di congruenza modulo $n$ è l'insieme $\set{0, 1, \dots, n-1}$. Essi rappresentano tutte le classi di congruenza possibili e rappresentano tutte classi disgiunte, come ci viene garantito dal prossimo corollario.
+L'insieme dei rappresentati più naturale per la relazione di congruenza modulo $n$ è l'insieme $\set*{0, 1, \dots, n-1}$. Essi rappresentano tutte le classi di congruenza possibili e rappresentano tutte classi disgiunte, come ci viene garantito dal prossimo corollario.
 
 \begin{corollary}
-    I numeri $0, 1, \dots, n-1$ sono un insieme di rappresentati delle classi di congruenza modulo $n$, ovvero per ogni $m \in \Z$ esiste un unico $r \in \set{0, \dots, n-1}$ tale che $m \congr r \Mod{n}$.
+    I numeri $0, 1, \dots, n-1$ sono un insieme di rappresentati delle classi di congruenza modulo $n$, ovvero per ogni $m \in \Z$ esiste un unico $r \in \set*{0, \dots, n-1}$ tale che $m \congr r \Mod{n}$.
 \end{corollary}
 \begin{proof}
     Per la \autoref{prop:caratt_congr} sappiamo che $a \congr b \Mod n$ se e solo se $a$ e $b$ hanno lo stesso resto nella divisione euclidea per $n$.
@@ -85,7 +85,7 @@ L'insieme dei rappresentati più naturale per la relazione di congruenza modulo 
 \begin{definition}
     [Insieme $\Zmod{n}$]
     Sia $n \in \Z$, $n \geq 2$. Si indica con $\Zmod n$ l'insieme di tutte le classi di congruenza modulo $n$, ovvero l'insieme quoziente ottenuto da $\Z$ attraverso la relazione di congruenza modulo $n$: \begin{equation}
-        \Zmod n \deq \set{[0]_n, [1]_n, \dots, [n-1]_n} = \set{[a]_n \suchthat a \in \Z}.
+        \Zmod n \deq \set*{[0]_n, [1]_n, \dots, [n-1]_n} = \set*{[a]_n \given a \in \Z}.
     \end{equation}
 \end{definition}
 
@@ -95,10 +95,10 @@ L'insieme dei rappresentati più naturale per la relazione di congruenza modulo 
         \item Se $a \congr b \Mod n$ e $c \congr d \mod n$ allora vale che \[
             a+c \congr b + d \Mod{n}, \quad ac \cong bd \Mod n.   
         \]
-        \item Se $a \congr b \Mod n$ e $a \congr b \Mod m$ allora $a \congr b \Mod{\mcm{n}{m}}$.
-        \item Se $a \congr b \Mod{n}$ allora $\mcd{a}{n} = \mcd{b}{n}$.
+        \item Se $a \congr b \Mod n$ e $a \congr b \Mod m$ allora $a \congr b \Mod{\lcm{n}{m}}$.
+        \item Se $a \congr b \Mod{n}$ allora $\gcd{a}{n} = \gcd{b}{n}$.
         \item Se $a \congr b \Mod n$ e $d \divides n$ allora $a \congr b \Mod d$.
-        \item Se $ra \congr rb \Mod n$ allora $a \congr b \Mod{\nicefrac{n}{\mcd{n}{r}}}$.
+        \item Se $ra \congr rb \Mod n$ allora $a \congr b \Mod{\nicefrac{n}{\gcd{n}{r}}}$.
         \item Se $a \congr b \Mod n$ allora $ka \congr kb \Mod n$ per ogni $k \in \Z$.
     \end{enumerate}
 \end{proposition}
@@ -117,27 +117,27 @@ L'insieme dei rappresentati più naturale per la relazione di congruenza modulo 
             \implies &ac \congr bd \Mod n.
         \end{alignat*}
         \item Per ipotesi $n \divides a-b$, $m\divides a - b$, dunque per definizione di minimo comune multiplo \[
-            \mcm{a}{b} \divides a - b    
-        \] ovvero $a \congr b \Mod{\mcm{a}{b}}$.
+            \lcm{a}{b} \divides a - b    
+        \] ovvero $a \congr b \Mod{\lcm{a}{b}}$.
         \item Per la \autoref{prop:caratt_congr} l'ipotesi equivale a dire che $a, b$ hanno lo stesso resto $r$ nella divisione euclidea per $n$, ovvero \[
             a = qn + r, \quad b = q^\prime n + r    
         \] per qualche $q, q^\prime \in \Z$.
 
         Allora segue che \begin{align*}
-            \mcd{a}{n} = \mcd{qn + r}{n} \tag{per il \autoref{lem:mcd_diff}}\\
-            = \mcd{r}{n} \tag{per il \autoref{lem:mcd_diff}}\\
-            = \mcd{q^\prime n + r}{n}\\ 
-            = \mcd{b}{n}.
+            \gcd{a}{n} = \gcd{qn + r}{n} \tag{per il \autoref{lem:mcd_diff}}\\
+            = \gcd{r}{n} \tag{per il \autoref{lem:mcd_diff}}\\
+            = \gcd{q^\prime n + r}{n}\\ 
+            = \gcd{b}{n}.
         \end{align*}
         \item Per ipotesi $n \divides a - b$, ma $d \divides n$ dunque per transitività $d \divides a - b$, ovvero $a \congr b \Mod d$.
-        \item Per ipotesi $n \divides r(a - b)$, ovvero $r(a-b) = kn$ per qualche $k \in \Z$. Dividendo entrambi i membri per $\mcd{n}{r}$ (che ovviamente divide sia il membro sinistro che il membro destro) otteniamo \[
-            \frac{r}{\mcd{n}{r}}(a-b) = \frac{n}{\mcd{n}{r}}k,   
+        \item Per ipotesi $n \divides r(a - b)$, ovvero $r(a-b) = kn$ per qualche $k \in \Z$. Dividendo entrambi i membri per $\gcd{n}{r}$ (che ovviamente divide sia il membro sinistro che il membro destro) otteniamo \[
+            \frac{r}{\gcd{n}{r}}(a-b) = \frac{n}{\gcd{n}{r}}k,   
         \] ovvero \[
-            \frac{n}{\mcd{n}{r}} \divides \frac{r}{\mcd{n}{r}}(a-b).
+            \frac{n}{\gcd{n}{r}} \divides \frac{r}{\gcd{n}{r}}(a-b).
         \] Inoltre per LEMMA DA INSERIRE sappiamo che \[
-            \mcd{\frac{r}{\mcd{n}{r}}}{\frac{n}{\mcd{n}{r}}} = 1,    
+            \gcd{\frac{r}{\gcd{n}{r}}}{\frac{n}{\gcd{n}{r}}} = 1,    
         \] dunque per LEMMA DA INSERIRE segue che \[
-            \frac{n}{\mcd{n}{r}} \divides a - b,    
+            \frac{n}{\gcd{n}{r}} \divides a - b,    
         \] da cui segue la tesi.
         \item Per la \autoref{prop:caratt_congr} l'ipotesi equivale a dire $a = b + nh$ per qualche $h \in \Z$. Moltiplicando tutto per $k$ segue che $ka = kb + n(kh)$, ovvero $ka \congr kb \Mod n$.
     \end{enumerate}

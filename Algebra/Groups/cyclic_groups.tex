@@ -33,7 +33,7 @@ Le potenze intere soddisfano alcune proprietà interessanti, verificabili facilm
     Sia $(G, \cdot)$ un gruppo e sia $g \in G$.
 
     Allora si dice \emph{sottogruppo generato da $g$} l'insieme \[
-        \gen{g} \deq \set{g^k \suchthat k \in \Z}.    
+        \gen{g} \deq \set*{g^k \given k \in \Z}.    
     \]
 \end{definition}
 
@@ -77,11 +77,11 @@ Questo ci consente di parlare di ordine di un elemento di un gruppo:
     Sia $(G, \cdot)$ un gruppo e sia $x \in G$.
 
     Allora si dice ordine di $x$ in $G$ il numero \[
-        \ord[G]{x} \deq \min\set{k > 0 \suchthat x^k = _Ge}.    
+        \ord(G){x} \deq \min\set*{k > 0 \given x^k = _Ge}.    
     \]
 
-    Se l'insieme $\set{k > 0 \suchthat x^k = e_G}$ è vuoto, allora per definizione \[
-        \ord[G]{x} \deq +\infty.
+    Se l'insieme $\set*{k > 0 \given x^k = e_G}$ è vuoto, allora per definizione \[
+        \ord(G){x} \deq +\infty.
     \]
 \end{definition}
 
@@ -89,26 +89,26 @@ Quando il gruppo di cui stiamo parlando sarà evidente scriveremo semplicemente 
 
 \begin{proposition}
     [Scrittura esplicita del sottogruppo generato] \label{prop:sgr_generato}
-    Sia $(G, \cdot)$ un gruppo e sia $x \in G$ tale che $\ord[G]{x} = d < +\infty$. 
+    Sia $(G, \cdot)$ un gruppo e sia $x \in G$ tale che $\ord(G){x} = d < +\infty$. 
 
     Allora valgono i seguenti due fatti:
     \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
         \item \label{prop:sgr_generato:expr} Il sottogruppo generato $\gen{x}$ è \[
-            \gen{x} = \set{e, x, x^2, \dots, x^{d-1}}.    
+            \gen{x} = \set*{e, x, x^2, \dots, x^{d-1}}.    
         \] Dunque in particolare $\abs*{\gen* x} = d$.
-        \item \label{prop:sgr_generato:ord_div_n} $x^n = e \iff d \divides n$.
+        \item \label{prop:sgr_generato:ord_div_n} $x^n = e$ se e solo se $d \divides n$.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
     Dimostriamo le due affermazioni separatamente. 
     
     \paragraph{Parte 1.} Sicuramente vale che \[
-        \set{e, x, \dots, x^{d-1}} \subseteq \gen{x}.    
+        \set*{e, x, \dots, x^{d-1}} \subseteq \gen{x}.    
     \] Dimostriamo che vale l'uguaglianza.
 
     Sia $k \in \Z$ qualsiasi. Allora $x^k \in \gen x$. 
     
-    Dimostriamo che necessariamente $x^k \in \set{e, x, \dots, x^{d-1}}$.
+    Dimostriamo che necessariamente $x^k \in \set*{e, x, \dots, x^{d-1}}$.
 
     Per la divisione euclidea esisteranno $q, r \in \Z$ tali che \begin{align*}
         k = qd + r &&\text{con } 0 \leq r < d.
@@ -119,10 +119,10 @@ Quando il gruppo di cui stiamo parlando sarà evidente scriveremo semplicemente 
         &= x^r.
     \end{align*}
     
-    Per ipotesi $0 \leq r < d$, dunque $x^r \in \set{e, x, \dots, x^{d-1}}$. Dato che $x^r = x^k$ concludiamo che \[
-        x^k \in \set{e, x, \dots, x^{d-1}}    
+    Per ipotesi $0 \leq r < d$, dunque $x^r \in \set*{e, x, \dots, x^{d-1}}$. Dato che $x^r = x^k$ concludiamo che \[
+        x^k \in \set*{e, x, \dots, x^{d-1}}    
     \] e quindi \[
-        \gen x = \set{e, x, \dots, x^{d-1}}.    
+        \gen x = \set*{e, x, \dots, x^{d-1}}.    
     \]
 
     Ci rimane da mostrare che $\abs*{\gen* x} = d$, ovvero che tutti gli elementi di $\gen x$ sono distinti. 
@@ -153,11 +153,9 @@ Quando il gruppo di cui stiamo parlando sarà evidente scriveremo semplicemente 
 \begin{definition}
     [Gruppo ciclico]\label{def:grp_ciclico}
     Sia $(G, \cdot)$ un gruppo. 
-    
     Allora $G$ si dice \emph{ciclico} se esiste un $g \in G$ tale che \[
         G = \gen{g}.    
     \]
-
     L'elemento $g$ viene detto \emph{generatore} del gruppo $G$.
 \end{definition}
 
@@ -168,19 +166,18 @@ Un esempio di gruppo ciclico finito è $\Zmod{n} = \gen{[1]_n}$, che è finito i
 \begin{theorem}
     [Ogni sottogruppo di un gruppo ciclico è ciclico] \label{th:sottogr_ciclico}
     Sia $(G, \cdot)$ un gruppo ciclico, ovvero $G = \gen{g}$ per qualche $g \in G$. Sia inoltre $H \sgr G$ un sottogruppo.
-
     Allora $H$ è ciclico, ovvero esiste $h \in \Z$ tale che $H = \gen{g^h}$.
 \end{theorem}
 \begin{proof}
     Innanzitutto notiamo che $e_G \in H$. 
     
-    Se $H = \set{e_G}$ allora $H$ è ciclico, e $H = \gen{e_G}$.
+    Se $H = \set*{e_G}$ allora $H$ è ciclico, e $H = \gen{e_G}$.
 
-    Assumiamo $\set e_G \subset H$. Allora esiste $k \in \Z$, $k \neq 0$ tale che $g^k \in H$. 
+    Assumiamo $\set* e_G \subset H$. Allora esiste $k \in \Z$, $k \neq 0$ tale che $g^k \in H$. 
     Dato che per (G3) se $g^k \in H$ allora $g^{-k} \in H$ possiamo supporre senza perdita di generalità $k > 0$.
 
     Consideriamo l'insieme $S$ tale che \[
-        S \deq \set{h > 0 \suchthat g^h \in H} \subseteq \N.    
+        S \deq \set*{h > 0 \given g^h \in H} \subseteq \N.    
     \] Avendo assunto $k \in S$ sappiamo che $S \neq \varnothing$, dunque per il principio del minimo $S$ ammette minimo.
 
     Sia $h_0 = \min S$. Mostro che $H = \gen*{g^{h_0}}$.
@@ -231,7 +228,7 @@ Consideriamo i sottogruppi di $\Z$. Tramite la proposizione \ref{prop:nZ_sgr_Z} 
 \subsection{Il gruppo ciclico $\Zmod{n}$}
 
 In questa sezione analizzeremo il gruppo ciclico $(\Zmod{n}, +)$, anche definito da \[
-    \Zmod{n} = \gen{[1]_n} = \gen{\eqcl 1}.
+    \Zmod{n} = \gen*{[1]_n} = \gen*{\eqcl 1}.
 \]
 
 L'ordine di $\eqcl 1$ in $\Zmod{n}$ è $n$. Infatti \begin{align*}
@@ -248,20 +245,20 @@ Per la proposizione \ref{prop:sgr_generato:expr} sappiamo quindi che \begin{equa
 \begin{proposition}
     [Ordine degli elementi di $\Zmod n$] \label{prop:ord_in_Z/nZ}
     Sia $\eqcl a \in \Zmod n$ qualsiasi. Allora vale che \[
-        \ord{\eqcl a} = \frac{n}{\mcd{a}{n}}    
+        \ord{\eqcl a} = \frac{n}{\gcd{a, n}}    
     \] dove $a \in \Z$ è un rappresentante della classe $\eqcl a$.
 \end{proposition}
 \begin{proof}
     Per definizione di ordine \[
-        \ord{\eqcl a} = \min \set{k > 0 \suchthat k \eqcl a = \eqcl 0}.    
+        \ord{\eqcl a} = \min \set*{k > 0 \given k \eqcl a = \eqcl 0}.    
     \]
 
     Si tratta quindi di trovare la minima soluzione positiva di $ax \congr 0 \Mod{n}$. Divido entrambi i membri e il modulo per $a$, ottenendo \[
-        x \congr 0 \Mod{\frac{n}{\mcd{n}{a}}} \implies x = \frac{n}{\mcd{n}{a}}t    
+        x \congr 0 \Mod{\frac{n}{\gcd{n, a}}} \implies x = \frac{n}{\gcd{n, a}}t    
     \] al variare di $t \in \Z$. 
 
     Dato che siamo interessati alla minima soluzione positiva, questa è ottenuta per $t = 1$, da cui segue che \[
-        \ord{\eqcl a} = \frac{n}{\mcd{n}{a}}. \qedhere    
+        \ord{\eqcl a} = \frac{n}{\gcd{n, a}}. \qedhere    
     \]
 \end{proof}
 
@@ -270,37 +267,37 @@ Per la proposizione \ref{prop:sgr_generato:expr} sappiamo quindi che \begin{equa
     \label{cor:cons_ord_in_Z/nZ}
     Consideriamo il gruppo $(\Zmod n, +)$. Valgono le seguenti affermazioni:
     \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
-        \item \label{cor:cons_ord_in_Z/nZ:ord_a_div_n} $\forall \eqcl{a} \in \Zmod{n}. \quad \ord{\eqcl a} \divides n$.
+        \item \label{cor:cons_ord_in_Z/nZ:ord_a_div_n} Per ogni $\eqcl{a} \in \Zmod{n}$ vale che $\ord{\eqcl a} \divides n$.
         \item \label{cor:cons_ord_in_Z/nZ:phi(n)_gen} $\Zmod{n}$ ha $\phi(n)$ generatori.
         \item \label{cor:cons_ord_in_Z/nZ:phi(d)_el} Sia $d \in \Z$ tale che $d \divides n$. Allora in $\Zmod{n}$ ci sono esattamente $\phi(d)$ elementi di ordine $d$.
     \end{enumerate}
 \end{corollary}
-
 \begin{proof}
     \begin{enumerate}[label={(\roman*)}]
-        \item Ovvia in quanto (per la proposizione \ref{prop:ord_in_Z/nZ}) $\ord{\eqcl a} = \dfrac{n}{\mcd{n}{a}} \divides n$.
+        Dimostriamo separatamente le tre affermazioni.
+        \item Ovvia in quanto (per la proposizione \ref{prop:ord_in_Z/nZ}) $\ord{\eqcl a} = \dfrac{n}{\gcd{n, a}} \divides n$.
         \item Sia $\eqcl x \in \Zmod{n}$. Sappiamo che $\eqcl x$ è un generatore di $\Zmod{n}$ se \[
             \gen*{\eqcl x} = \Zmod n    
         \] ovvero se la cardinalità di $\gen*{\eqcl x}$ è $n$.
 
-        Per la proposizione \ref{prop:ord_in_Z/nZ} $\ord{\eqcl x} = \dfrac{n}{\mcd{n}{x}}$, dunque $\eqcl x$ è un generatore se e solo se $\mcd{n}{x} = 1$, ovvero se $x$ è coprimo con $n$.
+        Per la proposizione \ref{prop:ord_in_Z/nZ} $\ord{\eqcl x} = \dfrac{n}{\gcd{n, x}}$, dunque $\eqcl x$ è un generatore se e solo se $\gcd{n, x} = 1$, ovvero se $x$ è coprimo con $n$.
 
         Ma ci sono $\phi(n)$ numeri coprimi con $n$, dunque ci sono $\phi(n)$ generatori di $\Zmod n$.
         \item Sia $\eqcl a \in \Zmod n$ tale che \[
-            \ord{\eqcl a} = \frac{n}{\mcd{n}{a}} = d.    
+            \ord{\eqcl a} = \frac{n}{\gcd{n, a}} = d.    
         \]
 
-        Allora $\mcd{n}{a} = \dfrac{n}{d}$, da cui segue che $\dfrac{n}{d} \divides a$.
+        Allora $\gcd{n, a} = \dfrac{n}{d}$, da cui segue che $\dfrac{n}{d} \divides a$.
 
-        Sia $b \in \Z$ tale che $a = \dfrac{n}{d}b$. Dato che $\mcd{n}{a} = \dfrac{n}{d}$ segue che \begin{align*}
-            &\mcd{n}{\frac{n}{d}b} = \frac{n}{d}\\[3pt]
-            \iff &\mcd{\frac{n}{d}d}{\frac{n}{d}b} = \frac{n}{d}\\[3pt]
-            \iff &\frac{n}{d}\mcd{d}{b} = \frac{n}{d}\\[3pt]
-            \iff &\mcd{d}{b} = 1
+        Sia $b \in \Z$ tale che $a = \dfrac{n}{d}b$. Dato che $\gcd{n, a} = \dfrac{n}{d}$ segue che \begin{align*}
+            &\gcd*{n, \frac{n}{d}b} = \frac{n}{d}\\[3pt]
+            \iff &\gcd*{\frac{n}{d}d, \frac{n}{d}b} = \frac{n}{d}\\[3pt]
+            \iff &\frac{n}{d}\gcd{d, b} = \frac{n}{d}\\[3pt]
+            \iff &\gcd{d, b} = 1
         \end{align*}
         ovvero se e solo se $d$ e $b$ sono coprimi.
 
-        Dunque segue che ho $\phi(d)$ scelte per $b$, ovvero ho $\phi(d)$ elementi di ordine $d$.
+        Dunque segue che ci sono $\phi(d)$ scelte per $b$, ovvero esistono $\phi(d)$ elementi di ordine $d$.
     \end{enumerate}
 \end{proof}
 
@@ -314,7 +311,7 @@ Questo corollario ci consente di enunciare una proprietà della funzione $\phi(\
 \end{corollary}
 \begin{proof}
     Sia $X_d$ l'insieme \[
-        X_d \deq \set{\eqcl a \in \Zmod n \suchthat \ord{\eqcl a} = d}.    
+        X_d \deq \set*{\eqcl a \in \Zmod n \given \ord{\eqcl a} = d}.    
     \]
     Se $d \ndivides n$ per la proposizione \ref{cor:cons_ord_in_Z/nZ:ord_a_div_n} segue che $X_d = \varnothing$.
 
@@ -329,14 +326,14 @@ Studiamo ora i sottogruppi di $\Zmod{n}$.
 
 \begin{proposition}
     [Caratterizzazione dei sottogruppi di $\Zmod{n}$] \label{prop:sgr_Z/nZ}
-    Studiamo il gruppo $(\Zmod{n}, +)$. Valgono i due seguenti fatti:
+    Valgono i seguenti due fatti:
     \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
         \item \label{prop:sgr_Z/nZ:ciclico_ord_d} Sia $H \sgr \Zmod{n}$. Allora $H$ è ciclico e $\abs{H} = d$ per qualche $d \divides n$.
         \item \label{prop:sgr_Z/nZ:unosolo_ord_d} Sia $d \in \Z, d \divides n$. Allora $\Zmod{n}$ ammette uno e un solo sottogruppo di ordine $d$.
     \end{enumerate}
 \end{proposition}
-
 \begin{proof}
+    Dimostriamo separatamente le due affermazioni.
     \begin{enumerate} [label={(\roman*)}]
         \item Sia $H \sgr \Zmod n$; per il teorema \ref{th:sottogr_ciclico} sappiamo che $H$ deve essere ciclico, ovvero $H = \gen*{\eqcl h}$ per qualche $\eqcl h \in \Zmod n$.
         
@@ -344,18 +341,23 @@ Studiamo ora i sottogruppi di $\Zmod{n}$.
             \abs{H} = \ord{\eqcl h} = d \divides n.   
         \]
         \item Sia $H_d$ l'insieme \[
-            H_d = \set{\eqcl 0,\; \frac{\eqcl n}{d},\; 2\frac{\eqcl n}{d}, \dots,\; (d-1)\frac{\eqcl n}{d}}.    
+            H_d = \set*{\eqcl 0,\; \eqcl{\frac{n}{d}},\; 2\eqcl{\frac{n}{d}}, \dots,\; (d-1)\eqcl{\frac{n}{d}}}.    
         \] Mostriamo innanzitutto che $H_d = \gen*{\dfrac{\eqcl{n}}{d}}$.
         
         Infatti ovviamente $H_d \subseteq \gen*{\dfrac{\eqcl n}{d}}$. Per mostrare che sono uguali basta notare che \[
-            \abs*{\gen*{\frac{\eqcl n}{d}}} = \ord{\frac{\eqcl n}{d}} = \frac{n}{\mcd{\frac{n}{d}}{n}} = \frac{n}{\mcd{\frac{n}{d}}{\frac{n}{d}d}} = \frac{n}{\frac{n}{d}\mcd{1}{d}} = d
+            \abs*{\gen*{\eqcl{\frac{n}{d}}}} = 
+            \ord*{\eqcl{\frac{n}{d}}} = 
+            \frac{n}{\gcd*{\frac{n}{d}, n}} = 
+            \frac{n}{\gcd*{\frac{n}{d}, \frac{n}{d} \cdot d}} = 
+            \frac{n}{\frac{n}{d}\gcd{1, d}} = 
+            d
         \] dunque i due insiemi sono finiti, hanno la stessa cardinalità e il primo è incluso nel secondo, da cui segue che sono uguali.
 
         Sia ora $H \sgr \Zmod n$ tale che $\abs{H} = d$. Per il teorema \ref{th:sottogr_ciclico} segue che $H = \gen*{\eqcl x}$ per qualche $\eqcl x \in \Zmod n$ tale che $\ord{\eqcl x} = d$.
 
-        Seguendo la dimostrazione di \ref{cor:cons_ord_in_Z/nZ:phi(d)_el} possiamo scrivere $\eqcl x = \dfrac{\eqcl n}{d}b$ con $b \in Z$ tale che $\mcd{b}{d} = 1$.
+        Seguendo la dimostrazione di \ref{cor:cons_ord_in_Z/nZ:phi(d)_el} possiamo scrivere $\eqcl x = \eqcl{\dfrac{n}{d}}b$ con $b \in Z$ tale che $\gcd{b, d} = 1$.
 
-        Ma $H_d = \gen*{\dfrac{\eqcl n}{d}}$ contiene tutti i multipli di $\dfrac{\eqcl n}{d}$, dunque deve contenere anche $\eqcl x$.
+        Ma $H_d = \gen*{\eqcl{\dfrac{n}{d}}}$ contiene tutti i multipli di $\eqcl{\dfrac{n}{d}}$, dunque deve contenere anche $\eqcl x$.
 
         Dunque dato che $\eqcl x \in H_d$ segue che $H = \gen*{\eqcl x} \subseteq H_d$. Ma gli insiemi $H$ e $H_d$ hanno la stessa cardinalità, dunque $H = H_d$, ovvero vi è un solo sottogruppo di ordine $d$. \qedhere
     \end{enumerate}

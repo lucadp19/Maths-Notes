@@ -1,22 +1,22 @@
 \section{Azioni di gruppo}
 
 \begin{definition}
-    [Azione di un gruppo su un insieme] Sia $(G, \cdot)$ un gruppo e $X$ un insieme qualunque. Si dice \emph{azione di G su X} un omomorfismo di gruppi \begin{align*}
+    [Azione di un gruppo su un insieme] Sia $G$ un gruppo e $X$ un insieme qualunque. Si dice \emph{azione di G su X} un omomorfismo di gruppi \begin{align*}
         \phi : G &\to \SS(X)\\
         g &\mapsto \phi_g.
     \end{align*}
 \end{definition}
 
-Altre notazioni che useremo per la permutazione degli elementi di $X$ definita da $g$ sono $gx$ e $x^g$.
+Altre notazioni che useremo per la permutazione degli elementi di $X$ definita da $g$ sono $g \cdot x$ e $x^g$.
 
 \begin{example}
     Se $X = G$ un possibile esempio è dato dal coniugio per $g$: l'applicazione $g \mapsto \phi_g$ dove $\phi_g(x) = gxg\inv$ è un omomorfismo tra il gruppo $G$ e il gruppo delle permutazioni degli elementi di $G$, dunque è un'azione di $G$ su $G$.
 \end{example}
 \begin{example}
     Sia $V$ un $\K$-spazio vettoriale. Allora l'applicazione \begin{align*}
-        \phi : \invert{\K} &\to \SS(V)\\
+        \phi : \units{\K} &\to \SS(V)\\
         \lambda &\mapsto \phi_\lambda
-    \end{align*} e $\phi_\lambda(\vec{v}) = \lambda\cdot \vec v$ è un'azione del gruppo degli scalari sullo spazio vettoriale. Più in generale, potremmo definire uno spazio vettoriale come un gruppo abeliano additivo su cui è definita un'azione di $\invert{\K}$ su $V$.
+    \end{align*} e $\phi_\lambda(\vec{v}) = \lambda\cdot \vec v$ è un'azione del gruppo degli scalari sullo spazio vettoriale. Più in generale, potremmo definire uno spazio vettoriale come un gruppo abeliano additivo su cui è definita un'azione di $\units{\K}$ su $V$.
 \end{example}
 
 \subsubsection{Classe di equivalenza definita da un'azione}
@@ -61,7 +61,7 @@ Sia $\phi : G \to \SS(V)$ un'azione di gruppo. $\phi$ definisce su $X$ la seguen
 
 \begin{definition}[Orbita]
     Sia $G$ un gruppo che agisce sull'insieme $X$. Dato $x \in X$ si dice \emph{orbita di $x$} l'insieme \[
-        \orb{x} \deq \set{\phi_g(x) \suchthat g \in G} \subseteq X.    
+        \orb{x} \deq \set*{\phi_g(x) \given g \in G} \subseteq X.    
     \]
 \end{definition}
 
@@ -73,29 +73,242 @@ Sia $\phi : G \to \SS(V)$ un'azione di gruppo. $\phi$ definisce su $X$ la seguen
 
 \begin{definition}[Stabilizzatore]
     Sia $G$ un gruppo che agisce sull'insieme $X$. Dato $x \in X$ si dice \emph{stabilizzatore di $x$} l'insieme \[
-        \St{x} \deq \set{g \in G \suchthat \phi_g(x) = x} \subseteq G.    
+        \Stab(G){x} \deq \set*{g \in G \given \phi_g(x) = x} \subseteq G.    
     \]
 \end{definition}
 
 \begin{proposition}
     [Lo stabilizzatore è un sottogruppo]
     Sia $G$ un gruppo che agisce sull'insieme $X$; sia inoltre $x \in X$. Allora vale che \[
-        \St{x} \sgr G.    
+        \Stab(G){x} \sgr G.    
     \]
 \end{proposition}
 \begin{proof}
-    Innanzitutto $e_G \in \St{x}$ in quanto $\phi_e(x) = x$ (l'azione dell'identità è sempre l'identità).
+    Innanzitutto $e_G \in \Stab(G){x}$ in quanto $\phi_e(x) = x$ (l'azione dell'identità è sempre l'identità).
 
-    Supponiamo che $g \in \St{x}$, ovvero $\phi_g(x) = x$: mostriamo che anche $g\inv \in \St{x}$, ovvero $\phi_{g\inv} \in \St{x}$. Applichiamo ad entrambi i membri l'azione $(\phi_g)\inv$, ottenendo \begin{align*}
+    Supponiamo che $g \in \Stab(G){x}$, ovvero $\phi_g(x) = x$: mostriamo che anche $g\inv \in \Stab(G){x}$, ovvero $\phi_{g\inv} \in \Stab(G){x}$. Applichiamo ad entrambi i membri l'azione $(\phi_g)\inv$, ottenendo \begin{align*}
         (\phi_g)\inv(x) = (\phi_g)\inv\parens[\big]{\phi_g(x)} = x.
-    \end{align*} Come abbiamo osservato precedentemente, $(\phi_g)\inv = \phi_{g\inv}$, da cui segue che $x = \phi_{g\inv}(x)$ e quindi $g\inv \in \St{x}$.
+    \end{align*} Come abbiamo osservato precedentemente, $(\phi_g)\inv = \phi_{g\inv}$, da cui segue che $x = \phi_{g\inv}(x)$ e quindi $g\inv \in \Stab(G){x}$.
 
-    Supponiamo infine che $g, h \in \St{x}$ e mostriamo che $hg \in \St{x}$. Infatti \begin{align*}
+    Supponiamo infine che $g, h \in \Stab(G){x}$ e mostriamo che $hg \in \Stab(G){x}$. Infatti \begin{align*}
         \phi_{hg}(x) &= (\phi_h \circ \phi_g)(x)\\
         &= \phi_h\parens[\big]{\phi_g(x)}\\
         &= \phi_h(x)\\
         &= x.
     \end{align*}
 
-    Dunque $\St(x)$ è un sottogruppo di $G$.
+    Dunque $\Stab(G){x}$ è un sottogruppo di $G$.
+\end{proof}
+
+\begin{remark}
+    Consideriamo un'azione generica $\phi$ di un gruppo $G$ su un insieme $X$: sia $x \in X$ e siano $g, h \in G$ tali che $\phi_g(x) = \phi_h(x)$. Allora 
+    \begin{align*}
+        &\phi_g(x) = \phi_h(x)\\
+        \iff &(\phi_{h\inv} \circ \phi_g)(x) = x\\
+        \iff &\phi_{h\inv g}(x) = x\\
+        \iff &h\inv g = \Stab(G){x}
+        \iff &g\Stab(G){x} = h\Stab(G){x}.
+    \end{align*}
+
+    Esiste dunque una bigezione tra l'orbita di un elemento $x \in X$ e le classi laterali di $x$ in $G$:
+    \begin{align*}
+        \orb{x} &\biject \quot{G}{\Stab(G){x}}\\
+        \phi_g(x) &\mapsto g\Stab(G){x}.
+    \end{align*}
+
+    Questa corrispondenza è
+    \begin{description}
+        \item[ben definita:] se $\phi_g(x) = \phi_h(x)$ allora $g\Stab(G){x} = h\Stab(G){x}$;
+        \item[iniettiva:] se $g\Stab(G){x} = h\Stab(G){x}$ sicuramente $\phi_g(x) = \phi_h(x)$;
+        \item[surgettiva:] le classi laterali di $\Stab(G){x}$ sono tutte e solo della forma $g\Stab(G){x}$ al variare di $g \in G$, e per ogni $g \in G$ segue che $\phi_g(x) \in \orb{x}$.
+    \end{description}
+\end{remark}
+
+Segue quindi la seguente proposizione.
+\begin{proposition}[Lemma Orbita-Stabilizzatore]
+    \label{prop:lem_orb-stab}
+    Sia $G$ un gruppo che agisce su un insieme $X$. Se $G$ è finito, allora per ogni $x \in X$ vale che \begin{equation}
+        \card{G} = \card{\orb{x}} \cdot \card{\Stab(G){x}}.
+    \end{equation}
+    In particolare quindi $\card{\orb{x}}$ divide $\card{G}$.
+\end{proposition}
+\begin{proof}
+    Per la bigezione mostrata sopra, la cardinalità dell'orbita di $x$ è uguale al numero di classi laterali di $\Stab(G){x}$ in $G$, ovvero \[
+        \card{\orb{x}} = \GrpIndex{G : \Stab(G){x}} = \frac{\card G}{\card{\Stab(G){x}}},    
+    \] da cui segue la tesi.
+\end{proof}
+
+\subsubsection{Azione di coniugio}
+Sia $G$ un gruppo che agisce su se stesso tramite l'azione di coniugio: ovvero \begin{align*}
+    \phi : G &\to \SS(G)\\
+           g &\mapsto 
+    \begin{alignedat}[t]{1}
+        \phi_g : G &\to G\\
+                 x &\mapsto gxg\inv.
+    \end{alignedat}
+\end{align*}
+
+Abbiamo già osservato che questa è un'azione. Sia ora $x \in G$ qualunque. Allora l'orbita di $x$ è data da
+\begin{align*}
+    \orb{x} 
+    &= \set{\phi_g(x) \given g \in G}\\
+    &= \set{gxg\inv \given g \in G}\\
+    &= \Cl{x},
+\end{align*}
+dove $\Cl{x}$ rappresenta la classe di coniugio di $x$.
+
+Invece lo stabilizzatore di $x$ in $G$ è:
+\begin{align*}
+    \Stab(G){x} 
+    &= \set{g \in G \given \phi_g(x) = x}\\
+    &= \set{g \in G \given gxg\inv = x}\\
+    &= {g \in G \given gx = xg}\\
+    &= \Zentr(G){x},
+\end{align*}
+ovvero il centralizzatore di $x$ in $G$.
+
+Per il \nameref{prop:lem_orb-stab}, segue che, se $G$ è finito: \[
+    \card{G} = \card{\Cl{x}} \cdot \card{\Zentr(G){x}},  
+\] ovvero $\card{\Cl{x}} \divides \card{G}$.
+
+Osserviamo un'altra importante proprietà dei gruppi normali.
+\begin{proposition}[I gruppi normali sono unione di classi di coniugio]
+    \label{prop:H_normal_iff_union_conj}
+    Sia $G$ un gruppo, $H \sgr G$. Allora $H \normal G$ se e solo se $H$ è unione di intere classi di coniugio.
+\end{proposition}
+\begin{proof}
+    Mostriamo entrambi i versi dell'implicazione.
+    \begin{description}
+        \item[($\implies$)] Se $H \normal G$ allora per ogni $g \in G$ vale che $gHg\inv \subseteq H$, ovvero per ogni $g \in G, h \in H$ vale che $ghg\inv \in H$, ovvero per ogni $h \in H$ vale che $\set{ghg\inv \given g \in G} = \Cl{h} \subseteq H$, ovvero $H$ è unione di intere classi di coniugio.
+        \item[($\impliedby$)] Supponiamo $H$ sia un sottogruppo di $G$ dato dall'unione di intere classi di coniugio. Allora per ogni $h \in H$ segue che $\Cl{h} \in H$, ovvero per ogni $g \in G$ vale che $gHg\inv \subseteq H$, cioè $H \normal G$. \qedhere 
+    \end{description}
+\end{proof}
+
+\subsubsection{Coniugio di sottogruppi}
+Sia $G$ un gruppo e $X$ l'insieme di tutti i suoi sottogruppi. Definiamo la seguente azione di $G$ su $X$:
+\begin{align*}
+    \phi : G &\to \SS(X)\\
+           g &\mapsto 
+    \begin{alignedat}[t]{1}
+        \phi_g : X &\to X\\
+                 H &\mapsto gHg\inv.
+    \end{alignedat}
+\end{align*}
+
+Mostriamo innanzitutto che $\phi$ rappresenta effettivamente un'azione:
+\begin{description}
+    \item[Omomorfismo] Siano $g, h \in G$. Allora per ogni $H \in X$ vale che \[
+        \phi_{gh}(H) = (gh)H(gh)\inv = g(hHh\inv)g\inv = (\phi_g \circ \phi_h)(H).
+    \]
+    \item[Bigettività] Sia $g \in G$ qualunque. Mostriamo che $\phi_g$ è una bigezione e $\phi_{g\inv}$ è la sua inversa: per ogni $H \in X$ vale che \begin{align*}
+        &(\phi_{g\inv} \circ \phi_g)(H) = \phi_{g\inv}(gHg\inv) = g\inv gHg\inv g = H.\\
+        &(\phi_{g} \circ \phi_{g\inv})(H) = \phi_{g}(g\inv Hg) = gg\inv Hgg\inv = H.
+    \end{align*}
+\end{description}
+
+Segue quindi che $\phi$ è un'azione di $G$ sui suoi sottogruppi. Sia $H \sgr G$. L'orbita di $H$ rispetto a questa azione è \[
+    \orb{H} = \set{\phi_g(H) \given g \in G} = \set{gHg\inv \given g \in G},
+\] ovvero è l'insieme dei sottogruppi di $G$ coniugati ad $H$. Invece lo stabilizzatore di $H$ è \[
+    \Stab(G){H} = \set{g \in G \given \phi_g(H) = H}
+    = \set{g \in G \given gHg\inv = H} = \Normaliser(G){H},
+\] ovvero è il normalizzatore del sottogruppo $H$ in $G$.
+
+Osserviamo che, per il \nameref{prop:lem_orb-stab}, il numero di coniugati di $H$ è dato da \[
+    \card{\orb{H}} = \frac{\card{G}}{\card{\Normaliser(G){H}}}    
+\]
+\begin{proposition}
+    Sia $G$ un gruppo e $H \sgr G$. 
+    Consideriamo l'azione di $G$ sull'insieme dei suoi sottogruppi data dal coniugio.
+    Le seguenti affermazioni sono equivalenti:
+    \begin{enumerate}[label={(\roman*)}]
+        \item $H \normal G$.
+        \item $\orb{H} = \set{H}$.
+        \item $\Stab(G){H} = G$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo la catena di implicazioni \[
+        (i) \implies (ii) \implies (iii) \implies (i).    
+    \]
+    \begin{description}
+        \item[($(i) \implies (ii)$)] Se $H \normal G$ allora $gHg\inv = H$ per ogni $g \in G$, da cui $\orb{H} = \set{H}$.
+        \item[($(ii) \implies (iii)$)] Supponiamo che \[
+            \orb{H} = \set{gHg\inv \given g \in G} = \set{H}.    
+        \] Questo significa che per ogni $g \in G$ vale che $gHg\inv = H$, da cui $\Stab(G){H} = G$.
+        \item[($(iii) \implies (i)$)] Supponiamo $\Stab(G){H} = G$. Allora per ogni $g \in G$ vale che $gHg\inv = H$, da cui $H \normal G$.
+    \end{description}
+\end{proof}
+
+\subsection{Formula delle classi}
+Sia $G$ un gruppo; consideriamo l'azione $\phi$ di $G$ su se stesso data dal coniugio.
+
+Ricordiamo che, dato $x \in G$, la classe di coniugio di $x$ mediante $\phi$ è \[
+    \Cl{x} \deq \orb{x} = \set{\phi_g(x) \given g \in G} = \set{gxg\inv \given g \in G}.    
+\]
+
+Sicuramente $x \in \orb{x}$ in quanto $x = \phi_{e_G}(x)$; inoltre possiamo notare che $\Cl{x} = \set{x}$ se e solo se per ogni $g \in G$ vale che $gxg\inv = x$, ovvero $x$ è un elemento del centro di $G$.
+
+Più in generale se $G$ è finito vale il \nameref{prop:lem_orb-stab}, da cui $\card{G} = \card{\Cl{x}}\cdot \card{\Zentr(G){x}}$. Allora vale che $\Cl{x} = \set{x}$ se e solo se $\card{\Cl{x}} = 1$, da cui $\card{G} = \card{\Zentr(G){x}}$, ovvero $G = \Zentr(G){x}$ (poiché $G$ è finito), da cui $x \in \Zentr{G}$.
+
+Siccome le classi di coniugio formano le classi di equivalenza della relazione data dall'azione di coniugio, dato un insieme di rappresentanti $R$ segue che \[
+    G = \bigdisjunion_{x \in R} \orb{x} = \bigdisjunion_{x \in R} \Cl{x}.
+\] Se $G$ è finito, passando alle cardinalità si ottiene \[
+    \card{G} = \sum_{x \in R} \card*{\Cl{x}}. 
+\] Siccome abbiamo notato prima che gli elementi del centro formano classi di coniugio con un solo elemento possiamo separarle dalle altre, ottenendo
+\begin{align*}
+    \card{G} &= \sum_{x \in R} \card*{\Cl{x}}\\
+    &= \sum_{x \in \Zentr{G}} \card*{\Cl{x}} + \sum_{x \in R \setminus \Zentr{G}} \card*{\Cl{x}}\\
+    &= \sum_{x \in \Zentr{G}} 1 + \sum_{x \in R \setminus \Zentr{G}} \frac{\card*{G}}{\card*{\Zentr(G){x}}}\\
+    &= \card*{\Zentr{G}} + \sum_{x \in R \setminus \Zentr{G}} \frac{\card*{G}}{\card*{\Zentr(G){x}}}.
+\end{align*}
+
+Vale quindi la seguente formula.
+\begin{theorem}
+    [Formula delle classi]
+    Sia $G$ un gruppo finito e sia $R$ un insieme di rappresentanti delle classi di coniugio di $G$.
+    Allora \begin{equation}
+        \label{eq:class_formula}
+        \card*{G} = \card*{\Zentr{G}} + \sum_{x \in R \setminus \Zentr{G}} \frac{\card*{G}}{\card*{\Zentr(G){x}}}.
+    \end{equation}
+\end{theorem}
+
+Osserviamo che la formula delle classi non vale solo per $G$, ma anche per tutti i sottogruppi normali di $G$. Infatti per la \autoref{prop:H_normal_iff_union_conj} segue che \[
+    H = \bigunion_{x \in R \inters H} \Cl{x},    
+\] dunque se $H$ è finito si ha \begin{align*}
+    \card*{H} &= \sum_{x \in R \inters H} \Cl{x}\\
+    &= \sum_{x \in \Zentr{G} \inters H} 1 + \sum_{{x \in (R \setminus \Zentr{G}) \inters H}} \Cl{x}\\
+    &= \card*{\Zentr{G} \inters H} + \sum_{{x \in (R \setminus \Zentr{G}) \inters H}} \Cl{x}. 
+\end{align*}
+
+\subsection{$p$-Gruppi}
+
+\begin{definition}
+    Sia $p \in \Z$ primo. Si dice \emph{$p$-gruppo} un gruppo finito di ordine $p^k$ per qualche $k \in \N$.
+\end{definition}
+
+\begin{proposition}
+    [Il centro di un $p$-gruppo è non banale]
+    \label{prop:p-group_center_is_nontrivial}
+    Sia $G$ un $p$-gruppo di ordine $p^n$. Allora $\Zentr{G} \neq \set{e_G}$.
+\end{proposition}
+\begin{proof}
+    Per la formula delle classi vale che \[
+        p^n = \card*{G} = \card*{\Zentr{G}} + \sum_{x \in R \setminus \Zentr{G}} \frac{\card*{G}}{\card*{\Zentr(G){x}}}.
+    \]
+    Notiamo che se $x \in R \setminus \Zentr{G}$ allora $\Cl{x} = \dfrac{\card*{G}}{\card*{\Zentr(G){x}}} > 1$, in quanto le uniche classi di coniugio formate da un singolo elemento sono date dagli elementi del centro di $G$. Segue quindi che per ogni $x \in R \setminus \Zentr{G}$ vale che \[
+        p \divides \frac{\card*{G}}{\card*{\Zentr(G){x}}},
+    \] da cui $p$ divide la somma di questi rapporti.
+
+    Per differenza segue dunque che $p \divides \card*{\Zentr{G}}$, da cui $\Zentr{G}$ è non banale.
+\end{proof}
+
+\begin{proposition}
+    Un gruppo di ordine $p^2$ è necessariamente abeliano.
+\end{proposition}
+\begin{proof}
+    Sia $G$ un gruppo di ordine $p^2$: siccome è un $p$-gruppo per la \autoref{prop:p-group_center_is_nontrivial} il centro di $G$ è non banale, da cui $\Zentr{G}$ ha ordine $p$ o $p^2$.
+
+    Se per assurdo $\Zentr{G}$ avesse ordine $p$ allora $\quot{G}{\Zentr{G}}$ ha ordine $p$, ovvero è ciclico. Tuttavia questo (per la \autoref{prop:G/Z(G)_cyclic=>abelian_G}) implica che $G$ è abeliano, il che è assurdo in quanto abbiamo assunto che il suo centro fosse diverso dall'intero gruppo.
+
+    Segue quindi che $\card*{\Zentr{G}} = p^2$, ovvero $G = \Zentr{G}$ da cui $G$ è abeliano.
 \end{proof}

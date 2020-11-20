@@ -1,0 +1,132 @@
+\section{Ideali primi e massimali}
+
+Per poter studiare i concetti di ideali primi e massimali abbiamo bisogno di alcuni concetti di Teoria degli Insiemi, ed in particolare del \hyperref[lem:Zorn]{Lemma di Zorn}.
+
+\begin{definition}[Maggioranti, massimi e massimali]
+    Sia $(\FF, \preceq)$ un insieme con una relazione di ordine parziale.
+    \begin{description}
+        \item[Maggiorante] Un elemento $M \in \FF$ si dice \strong{maggiorante} per un sottoinsieme $X \subseteq \FF$ se per ogni $A \in X$ vale che $A \preceq M$.
+        \item[Massimo] Si dice che un elemento $A \in \FF$ è un \strong{massimo} per $\FF$ se per ogni $B \in \FF$ vale che $A \preceq B$.
+        \item[Massimale] Si dice che un elemento $A \in \FF$ è \strong{massimale} se per ogni $B \in \FF$ tale che $A \preceq B$ vale che $A = B$.
+    \end{description}
+\end{definition}
+
+\begin{remark}
+    La differenza tra i massimi e gli elementi massimale è che un elemento è massimo quando è maggiore o uguale (nel senso della relazione $\preceq$) di tutti gli elementi dell'insieme, mentre un elemento è massimale se, quando è confrontabile con un altro elemento e risulta minore o uguale di esso, allora è necessariamente uguale ad esso.
+\end{remark}
+\begin{example}
+    Consideriamo l'insieme dei sottoinsiemi propri di $\set{1, 2, 3}$, ovvero \[
+        (\FF, \preceq) \deq \parens*{\set[\big]{\varnothing, \set{1}, \set{2}, \set{3}, \set{1, 2},\set{1, 3}, \set{2, 3}}, \subseteq}.
+    \] Gli elementi $\set{1, 2}$, $\set{1, 3}$ e $\set{2, 3}$ sono massimali, in quanto ognuno di essi non è contenuto in un altro elemento al di fuori di se stesso. Tuttavia nessuno di essi è un massimo, poiché tra di loro non sono confrontabili.
+\end{example}
+
+\begin{definition}
+    [Catena]
+    Sia $(\FF, \preceq)$ un insieme parzialmente ordinato. Si dice \strong{catena} di $\FF$ un sottoinsieme di $\FF$ totalmente ordinato (rispetto alla relazione $\preceq$).
+\end{definition}
+
+\begin{definition}
+    [Struttura induttiva]
+    Sia $(\FF, \preceq)$ un insieme parzialmente ordinato: esso si dice \strong{induttivo} se ogni catena di $\FF$ ammette un maggiorante in $\FF$.
+\end{definition}
+
+Possiamo finalmente enunciare il Lemma di Zorn.
+\begin{lemma}[Lemma di Zorn] 
+    \label{lem:Zorn}
+    Sia $(\FF, \preceq)$ un insieme parzialmente ordinato, $\FF \neq \varnothing$, $\FF$ induttivo. Allora $\FF$ ammette elementi massimali.
+\end{lemma}
+
+Useremo il Lemma di Zorn sull'insieme degli ideali propri di un anello, dove la relazione d'ordine è data dall'inclusione.
+
+\begin{definition}
+    [Ideale primo e massimale]
+    Sia $A$ un anello, $I \subsetneq A$ un ideale proprio di $A$. \begin{description}
+        \item[Primo] Si dice che $I$ è un \strong{ideale primo} di $A$ se per ogni $x, y \in A$ tali che $xy \in I$ vale che $x \in I$ oppure $y \in I$.
+        \item[Massimale] Si dice che $I$ è un \strong{ideale massimale} se è massimale nell'insieme degli ideali propri di $A$, ovvero se $J$ è un ideale proprio di $A$ tale che $I \subseteq J$, allora $J = I$.
+    \end{description}
+\end{definition}
+
+\begin{exercise}
+    Gli ideali primi di $\Z$ sono tutti e soli della forma $\ideal{p} = p\Z$ al variare $p$ primo.
+\end{exercise}
+\begin{solution}
+    Mostriamo entrambi i versi dell'equivalenza.
+    \begin{description}
+        \item[($\implies$)] Siano $x, y \in \Z$ tali che $xy \in p\Z$, ovvero $p \divides xy$. Allora $p \divides x$ oppure $p \divides y$, ovvero $x \in p\Z$ oppure $y \in p\Z$.
+        \item[($\impliedby$)] Mostriamo la contronominale: sia $m \in \Z$ non primo. Allora $m$ è riducibile (poiché in $\Z$ i primi sono tutti e soli gli irriducibili), ovvero esistono $a, b \in \Z$ tali che $ab = m$. Allora $ab \in m\Z$ ma $a, b \notin m\Z$, da cui $m\Z$ non è un ideale primo. \qedhere
+    \end{description}
+\end{solution}
+
+\begin{proposition}
+    Sia $A$ un anello, $I \subsetneq A$ un ideale proprio di $A$. Valgono le seguenti affermazioni:
+    \begin{enumerate}[label={(\arabic*)}]
+        \item $I$ è contenuto in un ideale massimale di $A$;
+        \item ogni elemento non invertibile di $A$ appartiene ad un ideale massimale di $A$.
+    \end{enumerate} 
+\end{proposition}
+\begin{proof}
+    Chiaramente la seconda affermazione deriva direttamente dalla prima. Infatti se $x \in A \setminus \units{A}$ segue che l'ideale generato da $x$ è un ideale proprio di $A$. Dunque per la prima affermazione $\ideal{x} \subseteq \mathfrak{m}$ (dove $\mathfrak{m}$ è un ideale massimale di $A$), da cui \[
+        x \in \ideal{x} \subseteq \mathfrak{m}.    
+    \]
+
+    Mostriamo ora la prima affermazione: consideriamo l'insieme \[
+        \FF \deq \set*{J \subsetneq A \given J \text{ ideale, } I \subseteq J}.    
+    \] Siccome $I$ è un elemento di $\FF$ segue che $\FF$ non è vuoto: mostriamo che è induttivo.
+
+    Sia $\CC \deq \seqn*{J_n}$ con $J_i \subseteq J_{i+1}$ una catena di $\FF$. Dimostriamo che $\JJ \deq \bigunion J_n$ è un maggiorante per $\CC$.
+    \begin{itemize}
+        \item Ovviamente $J_n \subseteq \JJ$ per ogni $n$.
+        \item Certamente $I \subseteq J_n \subseteq \JJ$; inoltre $\JJ \subsetneq A$ poiché se per assurdo $J$ fosse $A$ allora $1 \in \JJ = \bigunion J_n$, da cui esisterebbe un indice $i$ tale che $1 \in J_i$. Ma un ideale che contiene l'unità è necessariamente improprio, da cui segue l'assurdo.
+        \item Infine $\JJ$ è un ideale poiché unione in catena di ideali.
+    \end{itemize}
+    Segue quindi che $\JJ \in \FF$ è un maggiorante della catena $\CC$. Per il \nameref{lem:Zorn} dunque $\FF$ ammette almeno un elemento massimale.
+
+    Chiamiamo $\mathfrak{m}$ l'elemento massimale di $\FF$: siccome contiene $I$ per definizione di $\FF$, rimane solamente da mostrare che $\mathfrak{m}$ è un ideale massimale di $A$, ovvero che è massimale nella famiglia degli ideali propri di $A$.
+
+    Sia $L \subsetneq A$ un ideale tale che $\mathfrak{m} \subseteq L$. Allora $I \subseteq \mathfrak{m} \subseteq L$, da cui $L$ è un elemento della famiglia $\FF$. Tuttavia $\mathfrak{m}$ è massimale in $\FF$, da cui $L$ è necessariamente uguale ad $\mathfrak{m}$, ovvero $\mathfrak{m}$ è un ideale massimale contenente $I$.
+\end{proof}
+
+\begin{proposition}
+    \label{prop:primo_sse_dom/max_sse_campo}
+    Sia $A$ un anello, $I \subsetneq A$ un ideale proprio di $A$.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item $I$ è un ideale primo se e solo se $\quot{A}{I}$ è un dominio.
+        \item $I$ è un ideale massimale se e solo se $\quot{A}{I}$ è un campo.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Mostriamo separatamente le due affermazioni.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Sappiamo che $\quot{A}{I}$ è un dominio se e solo se non esistono divisori dello zero, ovvero se e solo se per ogni $x, y \in A$ vale che \begin{align*}
+            &(x + I)(y + I) = I \\
+            \implies &x + I = I \text{ oppure } y + I = I \\
+            \iff &x \in I \text{ oppure } y \in I. 
+        \end{align*} Tuttavia \[
+            (x + I)(y + I) = I \iff xy + I = I \iff xy \in I,   
+        \] da cui $\quot{A}{I}$ è un dominio se e solo se per ogni $x, y \in A$ tali che $xy \in I$ vale che $x \in I$ oppure $y \in I$, ovvero se e solo se $I$ è un ideale primo.
+        \item Per il \nameref{th:ideal_corr} $I$ è un ideale massimale se e solo se $\quot{A}{I}$ ha come unici ideali l'ideale banale e quello improprio, ovvero se e solo se $\quot{A}{I}$ è un campo. \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    \label{cor:dom_sse_banale-primo/campo_sse_banale-max}
+    Sia $A$ un anello. \begin{enumerate}
+        \item $A$ è un dominio se e solo se l'ideale banale è primo.
+        \item $A$ è un campo se e solo se l'ideale banale è massimale.
+        \item Se un ideale proprio $I \subsetneq A$ è massimale, allora è necessariamente primo.
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    I primi due punti vengono direttamente dalla proposizione precedente (poiché $\quot{A}{\ideal{0}}$ è isomorfo ad $A$); per quanto riguarda il terzo $I$ è massimale se e solo se $\quot{A}{I}$ è un campo, quindi a maggior ragione un dominio, ovvero $I$ è anche primo.
+\end{proof}
+
+\begin{corollary}
+    Sia $A$ un anello e $I$ un suo ideale. La corrispondenza biunivoca tra gli ideali di $A$ contenenti $I$ e gli ideali di $\quot{A}{I}$ conserva la primalità e la massimalità.
+\end{corollary}
+\begin{proof}
+    Sia $J$ un ideale di $A$ contenente $I$ e consideriamo la proiezione canonica $\pi : A \to \quot{A}{I}$.
+
+    Per la \autoref{prop:primo_sse_dom/max_sse_campo} $J$ è primo in $A$ se e solo se $\quot{A}{J}$ è un dominio, mentre $\quot{J}{I}$ è primo in $\quot{A}{I}$ se e solo $\frac{\quot{A}{I}}{\quot{J}{I}}$ è un dominio. Tuttavia per il \hyperref[th:second_iso_rings]{Secondo Teorema degli Omomorfismi} segue che \[
+        \dfrac{\quot{A}{I}}{\quot{J}{I}} \isomorph \quot{A}{J},
+    \] da cui segue che $\pi$ conserva la primalità. Con una dimostrazione analoga (sostituendo "primo" con "massimale" e "dominio" con "campo") si dimostra che $\pi$ conserva la massimalità, da cui la tesi.
+\end{proof}

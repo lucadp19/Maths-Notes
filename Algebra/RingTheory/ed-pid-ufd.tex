@@ -1,0 +1,156 @@
+\section{Categorie di anelli}
+
+Le proprietà dell'anello $\Z$ non si estendono a tutti i domini di integrità: vogliamo quindi classificare i domini in categorie a seconda di quante proprietà degli interi vengono rispettate.
+
+Anche in questa sezione considereremo quindi $A$ un generico dominio di integrità.
+
+\subsection{Domini euclidei}
+
+\begin{definition}
+    [Dominio euclideo]
+    Sia $A$ un dominio di integrità. $A$ si dice \strong{dominio euclideo} se esiste una funzione \[
+        d : A \setminus \set{0} \to \N    
+    \] detta \strong{grado} tale che \begin{enumerate}[label={(\roman*)}]
+        \item per ogni $x, y \in A \setminus \set{0}$ vale che $d(x) \leq d(xy)$;
+        \item per ogni $x \in A$, $y \in A \setminus \set{0}$ esistono $q, r \in A$ tali che \[
+            x = qy + r    
+        \] e $r = 0$ oppure $d(r) < d(y)$.
+    \end{enumerate}
+\end{definition}
+
+La funzione grado ci consente quindi di effettuare una divisione euclidea tra gli elementi del dominio $A$: possiamo ben approssimare tutti gli elementi con multipli di altri elementi.
+
+\begin{example}
+    $\Z$ è un dominio euclideo: la funzione grado è data da $d(x) = \abs{x}$ per ogni $x \neq 0$.
+\end{example}
+\begin{example}
+    Dato un campo $\K$ il dominio dei polinomi $\K[X]$ è un dominio euclideo: infatti la funzione grado data da \[
+        d(f) = \deg f    
+    \] è definita su ogni polinomio non nullo e ha le proprietà descritte sopra.
+\end{example}
+
+\subsubsection{Interi di Gauss}
+
+Un ultimo esempio è dato dall'insieme \[
+    \Z[i] = \set*{a + ib \given a, b \in \Z} \subseteq \C.    
+\] Questo insieme viene detto insieme degli \strong{interi di Gauss}, ed ha molte proprietà aritmeticamente interessanti. Il grado è dato dalla funzione \strong{norma}: \[
+    d(a + ib) = N(a + ib) \deq a^2 + b^2.
+\]
+
+\subsubsection{Proprietà dei domini euclidei}
+
+\begin{proposition}
+    [Algoritmo di Euclide nei domini euclidei]
+    Sia $A$ un dominio euclideo, $a, b \in A$ non entrambi nulli. Allora l'algoritmo di Euclide per il massimo comun divisore termina in un numero finito di passi e restituisce come ultimo resto non nullo un massimo comun divisore tra $a$ e $b$.
+\end{proposition}
+La dimostrazione di questa proposizione è essenzialmente identica al caso aritmetico.
+
+\begin{proposition}
+    [Gli elementi di grado minimo sono invertibili]
+    Sia $A$ un dominio euclideo. Gli elementi di grado minimo di $A$ sono tutti e soli gli elementi di $\units{A}$.
+\end{proposition}
+\begin{proof}
+    L'immagine della funzione grado è un sottoinsieme di $\N$ non vuoto, pertanto ammette un minimo. Sia $d_0$ tale minimo e mostriamo che un elemento ha grado $d_0$ se e solo se è invertibile.
+    
+    \begin{description}
+        \item[($\implies$)] Sia $x \in A \setminus \set{0}$ con grado $d(x) = d_0$. 
+        
+        Allora per ogni $y \in A \setminus \set{0}$ vale che esistono $q, r \in A$ tali che $y = qx + r$, con $d(r) < d(x)$ oppure $r = 0$. 
+        
+        Tuttavia se fosse la prima avremmo un elemento di $A$ con grado minore di $d_0$, il che è assurdo, quindi $r = 0$, ovvero $y = qx$, ovvero $y \in \ideal*{x}$.
+
+        In particolare se $y = 1$ dovrà esistere $q \in A$ tale che $qx = 1$, ovvero $x$ è invertibile.
+        \item[($\impliedby$)] Sia $x \in \units{A}$, ovvero $\ideal*{x} = A$. Allora per ogni $a \in A$ dovrà esistere $q \in A$ tale che $qx = a$. Ma per la prima proprietà del grado segue che $d(x) \leq d(qx) = d(a)$, da cui $x$ ha grado minimo. \qedhere
+    \end{description}
+\end{proof}
+
+\begin{proposition}
+    [Ogni ideale di un dominio euclideo è principale] 
+    \label{prop:ED=>PID}
+    Sia $I \subseteq A$ un ideale di un dominio euclideo. Allora $I$ è principale ed in particolare è generato da un elemento di grado minimo.
+\end{proposition}
+\begin{proof}
+    Siccome $I = \ideal*{0}$ è automaticamente principale dimostriamo la proposizione per $I$ non banale.
+
+    Sia $x \in I$ un elemento di grado minimo tra gli elementi di $I$. Sicuramente $\ideal*{x} \subseteq I$; inoltre per ogni $a \in I$ vale che $a = qx + r$ con $r = 0$ oppure $d(r) < d(x)$. Tuttavia $r = a - qx \in I$, dunque se $r$ non fosse nullo il suo grado deve essere necessariamente maggiore o uguale al grado di $x$, il che è assurdo. Segue quindi che $r = 0$, ovvero $a = qx$, da cui $I \subseteq \ideal*{x}$.
+    
+    Segue quindi che $I = \ideal*{x}$, ovvero la tesi.
+\end{proof}
+
+\subsection{Domini ad ideali principali}
+
+\begin{definition}
+    [Dominio ad ideali principali]
+    Sia $A$ un dominio di integrità. $A$ si dice \strong{dominio ad ideali principali} (abbreviato in PID, \emph{Principal Ideal Domain}) se tutti gli ideali di $A$ sono principali.
+\end{definition}
+
+Osserviamo che la \autoref{prop:ED=>PID} ci dice che un dominio euclideo è sempre un PID, mentre il viceversa non è necessariamente vero.
+
+\begin{proposition}
+    [Ideali primi in un PID]
+    Sia $A$ un PID. Gli ideali primi di $A$ sono $\ideal*{0}$ e gli ideali massimali.
+\end{proposition}
+\begin{proof}
+    Innanzitutto $\ideal*{0}$ è necessariamente primo (per il \autoref{cor:dom_sse_banale-primo/campo_sse_banale-max}), in quanto $A$ è un dominio. Inoltre ogni ideale massimale è primo, dunque questo dimostra un'implicazione della tesi.
+
+    Viceversa, sia $P$ è un ideale primo non banale. Dato che $A$ è un PID, $P = \ideal*{x}$ per qualche $x \in A$. Questo implica che $x$ sia un elemento primo, da cui segue che $x$ è anche un elemento irriducibile. Per la \autoref{prop:elems_vs_ideals} vale che $\ideal*{x}$ è massimale nell'insieme degli ideali principali; tuttavia siccome $A$ è un PID ogni ideale è principale, dunque $\ideal*{x}$ è un ideale massimale, che è la tesi.
+\end{proof}
+
+\begin{proposition}
+    [Massimo comun divisore in un PID]
+    Sia $A$ un PID, $x, y \in A$ non entrambi nulli. Sia $d \in A$ tale che \[
+        \ideal*{d} = \ideal*{x, y}.    
+    \] Allora $d$ è un massimo comun divisore tra $x$ e $y$.
+\end{proposition}
+\begin{proof}
+    Innanzitutto un tale $d$ esiste poiché $A$ è un PID, dunque l'ideale generato da $x$ e da $y$ deve essere necessariamente uguale ad un ideale principale.
+
+    Siccome $x, y \in \ideal*{d}$ segue che $d \divides x$ e $d \divides y$. Inoltre se $c \in A$ divide sia $x$ che $y$ segue che $x, y \in \ideal*{c}$, da cui $\ideal*{d} = \ideal*{x, y} \subseteq \ideal*{c}$, ovvero $c \divides d$.
+\end{proof}
+
+\subsection{Domini a fattorizzazione unica}
+
+\begin{definition}
+    [Dominio a fattorizzazione unica]
+    Sia $A$ un dominio di integrità. $A$ si dice \strong{a fattorizzazione unica} (UFD, da \emph{Unique Factorization Domain}) se ogni $a \in A$ non nullo e non invertibile è esprimibile in modo unico come prodotto di irriducibili, dove l'unicità è a meno di una permutazione dei fattori e di moltiplicazione per elementi invertibili.
+\end{definition}
+
+\begin{proposition}
+    [Massimo comun divisore negli UFD]
+    Sia $A$ un UFD. Per ogni $a, b \in A$ non nulli esiste un massimo comun divisore, ed è definito dal prodotto di tutti i fattori irriducibili comuni nella fattorizzazione di $a$ e di $b$, presi con il minimo esponente.
+\end{proposition}
+
+\begin{theorem}
+    [Caratterizzazione degli UFD]
+    \label{th:caratt_UFD}
+    Sia $A$ un dominio di integrità. Le seguenti due condizioni sono equivalenti.
+    \begin{enumerate}
+        \item $A$ è un UFD.
+        \item Valgono le seguenti due condizioni: \begin{enumerate}[label={(\roman*)}]
+            \item Ogni elemento irriducibile di $A$ è primo.
+            \item Ogni catena discendente di divisibilità è stazionaria, ovvero se $\seqn[\big]{a_n}_n$ è una successione di elementi di $a$ tale che \[
+                \dots \divides a_n \divides a_{n-1} \divides \dots \divides a_2 \divides a_1,    
+            \] allora esiste un indice $n_0$ tale che $a_i \sim a_{n_0}$ per ogni $i \geq n_0$.
+        \end{enumerate}
+    \end{enumerate}
+\end{theorem}
+
+Osserviamo che la seconda condizione può essere riformulata in termini di ideali: essa equivale a dire che ogni catena (per l'inclusione) ascendente di ideali principali è stazionaria, ovvero data una successione di ideali principali $\seqn[\Big]{\ideal*{a_n}}_n$ tali che \[
+    \ideal*{a_1} \subseteq \ideal*{a_2} \subseteq \dots   
+\] esiste un indice $n_0$ tale che $\ideal*{a_i} = \ideal*{a_{n_0}}$ per ogni $i \geq n_0$.
+
+Dal \autoref{th:caratt_UFD} segue semplicemente la seguente proposizione.
+\begin{proposition}
+    [Ogni PID è un UFD] Sia $A$ un dominio ad ideali principali. Allora $A$ è un dominio a fattorizzazione unica.
+\end{proposition}
+\begin{proof}
+    Per il \autoref{th:caratt_UFD} è sufficiente mostrare le condizioni (i) e (ii).
+    \begin{enumerate}[label={(\roman*)}]
+        \item Sia $x \in A$ un elemento irriducibile: per la \autoref{prop:elems_vs_ideals} $\ideal*{x}$ è massimale tra gli ideali principali, ma siccome $A$ è un PID tutti i suoi ideali sono principali, da cui $\ideal*{x}$ è un ideale massimale. In particolare quindi $\ideal*{x}$ è anche un ideale primo, ovvero $x$ è un elemento primo.
+        \item Mostriamo che ogni catena ascendente di ideali principali è stazionaria. Sia quindi \[
+            \ideal*{a_i} \subseteq \ideal*{a_2} \subseteq \dots    
+        \] la catena di ideali di $A$, e poniamo $I \deq \bigunion_{i \geq 0} \ideal*{a_i}$. Innanzitutto $I$ è un ideale di $A$ (in quanto unione di ideali in catena), dunque $I = \ideal*{a}$ per qualche $a \in A$ perché $A$ è un PID. 
+        
+        Ma allora esisterà un indice $n_0$ tale che $a \in \ideal*{a_{n_0}}$: da questo segue che $\ideal*{a} \subseteq \ideal*{a_{n_0}}$; tuttavia necessariamente $\ideal*{a_{n_0}} \subseteq I = \ideal*{a}$, da cui $I = \ideal*{a_{n_0}}$ e quindi la tesi. \qedhere
+    \end{enumerate}
+\end{proof}

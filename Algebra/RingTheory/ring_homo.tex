@@ -1,0 +1,131 @@
+\section{Omomorfismi di anello}
+
+Ricordiamo che se $A$, $B$ sono anelli (commutativi con identità), allora $f : A \to B$ si dice \strong{omomorfismo di anelli} se 
+\begin{enumerate}[label={(\arabic*)}]
+    \item $f(1_A) = 1_B$.
+    \item Per ogni $a, b \in A$ vale che $f(a + b) = f(a) + f(b)$.
+    \item Per ogni $a, b \in A$ vale che $f(ab) = f(a)f(b)$.
+\end{enumerate}
+
+Osserviamo che la prima condizione non è automatica dalle altre due, a meno che $B$ non sia un dominio di integrità.
+
+Come nel caso degli omomorfismi di gruppi possiamo considerare il nucleo e l'immagine di un omomorfismo di anelli; possiamo quindi chiederci se si può generalizzare l'idea dei gruppi quoziente e del \nameref{th:first_iso} agli anelli.
+
+\paragraph{Anelli quoziente}
+
+Sia $A$ un anello, $I \subseteq A$ un ideale. Sicuramente $\quot{A}{I}$ è un gruppo, in quanto $I$ è un sottogruppo di $(A, +)$ ed essendo l'operazione di somma commutativa $I$ è necessariamente normale. Osserviamo che possiamo anche dare naturalmente un'operazione di prodotto all'insieme quoziente: date due classi laterali $a + I$ e $b + I$ si definisce \[
+    (a+I)(b+I) \deq ab + I.    
+\] Possiamo verificare che questa operazione è ben definita e valgono gli assiomi degli anelli, da cui $(\quot{A}{I}, +, \cdot)$ è ancora un anello, detto \strong{anello quoziente}.
+
+Come nel caso dei gruppi esiste un omomorfismo \begin{align*}
+    \pi_I : A &\to \quot{A}{I}    \\
+    a &\mapsto a + I
+\end{align*} detto \strong{proiezione al quoziente}. Come nel caso dei gruppi, la sua immagine è $\Imm \pi_n = \quot{A}{I}$ (ovvero $\pi_I$ è surgettivo) mentre il suo nucleo è $\ker \pi_I = I$. Vale quindi un analogo della \autoref{prop:rel_kernel_sgr_normali}.
+
+\begin{proposition}
+    Sia $A$ un anello. Allora $I \subseteq A$ è un ideale se e solo se è il nucleo di un omomorfismo definito su $A$.
+\end{proposition}
+\begin{proof}
+    Per il "solo se" basta notare che ogni ideale è il nucleo della proiezione al quoziente $\pi_I$. Per l'altra implicazione basta mostrare che se $f$ è un omomorfismo di anelli con dominio $A$ allora $\ker f$ è un ideale di $A$.
+    \begin{description}
+        \item[Sottogruppo] Il nucleo di un omomorfismo è sempre un sottogruppo del gruppo additivo di un anello.
+        \item[Assorbimento] Sia $a \in A$ qualunque, $x \in \ker f$. Allora \[
+            f(ax) = f(a)f(x) = f(a) \cdot 0 = 0,    
+        \] ovvero $ax \in \ker f$. \qedhere
+    \end{description}
+\end{proof}
+
+\subsection{Teoremi di omomorfismo}
+
+Valgono quindi delle versioni analoghe dei teoremi di omomorfismo per i gruppi.
+
+\begin{theorem}
+    [Primo Teorema degli Omomorfismi] \label{th:first_iso}
+    Siano $A$, $B$ due anelli e sia $f : A \to B$ un omomorfismo di gruppi. Sia inoltre $I$ un ideale di $A$ contenuto in $\ker f$.
+
+    Allora esiste un unico omomorfismo $\phi : \quot{A}{I} \to B$ per cui il seguente diagramma commuta:
+    \begin{equation}
+        \begin{tikzcd}
+            A \arrow[d, swap, "\pi_I"] \arrow[r, "f"] & B \\
+            \quot{A}{I} \arrow[ur, swap, "\phi"] &
+        \end{tikzcd}
+    \end{equation}
+    Inoltre vale che \begin{align*}
+        \Imm{f} = \Imm{\phi}, \quad \ker \phi = \quot{\ker f}{I}.
+    \end{align*}
+
+    In particolare se $I = \ker f$ allora $\phi$ è iniettiva.
+\end{theorem}
+\begin{proof}
+    Siccome $A$, $B$ e $I$ sono in particolare gruppi, per il \hyperref[th:first_iso]{Primo Teorema di Omomorfismo (per gruppi)} sappiamo che esiste un unico omomorfismo di gruppi $\phi$ con le proprietà sopra elencate. Mostriamo che $\phi$ è un omomorfismo di anelli.
+
+    Siano $a + I, b + I \in \quot{A}{I}$ qualunque. Allora \begin{align*}
+        \phi\parens[\big]{(a+I)(b +I)} &= \phi\parens[\big]{ab + I}\\
+        &= \phi\parens[\big]{\pi_I(ab)}\\
+        &= f(ab)\\
+        &= f(a)f(b)\\
+        &= \phi\parens[\big]{\pi_I(a)}\phi\parens[\big]{\pi_I(b)}\\
+        &= \phi\parens[\big]{a+I}\phi\parens[\big]{b+I}. \qedhere
+    \end{align*}
+\end{proof}
+
+Da questo teorema deriva immediatamente anche il Secondo Teorema di Omomorfismo.
+\begin{theorem}
+    [Secondo Teorema degli Omomorfismi] \label{th:second_iso_rings}
+    Sia $A$ un anello e siano $I, J$ due ideali di $A$, con $I \subseteq J$. Allora \begin{equation}
+        \frac{\quot{A}{I}}{\quot{J}{I}} \isomorph \quot{A}{J}.
+    \end{equation}
+\end{theorem}
+
+\begin{remark}
+    Gli anelli $\frac{\quot{A}{I}}{\quot{J}{I}}$ e $\quot{A}{J}$ sono isomorfi come gruppi (dal \hyperref[th:second_iso]{Secondo Teorema di Omomorfismo (per gruppi)}), ma per quest'ultimo risultato sono isomorfi anche come anelli.
+\end{remark}
+
+Prima di dimostrare il \hyperref[th:ideal_corr]{Teorema di Corrispondenza tra Ideali} dimostriamo un lemma importante.
+\begin{lemma}
+    \label{lem:ideals_and_homos}
+    Siano $A, B$ due anelli e $f : A \to B$ un omomorfismo.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Per ogni $J \subseteq B$ ideale di $B$ vale che $f\inv(J)$ è un ideale di $A$.
+        \item Se $f$ è surgettiva, allora per ogni $I \subseteq A$ ideale di $A$ vale che $f(A)$ è un ideale di $B$.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Mostriamo entrambe le affermazioni.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Sappiamo già che $f\inv(J)$ è un sottogruppo di $A$, quindi basta mostrare che vale la proprietà di assorbimento. Sia $a \in A$. Allora \begin{align*}
+            x \in f\inv(J) %\\
+            \iff f(x) \in J %\\
+            \implies f(a)f(x) = f(ax) \in J %\\
+            \iff ax \in f\inv(J),
+        \end{align*} dove l'implicazione deriva dal fatto che $J$ è un ideale di $B$ e $f(a) \in B$.
+        \item Sappiamo già che $f(I)$ è un sottogruppo di $B$. Sia quindi $b \in B$; poiché $f$ è surgettiva dovrà esistere $a \in A$ tale che $f(a) = b$. Allora per ogni $x \in I$ (cioè $f(x) \in f(I)$) vale che \[
+            bf(x) = f(a)f(x) = f(ax) \in f(I). \qedhere    
+        \]
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    [Estensione e contrazione di un ideale]
+    Siano $A, B$ due anelli e $f : A \to B$ un omomorfismo di anelli. Se $J \subseteq B$ è un ideale di $B$ allora l'ideale $f\inv(A)$ si dice \strong{contrazione di $J$ ad $A$ via $f$}.
+    
+    Se $I \subseteq A$ è un ideale di $A$ allora si dice \strong{estensione di $I$ a $B$ via $f$} l'ideale \[
+        IB \deq \ideal[\big]{f(I)} = f(I)B.    
+    \]
+\end{definition}
+
+Possiamo quindi enunciare e dimostrare una prima parte del Teorema di Corrispondenza tra Ideali.
+
+\begin{theorem}
+    [Teorema di Corrispondenza tra Ideali]
+    \label{th:ideal_corr}
+    Sia $A$ un anello, $I \subseteq A$ un suo ideale. Allora la proiezione canonica $\pi_I$ induce una corrispondenza biunivoca tra gli ideali di $\quot{A}{I}$ e gli ideali di $A$ contenenti $I$. Questa corrispondenza conserva le inclusioni e gli indici di sottogruppo.
+\end{theorem}
+\begin{proof}
+    Per il \nameref{th:sgrp_corr} esiste una corrispondenza tra i sottogruppi di $A$ e di $\quot{A}{I}$. Bisogna mostrare che se questa corrispondenza viene ristretta agli ideali essa continua ad associare ad un ideale di $A$ un ideale di $\quot{A}{I}$ (e viceversa).
+
+    Sia quindi $\AA$ l'insieme degli ideali di $A$ contenenti $I$ e sia $\BB$ l'insieme degli ideali di $\quot{A}{I}$. Per il \autoref{lem:ideals_and_homos} vale che \begin{itemize}
+        \item per ogni ideale $\mathfrak{b} \in \BB$ la sua controimmagine $\pi_I\inv(\mathfrak{b})$ è un ideale di $A$ (e contiene $I$ per il \nameref{th:sgrp_corr});
+        \item per ogni ideale $\mathfrak{a} \in \AA$ la sua immagine $\pi_I(\mathfrak{a})$ è un ideale di $B$ poiché $\pi_I$ è surgettiva. \qedhere
+    \end{itemize}
+\end{proof}

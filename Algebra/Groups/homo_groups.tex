@@ -183,8 +183,8 @@ Osserviamo che possiamo anche esprimere il nucleo di un omomorfismo in termini d
     Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $f : G_1 \to G_2$ omomorfismo.
 
     Allora valgono le seguenti due affermazioni \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
-        \item \label{prop:omo_ord:ord_f_div_ord_x} per ogni $x \in G$ vale che $\ord(G_2){f(x)} \divides \ord(G_1){x}$;
-        \item \label{prop:omo_ord:inj_sse_ord_f=ord_x} $f$ è iniettivo se e solo se $\ord(G_2){f(x)} = \ord(G_1){x}$.
+        \item \label{prop:omo_ord:ord_f_div_ord_x} per ogni $x \in G$ vale che $\ord_{G_2}{f(x)} \divides \ord_{G_1}{x}$;
+        \item \label{prop:omo_ord:inj_sse_ord_f=ord_x} $f$ è iniettivo se e solo se $\ord_{G_2}{f(x)} = \ord_{G_1}{x}$.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -220,7 +220,7 @@ Osserviamo che possiamo anche esprimere il nucleo di un omomorfismo in termini d
                 Inoltre per il punto \ref{prop:omo_ord:ord_f_div_ord_x} sappiamo che $\ord{f(x)} \divides \ord x$, dunque $\ord{f(x)} = \ord x$.
             \end{itemize} 
             \item[($\impliedby$)] Sia $x \in \ker f$, ovvero $f(x) = e_2$. Allora \[
-                1 = \ord(G_2){e_2} = \ord{f(x)} \stackrel{\text{hp.}}{=} \ord(G_1){x}.
+                1 = \ord_{G_2}{e_2} = \ord{f(x)} \stackrel{\text{hp.}}{=} \ord_{G_1}{x}.
             \] 
             
             Ma $\ord x = 1$ se e solo se $x = e_1$, ovvero $\ker f = \set*{e_1}$, dunque per la proposizione \ref{prop:prop_omo:cond_iniett} $f$ è iniettiva.

@@ -128,16 +128,16 @@ Siccome ogni elemento di una classe è un possibile rappresentante della classe 
 \begin{corollary}[Corollario al Teorema di Lagrange] \label{cor:lagrange}
     Sia $(G, \cdot)$ un gruppo finito. Allora valgono i seguenti fatti:
     \begin{enumerate}[label={(\roman*)}, ref={\thecorollary: (\roman*)}]
-        \item \label{cor:ord_el_divide_ord_gruppo} per ogni $g \in G$ vale che $\ord(G){g} \divides \abs*{G}$,
+        \item \label{cor:ord_el_divide_ord_gruppo} per ogni $g \in G$ vale che $\ord_{G}{g} \divides \abs*{G}$,
         \item \label{cor:x_alla_ordG=e_G} per ogni $x \in G$ vale che $x^{\abs*{G}} = e_G$.
     \end{enumerate}
 \end{corollary}
 \begin{proof}
     \begin{enumerate}[label={(\roman*)}]
         \item Siccome $\gen*{g} \sgr G$, per il \nameref{th:lagrange} vale che \[
-            \ord(G){g} = \abs*{\gen*{g}} \divides \abs*{G}.    
+            \ord_{G}{g} = \abs*{\gen*{g}} \divides \abs*{G}.    
         \]
-        \item Sia $n \deq \abs*{G}$ e $k \deq \ord(G){g}$. Per il punto precedente vale che $k \divides n$, ovvero che esiste $m \in \Z$ tale che \[
+        \item Sia $n \deq \abs*{G}$ e $k \deq \ord_{G}{g}$. Per il punto precedente vale che $k \divides n$, ovvero che esiste $m \in \Z$ tale che \[
             n = km.    
         \] Dunque segue che \begin{align*}
             g^{\abs*{G}} &= g^n \\
@@ -156,8 +156,8 @@ Siccome ogni elemento di una classe è un possibile rappresentante della classe 
 \end{corollary}
 \begin{proof}
     Sia $x \in G$, $x \neq e_G$. Allora $\gen*{x} \neq \set*{e_G}$, da cui segue che \[
-        1 \neq \ord(G){x} \divides p = \abs*{G}.
-    \] Dunque per definizione di numero primo $\ord(G){x} = p$, ma siccome l'ordine del sottogruppo $\gen*{x}$ è uguale all'ordine di $G$ segue che $G = \gen*{x}$.
+        1 \neq \ord_{G}{x} \divides p = \abs*{G}.
+    \] Dunque per definizione di numero primo $\ord_{G}{x} = p$, ma siccome l'ordine del sottogruppo $\gen*{x}$ è uguale all'ordine di $G$ segue che $G = \gen*{x}$.
     
     Dunque $G$ è ciclico e per il \autoref{th:iso_ciclico} è isomorfo a $\Zmod{p}$.
 \end{proof}
@@ -393,7 +393,7 @@ In questa sezione esporremo alcuni importanti risultati che possono essere otten
 \begin{theorem}
     [Teorema di Cauchy per gruppi abeliani]
     Sia $(G, \cdot)$ un gruppo abeliano finito e sia $p \in \Z$ un primo tale che $p \divides \abs*{G}$. 
-    Allora esiste $g \in G$ tale che $\ord(G){g} = p$.
+    Allora esiste $g \in G$ tale che $\ord_{G}{g} = p$.
 \end{theorem}
 \begin{proof}
     Ragioniamo per induzione forte su $n \deq \abs*{G}$.
@@ -417,7 +417,7 @@ In questa sezione esporremo alcuni importanti risultati che possono essere otten
 
     Sia $\pi_H : G \to H$ la proiezione canonica al quoziente; scelgo $t \in G$ tale che $\pi_H(t) = h$.
     Essendo $\pi_H$ surgettiva, tale elemento sicuramente esiste (anche se non è detto che sia unico). Per la \autoref{prop:omo_ord} segue che  \[
-        p = \ord(H){h} = \ord(H){\pi_H(t)} \divides \ord(G){t}, 
+        p = \ord_{H}{h} = \ord_{H}{\pi_H(t)} \divides \ord_{G}{t}, 
     \] da cui $\gen*{t} \sgr G$ è un sottogruppo di ordine multiplo di $p$, da cui si procede come prima.    
 \end{proof}
 

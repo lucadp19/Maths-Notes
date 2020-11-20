@@ -92,13 +92,13 @@ Facciamo alcuni esempi di gruppi.
 \end{example}
 \begin{example}
     $(\units{\Zmod{n}}, \cdot)$ dove \[
-        \units{\Zmod{n}} \deq \set*{\eqcl n \in \Zmod{n} \given \eqcl n \text{ è invertibile rispetto a } \cdot}
+        \units{\Zmod{n}} \deq \set*{\eqcl+ n \in \Zmod{n} \given \eqcl+ n \text{ è invertibile rispetto a } \cdot}
     \] è un gruppo abeliano.
 \end{example}
 \begin{proof}
     Infatti \begin{enumerate}[label={(G\arabic*)}, start=0]
     % \setcounter{enumi}{-1}
-        \item $\cdot$ è un'operazione su $\Zmod{n}$. Infatti se $\eqcl x, \eqcl y \in \Zmod{n}$ allora segue anche che $\eqcl{xy}$ è invertibile in $\Zmod{n}$ e il suo inverso è $\eqcl{x\inv} \cdot \eqcl{y\inv}$, da cui $\eqcl{xy} \in \Zmod n$;
+        \item $\cdot$ è un'operazione su $\Zmod{n}$. Infatti se $\eqcl+ x, \eqcl+ y \in \Zmod{n}$ allora segue anche che $\eqcl+{xy}$ è invertibile in $\Zmod{n}$ e il suo inverso è $\eqcl+{x\inv} \cdot \eqcl+{y\inv}$, da cui $\eqcl+{xy} \in \Zmod n$;
         \item $\cdot$ è associativa in $\Zmod{n}$, dunque lo è in $\units{\Zmod{n}} \subseteq \Zmod{n}$;
         \item $1 \in \Zmod{n}$ è l'elemento neutro di $\cdot$ e $1 \in \units{\Zmod{n}}$ in quanto $1$ è invertibile e il suo inverso è $1$;
         \item ogni elemento di $\units{\Zmod{n}}$ ammette inverso per definizione;
@@ -138,19 +138,20 @@ Definiamo ora alcune proprietà comuni a tutti i gruppi.
 
 \begin{proposition}
     [Proprietà algebriche dei gruppi] \label{prop:prop_grp}
-    Sia $(G, \cdot)$ un gruppo. Allora valgono le seguenti affermazioni:
+    Sia $(G, \cdot)$ un gruppo. Valgono le seguenti affermazioni.
     \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
-        \item \label{prop:prop_grp:e_unico} l'elemento neutro di $G$ è unico;\
-        \item \label{prop:prop_grp:inv_unico} $\forall g \in G$ l'inverso di $g$ è unico;
-        \item \label{prop:prop_grp:inv_inv} $\forall g \in G \;\; (g\inv)\inv = g$;
-        \item \label{prop:prop_grp:inv_prod} $\forall h, g \in G \;\; (hg\inv)\inv = g\inv h\inv$; 
-        \item \label{prop:prop_grp:canc} Valgono le \emph{leggi di cancellazione}: $\forall a, b, c \in G$ vale che \begin{align}
+        \item \label{prop:prop_grp:e_unico} L'elemento neutro di $G$ è unico.
+        \item \label{prop:prop_grp:inv_unico} Per ogni $g \in G$, l'inverso di $g$ è unico.
+        \item \label{prop:prop_grp:inv_inv} Per ogni $g \in G$ vale che $\parens*{g\inv}\inv = g$.
+        \item \label{prop:prop_grp:inv_prod} Per ogni $h, g \in G$ vale che $(hg\inv)\inv = g\inv h\inv$. 
+        \item \label{prop:prop_grp:canc} Valgono le \emph{leggi di cancellazione}: per ogni $a, b, c \in G$ vale che \begin{align}
             ab = ac \iff b = c &\tag{sx} \label{prop:prop_grp:canc:sx}\\
             ba = ca \iff b = c &\tag{dx} \label{prop:prop_grp:canc:dx}
         \end{align}
     \end{enumerate}
 \end{proposition}
 \begin{proof}
+    Dimostriamo le varie affermazioni separatamente.
     \begin{enumerate}[label={(\roman*)}]
         \item Siano $e_1, e_2 \in G$ entrambi elementi neutri. Allora \[
             e_1 = e_1 \cdot e_2 = e_2    
@@ -171,7 +172,7 @@ Definiamo ora alcune proprietà comuni a tutti i gruppi.
             g\inv x = xg\inv = e.    
         \]
         
-        Dunque $g$ è un inverso di $g\inv$, ma per \ref{prop:prop_grp:inv_unico} l'inverso è unico e quindi $(g\inv)\inv = g$.
+        Dunque $g$ è un inverso di $g\inv$, ma per il punto precedente l'inverso è unico e quindi $(g\inv)\inv = g$.
         \item Sia $(hg)\inv$ l'inverso di $hg$. Allora per (G3) sappiamo che \begin{align*}
             &(hg)(hg)\inv = e \tag*{(moltiplico a sx per $h\inv$)} \\
             \iff\ &h\inv hg(hg)\inv = h\inv \tag*{(per (G3))}\\

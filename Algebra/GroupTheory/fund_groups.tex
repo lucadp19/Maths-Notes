@@ -26,7 +26,7 @@ Nella prima parte abbiamo studiato gruppi generati da un solo elemento (i gruppi
     \begin{proof}
         Siccome $G$ è finito ogni suo sottogruppo è finito; in particolare se $s \in S$ allora $\gen{s} \sgr G$ è un sottogruppo finito, e sarà della forma \[
             \gen{s} = \set*{e_G, s, s^2, \dots, s^m},    
-        \] dove $m \deq \ord(G){s}$.
+        \] dove $m \deq \ord_{G}{s}$.
         Siccome $\gen s$ è un sottogruppo di $G$ segue che $s\inv \in \gen s$, dunque $s\inv = s^k$ per qualche $0 \leq k < m$.
         Dunque ogni occorrenza di $s\inv$ in una parola può essere sostituita con $s^k$ che è ottenibile dai soli elementi di $S$. 
     \end{proof}
@@ -155,15 +155,15 @@ Studiamo i sottogruppi del gruppo diedrale $D_n$.
 
 Iniziamo studiando $\gen r$: siccome $\ord r = n$ segue che $\GrpIndex{D_n : \gen r} = 2$, da cui per la \autoref{prop:norm_se_indice2} segue che $\gen r \normal D_n$.
 
-Tuttavia possiamo anche mostrare che per ogni $j = 0, \dots, n-1$ il gruppo $\gen{r^j}$ è normale in $D_n$. Osserviamo inizialmente che $\gen r$ è l'unico sottogruppo di $D_n$ di ordine $n$: esso infatti contiene tutte le rotazioni e, siccome tutte le simmetrie hanno ordine $2$, non possono esserci altri sottogruppi ciclici di ordine $n$.
+Tuttavia possiamo anche mostrare che per ogni $j = 0, \dots, n-1$ il gruppo $\gen*{r^j}$ è normale in $D_n$. Osserviamo inizialmente che $\gen r$ è l'unico sottogruppo di $D_n$ di ordine $n$: esso infatti contiene tutte le rotazioni e, siccome tutte le simmetrie hanno ordine $2$, non possono esserci altri sottogruppi ciclici di ordine $n$.
 Inoltre, essendo un gruppo ciclico, per la \autoref{cor:sgr_gruppo_ciclico} esso ha uno e un solo sottogruppo di ordine $d$ per ogni $d$ che divide $n$.
 
 Mostriamo alcuni risultati intermedi.
 \begin{proposition}
-    $\gen{r^{\frac{n}{d}}}$ è l'unico sottogruppo ciclico di $D_n$ di ordine $d$ per ogni $d > 2$.
+    $\gen*{r^{\frac{n}{d}}}$ è l'unico sottogruppo ciclico di $D_n$ di ordine $d$ per ogni $d > 2$.
 \end{proposition}
 \begin{proof}
-    Innanzitutto $\ord[D_n]{r^{\frac{n}{d}}} = d$ in quanto \[
+    Innanzitutto $\ord*[D_n]{r^{\frac{n}{d}}} = d$ in quanto \[
         \parens*{r^{\frac{n}{d}}}^d = r^n = \id.
     \] Inoltre esso contiene tutti gli elementi di ordine $d$ poiché è l'unico sottogruppo ciclico di $\gen r$ di ordine $d$ e gli elementi che non appartengono a $\gen r$ hanno ordine $2$ (sono simmetrie); da questo segue che è l'unico sottogruppo ciclico di ordine $d$ di $D_n$.
 \end{proof}
@@ -182,21 +182,21 @@ Mostriamo alcuni risultati intermedi.
     Se $H = \gen h$ per qualche $h \in G$ allora segue che il coniugato $gHg\inv$ è generato dall'elemento $ghg\inv$, dunque anche esso è ciclico. Tuttavia l'unico sottogruppo di $G$ di ordine $d$ e ciclico è $H$, da cui segue che $gHg\inv = H$, ovvero $H$ è normale in $G$.
 \end{proof}
 
-Sfruttando le due proposizioni precedenti segue che per ogni $d$ che divide $n$ ($d > 2$) il sottogruppo $\gen{r^{\frac{n}{d}}}$ è normale in $D_n$.
+Sfruttando le due proposizioni precedenti segue che per ogni $d$ che divide $n$ ($d > 2$) il sottogruppo $\gen*{r^{\frac{n}{d}}}$ è normale in $D_n$.
 
-Questo ragionamento non ci permette di mostrare che $\gen{r^{\frac{n}2}}$ è normale in $D_n$; tuttavia possiamo dimostrarlo studiando il centro di $D_n$.
+Questo ragionamento non ci permette di mostrare che $\gen*{r^{\frac{n}2}}$ è normale in $D_n$; tuttavia possiamo dimostrarlo studiando il centro di $D_n$.
 
 \begin{proposition}
     \[
-        Z(D_n) = \begin{cases}
-            \set*{\id}, &\text{se } n \text{ è dispari}\\
-            \gen{r^{\frac{n}2}}, &\text{se $n$ è pari}.
+        \Zentr{D_n} = \begin{cases}
+            \set*{\id}, &\text{se } n \text{ è dispari}\\[3pt]
+            \gen*{r^{\frac{n}2}}, &\text{se $n$ è pari}.
         \end{cases}   
     \]
 \end{proposition}
 \begin{proof}
     Per definizione di centro di un gruppo, un elemento è nel centro se e solo se commuta con tutti gli elementi del gruppo; è dunque sufficiente mostrare che un elemento commuta con i generatori del gruppo. Segue quindi che \[
-        Z(D_n) = \set*{s^\eps r^j \in D_n \given s^\eps r^j \cdot r = r \cdot s^\eps r^j, s^\eps r^j \cdot s = s \cdot s^\eps r^j}.
+        \Zentr{D_n} = \set*{s^\eps r^j \in D_n \given s^\eps r^j \cdot r = r \cdot s^\eps r^j, s^\eps r^j \cdot s = s \cdot s^\eps r^j}.
     \]
 
     Se $s^\eps r^j$ soddisfa la seconda condizione, allora \begin{align*}
@@ -208,16 +208,16 @@ Questo ragionamento non ci permette di mostrare che $\gen{r^{\frac{n}2}}$ è nor
     \begin{itemize}
         \item Se $n$ è dispari questo significa che $j \congr 0 \mod{n}$, ovvero $j = 0$. 
         Le possibili scelte sono quindi $\id$ ed $s$; tuttavia $s$ non commuta con $r$, dunque l'unico elemento che rispetta entrambe le condizioni è $\id$ e quindi \[
-            Z(D_n) = \set*{id}.    
+            \Zentr{D_n} = \set*{id}.    
         \]
         \item Se $n$ è pari questo implica $j \congr 0 \mod{\nicefrac{n}2}$, da cui segue che $j = 0, \nicefrac{n}2$. I quattro elementi che possono essere nel centro di $D_n$ sono quindi \[
             \id, r^{\frac{n}2}, s, sr^\frac{n}{2}.   
         \] Tuttavia $s$ e $sr^{\nicefrac{n}{2}}$ non commutano con $r$, in quanto \[
             sr = r\inv s, \quad sr^{\nicefrac{n}{2}} \cdot r = sr^{\frac{n}{2} + 1} \neq sr^{\frac{n}{2} - 1} = r \cdot sr^\frac{n}{2}.
     \]  Dunque gli unici elementi nel centro sono $\id, r^{\nicefrac{n}{2}}$, da cui segue che \[
-        D_n = \gen{r^\frac{n}{2}}. \qedhere    
+        \Zentr{D_n} = \gen*{r^\frac{n}{2}}. \qedhere    
     \]
     \end{itemize}
 \end{proof}
 
-Siccome il centro di un gruppo è sempre un sottogruppo normale di quel gruppo (per la \autoref{prop:centro_normale}) segue che $\gen{r^{\nicefrac{n}{2}}}$ è un sottogruppo normale di $D_n$.
+Siccome il centro di un gruppo è sempre un sottogruppo normale di quel gruppo (per la \autoref{prop:centro_normale}) segue che $\gen*{r^{\nicefrac{n}{2}}}$ è un sottogruppo normale di $D_n$.

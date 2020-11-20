@@ -1,23 +1,17 @@
 \section{Sottogruppi}
 
 \begin{definition}[Sottogruppo]\label{def:sottogruppo}
-    Sia $(G, *)$ un gruppo e sia $H \subseteq G$, $H \neq \emptyset$.
-    
+    Sia $(G, *)$ un gruppo e sia $H \subseteq G$, $H \neq \emptyset$.    
     Allora $H$ insieme ad un'operazione $*_H$ si dice \emph{sottogruppo} di $(G, *)$ se $(H, *_H)$ è un gruppo.
 
-    Inoltre se l'operazione $*_H$ è l'operazione $*$, ovvero l'operazione del sottogruppo è indotta da $G$, allora si scrive $H \sgr G$.
+    Si scrive $H \sgr G$ se l'operazione $*_H$ è l'operazione $*$, ovvero l'operazione del sottogruppo è indotta da $G$.
 \end{definition}
 
 \begin{proposition}[Condizione necessaria e sufficiente per i sottogruppi]\label{prop:cond_sgr}
     Sia $(G, *)$ un gruppo e sia $H \subseteq G$, $H \neq \emptyset$.
-
     Allora $H \sgr G$ se e solo se \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
-        \item \label{prop:cond_sgr:op} $*$ è un'operazione su $H$, ovvero \begin{align*}
-            a*b \in H &&\forall a, b \in H
-        \end{align*}
-        \item \label{prop:cond_sgr:inv} ogni elemento di $H$ è invertibile (in $H$), ovvero \begin{align*}
-            h\inv \in H &&\forall h \in H
-        \end{align*}
+        \item \label{prop:cond_sgr:op} $*$ è un'operazione su $H$, ovvero per ogni $a, b \in H$ vale che $a*b \in H$;
+        \item \label{prop:cond_sgr:inv} ogni elemento di $H$ è invertibile (in $H$), ovvero per ogni $h \in H$ vale che $h\inv \in H$.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -26,12 +20,10 @@
         \item[($\implies$)] Ovvio in quanto se $H \sgr G$ allora $H$ è un gruppo.
         \item[($\impliedby$)] Sappiamo che $*$ è associativa poichè lo è in $G$; dobbiamo quindi mostrare solamente che $e_G \in H$.
         
-        Per ipotesi $H \neq \emptyset$, dunque esiste un $h \in H$. Per l'ipotesi \ref{prop:cond_sgr:inv} dovrà esistere anche $h\inv \in H$, mentre per l'ipotesi \ref{prop:cond_sgr:op} deve valere che $h * h\inv \in H$. 
+        Per ipotesi $H \neq \emptyset$, dunque esiste un $h \in H$. Siccome $H$ è chiuso per inversi (ipotesi \hyperref[prop:cond_sgr:inv]{(ii)}) dovrà esistere anche $h\inv \in H$, mentre dal fatto che $H$ è chiuso per prodotti (ipotesi \hyperref[prop:cond_sgr:op]{(i)}) deve valere che $h * h\inv \in H$. 
 
-        Tuttavia $h * h\inv = e_G$, dunque $e_G \in H$ e quindi $H$ è un sottogruppo indotto da $G$. 
+        Tuttavia $h * h\inv = e_G$, dunque $e_G \in H$ e quindi $H$ è un sottogruppo indotto da $G$. \qedhere
     \end{description}
-
-    Da ciò viene la tesi.
 \end{proof}
 
 Un sottogruppo particolarmente importante di qualsiasi gruppo è il \emph{centro del gruppo}:
@@ -39,7 +31,7 @@ Un sottogruppo particolarmente importante di qualsiasi gruppo è il \emph{centro
 \begin{definition}
     [Centro di un gruppo] \label{def:centro}
     Sia $(G, *)$ un gruppo. Allora si definisce \emph{centro di $G$} l'insieme \[
-        Z(G) \deq \set*{x \in G \given g*x = x*g \;\;\forall g \in G}.    
+        \Zentr_{G} \deq \set*{x \in G \given g*x = x*g \;\;\forall g \in G}.    
     \]
 \end{definition}
 
@@ -50,30 +42,27 @@ Mostriamo che il centro di un gruppo è un sottogruppo tramite la prossima propo
 \begin{proposition}
     [Proprietà del centro di un gruppo]
     \label{prop:centro}
-    Sia $(G, *)$ un gruppo e sia $Z(G)$ il suo centro.
-
+    Sia $(G, *)$ un gruppo e sia $\Zentr{G}$ il suo centro.
     Allora vale che \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
-        \item $Z(G) \sgr G$;
-        \item $Z(G) = G$ se e solo se $G$ è abeliano.
+        \item $\Zentr{G} \sgr G$;
+        \item $\Zentr{G} = G$ se e solo se $G$ è abeliano.
     \end{enumerate}
 \end{proposition}
-\begin{proof} Mostriamo le due affermazioni separatamente
-
-    \paragraph{$Z(G)$ è un sottogruppo} 
-    Notiamo innanzitutto che $Z(G) \neq \varnothing$ poichè $e_G \in Z(G)$. Per la proposizione \ref{prop:cond_sgr} ci basta mostrare che $*$ è un'operazione su $Z(G)$ e che ogni elemento di $Z(G)$ è invertibile.
-
+\begin{proof} Mostriamo le due affermazioni separatamente.
+    \paragraph{$\Zentr{G}$ è un sottogruppo} 
+    Notiamo innanzitutto che $\Zentr{G} \neq \varnothing$ poichè $e_G \in \Zentr{G}$. Per la proposizione \ref{prop:cond_sgr} ci basta mostrare che $*$ è un'operazione su $\Zentr{G}$ e che ogni elemento di $\Zentr{G}$ è invertibile.
     \begin{enumerate}
         [label={(\arabic*)}]
-        \item Siano $x, y \in Z(G)$ e mostriamo che $x*y \in Z(G)$, ovvero che per ogni $g \in G$ vale che $g*(x*y) = (x*y)*g$. 
+        \item Siano $x, y \in \Zentr{G}$ e mostriamo che $x*y \in \Zentr{G}$, ovvero che per ogni $g \in G$ vale che $g*(x*y) = (x*y)*g$. 
         \begin{align*}
             &g*(x*y) \tag*{(per (G1))}\\
-            =\ &(g*x)*y \tag*{(dato che $x \in \Z(G)$)}\\
+            =\ &(g*x)*y \tag*{(dato che $x \in \Zentr{G}$)}\\
             =\ &(x*g)*y \tag*{(per (G1))}\\
-            =\ &x*(g*y) \tag*{(dato che $x \in \Z(G)$)} \\
+            =\ &x*(g*y) \tag*{(dato che $x \in \Zentr{G}$)} \\
             =\ &x*(y*g) \tag*{(per (G1))}\\
             =\ &(x*y)*g.
         \end{align*}
-        \item Sia $x \in Z(G)$, mostriamo che $x\inv \in Z(G)$.
+        \item Sia $x \in \Zentr{G}$, mostriamo che $x\inv \in \Zentr{G}$.
         
         Per ipotesi \begin{align*}
             &g*x = x*g \tag*{(moltiplico a sinistra per $x\inv$)} \\
@@ -82,15 +71,15 @@ Mostriamo che il centro di un gruppo è un sottogruppo tramite la prossima propo
             \iff\ &x\inv * g*x*x\inv = g*x\inv \tag*{(dato che $x\inv * x = e$)} \\
             \iff\ &x\inv * g = g*x\inv
         \end{align*}
-        da cui $x\inv \in Z(G)$.
+        da cui $x\inv \in \Zentr{G}$.
     \end{enumerate}
 
-    Per la proposizione \ref{prop:cond_sgr} segue che $Z(G) \sgr G$.
+    Per la proposizione \ref{prop:cond_sgr} segue che $\Zentr{G} \sgr G$.
 
-    \paragraph{$Z(G) = G$ se e solo se $G$ abeliano} Dimostriamo entrambi i versi dell'implicazione.
+    \paragraph{$\Zentr{G} = G$ se e solo se $G$ abeliano} Dimostriamo entrambi i versi dell'implicazione.
     \begin{description}
-        \item[($\implies$)] Ovvia: $Z(G)$ è un gruppo abeliano, dunque se $G = Z(G)$ allora $G$ è abeliano.
-        \item[($\impliedby$)]  Ovvia: $Z(G)$ è l'insieme di tutti gli elementi di $G$ per cui $*$ commuta, ma se $G$ è abeliano questi sono tutti gli elementi di $G$, ovvero $Z(G) = G$.  \qedhere
+        \item[($\implies$)] Ovvia: $\Zentr{G}$ è un gruppo abeliano, dunque se $G = \Zentr{G}$ allora $G$ è abeliano.
+        \item[($\impliedby$)]  Ovvia: $\Zentr{G}$ è l'insieme di tutti gli elementi di $G$ per cui $*$ commuta, ma se $G$ è abeliano questi sono tutti gli elementi di $G$, ovvero $\Zentr{G} = G$.  \qedhere
     \end{description}
 \end{proof}
 
@@ -107,12 +96,10 @@ Un altro esempio è dato dai sottogruppi di $(\Z, +)$.
 
 \begin{proposition}
     [$n\Z$ è sottogruppo di $\Z$] \label{prop:nZ_sgr_Z}
-    Consideriamo il gruppo $(\Z, +)$.
-    Per ogni $n \in \Z$ vale che $n\Z \sgr \Z$.
+    Per ogni $n \in \Z$ vale che $(n\Z, +) \sgr (\Z, +)$.
 \end{proposition}
 \begin{proof}
-    Innanzitutto notiamo che $n\Z \neq \varnothing$ in quanto $n \cdot 0 = 0 \in n\Z$. 
-    
+    Innanzitutto notiamo che $n\Z \neq \varnothing$ in quanto $n \cdot 0 = 0 \in n\Z$.     
     Mostriamo ora che $n\Z \sgr \Z$.
     \begin{enumerate}[label={(\arabic*)}]
         \item Siano $x, y \in n\Z$ e mostriamo che $x+y \in \Z$. 
@@ -129,7 +116,7 @@ Un altro esempio è dato dai sottogruppi di $(\Z, +)$.
         \] che è l'elemento neutro di $\Z$.
     \end{enumerate}
 
-    Dunque per la proposizione \ref{prop:cond_sgr} segue che $n\Z \sgr \Z$, ovvero la tesi.
+    Dunque per la \autoref{prop:cond_sgr} segue che $n\Z \sgr \Z$, ovvero la tesi.
 \end{proof}
 
 \begin{corollary}\label{cor:nZ_mZ}
@@ -140,33 +127,32 @@ Un altro esempio è dato dai sottogruppi di $(\Z, +)$.
     \end{enumerate}
 \end{corollary}
 \begin{proof} Dimostriamo le due affermazioni separatamente.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Dimostriamo entrambi i versi dell'implicazione.
 
-    \paragraph{Parte 1.} Dimostriamo entrambi i versi dell'implicazione.
-
-    \begin{description}
-        \item[($\implies$)] Supponiamo $n\Z \subseteq m\Z$, ovvero che per ogni $x \in n\Z$ allora $x \in m\Z$.
-        
-        Sia $k \in \Z$ tale che $\gcd{k}{m} = 1$ e sia $x = nk$.
-        
-        Per definizione di $n\Z$ segue che $x \in n\Z$, dunque $x \in m\Z$. Allora dovrà esistere $h \in \Z$ tale che \begin{align*}
-            &x = mh \\
-            \iff\ &nk = mh \\
-            \implies\ &m \divides nk
-            \intertext{Ma abbiamo scelto $k$ tale che $\gcd{k}{m} = 1$, dunque}
-            \implies\ &m \divides n.
-        \end{align*}
-        \item[($\impliedby$)] Supponiamo che $m \divides n$, ovvero $n = mh$ per qualche $h \in \Z$. Allora \[
-            n\Z = (mh)\Z \subseteq m\Z    
-        \] in quanto i multipli di $mh$ sono necessariamente anche multipli di $m$.
-    \end{description}
-
-    \paragraph{Parte 2.} Se $n\Z = m\Z$ allora vale che $n\Z \subseteq m\Z$ e $m\Z \subseteq n\Z$, dunque per \ref{cor:nZ_mZ:subset} $m \divides n$ e $n \divides m$, ovvero $n$ e $m$ sono uguali a meno del segno.
+        \begin{description}
+            \item[($\implies$)] Supponiamo $n\Z \subseteq m\Z$, ovvero che per ogni $x \in n\Z$ allora $x \in m\Z$.
+            
+            Sia $k \in \Z$ tale che $\gcd{k}{m} = 1$ e sia $x = nk$.
+            
+            Per definizione di $n\Z$ segue che $x \in n\Z$, dunque $x \in m\Z$. Allora dovrà esistere $h \in \Z$ tale che \begin{align*}
+                &x = mh \\
+                \iff\ &nk = mh \\
+                \implies\ &m \divides nk
+                \intertext{Ma abbiamo scelto $k$ tale che $\gcd{k}{m} = 1$, dunque}
+                \implies\ &m \divides n.
+            \end{align*}
+            \item[($\impliedby$)] Supponiamo che $m \divides n$, ovvero $n = mh$ per qualche $h \in \Z$. Allora \[
+                n\Z = (mh)\Z \subseteq m\Z    
+            \] in quanto i multipli di $mh$ sono necessariamente anche multipli di $m$.
+        \end{description}
+        \item Se $n\Z = m\Z$ allora vale che $n\Z \subseteq m\Z$ e $m\Z \subseteq n\Z$, dunque per il punto precedente $m \divides n$ e $n \divides m$, ovvero $n$ e $m$ sono uguali a meno del segno. \qedhere
+    \end{enumerate}
 \end{proof}
 
 \begin{proposition}
     [Intersezione di sottogruppi è un sottogruppo]
     Sia $(G, \cdot)$ un gruppo e siano $H, K \sgr G$.
-
     Allora $H \inters K \sgr G$.
 \end{proposition}
 \begin{proof}
@@ -184,5 +170,5 @@ Un altro esempio è dato dai sottogruppi di $(\Z, +)$.
         Per definizione di intersezione sappiamo che $x \in H$ e $x \in K$. Dato che $H$ è un gruppo varrà che $x\inv \in H$; per lo stesso motivo $x\inv \in K$; dunque $x\inv \in H \inters K$.
     \end{enumerate}
 
-    Dunque per la proposizione \ref{prop:cond_sgr} segue che $H \inters K \sgr G$.
+    Dunque per la \autoref{prop:cond_sgr} segue che $H \inters K \sgr G$.
 \end{proof}

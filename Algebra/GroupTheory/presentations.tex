@@ -39,6 +39,65 @@ Questa osservazione può essere estesa ai gruppi liberi con più generatori: se 
         \vdotswithin{\mapsto}
     \end{pmatrix}
 \end{align*}
-Le funzioni $X \to H$ ci dicono dove vengono mappati i generatori (ovvero gli elementi di $X$): questo determina univocamente un omomorfismo da $G$ in $H$ che mappa ogni parola in modo da rispettare la mappa $X \to H$.
+Le funzioni $X \to H$ ci dicono dove vengono mappati i generatori (ovvero gli elementi di $X$): questo determina univocamente un omomorfismo da $G$ in $H$ che mappa ogni parola in modo da rispettare la mappa $X \to H$. Nel caso il generatore sia uno solo (ovvero nel caso di $\Z$) esiste una sola funzione dal generatore in un dato elemento del gruppo $H$, dunque la bigezione è con gli elementi di $H$.
 
-\paragraph{Costruzione della presentazione di un gruppo} Consideriamo ora un gruppo $H$ generato da $g_1, \dots, g_n$. Per l'osservazione precedente deve esistere un omomorfismo 
+\paragraph{Costruzione della presentazione di un gruppo} Consideriamo ora un gruppo $H$ generato da $g_1, \dots, g_n$ (non libero). Per l'osservazione precedente deve esistere un omomorfismo dal gruppo libero su $n$ elementi (chiamiamolo $F(n)$) verso $H$:
+\begin{equation}
+        F(n) \xrightarrow{\phi} H
+\end{equation} tale che $x_i \mapsto g_i$ per ogni $i = 1, \dots, n$.
+
+Notiamo che $\phi$ è un omomorfismo surgettivo: l'immagine di $\phi$ contiene i generatori di $H$, dunque deve essere tutto $H$. Per il \nameref{cor:G/ker=Imm} vale quindi che \begin{equation}
+    H = \Imm \phi \isomorph \quot{F(n)}{\ker \phi}.
+\end{equation}
+
+Una \emph{presentazione} di $H$ è quindi un'espressione del tipo \begin{equation}
+    H = \gen{x_1, \dots, x_n \given w_1, \dots, w_m}
+\end{equation} dove $x_1, \dots, x_n$ sono i generatori e $w_1, \dots, w_m$ sono delle parole contenenti gli $x_i$ e i loro inversi che generano $\ker \phi$.
+
+\begin{corollary}
+    Sia $H = \gen{x_1, \dots, x_n \given w_1, \dots, w_m}$ e sia $K$ un gruppo qualsiasi. Allora esiste una bigezione tra $\Hom{H, K}$ e l'insieme delle funzioni \[
+        f : \set{x_1, \dots, x_n} \to K    
+    \] tali che le immagini di $x_1, \dots, x_n$ rispettano le condizioni $w_1, \dots, w_m$.
+\end{corollary}
+\begin{proof}
+    Abbiamo già mostrato che $\quot{F(n)}{\gen{w_1, \dots, w_m}} \isomorph H$; inoltre, siccome esiste sempre un omomorfismo dal gruppo libero su $n$ elementi ad un gruppo generato da $n$ elementi, dovrà esistere un omomorfismo \[
+        g : F(n) \to \gen*{f(x_1), \dots, f(x_n)}.    
+    \] Dall'ipotesi che $f(x_i)$ rispetta le condizioni date da $w_1, \dots, w_m$ segue che $w_1, \dots, w_m \in \ker g$, ovvero \[
+        \gen{w_1, \dots, w_m} \subseteq \ker g.    
+    \]
+    Per il \nameref{th:first_iso} esisterà allora un unico omomorfismo $\phi$ tale che il seguente diagramma commuti:
+    \begin{equation}
+        \begin{tikzcd}
+            F(n) \arrow[d, swap, "\pi"] \arrow[r, "g"] & \gen[\big]{f(x_1), \dots, f(x_n)} \subseteq K \\
+            H \isomorph \frac{F(n)}{\gen{w_1, \dots, w_m}} \arrow[ur, swap, "\phi"] &
+        \end{tikzcd}
+    \end{equation}
+
+    In particolare quindi per ogni scelta di $f$ esiste un unico omomorfismo da $H$ in $\gen[\big]{f(x_1), \dots, f(x_n)} \subseteq K$, da cui la tesi.
+\end{proof}
+
+Questo corollario ci consente di trovare gli omomorfismi tra gruppi molto semplicemente, a patto di conoscere una presentazione del gruppo di partenza. Infatti per descrivere un omomorfismo da $H$ in $K$ è sufficiente trovare una funzione $f$ dai generatori di $H$ in $K$ tale che le immagini dei generatori rispettino le condizioni date dalla presentazione di $H$.
+
+\begin{exercise}
+    Descrivere tutti gli omomorfismi di $S_3$ in sè.
+\end{exercise}   
+\begin{solution} 
+    Una presentazione di $S_3$ è data da \[
+        S_3 = \gen[\big]{\sigma, \tau \given \sigma^3 = 1, \tau^2 = 1, \tau\sigma\tau = \sigma\inv}.    
+    \] Per il corollario precedente $\Hom(S_3, S_3)$ è in bigezione con le funzioni $f : \set{\sigma, \tau} \to S_3$ tali che \begin{itemize}
+        \item $f(\sigma)^3 = 1$,
+        \item $f(\tau)^2 = 1$,
+        \item $f(\tau\sigma\tau) = f(\sigma\inv)$.
+    \end{itemize}
+
+    Per la prima condizione segue che $f(\sigma) \in \set{\id, \sigma, \sigma^2}$.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Se $f(\sigma) = \id$ la terza relazione è banale: per ogni scelta di $f(\tau)$ che rispetta la seconda relazione si ha \[
+            f(\tau\sigma\tau) = f(\tau)f(\sigma)f(\tau) = f(\tau)f(\tau) = f(\tau)^2 = \id = f(\sigma)\inv.
+        \] Le scelte di $f(\tau)$ sono $4$: $\id$, $\tau$, $\tau\sigma$ e $\tau\sigma^2$.
+        \item Se $f(\sigma) = \sigma$, la terza relazione è verificata per ogni scelta di $f(\tau)$ che rispetti la seconda condizione, tranne la scelta $f(\tau) = \id$. Ho quindi $3$ scelte per $f(\tau)$.
+        \item Se $f(\sigma) = \sigma^2$ ho le stesse $3$ scelte per $f(\tau)$ del punto precedente.
+    \end{enumerate}
+
+    Vi sono quindi $10$ omomorfismi da $S_3$ in sé, tutti univocamente determinati dalle immagini di $\sigma$ e $\tau$. In particolare vi sono $6$ automorfismi, che corrispondono agli omomorfismi del secondo e terzo punto.
+\end{solution}

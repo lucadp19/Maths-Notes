@@ -103,7 +103,8 @@ Il seguente diagramma dunque commuta:
 \end{equation}
 
 Vale dunque il seguente corollario.
-\begin{corollary}\label{cor:G/ker=Imm}
+\begin{corollary}[Corollario al Primo Teorema degli Omomorfismi]
+    \label{cor:G/ker=Imm}
     Siano $(G, \cdot)$, $(G^\prime, *)$ due gruppi e sia $f : G \to G^\prime$ un omomorfismo di gruppi. Allora \begin{equation}
         \quot{G}{\ker f} \isomorph \Imm f.
     \end{equation}
@@ -113,7 +114,7 @@ Vale dunque il seguente corollario.
 \begin{theorem}
     [Secondo Teorema degli Omomorfismi] \label{th:second_iso}
     Sia $(G, \cdot)$ un gruppo e siano $H, K \normal G$, con $H \subseteq K$. Allora \begin{equation}
-        \nicefrac{\quot{G}{H}}{\quot{K}{H}} \isomorph \quot{G}{K}.
+        \frac{\quot{G}{H}}{\quot{K}{H}} \isomorph \quot{G}{K}.
     \end{equation}
 \end{theorem}
 \begin{proof}
@@ -131,20 +132,20 @@ Vale dunque il seguente corollario.
         \ker \phi = \quot{\ker \pi_K}{H} = \quot{K}{H}.    
     \]
 
-    Consideriamo ora i gruppi $\quot{G}{H}$ e $\quot{G}{K}$ e il sottogruppo $\nicefrac{\quot{G}{H}}{\ker \phi}$, che corrisponde a $\nicefrac{\quot{G}{H}}{\quot{K}{H}}$. Per il \nameref{th:first_iso} esiste un unico omomorfismo \begin{align*}
-        \tilde{\phi} : \nicefrac{\quot{G}{H}}{\quot{K}{H}} &\to \quot{G}{K}
+    Consideriamo ora i gruppi $\quot{G}{H}$ e $\quot{G}{K}$ e il sottogruppo $\nicefrac{\quot{G}{H}}{\ker \phi}$, che corrisponde a $\frac{\quot{G}{H}}{\quot{K}{H}}$. Per il \nameref{th:first_iso} esiste un unico omomorfismo \begin{align*}
+        \tilde{\phi} : \frac{\quot{G}{H}}{\quot{K}{H}} &\to \quot{G}{K}
     \end{align*} che fa commutare il seguente diagramma:
     \begin{equation*}
         \begin{tikzcd}
             \quot{G}{H} \arrow[r, two heads, "\phi"] \arrow[d, swap, "\pi_{\quot{K}{H}}"] & \quot{G}{K} \\
-            \nicefrac{\quot{G}{H}}{\quot{K}{H}} \arrow[ur, hook, two heads, swap, "\widetilde{\phi}"] &
+            \frac{\quot{G}{H}}{\quot{K}{H}} \arrow[ur, hook, two heads, swap, "\widetilde{\phi}"] &
         \end{tikzcd}
     \end{equation*}
 
     $\widetilde{\phi}$ è un isomorfismo di gruppi: infatti essendo $\phi$ surgettivo anche $\widetilde{\phi}$ lo è; inoltre la proiezione $\pi_{\quot{K}{H}}$ porta il gruppo $\quot{G}{H}$ nel quoziente modulo $\ker \phi = \quot{K}{H}$, dunque l'omomorfismo $\widetilde{\phi}$ è iniettivo ed è dunque un isomorfismo di gruppi.
 
     Segue quindi che \[
-        \nicefrac{\quot{G}{H}}{\quot{K}{H}} \isomorph \quot{G}{K}. \qedhere 
+        \frac{\quot{G}{H}}{\quot{K}{H}} \isomorph \quot{G}{K}. \qedhere 
     \]
 \end{proof}
 
@@ -214,6 +215,7 @@ Prima di studiare il Teorema di Corrispondenza, introduciamo un lemma che ci sar
 \end{lemma}
 
 \begin{theorem}[Teorema di Corrispondenza tra Sottogruppi]
+    \label{th:sgrp_corr}
     Sia $(G, \cdot)$ un gruppo e $N \normal G$. Sia $\GG$ l'insieme dei sottogruppi di $G$ che contengono $N$ e $\NN$ l'insieme dei sottogruppi di $\quot{G}{N}$.
 
     Allora esiste una corrispondenza biunivoca tra $\GG$ e $\NN$ che preserva l'indice di sottogruppo e i sottogruppi normali, ovvero esiste una funzione \begin{align*}

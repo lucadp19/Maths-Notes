@@ -85,3 +85,4 @@
 \contentsline {subsubsection}{{Proprietà dei domini euclidei}}{93}{subsubsection*.141}%
 \contentsline {subsection}{\numberline {4.6.2}{Domini ad ideali principali}}{94}{subsection.4.6.2}%
 \contentsline {subsection}{\numberline {4.6.3}{Domini a fattorizzazione unica}}{95}{subsection.4.6.3}%
+\contentsline {section}{\numberline {4.7}{Polinomi come domini a fattorizzazione unica}}{96}{section.4.7}%

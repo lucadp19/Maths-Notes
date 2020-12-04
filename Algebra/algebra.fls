@@ -544,7 +544,6 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/mathabx/mathx10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/mathpazo/fplmbb.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/mathpazo/fplmbb.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/mathpazo/fplmbb.tfm
-OUTPUT algebra.toc
 INPUT /usr/share/texmf-dist/fonts/vf/adobe/palatino/pplrc9d.vf
 INPUT /usr/share/texmf-dist/fonts/tfm/adobe/palatino/pplrc8r.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
@@ -568,6 +567,7 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/euler/eurm7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr7.tfm
+OUTPUT algebra.toc
 INPUT /usr/share/texmf-dist/fonts/tfm/nowacki/iwona/ec-iwonar.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/nowacki/iwona/ec-iwonar.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/nowacki/iwona/ec-iwonar.tfm
@@ -762,6 +762,8 @@ INPUT RingTheory/divisibilty.tex
 INPUT RingTheory/divisibilty.tex
 INPUT RingTheory/ed-pid-ufd.tex
 INPUT RingTheory/ed-pid-ufd.tex
+INPUT RingTheory/poly_UFD.tex
+INPUT RingTheory/poly_UFD.tex
 INPUT algebra.aux
 INPUT ./algebra.out
 INPUT ./algebra.out

@@ -1,0 +1,213 @@
+\chapter{Anelli e campi}
+
+\section{Anelli}
+
+\begin{restatable}[Anello]{definition}{defring}
+    \label{def:ring}
+    Sia $A$ un insieme e siano $+$ (\emph{somma}), $\cdot$ (\emph{prodotto}) due operazioni su $A$, ovvero \begin{align*}
+        + : A \times A &\to A, & \cdot : A \times A &\to A. \\
+        (a, b) &\mapsto a+b,      &             (a, b) &\mapsto a\cdot b.
+    \end{align*} La struttura $(A, +, \cdot)$ si dice \strong{anello} se valgono i seguenti assiomi:
+    \begin{itemize}
+        \item[(S)] $(A, +)$ è un gruppo abeliano.
+        \item[(P1)] Vale la \emph{proprietà associativa del prodotto}:            
+        per ogni $a, b, c \in A$ vale che \[
+            (a \cdot b) \cdot c = a \cdot (b \cdot c).
+        \]
+        \item[(D)] \label{def:anello:distr} Vale la \emph{proprietà distributiva del prodotto rispetto alla somma} sia a destra che a sinistra:         
+        per ogni $a, b, c \in A$ vale che \[
+            a(b + c) = ab + ac, \qquad (a + b)c = ac + bc.
+        \]
+    \end{itemize}
+    L'anello $(A, +, \cdot)$ si dice \strong{anello commutativo} se vale inoltre l'assioma di commutatività:
+    \begin{itemize}
+        \item[(P2)] \label{def:anello_prod:com} Vale la \emph{proprietà commutativa del prodotto}:
+        per ogni $a, b \in A$ vale che \[
+            a \cdot b = b \cdot a.
+        \]
+    \end{itemize}
+    L'anello $(A, +, \cdot)$ si dice \strong{anello con unità} se vale inoltre il seguente assioma:
+    \begin{itemize}
+        \item[(P3)] \label{def:anello_prod:unit} Esiste un elemento $1 \in A$ che è \emph{elemento neutro} per il prodotto:
+        per ogni $a \in A$ vale che \[
+            a \cdot 1 = 1 \cdot a = a.
+        \]
+        Tale elemento si dice \emph{unità dell'anello}.
+    \end{itemize}
+\end{restatable}
+
+\begin{example}
+    Le strutture $(\Z, +, \cdot)$, $(\Q, +, \cdot)$, $(\R, +, \cdot)$, $(\C, +, \cdot)$ sono tutti esempi di anelli commutativi con unità.
+\end{example}
+\begin{example}
+    L'insieme delle matrici quadrate $\Mat{n, \R}$ (con $n \geq 2$) è un esempio di anello non commutativo con unità.
+\end{example}
+\begin{example}
+    L'insieme dei numeri pari insieme alle operazioni di somma e prodotto, ovvero $(2\Z, +, \cdot)$, è un anello commutativo ma non ha l'identità.
+\end{example}
+
+\subsubsection{Elementi particolari di un anello}
+
+\begin{definition} [Elementi invertibili]
+    \label{def:units}
+    Sia $(A, +, \cdot)$ un anello con identità. Un elemento $a \in A$ si dice \strong{invertibile} se esiste $y \in A$ tale che $xy = yx = 1$. L'insieme degli invertibili di $A$ si indica con $\units{A}$.
+\end{definition}
+
+\begin{definition} [Divisori di zero]
+    \label{def:zero_divisor}
+    Sia $(A, +, \cdot)$ un anello. Un elemento $a \in A$ si dice \strong{divisore di zero} se esiste $b \in A$, $b \neq 0$ tale che \[
+        ab = 0.
+    \] Indicheremo con $\ZeroDiv$ l'insieme dei divisori dello zero di $A$.
+\end{definition}
+
+\begin{definition} [Nilpotenti]
+    Sia $(A, +, \cdot)$ un anello. Un elemento $a \in A$ si dice \strong{nilpotente} se esiste $n \in \N$ tale che \[
+        a^n \deq \overbrace{a \cdot a \cdots a}^{n\text{ volte}} = 0.
+    \] Indicheremo con $\Nilpotents$ l'insieme dei divisori dello zero di $A$.
+\end{definition}
+
+Mostriamo ora alcune proprietà degli anelli relative agli elementi invertibili e ai divisori di zero.
+
+\begin{proposition} [Proprietà degli anelli]
+    {prop_anelli}
+    Sia $(A, +, \cdot)$ un anello. Allora valgono le seguenti affermazioni:
+    \begin{enumerate}[label={(\roman*)}, ref={\theproposition: (\roman*)}]
+        \item {prop_anelli:per_0} Per ogni $a \in A$ vale che $a \cdot 0 = 0 \cdot a = 0$. In particolare $0$ è sempre un divisore di zero.
+        \item {prop_anelli:gruppo_inv} $(\units{A}, \cdot)$ è un gruppo (abeliano se $A$ è commutativo).
+        \item {prop_anelli:div_zero_inv} Nessun $a \in A$ è contemporaneamente divisore dello zero e invertibile, ovvero $\ZeroDiv \inters \units{A} = \varnothing$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo separatamente le varie affermazioni.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Per gli assiomi degli anelli \[
+            a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0.
+        \]        
+        Siccome $(A, +)$ è un gruppo, valgono le \hyperref[prop:prop_grp:canc]{leggi di cancellazione}, dunque segue che \[
+            0 = a \cdot 0.    
+        \]
+        \item Mostriamo che $(\units{A}, \cdot)$ è un gruppo.
+        \begin{enumerate}[label={(G\arabic*)}]
+            \item Mostriamo che il prodotto di due elementi invertibili di $A$ è ancora in $\units{A}$, ovvero è ancora invertibile.
+            
+            Siano $x,y \in \units{A}$ (ovvero essi sono invertibili e i loro inversi sono rispettivamente $x\inv$ e $y\inv$); mostro che il loro prodotto $xy \in A$ è invertibile e il suo inverso è $y\inv x\inv$.
+            \begin{align*}
+                &(xy) \cdot (y\inv x\inv) \\
+                =\ &x (y y\inv) x\inv  \\
+                =\ &x \cdot x\inv \\
+                =\ &1.
+            \end{align*}
+            Passaggi analoghi mostrano che $(y\inv x\inv) \cdot xy = 1$, ovvero $y\inv x\inv$ è l'inverso di $xy$ e quindi $xy \in \units{A}$.
+            \item Vale la proprietà associativa del prodotto in quanto vale in $A$.
+            \item L'elemento neutro del prodotto è $1$ ed è in $\units{A}$ in quanto $1 \cdot 1 = 1$ (ovvero $1$ è l'inverso di se stesso).
+            \item Se l'anello è commutativo, allora $\cdot$ è commutativa su ogni suo sottoinsieme, dunque in particolare lo sarà anche su $\units{A}$.
+        \end{enumerate}
+        Da ciò segue che $(\units{A}, \cdot)$ è un gruppo.
+        \item Supponiamo per assurdo esista $x \in A$ che è invertibile e divisore dello zero.
+        Dato che è un divisore dello zero segue che esiste $z \in A \setminus \set{0}$ tale che $xz = 0$; siccome $x$ è invertibile dovrà esistere $y \in A$ tale che $xy = 1$. 
+        Ma allora \begin{align*}
+            z &= z\cdot 1\\
+            &= z \cdot (xy)\\
+            &= (zx) \cdot y \\
+            &= 0 \cdot y\\
+            &= 0.
+        \end{align*} Tuttavia ciò è assurdo, in quanto abbiamo supposto $z \neq 0$, dunque non può esistere un divisore dello zero invertibile. \qedhere
+    \end{enumerate}
+\end{proof}
+
+\subsubsection{Tipi di anelli}
+
+\begin{definition}
+    [Dominio di integrità]
+    \label{def:dominio}
+    Sia $(A, +, \cdot)$ un anello commutativo con identità. Esso si dice \emph{dominio di integrità} (o semplicemente \emph{dominio}) se l'unico divisore dello zero è $0$.
+\end{definition}
+
+In un dominio di integrità valgono alcune proprietà particolari.
+
+\begin{proposition}
+    [Legge di annullamento del prodotto]
+    {ann_prod_dominio}
+    Sia $(A, +, \cdot)$ un dominio. Allora vale la legge di annullamento del prodotto, ovvero per ogni $a, b \in A$ vale che \[
+        ab = 0 \implies a = 0 \text{ oppure } b = 0.    
+    \]
+\end{proposition}
+\begin{proof}
+    Se $a = 0$ la tesi è verificata. Supponiamo allora $a \neq 0$ e dimostriamo che deve essere $b = 0$.
+
+    Dato che $a \neq 0$ segue che $a$ non è un divisore dello zero (poiché $A$ è un dominio), dunque se $ab = 0$ l'unica possibilità è $b = 0$.
+\end{proof}
+
+Dall'annullamento del prodotto seguono le leggi di cancellazione del prodotto:
+\begin{corollary}
+    [Leggi di cancellazione per il prodotto]
+    {canc_prod_dominio}
+    Sia $(A, +, \cdot)$ un dominio di integrità e siano $a, b, x \in A$ con $x \neq 0$. Allora \[
+        ax = bx \implies a = b.    
+    \]
+\end{corollary}
+\begin{proof}
+    Aggiungiamo ad entrambi i membri l'opposto di $bx$: \begin{align*}
+        &ax - bx = bx - bx\\
+        \iff &ax - bx = 0 \tag{per \ref{def:anello:distr}}\\
+        \iff &(a - b)x = 0 \tag{per \ref{prop:ann_prod_dominio}}\\
+        \iff &a-b = 0 \text{ oppure } x = 0.
+    \end{align*} Ma per ipotesi $x \neq 0$, dunque deve seguire che $a - b = 0$, ovvero $a = b$.
+\end{proof}
+
+\begin{definition}
+    [Corpi e campi]
+    Sia $(\K, +, \cdot)$ un anello con identità.  $\K$ si dice \strong{corpo} se $\units{\K} = \K \setminus \set*{0}$. Se $\K$ è commutativo si dice \strong{campo}.
+\end{definition}
+
+\begin{remark}
+    Un campo è una struttura $(\K, +, \cdot)$ tale che: 
+    \begin{enumerate}[label={(S)}]
+        \item La struttura $(\K, +)$ è un gruppo abeliano.
+    \end{enumerate}
+    \begin{enumerate}[label={(P)}]
+        \item La struttura $(\K\setminus \set*{0}, \cdot)$ è un gruppo abeliano.
+    \end{enumerate}
+    \begin{enumerate}[label=(D)]
+        \item \label{def:campo:distr} Vale la \emph{proprietà distributiva del prodotto rispetto alla somma}.
+    \end{enumerate}
+\end{remark}
+
+\begin{proposition}
+    [Ogni campo è un dominio] Sia $(\K, +, \cdot)$ un campo. Allora $\K$ è anche un dominio di integrità.
+\end{proposition}
+\begin{proof}
+    Per la \Cref{prop:prop_anelli} i divisori dello zero non possono essere invertibili, dunque $\ZeroDiv \subseteq \K \setminus \units{\K}$. Ma per definizione di campo $\units{\K} = \K \setminus \set*{0}$, dunque l'unico possibile divisore dello zero è $0$, ovvero $\K$ è un dominio.
+\end{proof}
+
+\begin{proposition}
+    [Ogni dominio finito è un campo]
+    Sia $(A, +, \cdot)$ un dominio di integrità con un numero finito di elementi. Allora $A$ è un campo.
+\end{proposition}
+\begin{proof}
+    Sia $x \in A \setminus \set*{0}$: mostriamo che $x$ è invertibile.
+    Sia \begin{align*}
+        \phi_x : A &\to A\\
+        a &\mapsto ax.
+    \end{align*} Mostriamo che $\phi_x$ è bigettiva.
+    
+    \begin{description}
+        \item[Iniettività] Supponiamo che per qualche $a, b \in A$ valga che $\phi_x(a) = \phi_x(b)$ e mostriamo che segue che $a = b$.
+
+        Per definizione di $\phi_x$ l'ipotesi equivale ad affermare che $ax = bx$, ma siccome $x \neq 0$ e $A$ è un dominio possiamo applicare la \hyperref[cor:canc_prod_dominio]{legge di cancellazione per il prodotto}, da cui segue che $a = b$, ovvero $\phi_x$ è iniettiva.
+        \item[Surgettività] Segue dal fatto che dominio e codominio hanno la stessa cardinalità.
+    \end{description}
+
+    Dunque $\phi_x$ è bigettiva. Dato che $1 \in A = \phi_x(A)$ segue che esiste un $y \in A$ tale che \[
+        xy = 1 = yx, 
+    \] ovvero $x$ è invertibile e $A$ è un campo.
+\end{proof}
+
+\begin{definition}
+    [Omomorfismo di anelli] \label{def:omo_anelli}
+    Siano $(A, +, \cdot)$, $(B, \oplus, \odot)$ anelli con unità. Allora la funzione $\phi : A \to B$ si dice omomorfismo di anelli se \begin{enumerate}[label={(\roman*)}]
+        \item $\phi(1_A) = 1_B$.
+        \item Per ogni $a, b \in A$ vale che $\phi(a + b) = \phi(a) \oplus \phi(b)$.
+        \item Per ogni $a, b \in A$ vale che $\phi(a \cdot b) = \phi(a) \odot \phi(b)$.
+    \end{enumerate}
+\end{definition}

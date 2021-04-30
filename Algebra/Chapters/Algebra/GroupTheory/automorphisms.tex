@@ -1,0 +1,207 @@
+\section{Automorfismi di un gruppo}
+
+Studiamo in questa sezione un tipo fondamentale di gruppo di funzioni, ovvero il gruppo degli \strong{automorfismi} di un gruppo $G$.
+
+\begin{definition}
+    {Automorfismo}{}
+    Sia $G$ un gruppo. Si dice \strong{automorfismo di $G$} un isomorfismo da $G$ in $G$.
+    Inoltre si indica con $\Aut{G}$ l'insieme di tutti gli automorfismi di $G$.
+\end{definition}
+
+\begin{proposition}
+    {Gli automorfismi formano un gruppo}{} Sia $G$ un gruppo. Allora $\Aut{G}$ con l'operazione di composizione è un gruppo, ed in particolare $\Aut{G} \sgr \cS(G)$.
+\end{proposition}
+\begin{proof}
+    Innanzitutto l'identità $\id : G \to G$ è un automorfismo di $G$, dunque $\id \in \Aut{G}$.
+
+    Sia $\phi$ un automorfismo di $G$: essendo un isomorfismo, esso ammette un inverso $\phi\inv$. 
+    Siccome $\phi\inv$ è ancora un isomorfismo da $G$ in $G$ segue che $\phi\inv$ è un automorfismo di $G$.
+
+    Infine siano $\phi, \psi$ due automorfismi di $G$ : allora la composizione $\phi \circ \psi$ è ancora un automorfismo di $G$.
+    Infatti la composizione è ancora un isomorfismo da $G$ in $G$, dunque è un automorfismo.
+
+    Il fatto che $\Aut{G}$ è un sottogruppo di $\cS(G)$ segue banalmente dal fatto che 
+    $\Aut{G}$ è contenuto nell'insieme delle bigezioni da $G$ in $G$ 
+    insieme con il fatto che $\Aut{G}$ è un gruppo con la stessa operazione di $\cS{G}$.
+\end{proof}
+
+L'automorfismo più importante è l'automorfismo per \emph{coniugio}.
+
+\begin{definition}{Coniugio e automorfismi interni}{}
+    Sia $G$ un gruppo. Per ogni $g \in G$ definiamo 
+    \begin{align*}
+        \phi_g : G &\to G\\
+        g &\mapsto gxg\inv.
+    \end{align*} Questa mappa viene chiamata \strong{coniugio di $x$ per $g$}. Inoltre si dice \strong{insieme degli automorfismi interni} l'insieme \[
+        \Inn{G} \deq \set*{\phi_g \given g \in G}
+    \]
+\end{definition}
+
+\begin{proposition}{}{inn<=aut}
+    Sia $G$ un gruppo, $g \in G$. Allora il coniugio per $g$ è un automorfismo di $G$.
+    In particolare vale che \[
+        \Inn{G} \normal \Aut{G}. 
+    \] 
+\end{proposition}
+
+Prima di mostrare la \Cref{prop:inn<=aut} dimostriamo un semplice Lemma che semplificherà i calcoli da fare.
+
+\begin{lemma}
+    {Proprietà degli automorfismi interni}{inner_autom_prop}
+    Siano $g, h \in G$ e sia $e \in G$ l'identità. Allora valgono le seguenti affermazioni:
+    \begin{enumerate}[(1)]
+        \item $\phi_e = \id$.
+        \item $\phi_g \circ \phi_h = \phi_{gh}$.
+        \item $\parens*{\phi_g}\inv = \phi_{g\inv}$.
+    \end{enumerate}
+\end{lemma}
+Come vedremo più avanti, questo significa dire che il coniugio è un'\strong{azione} di $G$ su se stesso. Per ora limitiamoci a dimostrare il Lemma.
+\begin{proof}
+    Dimostriamo separatamente le tre affermazioni.
+    \newthought{Coniugio per l'identità} Sia $g \in G$ qualunque. Allora \[
+        \phi_e(g) = ege\inv = g = \id(g).
+    \] Dato che questo vale per ogni $g \in G$ segue che $\phi_e = \id$.
+    \newthought{Composizione di coniugi} Sia $x \in G$ qualunque. Allora \[
+        (\phi_g \circ \phi_h)(x) = \phi_g(\phi_h(x)) = \phi_g(hxh\inv) = ghxh\inv g\inv = (gh)x(gh)\inv = \phi_{gh}(x),
+    \] da cui $\phi_g \circ \phi_h = \phi_{gh}$.
+    \newthought{Inverso di un coniugio} Mostriamo che $\phi_g \circ \phi_{g\inv} = \phi_{g\inv} \circ \phi_g = \id$. Sia quindi $x \in G$ qualunque. \begin{gather*}
+        (\phi_g \circ \phi_{g\inv})(x) = \phi_g(\phi_{g\inv}(x)) = g(g\inv xg)g\inv = x, \\
+        (\phi_{g\inv} \circ \phi_{g})(x) = \phi_{g\inv}(\phi_{g}(x)) = g\inv(gxg\inv)g = x,
+    \end{gather*} da cui la tesi.
+\end{proof}
+
+\begin{proof}[Dimostrazione della \Cref{prop:inn<=aut}]
+    Sicuramente $\phi_g$ è ben definita: per ogni $x \in G$ segue che $\phi_g(x) = gxg\inv$ che è ancora un elemento di $G$. 
+    \newthought{Omomorfismo} Dati $x, y \in G$ mostriamo che $\phi_g(xy) = \phi_g(x)\phi_g(y)$.
+        \begin{align*}
+            \phi_g(xy) = g(xy)g\inv \\
+                &= gx(gg\inv)y \\
+                &= (gxg\inv)(gyg\inv)\\
+                &= \phi_g(x)\phi_g(y).
+        \end{align*}
+    \newthought{Iniettività}  Siano $x, y \in G$: mostriamo che se $\phi_g(x) = \phi_g(y)$ allora $x = y$. \begin{align*}
+        &\phi_g(x) = \phi_g(y)\\
+        \iff &gxg\inv = gyg\inv\\
+        \iff &x = y,
+    \end{align*}
+    dove l'ultimo passaggio è giustificato moltiplicando a sinistra per $g\inv$ e a destra per $g$.
+    \newthought{Surgettività} Sia $y \in G$ qualunque; siccome $g\inv yg \in G$ e $\phi_g(g\inv y g) = gg\inv y gg\inv = y$, segue che $\phi_g$ è surgettiva.
+    
+    Segue quindi che $\phi_g$ è un isomorfismo, dunque un automorfismo di $G$.
+
+    Mostriamo ora che $\Inn{G} \normal \Aut{G}$.
+    
+    Innanzitutto l'insieme dei coniugi è un sottogruppo di $\Aut{G}$, in quanto
+    \begin{itemize}
+        \item $\id = \phi_e \in \Inn{G}$;
+        \item Per ogni coppia di automorfismi interni $\phi_g, \phi_h \in \Inn{g}$ segue che $\phi_g \circ \phi_h \in \Inn{G}$. Infatti per il \Cref{lem:inner_autom_prop} $\phi_g \circ \phi_h = \phi_{gh}$ che ovviamente appartiene a $\Inn{G}$.
+        \item Se $\phi_g \in \Inn{G}$ allora per il \Cref{lem:inner_autom_prop} $\phi_{g}\inv = \phi_{g\inv}$ che è ancora elemento di $\Inn{G}$, dunque $\Inn{G}$ è chiuso per inversi.    
+    \end{itemize}
+
+    Infine mostriamo che $\Inn{G} \normal \Aut{G}$, ovvero che data che $\sigma \in \Aut{G}$ qualunque si ha $\sigma\Inn{G}\sigma\inv \subseteq \Inn{G}$, ovvero che per ogni $g \in G$ vale che \[
+        \sigma\phi_g\sigma\inv \in \Inn{G}.
+    \] Sia quindi $x \in G$ qualsiasi. Allora \begin{align*}
+        (\sigma\phi_g\sigma\inv)(x) 
+        &= \sigma\parens[\Big]{\phi_g\parens[\big]{\sigma\inv(x)}}\\
+        &= \sigma\parens[\Big]{g \parens[\big]{\sigma\inv(x)} g\inv} \\
+        &= \sigma(g) \cdot \sigma(\sigma\inv(x)) \cdot \sigma(g\inv) \\
+        &= \sigma(g) x \sigma(g)\inv,
+    \end{align*} dunque $\sigma \phi_g \sigma\inv = \phi_{\sigma(g)} \in \Inn{G}$, ovvero $\Inn{G}$ è un sottogruppo normale di $\Aut{G}$.  
+\end{proof}
+
+Osserviamo che se $G$ è un gruppo abeliano allora $\Inn{G} = \set{\id}$: infatti per ogni $g, x \in G$ si ha che $\phi_g(x) = gxg\inv = x$.
+
+\begin{proposition}
+    {}{}
+    \[
+        \Inn{G} \isomorph \quot{G}{\Zentr{G}}.
+    \]
+\end{proposition}
+\begin{proof}
+    Consideriamo la mappa \begin{align*}
+        \Phi : G &\to \Inn{G}\\
+        g &\mapsto \phi_g,
+    \end{align*} chiaramente ben definita e surgettiva.
+    \newthought{Omomorfismo} Mostriamo che $\Phi$ è un omomorfismo di gruppi: \[
+        \Phi(g_1g_2) = \phi_{g_1g_2} \stackrel{(1)}{=} \phi_{g_1} \circ \phi_{g_2} = \Phi(g_1) \circ \Phi(g_2),
+    \] dove in $(1)$ abbiamo usato il \Cref{lem:inner_autom_prop}.
+    \newthought{Nucleo} Il nucleo di $\Phi$ è \[
+        \ker \Phi = \set*{g \in G \given \phi_g = \id} = \set*{g \in G \given gxg\inv = x \forall x \in G} = \Zentr{G}.
+    \] 
+
+    La tesi segue per il \Cref{th:first_iso}.
+\end{proof}
+
+\begin{remark}
+    Abbiamo osservato che se $\quot{G}{\Zentr{G}}$ è ciclico allora $G$ è abeliano, dunque $\Inn{G}$ è ciclico solo se $G$ è abeliano, dunque per qunaot osservato sopra $\Inn{G}$ è ciclico solo se è banale.
+\end{remark}
+
+Un modo molto comodo per caratterizzare i sottogruppi normali è analizzare la loro relazione con gli automorfismi interni. In effetti, per definizione $N \normal G$ se e solo se $gNg\inv \subseteq N$ per ogni $g \in G$, ovvero se e solo se \[
+    \phi_g(N) \subseteq N.
+\]
+
+\begin{proposition}
+    {Invarianza dei sottogruppi normali per automorfismi interni}{}
+    I sottogruppi normali $N$ di un gruppo $G$ sono \strong{invarianti per automorfismi interni}, ovvero si ha che $\phi_g(N) \subseteq N$ (e dunque $\phi_g(N) = N$, poiché l'altra inclusione è banale e sempre vera).
+
+    Inoltre ogni automorfismo interno di $G$ definisce un automorfismo di $N$ tramite la restrizione: \begin{align*}
+        \Inn{G} &\to \Aut{N}\\
+        \phi_g &\mapsto \phi_{g}\restrict{N}.
+    \end{align*}
+\end{proposition}
+\begin{proof}
+    La prima parte è ovvia per definizione di sottogruppo normale: per ogni $g \in G$ vale che \[
+        \phi_g(N) = gNg\inv = N.
+    \] Mostriamo ora che $\phi_{g}\restrict{N}$ è un automorfismo di $N$. 
+    
+    In effetti $\phi_g\restrict{N}$ può essere considerato come una funzione da $N$ in sé, in quanto come abbiamo mostrato sopra la sua immagine è $\phi_g\restrict{N}(N) = N$. 
+    
+    Inoltre siccome è una restrizione di un isomorfismo esso è ancora un isomorfismo, da cui segue che è un automorfismo di $N$. 
+\end{proof}
+
+\begin{definition}
+    {Sottogruppo caratteristico}{}
+    $H \sgr G$ si dice \strong{caratteristico} se è invariante per automorfismi, ovvero se per ogni $\phi \in \Aut{G}$ si ha che \[
+        \phi(H) = H.
+    \]  
+\end{definition}
+
+Anche in questo caso per mostrare che $H$ è caratteristico è sufficiente vedere che $\phi(H) \subseteq H$ per ogni automorfismo $\phi$: infatti $\phi\inv$ è ancora un automorfismo di $G$, dunque abbiamo anche verificato che $\phi\inv(H) \subseteq H$, che è equivalente a $H \subseteq \phi(H)$, che è ciò che volevamo.
+
+\begin{proposition}
+    {}{}
+    Se $H$ è caratteristico in $G$, allora $H \normal G$. 
+\end{proposition}
+\begin{proof}
+    Ovvia: se $H$ è caratteristico è invariante per automorfismi, dunque è invariante per \emph{automorfismi interni}, dunque è normale.
+\end{proof}
+
+\begin{remark}
+    Il viceversa è falso! Infatti consideriamo $G = \Zmod{2} \times \Zmod{2}$ e siano \[
+        H_1 \deq \gen[\big]{(1, 0)}, \qquad H_2 \deq \gen[\big]{(0, 1)}, \qquad H_3 \deq \gen[\big]{(1, 1)}.
+    \] Siccome $G$ è abeliano tutti i suoi sottogruppi sono normali. Mostriamo che $H_1$ non è caratteristico.
+
+    Sia $\phi : G \to G$ tale che \begin{itemize}
+        \item $\phi((1, 0)) = (1, 1)$
+        \item $\phi((0, 1)) = (0, 1)$
+        \item $\phi((a, b)) = a\phi((1, 0)) + b\phi((0, 1)) = (a, a) + (0, b) = (a, a + b).$   
+    \end{itemize}
+
+    \newthought{Omomorfismo} $\phi$ è un omomorfismo in quanto \begin{align*}
+        \phi((a, b) + (c, d)) 
+        &= \phi((a + c, b+d)) \\
+        &= (a + c, a + c + b + d) \\
+        &= (a, a + b) + (c, c + d) \\
+        &= \phi((a, b)) + \phi((c, d)).
+    \end{align*} 
+    \newthought{Iniettività} $\phi$ è iniettiva in quanto \begin{align*}
+        \ker \phi 
+        &= \set*{(a, b) \in G \given \phi((a, b)) = (a, a + b) = 0} \\
+        &= \set*{(a, b) \in G \given a = 0, b = 0} \\
+        &= \set*{(0, 0)}.
+    \end{align*}
+
+    Dunque $\phi$ è un automorfismo di $G$ (in quanto è un endomorfismo iniettivo di $G$ e $G$ è un gruppo finito). Ma \[
+        \phi(H_1) = \phi\parens[\Big]{\gen[\big]{(1, 0)}} = \gen[\big]{\phi((1, 0))} = \gen{(1, 1)} = H_3 \neq H_1,
+    \] dunque $H_1$ è normale in $G$ ma non è caratteristico.
+\end{remark}

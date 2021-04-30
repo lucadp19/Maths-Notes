@@ -1,0 +1,328 @@
+\section{Estensioni di campi}
+
+\begin{definition}
+    [Estensione di campi] Siano $K, F$ campi con $K \subseteq F$. Allora $F$ si dice \emph{estensione} di $K$ e l'estensione si indica con $\ext{F/K}$.
+\end{definition}
+
+\begin{definition}
+    [Elementi algebrici e trascendenti] Sia $\ext{F/K}$ un'estensione di campi. $\alpha \in F$ si dice \emph{algebrico su $K$} se esiste un polinomio $f \in \K[X] \setminus \set*{0_{\K[X]}}$ tale che $f(\alpha) = 0$. Se $\alpha$ non è algebrico si dice \emph{trascendente}.
+\end{definition}
+
+\begin{definition}
+    [Estensioni algebriche] Sia $\ext{F/K}$ un'estensione di campi. $\ext{F/K}$ si dice \emph{algebrica} se ogni $\alpha \in F$ è algebrico su $K$.
+\end{definition}
+
+Dato un valore $\alpha \in F$ possiamo valutare tutti i polinomi di $K[X]$ in $\alpha$ per verificare il loro valore: l'immagine di questa funzione è l'insieme \[
+    K[\alpha] \deq \set*{f(\alpha) \given f \in K[X]}.    
+\] Siccome $f(\alpha) \in F$ questo insieme è un sottoinsieme di $F$. In particolare essendo un sottoinsieme di un campo possiamo indurre due operazioni sugli elementi di $K[\alpha]$ (una somma e un prodotto) che si comportano esattamente come si comportano in $F$. Vale quindi la seguente proposizione.
+
+\begin{proposition}
+    Sia $\ext{F/K}$ un'estensione di campi, $\alpha \in F$. Allora $(K[\alpha], +, \cdot)$ è un anello.
+\end{proposition}
+
+La funzione che porta ogni elemento di $K[X]$ nella sua valutazione in $\alpha$ si dice \emph{omomorfismo di valutazione}, ed è definito da \begin{align*}
+    \phi_\alpha : K[X] &\to K[\alpha] \subseteq F\\   
+    f(X) &\mapsto f(\alpha).
+\end{align*} Esso è un omomorfismo tra l'anello dei polinomi $K[X]$ e l'anello $K[\alpha]$. Osserviamo inoltre che è un omomorfismo surgettivo, in quanto $K[\alpha] = \Imm \phi_\alpha$.
+
+\begin{proposition}{KX/ker_valutazione_isomorfo_Kalpha}
+    Sia $\ext{F/K}$ un'estensione di campi, $\alpha \in F$. Allora vale che \[
+        \quot{K[X]}{\ker{\phi_\alpha}} \isomorph K[\alpha].    
+    \]
+\end{proposition}
+\begin{proof}
+    Consideriamo i gruppi additivi $K[X]$ e $K[\alpha]$ insieme all'omomorfismo $\phi_\alpha$ e alla proiezione canonica sul quoziente. Per il \hyperref[th:first_iso]{Primo Teorema degli Omomorfismi} vale che \[
+        \begin{tikzcd}
+            K[X] \arrow[d, swap, hook, "\pi_{\ker \phi_\alpha}"] \arrow[r, two heads, "\phi_\alpha"] & K[\alpha] \\
+            \quot{K[X]}{\ker \phi_\alpha} \arrow[ur, hook, two heads, swap, "\bar\phi"] &
+        \end{tikzcd}
+    \]
+
+    Innanzitutto osservo che \[
+        \phi_\alpha(f(X)) = \parens*{\bar\phi \circ \pi_{\ker{\phi_\alpha}}}\parens*{f(X)} 
+        = \bar\phi(f(X) + \ker\phi_\alpha) = \bar\phi\parens*{\eqcl{f(X)}}.
+    \] Da questo possiamo verificare immediatamente che $\bar\phi$ è un omomorfismo di anelli:
+    \begin{itemize}
+        \item $\bar\phi\parens*{\eqcl 1} = \phi_\alpha(1) = 1$ poiché $\phi_\alpha$ è un omomorfismo di anelli;
+        \item $\bar\phi \parens*{\eqcl{a(X)}\cdot\eqcl{b(X)}} = \bar\phi\parens*{\eqcl{a(X)}} \cdot \bar\phi\parens*{\eqcl{b(X)}}$ poiché: \begin{align*}
+            \bar\phi \parens*{\eqcl{a(X)}\cdot\eqcl{b(X)}} &= \bar\phi\parens*{\eqcl{a(X) \cdot b(X)}} \\
+            &= \phi_\alpha(a(X) \cdot b(X))\\
+            &= \phi_\alpha(a(X)) \cdot \phi_\alpha(b(X))\\
+            &= \bar\phi\parens*{\eqcl{a(X)}} \cdot \bar\phi\parens*{\eqcl{b(X)}}.
+        \end{align*}
+    \end{itemize} Notiamo che non c'è bisogno di verificare che $\bar\phi$ rispetti la struttura di gruppo additivo poiché sappiamo già che è un omomorfismo di gruppi.
+
+    Siccome il quoziente è sul nucleo di $\phi_\alpha$ e $\phi_\alpha$ è surgettiva segue che $\bar\phi$ è bigettiva, dunque è un isomorfismo di anelli, da cui segue che la tesi.
+\end{proof}
+
+\begin{remark}
+    L'omomorfismo di valutazione ci consente di descrivere gli elementi algebrici e quelli trascendenti sfruttando le proprietà degli omomorfismi. Infatti \[
+        \ker \phi_\alpha = \set*{f(X) \in K[X] \given \phi_\alpha(f(X)) = f(\alpha) = 0}.    
+    \] Dunque un elemento $\alpha \in F$ è algebrico su $K$ se e solo se $\ker \phi_\alpha \neq \set*{0}$, ovvero se e solo se $\phi_\alpha$ non è iniettivo.
+
+    In particolare se $\alpha$ è trascendente vale che $\quot{K[X]}{\ker \phi_\alpha} = K[X]$, dunque $K[\alpha] \isomorph K[X]$.
+\end{remark}
+
+\subsection{Polinomio minimo di un elemento algebrico}
+Sia $\ext{F/K}$ un'estensione di campi e sia $\alpha \in F$ un elemento algebrico su $K$, ovvero $\ker \phi_\alpha \neq \set*{0}$.
+Notiamo che siccome $\ker \phi_\alpha$ non è banale, esso contiene almeno un polinomio diverso dal polinomio nullo, dunque l'insieme dei gradi dei polinomi non nulli nel nucleo di $\phi_\alpha$ è un sottoinsieme di $\N$ non vuoto, perciò ha minimo.
+
+\begin{proposition}{caratt_polinomio_minimo}
+    Sia $\mu_\alpha \in \ker \phi_\alpha$ un polinomio monico e di grado minimo tra i polinomi di $\ker \phi_\alpha$. Allora valgono le seguenti affermazioni:
+    \begin{enumerate}[label={(\roman*)}]
+        \item $\mu_\alpha$ è irriducibile in $K[X]$;
+        \item $\ker \phi_\alpha = \ideal[\big]{\mu_\alpha(X)}$;
+        \item $\mu_\alpha$ è l'unico polinomio monico irriducibile di $K[X]$ che si annulla in $\alpha$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo le tre affermazioni separensatamente.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Per ipotesi $\mu_\alpha(\alpha) = 0$. Supponiamo per assurdo che $\mu_\alpha$ sia riducibile in $K[X]$, ovvero che esistano $a,\ b \in K[X]$ con $\deg a,\ \deg b < \deg \mu_\alpha$ tali che $\mu_\alpha(X) = a(X)b(X)$.
+        Questo significa che \[
+            \mu_\alpha(\alpha) = a(\alpha)b(\alpha) = 0 \in F.
+        \] Siccome $F$ è un campo vale la \hyperref[prop:ann_prod_dominio]{legge di annullamento del prodotto}, dunque $a(\alpha) = 0$ oppure $b(\alpha) = 0$. Ma ciò è assurdo in quanto $\mu_\alpha$ è di grado minimo tra i polinomi che si annullano in $\alpha$, mentre $a$ e $b$ hanno grado minore. Dunque $\mu_\alpha$ è irriducibile.
+        \item Per definizione l'ideale generato da $\mu_\alpha$ è \[
+            \ideal[\big]{\mu_\alpha(X)} = \set*{a(X)\mu_\alpha(X) \given a(X) \in K[X].} 
+        \] Siccome $\mu_\alpha \in \ker \phi_\alpha$ segue che $\ideal[\big]{\mu_\alpha(X)} \subseteq \ker \phi_\alpha$: infatti per ogni $a(X) \in K[X]$ vale che \begin{align*}
+            \phi_\alpha\parens*{a(X)\mu_\alpha(X)} &= \phi_\alpha\parens*{a(X)}\phi_\alpha\parens*{\mu_\alpha(X)}\\
+            &= a(\alpha)\mu_\alpha(\alpha)\\
+            &= 0.
+        \end{align*}
+        Sia ora $f \in \ker \phi_\alpha$: dimostriamo che $f \in \ideal[\big]{\mu_\alpha}$. Per il \hyperref[th:divisione_euclidea_KX]{Teorema di Divisione Euclidea} esistono $q, r \in K[X]$ tali che \[
+            f(X) = q(X)\mu_\alpha(X) + r(X),
+        \] con $r = 0_{K[X]}$ oppure $\deg r < \deg f$.
+
+        Applicando l'omomorfismo di valutazione ad entrambi i membri otteniamo che \[
+            0 = f(\alpha) = q(\alpha)\mu_\alpha(\alpha) + r(\alpha) = r(\alpha),
+        \] dove la prima uguaglianza viene dal fatto che $f \in \ker \phi_\alpha$, mentre l'ultima viene dal fatto che $\mu_\alpha$ si annulla in $\alpha$.
+
+        Da questo segue che $r$ si annulla in $\alpha$, ma ciò è possibile se e solo se $r = 0_{K[X]}$, in quanto altrimenti sarebbe un polinomio che si annulla in $\alpha$ di grado minore di $\mu_\alpha$. Dunque \[
+            f(X) = q(X)\mu_\alpha(X) \in \ideal[\big]{\mu_\alpha}, 
+        \] da cui segue che $\ker \phi_\alpha = \mu_\alpha$.
+        \item Sia $f \in K[X]$ un polinomio che si annulla in $\alpha$, monico e irriducibile: dimostriamo che $f = \mu_\alpha$.
+        
+        Siccome per il punto precedente tutti i polinomi che si annullano in $\alpha$ sono nell'ideale generato da $\mu_\alpha$, segue che $f(X) = g(X)\mu_\alpha(X)$ per qualche $g \in K[X]$. Tuttavia se $\deg g \geq 1$ allora $f$ sarebbe riducibile, dunque $\deg g = 0$, ovvero $g(X) = k_0$ per qualche $k_0 \in \units{K}$. Ma $f$ deve essere monico, e siccome $\mu_\alpha$ è monico segue che $k_0 = 1$, da cui $f = \mu_\alpha$. \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    [Polinomio minimo] Sia $\ext{F/K}$ un'estensione di campi, $\alpha \in F$ algebrico su $K$. L'unico polinomio monico e irriducibile di $K[X]$ che si annulla in $\alpha$ viene detto \emph{polinomio minimo} di $\alpha$ su $K$.
+\end{definition}
+
+\begin{example}
+    Data l'estensione $\ext{\R / \Q}$, $\alpha = \!\!\sqrt[3]{2} \in \R$, vogliamo trovare il polinomio minimo $\mu_\alpha \in \Q[X]$.
+
+    Sicuramente $X^3 - 2 \in \ideal[\big]{\mu_\alpha(X)}$ in quanto $\parens*{\!\!\sqrt[3]{2}}^3 - 2 = 0$, dunque $\mu_\alpha(X) \divides X^3 - 2$. Inoltre $X^3 - 2$ è monico ed irriducibile in $\Q[X]$, in quanto per il Criterio di Eisenstein (con $p = 2$) è irriducibile su $\Z$ e dunque per il Lemma di Gauss lo è su $\Q$. Da ciò segue che $\mu_\alpha(X) = X^3 - 2$.
+\end{example}
+
+\begin{proposition}
+    Sia $\ext{F/K}$ un'estensione di campi, $\alpha \in F$ algebrico su $K$ e $\mu_\alpha \in \K[X]$ il polinomio minimo di $\alpha$ su $K$. Allora vale che \[
+        K[\alpha] \isomorph \quot{K[X]}{\ideal[\big]{\mu_\alpha}}
+    \] e $K[\alpha]$ è un campo.
+\end{proposition}
+\begin{proof}
+    Siccome $\mu_\alpha$ è irriducibile segue direttamente che il quoziente è un campo. Inoltre $K[\alpha]$ è isomorfo al quoziente per la \Cref{prop:KX/ker_valutazione_isomorfo_Kalpha} e per il secondo punto della \Cref{prop:caratt_polinomio_minimo}.
+\end{proof}
+
+\begin{remark}
+    Sia $K(\alpha)$ l'insieme \[
+        K(\alpha) \deq \set*{\frac{f(\alpha)}{g(\alpha)} \given f,\ g \in K[X],\ g(\alpha) \neq 0}.    
+    \] Se $\alpha$ è algebrico su $K$ possiamo mostrare che $K[\alpha] = K(\alpha)$.
+
+    Infatti innanzitutto esiste un'inclusione canonica \begin{align*}
+        K[\alpha] &\to K(\alpha)\\
+        f(\alpha) &\mapsto \frac{f(\alpha)}{1}.
+    \end{align*} Inoltre per la proposizione precedente $K[\alpha]$ è un campo, dunque per ogni $g \in K[X]$ vale che $\frac{1}{g(\alpha)} \in K[\alpha]$, dunque per ogni $f \in K[X]$ vale che \[
+        f(\alpha) \cdot \frac{1}{g(\alpha)} \in K[\alpha],    
+    \] da cui $K[\alpha] = K(\alpha)$.
+\end{remark}
+
+\begin{definition}
+    [Grado dell'estensione]
+    Sia $\ext{F/K}$ un'estensione di campi. Si dice \emph{grado di} $\ext{F/K}$ il numero naturale \[
+        \ExtDegree{F : K} \deq \dim_K F.    
+    \]
+\end{definition}
+
+\begin{proposition}
+    Sia $\ext{F/K}$ un'estensione di campi, $\alpha \in F$. Allora vale che \[
+        \dim_K K[\alpha] = \begin{cases}
+            +\infty, &\text{se $\alpha$ è trascendente su $K$}\\
+            \deg \mu_\alpha, &\text{se $\alpha$ è algebrico su $K$.}
+        \end{cases}    
+    \]
+\end{proposition}
+\begin{proof}
+    Se $\alpha$ è trascendente allora $K[\alpha] \isomorph K[X]$, dunque \[
+        \ExtDegree{K[\alpha]: K} = \ExtDegree{K[X]: K} = \dim_K K[X] = +\infty.
+    \] Invece se $\alpha$ è algebrico su $K$ vale che $K[\alpha] \isomorph \quot{K[X]}{\ideal[\big]{\mu_\alpha(X)}}$, da cui segue che \[
+        \ExtDegree{K[\alpha]: K} = \ExtDegree{\quot{K[X]}{\ideal[\big]{\mu_\alpha(X)}} : K} = \deg \mu_\alpha
+    \] per il secondo punto della \Cref{th:caratt_quot_polinomi}. In particolare una $K$-base di $K[\alpha]$ può essere ottenuta sfruttando una $K$-base del quoziente e l'isomorfismo: \[
+        \parens*{\eqcl 1,\ \eqcl{x}, \dots,\ \eqcl{x^{n-1}}} \xmapsto{\bar\phi} \parens*{1,\ \alpha, \dots,\ \alpha^{n-1}}.    
+    \]
+\end{proof}
+
+\begin{proposition}
+    Sia $\ext{F/K}$ un'estensione di campi. Se $\ExtDegree*{F : K} < +\infty$, ovvero se l'estensione è finita, allora è necessariamente algebrica.
+\end{proposition}
+\begin{proof}
+    Sia $n \deq \ExtDegree*{F : K}$ e sia $\alpha \in F$ qualsiasi.
+
+    $\alpha$ è algebrico su $K$ se e solo se esiste un polinomio non nullo $f \in K[X]$ tale che $f(\alpha) = 0$. Osserviamo che, siccome $F$ è un $K$-spazio vettoriale di dimensione $n$, i vettori \[
+        1, \alpha, \dots, \alpha^n    
+    \] sono linearmente dipendenti (essendo $n+1$ vettori), ovvero esistono coefficienti $a_0, \dots, a_n \in K \setminus \set{0}$ tali che \[
+        a_0 + a_1\alpha + \dots + a_n\alpha^n = 0,    
+    \] ovvero $\alpha$ è una radice del polinomio \[
+        f(X) \deq \sum_{i=0}^n a_iX^i.
+    \] Dunque $\alpha$ è algebrico su $K$, da cui la tesi.
+\end{proof}
+
+Il viceversa non è necessariamente vero: esistono estensioni algebriche infinite, come vedremo più avanti.
+
+\begin{theorem}
+    [Teorema delle torri di estensioni]
+    {torri}
+    Siano $K \subseteq F \subseteq L$ campi e siano $n \deq \ExtDegree*{F : K}$ e $m \deq \ExtDegree*{L : F}$ finiti. Allora \[
+        \ExtDegree*{L : K} = \ExtDegree*{L : F}\ExtDegree*{F : K} = mn.    
+    \] 
+\end{theorem}
+\begin{proof}
+    Sia $v_1, \dots, v_n$ una $K$-base di $F$ e $w_1, \dots, w_m$ una $F$-base di $L$. Mostriamo che \[
+        \set*{w_iv_j}^{i = 1, \dots, m}_{j = 1, \dots, n}  
+    \] è una $K$-base di $L$.
+
+    \paragraph*{Generatori}
+    Siccome $\set{w_1, \dots, w_n}$ è una $F$-base di $L$ vale che per ogni $\alpha \in L$ esistono $\lambda_1, \dots, \lambda_n \in F$ tali che \[
+        \alpha = \sum_{i=1}^n \lambda_iw_i.    
+    \] Inoltre, siccome $\set{v_1, \dots, v_n}$ è una $K$-base di $F$, per ogni $\lambda_i$ esisteranno $a_{i1}, \dots, a_{im} \in K$ tali che \[
+        \lambda_i = \sum_{j=1}^m a_{ij}v_j.    
+    \] Possiamo quindi scrivere \begin{align*}
+        \alpha &= \sum_{i=1}^n \parens*{\sum_{j=1}^m a_{ij}v_j} w_i\\
+        &= \sum_{i=1}^n \sum_{j=1}^m a_{ij}v_jw_i,
+    \end{align*} da cui l'insieme dato è un insieme di generatori di $L$.
+
+    \paragraph*{Indipendenza lineare}
+    Mostriamo che se esistono $a_{ij} \in K$ tali che \[
+        \sum_{i=1}^n \sum_{j=1}^m a_{ij}v_jw_i = 0
+    \] allora essi sono tutti uguali a $0$.
+    Osserviamo che \[
+        \sum_{i=1}^n \sum_{j=1}^m a_{ij}v_jw_i = \sum_{i=1}^n \parens*{\sum_{j=1}^m a_{ij}v_j} w_i,
+    \] dove il vettore interno è un elemento di $F$. Siccome i $w_i$ formano una $F$-base di $L$ segue quindi che per ogni $i$ \[
+        \sum_{j=1}^m a_{ij}v_j = 0.
+    \] Ma i $v_j$ formano una $K$-base di $F$, dunque $a_{ij} = 0$ per ogni $i, j$, da cui i vettori sono indipendenti.
+
+    Segue quindi infine che i vettori $w_iv_j$ formano una $K$-base di $L$, da cui la tesi.
+\end{proof}
+
+Un esempio di applicazione di questo teorema è il seguente: se $\ext{F/K}$ è un'estensione di grado $n$, allora per ogni $\alpha \in F$ vale che $\deg \mu_\alpha \divides n$.
+
+Infatti costruendo la torre di estensioni \[
+    \begin{tikzcd}[every arrow/.append style={dash}]
+        K \arrow[r] \arrow[rr, bend left, "n"] & K(\alpha) \arrow[r] & F
+    \end{tikzcd}    
+\] osserviamo che \begin{itemize}
+    \item $\ExtDegree*{K(\alpha) : K} = \deg \mu_\alpha$,
+    \item $\ExtDegree*{F : K} = n$,
+    \item per il \nameref{th:torri} $\ExtDegree*{F : K} = \ExtDegree*{F : K(\alpha)}\ExtDegree*{K(\alpha) : K}$,
+\end{itemize}
+da cui viene la tesi.
+
+\begin{definition}
+    Sia $\ext{L / K}$ un'estensione di campi, $\alpha_1, \dots, \alpha_n \in L$ algebrici su $K$. Definiamo \[
+        K[\alpha_1, \dots, \alpha_n] \deq \set*{ p(\alpha_1, \dots, \alpha_n) \given p \in K[X_1, \dots, X_n] }.    
+    \]
+\end{definition}
+
+\begin{proposition}
+    Sia $\ext{L / K}$ un'estensione di campi, $\alpha_1, \dots, \alpha_n \in L$ algebrici su $K$. Valgono le seguenti affermazioni:
+    \begin{enumerate}[label={(\roman*)}]
+        \item $K[\alpha_1, \dots, \alpha_n]$ è un campo;
+        \item $K[\alpha_1, \dots, \alpha_n]$ è il più piccolo sottocampo di $L$ contenente $K$, $\alpha_1, \dots, \alpha_n$.
+    \end{enumerate}
+\end{proposition}
+
+Ricordiamo che con "il più piccolo sottocampo contenente $K$ e gli $\alpha_i$ intendiamo che \[
+    K[\alpha_1, \dots, \alpha_n] = \biginters_{\substack{M \subseteq L \\[2pt] K \subseteq M \\[2pt] \alpha_i \in M}} M.    
+\]
+
+\begin{proof}
+    Dimostriamo il primo punto per induzione su $n$.
+    \begin{description}
+        \item[Caso base] Se $n = 1$ allora $K[\alpha_1] = K(\alpha_1)$ ed è un campo, come abbiamo già mostrato.
+        \item[Passo induttivo] Supponiamo che \[
+            F \deq K[\alpha_1, \dots, \alpha_{n-1}] = K(\alpha_1, \dots \alpha_{n-1}) 
+        \] sia un campo, e mostriamo che $F[\alpha_n]$ è un campo. 
+
+        Siccome $\alpha_n$ è algebrico su $K$ allora sarà algebrico su $F$, dunque per il caso base $F[\alpha_n]$ è un campo. 
+    \end{description}
+
+    Per quanto riguarda il secondo punto, dobbiamo mostrare che \[
+        K[\alpha_1, \dots, \alpha_n] = \biginters_{\substack{M \subseteq L \\[2pt] K \subseteq M \\[2pt] \alpha_i \in M}} M.    
+    \]
+    Siccome $K[\alpha_1, \dots, \alpha_n]$ è uno degli $M$ sicuramente vale che \[
+        K[\alpha_1, \dots, \alpha_n] \supseteq \biginters M.
+    \] Viceversa, sia $M \subseteq L$ tale che $K \subseteq M$, $\alpha_i \in M$. Allora per ogni $f \in K[X]$ sicuramente $M$ contiene $f(\alpha_1, \dots, \alpha_n)$, da cui $K[\alpha_1, \dots, \alpha_n] \subseteq M$, e quindi \[
+        K[\alpha_1, \dots, \alpha_n] \subseteq \biginters M.
+    \]
+\end{proof}
+
+\subsection{Chiusure algebriche}
+
+\begin{definition}
+    [Algebricamente chiuso] 
+    Sia $L$ un campo. $L$ si dice \strong{algebricamente chiuso} se ogni polinomio non costante di $L[X]$ ammette almeno una radice in $L$.
+\end{definition}
+
+\begin{definition}
+    [Chiusura algebrica]
+    Sia $\ext{\closure{K} / K}$ un'estensione di campi. Si dice che $\closure{K}$ è una \strong{chiusura algebrica} di $K$ se $\closure K$ è algebricamente chiuso e $\ext{\closure{K} / K}$ è un'estensione algebrica.
+\end{definition}
+
+Osserviamo che un campo è algebricamente chiuso se e solo se ogni polinomio non costante si fattorizza su $L$ in polinomi di grado $1$, ovvero se e solo se gli unici irriducibili di $L[X]$ sono i polinomi di grado $1$.
+
+Ad esempio in virtù del \nameref{th:fondamentale_algebra} $\C$ è un campo algebricamente chiuso, mentre $\R$ non lo è. In particolare $\C$ è la chiusura algebrica di $\R$ in quanto $\C = \R(i)$, ma non è la chiusura algebrica di $\Q$ in quanto l'estensione $\ext{\C / \Q}$ non è algebrica.
+
+\begin{theorem}
+    [Esistenza ed unicità della chiusura algebrica]
+    Sia $K$ un campo. Allora la chiusura algebrica di $K$ esiste ed è unica a meno di isomorfismo.
+\end{theorem}
+
+La chiusura algebrica di un campo ci porta a parlare del campo di spezzamento di un polinomio.
+
+\begin{definition}
+    [Campo di spezzamento]
+    Sia $f \in K[X]$ e siano $\alpha_1, \dots, \alpha_n \in \closure{K}$ le sue radici. Si dice \strong{campo di spezzamento} di $f$ su $K$ il campo \[
+        K[\alpha_1, \dots, \alpha_n] = K(\alpha_1, \dots, \alpha_n).    
+    \]
+\end{definition}
+
+Quindi il campo di spezzamento di un polinomio $f$ è il più piccolo sottocampo di $\closure K$ che contenga $K$ e tutte le radici di $f$.
+
+\subsection{Caratteristica di un campo}
+
+Sia $F$ un campo. Consideriamo la mappa \begin{align*}
+    \phi_F : \Z &\to F\\
+    1 &\mapsto 1_F.\\
+    n &\mapsto \underbrace{1_F + \dots + 1_F}_{n \text{ volte}}
+\end{align*}
+
+È semplice dimostrare che $\phi_F$ sia un omomorfismo di anelli; dal primo teorema di omomorfismo segue quindi che esiste un omomorfismo di anelli \[
+    \quot{\Z}{\ker \phi_F} \embeds F
+\] Studiamo $\ker \phi_F$: siccome è un sottogruppo di $\Z$ deve essere necessariamente della forma $n\Z$ per qualche $n \in \Z$.
+
+Mostriamo che $n = 0$ oppure $n = p$ per qualche $p \in \Z$ primo. Sicuramente $n \neq 1$ poiché $1_F \neq 0_F$; supponiamo quindi per assurdo che $n = ab$ con $a, b \in \Z$ entrambi maggiori di $1$. Allora \[
+    \phi_F(n) = \phi_F(ab) = \phi_F(a)\phi_F(b) = 0_F
+\] se e solo se $\phi_F(a) = 0$ oppure $\phi_F(b) = 0$ (poiché $F$ è un campo e vale la legge di annullamento del prodotto).
+Segue quindi che $a \in \ker \phi_F$ oppure $b \in \ker \phi_F$, dunque certamente $\ker \phi_F \neq n\Z$.
+
+\begin{definition}
+    [Caratteristica di un campo]
+    Sia $F$ un campo e $\phi_F$ l'omomorfismo definito sopra.
+    Si dice che $F$ ha \strong{caratteristica} $0$ se $\ker \phi_F = 0$, \strong{caratteristica} $p$ se $\ker \phi_F = p\Z$.
+    Indicheremo la caratteristica di un campo con $\FieldChar F$.
+\end{definition}
+
+Osserviamo che se $\FieldChar F = p$ allora $\Zmod{p} \embeds F$, ovvero il campo finito $\F_{p}$ è contenuto in $F$ come suo sottocampo; invece se $\FieldChar F = 0$ allora $\Z \embeds F$, da cui $\Q \embeds F$.
+
+In ogni caso quindi un campo contiene un sottocampo fondamentale, che può essere $\F_p$ per qualche $p$ primo oppure $\Q$.

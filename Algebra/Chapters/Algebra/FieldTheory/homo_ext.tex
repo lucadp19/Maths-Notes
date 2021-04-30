@@ -1,0 +1,224 @@
+\section{Estensione di omomorfismi}
+
+Abbiamo studiato nelle sezioni precedenti come estendere un campo $\K$ quozientando per un polinomio irriducibile, oppure aggiungendo le radici di un polinomio e ottenendo quindi il campo di spezzamento di tale polinomio su $\K$.
+
+Vogliamo ora estendere le \emph{immersioni}: data un'immersione $\phi \K \embeds \closure{\K}$ e un'estensione di campi $\ext{\bL / \K}$ vogliamo scoprire in quali condizioni si può costruire un omomorfismo di campi (e quindi un'immersione) \[
+    \bar\phi : \bL \embeds \closure{\K} 
+\] tale che $\bar\phi\restrict{\K} = \phi$.
+
+Seguiamo la stessa strategia che abbiamo utilizzato per costruire le estensioni di campi: passiamo prima per i polinomi, poi per le estensioni semplici ed infine per le estensioni qualunque (finite).
+
+\begin{theorem}
+    {Estensione di un omomorfismo ai polinomi}{}
+    Siano $R, S$ anelli commutativi con identità e sia $\phi : R \to S$ un omomorfismo di anelli. Per ogni $s \in S$ esiste un unico modo per estendere $\phi$ ad un omomorfismo \[
+        \phi_\ast : R[x] \to S
+    \] tale che $\phi_\ast\restrict{R} = \phi$ e $x \mapsto s$. 
+\end{theorem}
+\begin{proof}
+    Sia $\sum_{i=0}^n a_ix^i \in R[x]$ un polinomio. Allora siccome $\phi_\ast$ deve essere un omomorfismo di anelli segue che \begin{align*}
+        \phi_\ast\parens*{\sum_{i=1}^n a_ix^i} &= \sum_{i=0}^n \phi_\ast\parens*{a_ix^i}\\
+        &= \sum_{i=0}^n \phi_\ast(a_i)\phi_\ast(x^i)\\
+        &= \sum_{i=0}^n \phi(a_i)s^i
+    \end{align*} dove l'ultimo passaggio viene dal fatto che gli $a_i$ sono elementi di $R$ e quindi $\phi_\ast(a_i) = \phi(a_i)$.
+    
+    Dunque se $\phi_\ast$ esiste è univocamente determinato. Tuttavia la funzione \begin{align*}
+        R[x] &\to S\\
+        \sum_{i=0}^n a_ix^i &\mapsto \sum_{i=0}^n \phi(a_i)s^i
+    \end{align*} è certamente un omomorfismo di anelli ben definito, e quindi la tesi.
+\end{proof}
+
+Un caso particolare di tale omomorfismo esteso è quello in cui anche il codominio è un anello di polinomi: in tal caso scriveremo $\phi$ sia per indicare l'omomorfismo $R \to S$ che per l'omomorfismo \begin{align*}
+    \phi : R[x] &\to S[x]\\
+    p=\sum_{i=1}^n a_ix^i &\mapsto \phi p \deq \sum_{i=1}^n \phi(a_i)x^i.
+\end{align*} 
+L'omomorfismo $\phi_\ast$ che manda $x$ in $s \in S$ può dunque essere denotato anche \[
+    p \mapsto (\phi p)(s).
+\]
+
+In particolare questo Teorema può essere usato nel caso in cui il dominio e codominio siano campi: possiamo estendere $\phi : \K \embeds \closure{\K}$ ad un omomorfismo \[
+    \phi_\ast : \K[x] \to \closure{\K}
+\] scegliendo un elemento $\beta \in \closure{\K}$ come immagine di $x$ (ovvero $\phi_\ast(x) = \beta$).
+
+% Prima di studiare effettivamente come estendere gli omomorfismi alle estensioni di campi enunciamo un semplice lemma che ci servirà più avanti.
+
+% \begin{lemma}
+%     {}{}
+%     Sia $\phi : R \embeds S$ un omomorfismo di anelli iniettivo e sia $\phi : R[x] \embeds S[x]$ l'omomorfismo indotto. Allora $p \in R[x]$ è riducibile se e solo se $\phi p \in S[x]$ è riducibile. 
+% \end{lemma}
+% \begin{proof}
+%     Dimostriamo entrambi i versi dell'implicazione.
+%     \begin{description}
+%         \item[\boximpl] Supponiamo che $p = fg \in R[x]$. Allora \[
+%             \phi p = \phi(fg) = \phi f \cdot \phi g \in S[x]
+%         \] e dunque $\phi p$ è riducibile.
+%         \item[\boximplby] Siccome $\phi p$ è riducibile dovranno esistere $f, g \in (\phi R)[x]$ tali che     
+%     \end{description}
+% \end{proof}
+
+\newthoughtpar{Estensione di $\id$ a $\K(\alpha)$} Vogliamo ora estendere \begin{align*}
+    \id_\ast : \K[x] &\to \closure\K \\
+    p(x) &\mapsto p(\beta)
+\end{align*} ad un omomorfismo \[
+    \tilde\phi : \K(\alpha) \embeds \closure{\K}
+\] che quindi rispetti $\tilde\phi\restrict{\K} = \id$.
+
+Ricordiamo che $\K(\alpha) \isomorph \quot{\K[x]}{\ker \phi_\alpha} = \quot{\K[x]}{\ideal[\big]{\mu_\alpha}}$: per fare in modo che $\id_\ast$ induca per passaggio al quoziente un omomorfismo $\K(\alpha) \embeds \closure{\K}$ dobbiamo verificare le condizioni del \Cref{th:first_iso}, ovvero che \begin{equation*}
+    \ideal[\big]{\mu_\alpha} \subseteq \ker \id_\ast
+    \iff \mu_\alpha \in \ker \id_\ast
+    \iff \id_\ast\parens[\big]{\mu_\alpha(x)} = \mu_\alpha(\beta) = 0.
+\end{equation*}
+
+Dobbiamo quindi scegliere $\beta$ in modo che $\beta$ sia radice del polinomio minimo di $\alpha$. 
+
+\begin{definition}
+    {Coniugato di un elemento algebrico}{}
+    Sia $\K$ un campo, $\alpha \in \closure\K$. Si dice che $\beta \in \closure\K$ è un \strong{coniugato} di $\alpha$ se $\beta$ è radice del polinomio minimo di $\alpha$ su $\K$. 
+\end{definition}
+
+A questo punto possiamo costruire il diagramma \[
+    \begin{tikzcd}
+        \K[x] \arrow[rr, "\id_\ast"] \arrow[dr, "\pi"] & &\closure{\K}\\
+        & \quot{\K[x]}{\ideal[\big]{\mu_\alpha}} \isomorph \K(\alpha) \arrow[ur, hook, "\tilde\phi"]
+    \end{tikzcd}
+\] da cui segue che $\tilde\phi$ è un'immersione di $\K(\alpha)$ in $\closure{\K}$. Per commutatività del diagramma segue inoltre che per ogni $k \in \K$ \[
+    k = \id_\ast(k) = (\tilde\phi \circ \pi)(k) = \tilde\phi\parens*{\eqcl+{k}},
+\] ovvero che $\tilde\phi\restrict{\K} = \id$.
+
+Abbiamo quindi dimostrato che se $k$ è il numero di coniugati distinti di $\alpha$ in $\closure\K$ e $\alpha_1, \dots, \alpha_k \in \closure\K$ sono tali coniugati, esistono $k$ omomorfismi \[
+    \phi_1, \dots, \phi_k : \K(\alpha) \embeds \closure\K
+\] tali che $\phi_i\restrict{\K} = \id$ e $\phi_i(\alpha) = \alpha_i$. 
+
+\newthought{Radici distinte di $\mu_\alpha$} Dobbiamo ora scoprire quanti sono i coniugati distinti di $\alpha$, ovvero quante sono le radici distinte di $\mu_\alpha$.
+
+Sappiamo che, essendo $\closure\K$ algebricamente chiuso, il numero di radici con molteplicità è esattamente uguale al grado di $\mu_\alpha$. Vogliamo ora capire in quali casi tutte le radici di $\mu_\alpha$ sono distinte.
+
+Ricordiamo che per il \nameref{prop:crit_deriv} un polinomio $f \in \K[x]$ ha radici multiple in $\closure\K$ se e solo se $\gcd{f, f'} \neq 1$. Nel caso particolare in cui $f$ sia irriducibile, per il \Cref{cor:crit_deriv_irrid} basta controllare che $f'$ non sia il polinomio nullo.
+
+\begin{definition}
+    {Campo perfetto}{}
+    Un campo $\K$ si dice \strong{perfetto} se ogni polinomio irriducibile $f \in \K[x]$ non ammette radici multiple in $\closure\K$, ovvero se $f'$ non è il polinomio nullo.  
+\end{definition}
+
+Se $\K$ è perfetto segue quindi che ogni polinomio $f \in \K[x]$ irriducibile (e quindi anche $\mu_\alpha$) ha esattamente $\deg f$ radici distinte.
+
+Si può dimostrare che ogni campo di caratteristica $0$ e ogni campo finito è perfetto.
+\begin{proposition}
+    {}{}
+    Se $\FieldChar \K = 0$ allora $\K$ è perfetto.
+\end{proposition}
+\begin{proof}
+    Sia $f \in \K[x]$ irriducibile e quindi di grado maggiore o uguale a $1$.
+    \[
+        f(x) \deq \sum_{i=0}^n a_ix^i 
+        \quad \implies \quad
+        f'(x) = \sum_{i=1}^{n} ia_ix^{i-1} 
+    \] e dunque $f' \neq 0$. 
+\end{proof}
+
+\begin{proposition}
+    {}{}
+    Se $\F$ è un campo finito allora $\F$ è perfetto.
+\end{proposition}
+
+\newthought{Esistenza di campi non perfetti} Tuttavia, esistono anche campi non perfetti: per quanto detto sopra un tale campo deve essere necessariamente un campo infinito di caratteristica non $0$.
+
+Prendiamo ad esempio il campo $\F_p(t)$ delle funzioni razionali in $\F_p$. Consideriamo il polinomio $f(x) = x^p - t \in \F_p(t)[x]$: la derivata di tale polinomio è $f'(x) = px^{p-1} = 0$. 
+
+Ci rimane quindi da dimostrare che $f$ sia irriducibile in $\F_p(t)[x]$. 
+
+Osserviamo che $A = \F_p[t]$ è l'anello il cui campo delle frazioni è $\F_p(t)$ e $A$ è un \UFD (poiché è un dominio euclideo). Per una delle conseguenze del \nameref{th:gauss_generale} (in particolare per il \Cref{cor:primitivo_div_in_K[X]=>div_in_A[X]}) è dunque sufficiente mostrare che $f$ sia irriducibile in $A[x]$ (in quanto $f \in A[x]$). 
+
+Ma $f$ è irriducibile in $A[x]$ poiché è di Eisenstein rispetto all'ideale primo $\mathfrak{p} \deq \ideal{t} \subseteq A$: $\mathfrak{p}$ è primo poiché \[
+    \quot{A}{\mathfrak{p}} = \quot{\F_p[t]}{\ideal{t}} \isomorph \F_p
+\] è un dominio.
+
+Abbiamo quindi dimostrato che $f$ è un polinomio irriducibile di $\F_p(t)[x]$ che ha radici multiple. In effetti se $\alpha \in \closure{\K}$ è una radice di $f$, allora \[
+    f(\alpha) = \alpha^p - t = 0,
+\] da cui segue che $t = \alpha^p$. Ma allora \[
+    f(x) = x^p - \alpha^p = (x - \alpha)^p \qquad \text{in } \closure\K[x]
+\] dunque $f$ ha una sola radice.
+
+Nel nostro studio delle estensioni di campi considereremo solamente campi perfetti. In particolare parleremo assumeremo che le nostre estensioni siano \strong{separabili}.
+
+\begin{definition}
+    {Estensione separabile}{}
+    Un'estensione algebrica di campi $\ext{\bL / \K}$ si dice \strong{separabile} se per ogni $\alpha \in \bL$ il polinomio minimo $\mu_\alpha$ di $\alpha$ su $\K$ ha $\deg \mu_\alpha$ radici distinte in una chiusura algebrica di $\K$.  
+\end{definition}
+
+Siccome i campi che considereremo saranno sempre perfetti, ogni loro estensione finita (e quindi algebrica) sarà separabile.
+
+Possiamo finalmente enunciare la condizione per estendere l'identità ad un'immersione $\K(\alpha) \embeds \closure\K$.
+
+\begin{theorem}
+    {Estensione dell'identità ad un'estensione semplice}{}
+    Sia $\K$ un campo (perfetto), $\alpha \in \closure\K$. Siano inoltre $\alpha_1, \dots, \alpha_n \in \closure\K$ i coniugati di $\alpha$. 
+
+    Allora esistono $n$ immersioni \[
+        \phi_1, \dots, \phi_n : \K(\alpha) \embeds \closure{\K}
+    \] tali che $\phi_i\restrict{\K} = \id$ e $\phi_i(\alpha) = \alpha_i$. 
+\end{theorem} 
+
+\newthoughtpar{Estensione di immersioni qualunque a $\K(\alpha)$}
+Consideriamo ora un'immersione $\phi : \K \embeds \closure\K$ qualsiasi, con $\K$ perfetto. Come abbiamo visto in precedenza, essa si estende ad un omomorfismo di anelli \begin{align*}
+    \phi_\ast : \K[x] &\to \closure\K \\
+    p(x) &\mapsto (\phi p)(\beta)
+\end{align*} per ogni scelta di $\beta \in \closure\K$. Per fare in modo che questo omomorfismo passi al quoziente $\K(\alpha) \isomorph \quot{\K[x]}{\ideal[\big]{\mu_\alpha}}$ dobbiamo ancora una volta imporre che \begin{equation*}
+    \ideal[\big]{\mu_\alpha} \subseteq \ker \phi_\ast
+    \iff \mu_\alpha \in \ker \phi_\ast
+    \iff \phi_\ast\parens[\big]{\mu_\alpha(x)} = \phi\mu_\alpha(\beta) = 0,
+\end{equation*} ovvero che $\beta$ sia radice di $\phi\mu_\alpha$.
+
+Dunque esistono tante immersioni distinte che estendono $\phi_\ast$ (e quindi $\phi$) quante sono le radici di $\phi\mu_\alpha$. Osserviamo però che \[
+    \deg \phi\mu_\alpha = \deg \mu_\alpha
+\] in quanto $\phi$ è iniettivo e quindi non può annullare il termine di testa. 
+
+Inoltre essendo $\mu_\alpha$ irriducibile segue anche che $\phi\mu_\alpha$ è irriducibile. % WHY?
+
+Siccome $\K$ è perfetto, $\phi\mu_\alpha$ ha esattamente $n \deq \deg \phi\mu_\alpha = \deg \mu_\alpha$ radici, da cui segue che possiamo estendere $\phi$ in $n$ modi diversi.
+
+\begin{theorem}
+    {Estensione di un'immersione ad un'estensione semplice}{extending_phi_K(a)}
+    Sia $\K$ un campo (perfetto), $\phi : \K \embeds \closure\K$ e $\alpha \in \closure\K$.
+
+    Allora esistono $n$ immersioni \[
+        \phi_1, \dots, \phi_n : \K(\alpha) \embeds \closure{\K}
+    \] tali che $\phi_i\restrict{\K} = \phi$.
+\end{theorem}
+
+\newthoughtpar{Estensioni di immersioni qualunque ad un sovracampo qualsiasi}
+Dimostriamo ora il caso più generale possibile, ovvero quello in cui l'estensione di campi considerata non sia $\ext{\K(\alpha) / \K}$ ma una generica estensione finita $\ext{\bL / \K}$.
+
+\begin{theorem}
+    {Estensione di immersioni ad estensioni finite}{finite_ext_embedding}
+    Sia $\ext{\bL / \K}$ un'estensione finita (e separabile)di grado $n$. Allora per ogni $\phi : \K \embeds \closure\K$ esistono $n$ estensioni \[
+        \phi_1, \dots, \phi_n : \bL \embeds \closure\K
+    \] tali che $\phi_i\restrict{\K} = \phi$. 
+\end{theorem}
+\begin{proof}
+    Lo dimostriamo per induzione su $n \deq \ExtDegree{\bL : \K}$.
+    \newthought{Caso base} Se $n = 1$ segue che $bL \isomorph \K$ e quindi la tesi è ovvia.
+    \newthought{Passo induttivo} Supponiamo che la tesi sia vera per ogni $m < n$ e dimostriamolo per $n$.
+    
+    Sia $\alpha \in \bL \setminus \K$. Possiamo costruire la torre di estensioni \[
+        \begin{tikzcd}
+            \K \arrow[r, "m"] \arrow[rr, bend left, "n"] &
+            \K(\alpha) \arrow[r, "d"] &
+            \bL.
+        \end{tikzcd}
+    \] Se $m = n$ allora $\bL = \K(\alpha)$ e quindi vale il \Cref{th:extending_phi_K(a)}. Altrimenti deve essere $1 < m < n$: segue quindi che $d \deq \ExtDegree{\bL : \K(\alpha)} < n$.
+    
+    Allora per il \Cref{th:extending_phi_K(a)} vale che $\phi$ si estende a $m$ immersioni \[
+        \phi_1, \dots, \phi_m : \K(\alpha) \embeds \closure\K.
+    \] Per ipotesi induttiva dunque ogni $\phi_i : \K(\alpha) \embeds \closure\K$ si estenderà a $d$ immersioni \[
+        \phi_{i1}, \dots, \phi_{id} : \bL \embeds \closure\K.
+    \]
+
+    Abbiamo trovato $m \cdot d = n$ immersioni. Osserviamo inoltre che $\phi_{ij}\restrict{\K(\alpha)} = \phi_i$ e $\phi_i\restrict{\K} = \phi$, da cui ogni immersione $\phi_{ij}$ estende $\phi$, come volevamo.
+\end{proof}
+
+\begin{definition}
+    {Immersione di un'estensione di campi}{}
+    Sia $\ext{\bL / \K}$ un'estensione algebrica di campi. Allora si dice \strong{immersione di} $\ext{\bL / \K}$ un'immersione \[
+        \phi : \bL \embeds \closure\K
+    \] tale che $\phi\restrict{\K} = \id$. 
+\end{definition}

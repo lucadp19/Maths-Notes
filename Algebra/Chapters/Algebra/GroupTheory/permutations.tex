@@ -1,0 +1,377 @@
+\section{Gruppi di permutazioni}
+
+Usando la teoria sulle azioni di gruppo viste finora possiamo finalmente studiare bene i \emph{gruppi di permutazione}. Un gruppo di permutazioni è il gruppo \[
+    \Sym_n \deq \set*{f : \set{1, \dots, n} \to \set{1, \dots, n} \given f \text{ bigettiva}}
+\] insieme all'operazione di composizione tra funzioni.
+
+Ogni elemento di $\Sym_n$ può essere rappresentato nei seguenti modi: \[
+    \Sym_3 \ni
+    \left\{
+    \begin{aligned}
+        &1 \mapsto 2 \\
+        &2 \mapsto 3 \\
+        &3 \mapsto 4
+    \end{aligned}
+    \right\}
+    = \begin{pmatrix}
+        1 & 2 & 3\\
+        2 & 3 & 1
+    \end{pmatrix}
+    = (1, 2, 3),
+\] dove il primo semplicemente mi dà l'immagine di ogni elemento di $\set{1, \dots, n}$, il secondo fa la stessa cosa ma sotto forma di matrice e il terzo va letto come "$1$ viene portato in $2$ che viene portato in $3$ che viene riportato in $1$".
+
+Useremo nella maggior parte dei casi il terzo metodo, poiché è quello più veloce e fa trasparire tante proprietà delle permutazioni.
+
+Per studiare il comportamento di una permutazione $\sigma \in \Sym_n$ dobbiamo \emph{dare la sua azione} sull'insieme $\set*{1, \dots, n}$, che corrisponde all'inclusione del sottogruppo generato da $\sigma$: \begin{align*}
+    \gen*{\sigma} &\embeds \Sym_n \\
+    \sigma^k &\mapsto \begin{aligned}[t]
+        \sigma^k : \set*{1, \dots, n} &\to \set*{1, \dots, n}\\
+        i &\mapsto \sigma^k(i).
+    \end{aligned}
+\end{align*} 
+
+Sia $x \in \set*{1, \dots, n}$ qualsiasi e consideriamo la sua orbita: \[
+    \orb{x} = \set*{\sigma^k(x) \given k \geq 0} = \set*{x, \sigma(x), \dots, \sigma^{m_x - 1}(x)}.  
+\] Osserviamo che ovviamente $\gen{\sigma}$ agisce ciclicamente su ogni orbita: se $y \in \orb{x}$ allora $\sigma^k(y) \in \orb{x}$, dunque $\sigma^k(\orb{x}) = \orb{x}$ poiché $\orb{x}$ è già l'insieme di tutte le possibili immagini.
+
+\newthought{Claim:} $m_x \deq \min \set*{k > 0 \given \sigma^k(x) = x}$.
+\begin{proof}
+    Sia $k$ il minimo intero positivo tale che $\sigma^k(x)$ appartenga all'insieme $\set*{x, \dots, \sigma^{k-1}(x)}$: dovrà quindi esistere un $0 \leq h < k$ tale che $\sigma^k(x) = \sigma^h(x)$, il che equivale a dire che \[
+        \sigma^{k-h}(x) = \id(x) = x.
+    \] Dunque $\sigma^{k-h}$ appartiene a $\set*{x, \dots, \sigma^{k-1}(x)}$ e inoltre $0 < k - h \leq k$ poiché $h < k$. Per minimalità di $k$ segue quindi che $h = 0$, cioè $\sigma^k(x) = x$, come volevamo.  
+\end{proof} 
+
+L'orbita di $\sigma$ (o più precisamente del sottogruppo di $\Sym_n$ generato da $\sigma$) è quindi il sottoinsieme di $\set*{1, \dots, n}$ che viene \emph{permutato ciclicamente} da $\sigma$.
+
+\begin{definition}
+    {Ciclo}{}
+    Sia $\sigma \in \Sym_n$, $x \in \set*{1, \dots, n}$. Si dice \strong{ciclo} l'orbita di $x$ rispetto all'azione di $\gen{\sigma}$ vista come insieme ordinato. 
+\end{definition}
+
+\begin{example}
+    Consideriamo la permutazione $\tau \in \Sym_5$ data da \[
+        \left\{
+        \begin{aligned}
+            &1 \mapsto 2 \\
+            &2 \mapsto 1 \\
+            &3 \mapsto 4 \\
+            &4 \mapsto 5 \\
+            &5 \mapsto 3
+        \end{aligned}
+        \right\}
+    \] L'orbita di $1$ è $\orb{1} = {1, 2}$ e l'orbita di $3$ è $\orb{3} = {3, 4, 5}$: queste due orbite formano i cicli della permutazione.    
+\end{example}
+
+\begin{remark}
+    Un ciclo di lunghezza $k$ (chiamato anche $k$-ciclo) ha $k$ scritture diverse.
+    \begin{proof}
+        Infatti possiamo scegliere il primo elemento arbitrariamente, mentre gli altri seguono dall'ordine.
+    \end{proof}
+\end{remark}
+
+\begin{example}
+    Nell'esempio precedente, il ciclo $\orb{3} = (3, 4, 5)$ può anche essere scritto come $(4, 5, 3)$ oppure $(5, 3, 4)$ ma non $(5, 4, 3)$.    
+\end{example}
+
+Inoltre ogni permutazione di $\Sym_n$ è determinata in modo univoco dai propri cicli. Ad esempio la permutazione \[
+    \sigma = (1, 2, 3)(4, 5)(6, 7, 8, 9)(10) \in \Sym_{10}
+\] ha $4$ orbite disgiunte, che corrispondono ai suoi $4$ cicli disgiunti: \[
+    \sigma_{1} = (1, 2, 3) \quad \sigma_{4} = (4, 5) \quad \sigma_{6} = (6, 7, 8, 9) \quad \sigma_{10} = (10).
+\] Siccome ogni orbita è necessariamente disgiunta (poiché lo sono le orbite di ogni azione) ogni elemento di $\set{1, \dots, n}$ è \emph{mosso} da uno solo dei cicli: \[
+    \sigma = \sigma_1 \circ \sigma_4 \circ \sigma_6 \circ \sigma_{10}.
+\] I cicli $\sigma_1, \sigma_4, \sigma_6$ e $\sigma_{10}$ vengono detti \strong{disgiunti} in quanto nessuno di essi permuta un elemento mosso dagli altri cicli.
+
+\begin{definition}
+    {Permutazione ciclica}{}
+    Una permutazione di $\Sym_n$ si dice ciclica se è composta da un singolo ciclo non banale.
+\end{definition}
+
+Ad esempio $\sigma_1, \sigma_4, \sigma_6$ e $\sigma_{10}$ sono permutazioni cicliche (che chiameremo per brevità, anche se con un po' di abuso di notazione, \strong{cicli}), mentre $\sigma$ non lo è.
+
+\begin{remark}
+    Cicli disgiunti commutano; inoltre l'ordine di una permutazione ciclica come elemento di $\Sym_n$ è la lunghezza del suo unico ciclo non banale.
+    \begin{proof}
+        Il fatto che cicli disgiunti commutino è banale: ognuno di essi agisce su un sottoinsieme di $\set*{1, \dots, n}$ e questi sottoinsiemi sono disgiunti, quindi l'ordine in cui avvengono le permutazioni non ha importanza.
+
+        Sia ora $\sigma = (x_1, \dots, x_k)$ una permutazione ciclica di lunghezza $k$: osserviamo che \[
+            \sigma^k(x_i) = \sigma^{k-1}(x_{i+1}) = \dots = x_{i+k}.
+        \] Tuttavia il ciclo ha lunghezza $k$, dunque $x_{i+k} = x_i$. Segue quindi che $\sigma^k = \id$. Inoltre questo è il minimo numero di volte che dobbiamo applicare $\sigma$ ad $x_i$ per ottenere nuovamente $x_i$, dunque $\ord_{\Sym_n}{\sigma} = k$.
+    \end{proof}
+\end{remark}
+
+\begin{proposition}
+    {Scrittura di una permutazione in cicli disgiunti}{}
+    Ogni permutazione si scrive in modo "unico" in cicli disgiunti, dove l'unicità è a meno dell'ordine e della scrittura dei singoli cicli.
+\end{proposition}
+\begin{proof}
+    Abbiamo già osservato che ogni permutazione è determinata univocamente dai suoi cicli, ovvero dalle orbite della sua azione su $\set*{1, \dots, n}$, ed essi sono naturalmente disgiunti, in quanto orbite di un'azione. Inoltre essendo disgiunte commutano, quindi l'unicità è a meno dell'ordine.
+\end{proof}
+
+Vale quindi il seguente corollario.
+
+\begin{corollary}{}{}
+    $\Sym_n$ è generato dalle permutazioni cicliche.
+\end{corollary}
+
+\newthoughtpar{Numero degli elementi di un determinato tipo}
+
+\begin{definition}
+    {Tipo di una permutazione}{}
+    Una permutazione $\sigma \in \Sym_n$ si dice di \strong{tipo} "$k_1 + k_2 + \dots + k_q$" se si decompone in un prodotto di $q$ cicli disgiunti, il cui $i$-esimo ciclo è un $k_i$-ciclo. 
+\end{definition}
+
+Ad esempio la permutazione di prima \[
+    \sigma = (1, 2, 3)(4, 5)(6, 7, 8, 9)(10) \in \Sym_n
+\] è di tipo $3 + 2 + 4 + 1$.
+
+Vogliamo quindi studiare il numero di $k$-cicli presenti in $\Sym_n$.
+
+\begin{proposition}
+    {}{number_perms}
+    \[
+        \card+{\set*{\sigma \in \Sym_n \given \sigma \text{ è un $k$-ciclo}}} = \binom{n}{k} \cdot \frac{k!}{k} = \binom{n}{k}(k-1)!
+    \]
+\end{proposition}
+\begin{proof}
+    Bisogna innanzitutto scegliere i $k$ elementi di $\set*{1, \dots, n}$ su cui $\sigma$ agisce in modo non banale, e questo può esser fatto in $\binom{n}{k}$ modi. Le permutazioni di questi elementi sono $k!$, tuttavia ogni ciclo può essere espresso in $k$ modi (perché possiamo scegliere arbitrariamente il suo primo elemento), dunque in totale abbiamo $\binom{n}{k}(k-1)!$ modi, come volevamo.   
+\end{proof}
+
+\begin{example}
+    Calcoliamo il numero di permutazioni di $\Sym_{20}$ di tipo $2 + 2 + 2 + 4 + 5 + 5$, ovvero che sono della forma \[
+        \sigma = \tau_1\tau_2\tau_3 \rho \eta_1 \eta_2,
+    \] con i $\tau_i$ di ordine $2$, $\rho$ di ordine $4$ e gli $\eta_j$ di ordine $5$.
+    
+    Studiamo il numero di $2$-cicli: per la \Cref{prop:number_perms} ho 
+    \begin{itemize}
+        \item $\binom{20}{2} \cdot 1! = \binom{20}{2}$ possibilità per $\tau_1$,  
+        \item $\binom{18}{2}$ possibilità per $\tau_2$ (devo escludere gli elementi già scelti per $\tau_1$),
+        \item $\binom{16}{2}$ possibilità per $\tau_3$.
+    \end{itemize}
+    Osserviamo inoltre che queste trasposizioni possono essere in qualunque ordine, dunque dobbiamo dividere per $3!$, ottenendo che il numero di scelte per i $\tau_i$ sono \[
+        \frac{1}{3!} \cdot \binom{20}{2} \cdot \binom{18}{2} \cdot \binom{16}{2}.
+    \] 
+
+    Per il singolo $4$-ciclo possiamo usare direttamente la formula: abbiamo \[
+        \binom{14}{4} \cdot 3!
+    \] scelte.
+
+    Infine per i $5$-cicli, ripetendo il ragionamento fatto per i $2$-cicli, abbiamo \[
+        \frac{1}{2!} \cdot \binom{10}{5}4! \cdot \binom{5}{5}4!
+    \] scelte.
+
+    In totale il numero di permutazioni di tipo $2 + 2 + 2 + 4 + 5 + 5$ in $\Sym_20$ è \[
+        \frac{1}{3!} \cdot \binom{20}{2} \cdot \binom{18}{2} \cdot \binom{16}{2} 
+        \cdot \binom{14}{4} \cdot 3! 
+        \cdot \frac{1}{2!} \cdot \binom{10}{5}4! \cdot \binom{5}{5}4!.
+    \]
+\end{example}
+
+\newthoughtpar{Ordine di una permutazione}
+Possiamo ora studiare l'ordine in $\Sym_n$ di una permutazione qualunque.
+
+\begin{proposition}
+    {Ordine di una permutazione}{}
+    Sia $\sigma \in \Sym_n$ della forma $\sigma = \sigma_1 \cdots \sigma_k$, dove i $\sigma_i$ sono cicli disgiunti. Allora vale che \[
+        \ord_{\Sym_n}{\sigma} = \lcm+[\Big]{\ord_{\Sym_n}{\sigma_i}}_{i=1, \dots, k}.
+    \] 
+\end{proposition}
+
+\begin{remark}
+    Ricordiamo che l'ordine di una permutazione ciclica è la lunghezza del suo ciclo non banale: l'ordine di una permutazione qualunque è quindi il minimo comune multiplo delle lunghezze dei suoi cicli.
+\end{remark}
+
+\begin{proof}
+    Sia $l_i \deq \ord{\sigma_i}$ la lunghezza (ovvero l'ordine) dell'$i$-esimo ciclo, e sia $d = \lcm+{l_1, \dots, l_n}$. Mostriamo che $\ord{\sigma}$ è un divisore di $d$ e viceversa.
+    
+    \begin{description}
+        \item[($\ord{\sigma} \divides d$)] Mostriamo che $\sigma^d = \id$. In effetti \[
+            \sigma^d 
+            = (\sigma_1\cdots\sigma_k)^d 
+            = \sigma_1^d\cdots\sigma_k^d 
+            = \id,
+        \] dove la seconda uguaglianza viene dal fatto che cicli disgiunti commutano, mentre l'ultima viene dal fatto che $l_i \divides d$ per ogni $i$, poiché $d$ è il loro minimo comune multiplo.
+        \item[($d \divides \ord{\sigma}$)] Sia $m \deq \ord{\sigma}$. Allora \[
+            \id = \sigma^m = (\sigma_1\cdots\sigma_k)^m = \sigma_1^m \cdots \sigma_k^m,
+        \] dove ancora una volta l'ultima uguaglianza segue dal fatto che cicli disgiunti commutano. 
+        
+        Siccome i cicli sono tutti disgiunti, ognuno di essi agirà in modo non banale su elementi diversi di $\set*{1, \dots, n}$, dunque se la loro composizione fa l'identità (ovvero la permutazione che manda ogni elemento in sé) ogni $\sigma_i^m$ deve essere l'identità. Segue quindi che $l_i \divides m$ per ogni $i$, dunque il loro minimo comune multiplo $d$ divide $m = \ord{\sigma}$.  
+    \end{description}
+
+    Segue quindi che $\ord{\sigma} = \lcm+{l_1, \dots, l_n}$. 
+\end{proof}
+
+Chiameremo \strong{trasposizione} una permutazione ciclica il cui ciclo non banale abbia lunghezza $2$, ovvero un $2$-ciclo. Vale il seguente risultato.
+
+\begin{proposition}
+    {}{}
+    $\Sym_n$ è generato dalle sue trasposizioni.
+\end{proposition}
+\begin{proof}
+    Devo mostrare che ogni permutazione è prodotto di trasposizioni (non necessariamente disgiunte). Siccome ogni permutazione è prodotto di cicli disgiunti, basta mostrare che le trasposizioni generano i cicli.
+
+    Sia allora $(a_1, \dots, a_k)$ un ciclo qualsiasi e mostriamo che \[
+        (a_1, \dots, a_k) = (a_1, a_k)(a_1, a_{k-1})\cdots(a_1, a_2).
+    \] Dato che le permutazioni sono semplicemente bigezioni di $\set{1, \dots, n}$ in sé, basta mostrare che hanno la stessa immagine mediante ogni elemento di $\set{1, \dots, n}$. Distinguiamo due casi.
+
+    \begin{itemize}
+        \item Se $j \in \set{1, \dots, n}$ è diverso da tutti gli $a_i$, allora entrambe le funzioni mandano $j$ in sé.
+        \item Se $j = a_i$ per qualche indice $1 \leq i \leq k$, allora il ciclo a sinistra manda $j = a_i$ in $a_{i + 1}$. Il prodotto di trasposizioni a destra invece \[
+            j = a_i \xmapsto{(a_1, a_2)} a_i \mapsto \dots \mapsto a_i \xmapsto{(a_1, a_i)} a_1 \xmapsto{(a_1, a_{i+1})} a_{i+1} \mapsto \dots \mapsto a_{i+1}.
+        \]
+    \end{itemize}
+
+    Dunque le due funzioni concordano su ogni elemento del dominio, dunque sono uguali.
+\end{proof}
+
+Osserviamo che la scrittura di una permutazione come prodotto di trasposizioni non è unica: infatti ad esempio \[
+    (1, 2)(2, 4) = (1, 2)(3, 4)(3, 4)(2, 4)
+\] poiché $(3, 4)^2 = \id$.
+
+Tuttavia mostreremo che se una permutazione si scrive come prodotto di un numero pari di trasposizioni, ogni altra decomposizione avrà un numero pari di trasposizioni, e analogamente se il numero è dispari.
+
+Per far ciò definiamo la funzione \strong{segno}.
+
+\begin{definition}
+    {Segno di una permutazione}{}
+    Si dice segno di una permutazione la mappa \begin{align*}
+        \sgn : \Sym_n &\to \set*{\pm 1}\\
+        \sigma &\mapsto \prod_{1 \leq i < j \leq n} \frac{\sigma(i) - \sigma(j)}{i - j}.
+    \end{align*}
+\end{definition}
+
+\begin{proposition}
+    {}{}
+    La funzione segno è un omomorfismo di gruppi. Inoltre se $\tau$ è una trasposizione si ha che $\sgn{\tau} = -1$. 
+\end{proposition}
+\begin{proof}
+    \newthought{Buona definizione} Mostriamo innanzitutto che per ogni $\sigma \in \Sym_n$ si ha che $\sgn{\sigma} \in {\pm 1}$.
+    
+    Siccome $\sigma$ è una bigezione, a numeratore e a denominatore troveremo tutti i numeri della forma $i - j$ o al più $j - i$: il risultato è quindi $1$ oppure $-1$.
+
+    \newthought{Omomorfismo} Siano $\sigma, \rho \in \Sym_n$. Allora \begin{align*}
+        \sgn{\sigma\rho} &= \prod_{i < j} \frac{\sigma\rho(i) - \sigma\rho(j)}{i - j}\\
+        &= \prod_{i < j} \frac{\sigma\rho(i) - \sigma\rho(j)}{\rho(i) - \rho(j)} \cdot \frac{\rho(i) - \rho(j)}{i - j}\\
+        &= \parens*{\prod_{i < j} \frac{\sigma\rho(i) - \sigma\rho(j)}{\rho(i) - \rho(j)}} \cdot  \parens*{\prod_{i < j} \frac{\rho(i) - \rho(j)}{i - j}}\\
+        &= \sgn{\sigma} \cdot \sgn{\rho},
+    \end{align*} dove l'ultimo passaggio viene dal fatto che applicando $\rho$ a tutti gli elementi di $\set*{1, \dots, n}$ ottengo ancora una volta tutti gli elementi di $\set*{1, \dots, n}$ ($\rho$ è bigettiva).
+    
+    \newthought{Segno delle trasposizioni} Sia $\tau = (a, b)$ una trasposizione e studiamo il segno dei vari fattori di \[
+        \prod_{i < j} \frac{\tau(i) - \tau(j)}{i -j}.
+    \] \begin{itemize}
+        \item Se $\set*{i, j} \inters \set*{a, b} = \varnothing$ (ovvero $i$ e $j$ sono distinti da $a, b$) si ha che $\tau(i) = i$, $\tau(j) = j$ e quindi \[
+            \frac{\tau(i) - \tau(j)}{i - j} = \frac{i - j}{i - j} = 1.
+        \] 
+        \item Per ogni coppia della forma $\set*{i, a}$, $i \neq b$, il cui "segno" è \[
+            \frac{\tau(i) - \tau(a)}{i - a} = \frac{i - b}{i - a},
+        \] esiste la coppia complementare $\set*{i, b}$ il cui segno è \[
+            \frac{\tau(i) - \tau(b)}{i - b} = \frac{i - a}{i - b}.
+        \] Il prodotto di queste due è $1$, dunque tutte le coppie di questo tipo contribuiscono con un segno positivo.
+        \item La coppia $\set*{a, b}$ ha segno \[
+            \frac{\tau(a) - \tau(b)}{a - b} = \frac{b - a}{a - b} = -1.
+        \] 
+    \end{itemize}
+
+    Il segno della trasposizione $\tau$ è quindi $-1$. 
+\end{proof}
+
+\begin{definition}
+    {Parità di una permutazione}{}
+    Una permutazione $\sigma \in \Sym_n$ si dice \strong{pari} se $\sgn{\sigma} = 1$, dispari se $\sgn{\sigma} = -1$.  
+\end{definition}
+
+\begin{definition}
+    {Gruppo alterno}{}
+    Si dice \strong{gruppo alterno} su $n$ elementi il sottogruppo \[
+        \Alt_n \deq \ker \sgn = \set*{\sigma \in \Sym_n \given \sgn{\sigma} = 1}.
+    \]
+\end{definition}
+
+Il gruppo $\Alt_n$ è quindi il gruppo di tutte le permutazioni pari. Osserviamo che, essendo il nucleo di un omomorfismo, esso è normale in $\Sym_n$: inoltre per il Primo Teorema di Omomorfismo si ha che \[
+    \quot{\Sym_n}{\Alt_n} \isomorph \set*{\pm 1},
+\] da cui segue che $\card+{\Alt_n} = \frac{n!}{2}$.
+
+\begin{proposition}
+    {}{}
+    Un $k$-ciclo è pari se e solo se $k$ è dispari.
+\end{proposition}
+\begin{proof}
+    Un $k$-ciclo $\sigma = (a_1, \dots, a_k)$ è il prodotto di $k-1$ trasposizioni $\tau_i$ della forma \[
+        \sigma = (a_1, a_k) \cdots (a_1, a_{2}).
+    \] Allora \[
+        \sgn{\sigma} = \prod_{i=1}^k \sgn{\tau_i} = (-1)^{k-1},
+    \] che è uguale ad $1$ se e solo se $k-1$ è pari, ovvero $k$ è dispari. 
+\end{proof}
+
+\subsection{Classi di coniugio in $\Sym_n$}
+
+Il coniugio in $\Sym_n$ è un'operazione molto più semplice da realizzare di quanto possa sembrare inizialmente. Vale infatti il seguente risultato.
+
+\begin{lemma}
+    {Coniugio in $\Sym_n$}{conj_in_Sn}
+    Siano $\sigma, \tau \in \Sym_n$ qualsiasi, con $\sigma$ della forma \[
+        \sigma = \parens[\big]{c_{11}, \dots, c_{1, l_1}}\parens[\big]{\dots}\parens[\big]{c_{k1}, \dots, c_{k, l_k}}.
+    \] Allora \[
+        \tau\sigma\tau\inv = \parens[\big]{\tau(c_{11}), \dots, \tau(c_{1, l_1})}\parens[\big]{\dots}\parens[\big]{\tau(c_{k1}), \dots, \tau(c_{k, l_k})},
+    \] ovvero $\tau\sigma\tau\inv$ si ottiene applicando $\tau$ ad ogni elemento dei cicli di $\sigma$. 
+\end{lemma}
+\begin{proof}
+    Innanzitutto considero il caso in cui $\sigma$ sia composta da un unico ciclo, ovvero $k=1$. La tesi è che se $\sigma = (c_1, \dots, c_l)$ allora \[
+        \tau\sigma\tau\inv = \parens[\big]{\tau(c_1), \dots, \tau(c_l)}.
+    \] Per dimostrare la tesi basta far vedere che le due funzioni concordano per ogni elemento del dominio $\set*{1, \dots, n}$: consideriamo quindi due casi.
+    \begin{itemize}
+        \item Se $j \in \set*{1, \dots, n}$ è diverso da $\tau(c_i)$ per ogni $i = 1, \dots, l$, dobbiamo mostrare che entrambe le funzioni lo mandano in sé. Sicuramente quella del secondo membro manda $j$ in sé.
+        
+        Per quanto riguarda $\tau\sigma\tau\inv$, osserviamo che siccome $j \neq \tau(c_i)$ segue che $\tau\inv(j) \neq c_i$ per ogni $i$, ovvero $j$ non compare nel ciclo non banale di $\sigma$, da cui \[
+            \sigma\tau\inv (j) = \tau\inv(j).
+        \] Segue quindi che $\tau\sigma\tau\inv(j) = \tau\tau\inv(j) = j$, come volevamo.
+        \item Sia invece $j \in \set*{1, \dots, n}$ tale che $j = \tau(c_i)$ per qualche $i = 1, \dots, k$ e mostriamo che l'immagine di $j$ mediante le due funzioni è la stessa.
+        
+        L'immagine mediante la seconda funzione è \[
+            \tau(c_i) \xmapsto{\parens[\big]{\tau(c_1), \dots, \tau(c_i), \tau(c_{i+1}), \dots, \tau(c_k)}} \tau(c_{i+1}).
+        \] Invece l'immagine mediante la prima funzione è \[
+            \tau(c_i) \xmapsto{\tau\inv} c_i \xmapsto{\sigma} c_{i+1} \xmapsto{\tau} \tau(c_{i+1}),
+        \] e dunque le due immagini sono uguali.
+    \end{itemize} 
+
+    Segue quindi che le due funzioni sono uguali.
+
+    Se invece $\sigma = \sigma_1\cdots\sigma_k$, basta osservare che \begin{align*}
+        \tau\sigma\tau\inv 
+        &= \tau \cdot \parens*{\sigma_1 \cdots \sigma_k} \cdot \tau\inv\\
+        &= \tau\cdot \parens[\big]{\sigma_1(\tau\inv\tau)\sigma_2(\tau\inv\tau)\cdots (\tau\inv\tau)\sigma_k} \cdot \tau\inv\\
+        &= (\tau\sigma_1\tau\inv) \cdot (\tau\sigma_2\tau\inv) \cdots (\tau\sigma_k\tau\inv).
+    \end{align*} Ma i $\sigma_i$ sono formati da un singolo ciclo, dunque per quanto dimostrato prima segue la tesi.
+\end{proof}
+
+\begin{theorem}
+    {Classi di coniugio in $\Sym_n$}{conj_classes_in_Sn}
+    Due permutazioni di $\Sym_n$ sono coniugate se e solo se hanno lo stesso tipo.
+\end{theorem}
+\begin{proof}
+    Dimostriamo entrambi i versi dell'implicazione.
+    \begin{description}
+        \item[\boximpl] Per il \Cref{lem:conj_in_Sn} se $\rho = \tau\sigma\tau\inv$, allora $\rho$ si ottiene da $\sigma$ facendo agire $\tau$ su ogni elemento che compone i cicli di $\sigma$, dunque $\rho$ ha lo stesso tipo di $\sigma$.
+        \item[\boximplby] Siano \begin{align*}
+            \sigma &\deq (a_{11}, \dots, a_{1,l_1})(\dots)(a_{k1}, \dots, a_{k,l_k})\\
+            \rho   &\deq (b_{11}, \dots, b_{1,l_1})(\dots)(b_{k1}, \dots, b_{k,l_k})
+        \end{align*} e mostriamo che $\sigma$ e $\rho$ sono coniugate. 
+        
+        Definiamo allora $\tau \in \Sym_n$ come la permutazione tale che $\tau(a_{ij}) = b_ij$ per ogni $i = 1, \dots, k$, $j = 1, \dots, l_i$. Tale funzione è ben definita ed è una bigezione di $\set*{1, \dots, n}$ in sé, in quanto nella scrittura di $\sigma$ dovranno comparire tutti gli elementi di $\set*{1, \dots, n}$ una e una sola volta, e stessa cosa per gli elemnti di $\rho$.
+
+        Per il \Cref{lem:conj_in_Sn} segue quindi che $\tau\sigma\tau\inv = \rho$. \qedhere 
+    \end{description}
+\end{proof}
+
+\begin{corollary}{}{}
+    Valgono le seguenti affermazioni.
+    \begin{enumerate}[(1)]
+        \item Il numero di classi di coniugio di $\Sym_n$ è uguale al numero di partizioni di $n \in \N$ come somma di numeri interi positivi.
+        \item Sia $H \sgr \Sym_n$. Allora $H \normal \Sym_n$ se e solo se per ogni $\sigma \in H$, $H$ contiene tutte le partizioni con lo stesso tipo di $\sigma$. 
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    \begin{enumerate}[(1)]
+        \item Una classe di coniugio in $\Sym_n$ è rappresentata da tutte le permutazioni con un determinato tipo, e un tipo è una partizione di $n$ come somma di interi positivi.
+        \item $H \normal \Sym_n$ se e solo se è unione di intere classi di coniugio, ovvero se e solo se è unione di interi tipi di permutazioni.
+    \end{enumerate}
+\end{proof}

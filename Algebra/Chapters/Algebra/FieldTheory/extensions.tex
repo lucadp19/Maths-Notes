@@ -1,0 +1,49 @@
+\section{Estensioni di campi}
+
+Iniziamo a studiare la teoria dei campi ricordando alcune considerazioni fatte nella prima parte.
+
+Sia $\ext{\L / \K}$ un'estensione di campi, ovvero siano $\K$ e $\L$ due campi tali che $\K \subseteq \L$. Un elemento $\alpha \in \L$ si dice \strong{algebrico} su $\K$ se esiste un polinomio $f \in \K[X] \setminus \set{0}$ tale che $f(\alpha) = 0$; se $\alpha$ non è algebrico si dice \strong{trascendente}.
+
+Sia quindi $\alpha \in \L$ un elemento algebrico su $\K$ e consideriamo ora l'omomorfismo di anelli \begin{align*}
+    \phi_\alpha : \K[X] &\to \K[\alpha] \subseteq \L\\
+    f(x) \mapsto f(\alpha).
+\end{align*} Si ha che $\alpha$ è algebrico su $\K$ se e solo se $\ker \phi_\alpha \neq \set{0}$.
+
+Infatti consideriamo il seguente diagramma (dato dal \nameref{th:first_iso}): \[
+    \begin{tikzcd}
+            \K[X] \arrow[d, swap, "\pi"] \arrow[r, two heads, "\phi_\alpha"] & \K[\alpha] \\
+            \quot{\K[X]}{\ker \phi_\alpha} \arrow[ur, swap, two heads, hook, "\overline{\phi_\alpha}"] &
+        \end{tikzcd}
+\] Per il \nameref{th:first_iso} segue quindi che \[
+    \K[\alpha] \isomorph \quot{\K[X]}{\ker \phi_\alpha}.
+\] Tuttavia $\K[\alpha]$ è un sottoanello di un campo, dunque è un dominio, da cui $\ker \phi_\alpha$ deve essere un ideale primo. Essendo $\K[X]$ un \PID e siccome $\ker \phi_\alpha \neq \set{0}$ (poiché $\alpha$ è algebrico su $\K$) segue che $\ker \phi_\alpha$ è \strong{massimale}.
+
+Segue quindi che $\K[\alpha]$ è un campo ed in particolare è isomorfo al campo $\K(\alpha)$, ovvero al campo generato da $\K$ e dall'elemento $\alpha$.
+
+Se $\alpha$ non fosse algebrico allora avremmo che \[
+    \K[\alpha] \isomorph \quot{\K[X]}{\ker \phi_\alpha} = \K[X],
+\] dunque $\K[\alpha]$ non sarebbe isomorfo a $\K(\alpha)$, il quale sarebbe invece isomorfo al \strong{campo delle funzioni razionali} a coefficienti in $\K$, ovvero  \[
+    \K(x) \deq \set*{\frac{f(X)}{g(X)} \given f, g \in \K[X]}.
+\]  
+
+Inoltre siccome $\K[X]$ è un \PID segue che $\ker \phi_\alpha = \ideal[\big]{\mu_\alpha}$ per qualche $\mu_\alpha \in \K[X]$. Tale polinomio è il \strong{polinomio minimo} di $\alpha$ su $\K$, ed è l'unico generatore monico di $\ker \phi_\alpha$. In effetti è unico poiché \begin{itemize}
+    \item $\K[X]$ è un \ED, dunque i generatori di un suo ideale sono gli elementi di grado minimo;
+    \item gli elementi di $\ideal[\big]{\mu_\alpha}$ sono i multipli di $\mu_\alpha$, ovvero sono della forma \begin{itemize}
+        \item $\mu_\alpha \cdot q$ con $q \in \K[X]$ di grado maggiore o uguale a $1$, ma questo polinomio non è più di grado minimo;
+        \item $k\cdot\mu_\alpha$ dove $k \in \K$, ma questo polinomio non è più monico.   
+    \end{itemize} 
+\end{itemize}
+Infine abbiamo visto prima che $\ideal[\big]{\mu_\alpha}$ è massimale, da cui $\mu_\alpha$ è irriducibile in $\K[X]$. 
+
+\subsection*{Estensioni finite}
+
+Data un'estensione di campi $\ext{\L / \K}$ possiamo sempre considerare il campo $\L$ come un $\K$-spazio vettoriale. Definiamo quindi il grado dell'estensione come la dimensione di $\L$ come $\K$-spazio: in particolare diremo che un'estensione è finita se il grado è finito.
+
+Sia ora $\alpha \in \L$: allora \[
+    \ExtDegree{\K(\alpha) : \K} = \begin{cases}
+        \deg \mu_\alpha, &\text{se $\alpha$ è algebrico},\\
+        +\infty, &\text{altrimenti}. 
+    \end{cases}
+\] In effetti abbiamo visto che $\alpha$ è trascendente se e solo se $\phi_\alpha$ è iniettiva, cioè se e solo se $\K(\alpha) \isomorph \K(x)$ che ha dimensione infinita come $\K$-spazio vettoriale. Invece se $\alpha$ è algebrico segue che \[
+    \K(\alpha) = \K[\alpha] \isomorph \quot{\K[X]}{\ideal[\big]{\mu_\alpha}}
+\] e una $\K$-base di $\K(\alpha)$ è $\parens*{1, \alpha, \dots, \alpha^{n-1}}$.  

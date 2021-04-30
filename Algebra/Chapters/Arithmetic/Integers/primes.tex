@@ -1,0 +1,48 @@
+\section{Numeri primi}
+
+\begin{definition}
+    [Irreducibile]
+    Sia $p \in \Z$, $p > 1$. Tale $p$ si dice irriducibile se non esistono $x, y \in \Z$ entrambi diversi da $\pm 1$ tali che $p = xy$, ovvero se \begin{equation}
+        p = xy \implies x = \pm 1 \text{ oppure } y = \pm 1.
+    \end{equation}
+\end{definition}
+
+\begin{definition}
+    [Primo]
+    Sia $p \in \Z$, $p > 1$. Tale $p$ si dice primo se per ogni $a, b \in \Z$ vale che \begin{equation}
+        p \divides ab \implies p \divides a \text{ oppure } p \divides b.
+    \end{equation}
+\end{definition}
+
+Nell'insieme dei numeri interi le due classi di elementi sono in realtà la stessa, come ci assicura la prossima proposizione:
+\begin{proposition}
+    [Un intero è primo se e solo se è irriducibile] 
+    \label[prop]{primo_sse_irr_in_Z} Sia $p \in \Z$. Allora vale che \[
+        p \text{ è primo} \iff p \text{ è irriducibile.}    
+    \]
+\end{proposition}
+\begin{proof}
+    Dimostriamo entrambi i versi dell'implicazione.
+    \begin{description}
+        \item[\boximpl ] Siano $x, y \in \Z$ tali che $p = xy$. Allora $p \divides xy$, dunque essendo $p$ primo per definizione segue che $p \divides x$ oppure $p \divides y$.
+        
+        Supponiamo senza perdita di generalità $p \divides x$, ovvero $x = pz$ per qualche $z \in \Z$. Allora \begin{align*}
+            p &= xy \\
+            &= pzy \\
+            \implies zy &= 1 \\
+            \implies y &= \pm 1
+        \end{align*} ovvero $p$ è irriducibile.
+        \item[\boximplby] Supponiamo che per qualche $a, b \in \Z$ valga che $p \divides ab$. Se $p \divides a$ segue che $p$ è primo (per definizione), dunque supponiamo $p \ndivides a$ e mostriamo che $p \divides b$.
+        
+        Siccome $p$ è irriducibile ha come divisori soltanto $\pm 1$ e $\pm p$, dunque $\gcd{p}{a} = 1$. Inoltre per ipotesi $p \divides ab$, dunque per il \Cref{lem:divide_prod_coprimo_col_primo} segue che $p \divides b$, dunque $p$ è primo.
+    \end{description}
+\end{proof}
+
+\begin{lemma}
+    Siano $a, b, m \in \Z$ tali che \begin{itemize}
+        \item $a \divides m$,
+        \item $b \divides m$,
+        \item $\gcd{a}{b} = 1$.
+    \end{itemize}
+    Allora $ab \divides m$.
+\end{lemma}

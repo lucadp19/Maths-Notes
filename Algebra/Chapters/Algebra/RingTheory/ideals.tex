@@ -1,0 +1,201 @@
+\section{Anelli ed Ideali}
+
+Riprendiamo la nostra trattazione degli anelli ricordandone la definizione: un insieme $A$ insieme a due operazioni $+$ e $\cdot$ si dice \emph{anello} se \begin{itemize}
+    \item $(A, +)$ è un gruppo abeliano;
+    \item l'operazione di prodotto è associativa;
+    \item vale la proprietà distributiva del prodotto sulla somma.
+\end{itemize} Un anello si dice \emph{commutativo} se anche l'operazione di prodotto è commutativa; inoltre si dice che l'anello è \emph{con identità} se esiste un elemento $1_A \in A$ che fa da elemento neutro per il prodotto.
+
+Vogliamo ora studiare più approfonditamente le sottostrutture di un anello.
+\begin{definition}
+    {Sottoanello}{} Sia $A$ un anello. $B \subseteq A$ si dice \emph{sottoanello} di $A$ se $B$ è chiuso rispetto alle operazioni $+$ e $\cdot$.
+\end{definition}
+
+Notiamo che non viene richiesto che l'anello sia commutativo o con identità: se fosse commutativo allora necessariamente anche il sottoanello sarebbe commutativo, mentre se $A$ fosse con identità non è detto che $B$ contiene l'identità.
+
+Dato un anello $A$, un elemento $a \in A$ e un sottoinsieme $X \subseteq A$, indicheremo con $aX$ e con $Xa$ rispettivamente gli insiemi \begin{align*}
+    &aX \deq \set*{ax \given x \in X} \subseteq A,\\
+    &Xa \deq \set*{xa \given x \in X} \subseteq A.
+\end{align*} Questa operazione è fondamentale per descrivere la sottostruttura più importante degli anelli, cioè gli ideali.
+
+\begin{definition}
+    {Ideale}{} Sia $A$ un anello, $I \subseteq A$. Si dice che $I$ è un \emph{ideale sinistro} di $A$ se \begin{itemize}
+        \item $(I, +)$ è un sottogruppo di $(A, +)$;
+        \item per ogni $a \in A$ vale che $aI \subseteq I$.
+    \end{itemize}
+    Si dice che $I$ è un \emph{ideale destro} di $A$ se \begin{itemize}
+        \item $(I, +)$ è un sottogruppo di $(A, +)$;
+        \item per ogni $a \in A$ vale che $Ia \subseteq I$.
+    \end{itemize}
+    Infine si dice che $I$ è un \emph{ideale bilatero} di $A$ se $I$ è sia ideale sinistro che ideale destro.
+\end{definition}
+
+La proprietà $aI \subseteq I$, che può anche essere riscritta come \[
+    \text{per ogni } a \in A, x \in I \text{ vale che } ax \in I,
+\] viene detta \emph{proprietà di assorbimento}.
+
+Osserviamo che nel caso di un anello commutativo ogni ideale è bilatero.
+\begin{example}
+    $n\Z$ è un ideale di $\Z$ per ogni $n \in \N$.
+\end{example}
+\begin{example}
+    Dato un qualsiasi anello $A$, gli insiemi $\set{0}$ e $A$ sono ideali di $A$, e vengono chiamati rispettivamente \emph{ideale banale} e \emph{ideale improprio}.
+\end{example}
+
+Osserviamo anche che, se l'anello ha identità, per mostrare che $I \subseteq A$ è un ideale basta mostrare che è chiuso per somma e che vale la proprietà di assorbimento. Infatti se vale la proprietà di assorbimento allora $-1I \subseteq I$, dunque gli inversi di tutti gli elementi sono contenuti nell'ideale.
+
+Mostriamo alcune proprietà degli ideali.
+\begin{proposition}{}{}
+    Sia $A$ un anello commutativo con identità e sia $I$ un suo ideale. Valgono i seguenti fatti. 
+    \begin{enumerate}[label={(\roman*)}]
+        \item $I$ è un ideale proprio se e solo se $I \inters \units{A} = \varnothing$. In particolare un ideale che contiene l'identità è sempre tutto l'anello.
+        \item $A$ è un campo se e solo se non ha ideali propri non banali.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Mostriamo entrambe le affermazioni.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Supponiamo che esista $x \in I \inters \units{A}$. Siccome $x$ è invertibile esisterà $y \in A$ tale che $xy = 1$. Quindi $1 = xy \in I$; da questo segue che per ogni $a \in A$ l'elemento \[
+            a = a\cdot 1 = a(xy) \in I,
+        \] da cui $A \subseteq I$. Ma $I$ è un sottoinsieme di $A$, da cui necessariamente $I = A$.
+        \item Siccome per definizione $A$ un campo se e solo se $\units{A} = A \setminus \set{0}$, per il punto precedente l'unico ideale proprio è $\set{0}$, da cui la tesi. \qedhere
+    \end{enumerate}
+\end{proof}
+
+\subsection{Operazioni sugli ideali}
+
+Sia $A$ un anello (per semplicità commutativo e con identità): cerchiamo di capire quali operazioni possiamo compiere sui suoi sottoinsiemi e sui suoi ideali per ottenere altri ideali.
+
+\subsubsection{Ideale generato da un sottoinsieme}
+
+\begin{definition}{Ideale generato}{}
+    Sia $S \subseteq A$ non vuoto. Si dice \emph{ideale generato da $S$} l'insieme \[
+        \ideal[\big]{S} \deq \set*{\sum_{i=1}^n a_is_i \given n \in \N, a_i \in A, s_i \in S}.
+    \]
+\end{definition}
+
+Verifichiamo che questa costruzione è effettivamente un ideale.
+\begin{description}
+    \item[Sottogruppo] Siano $x, y \in \ideal[\big]{S}$, ovvero \begin{align*}
+        x = \sum_{i=1}^n a_is_i, \qquad y = \sum_{j=1}^m \alpha_j\sigma_j
+    \end{align*} con $a_i, \alpha_j \in A$, e $s_i, \sigma_j \in S$.
+    Allora evidentemente $x + y$ è una somma di termini della forma $as$ con $a \in A$, $s \in S$, da cui segue che $x + y \in \ideal[\big]{S}$.
+    \item[Assorbimento] Sia $x \in \ideal[\big]{S}$ e $a \in A$. Allora \[
+        ax = a\sum_{i=1}^n a_is_i =  \sum_{i=1}^n (aa_i)s_i \in \ideal[\big]{S}
+    \] poiché $aa_i \in A$.
+\end{description}
+
+\begin{example}
+    Se $S = \set{x}$, allora $\ideal{x} = \set*{ax \given a \in A} = Ax$.
+\end{example}
+\begin{example}
+    L'insieme dei multipli di $n$, cioè $n\Z$, è un ideale generato da un singolo elemento (in particolare $n\Z = \ideal{n}$).
+\end{example}
+
+In particolare un ideale generato da un solo elemento si dice \strong{ideale principale}.
+
+Enunciamo ora una proposizione che caratterizza gli ideali generati da un sottoinsieme come \emph{il più piccolo ideale} che contiene quel sottoinsieme; la dimostreremo poco avanti.
+
+\begin{proposition}{}
+    {gen_ideal_smallest_containing_S}
+    Sia $A$ un anello, $S \subseteq A$ un suo sottoinsieme qualunque. Allora $\ideal[\big]{S}$ è il più piccolo ideale che contiene $S$, ovvero \[
+        \ideal[\big]{S} = \bigunion_{\substack{I \text{ ideale di }A \\[2pt] S \subseteq I \subseteq A}} I.  
+    \]
+\end{proposition}
+
+\subsubsection{Intersezione di due ideali}
+
+Siano $I, J \subseteq A$ due ideali di $A$. Mostriamo che $I \inters J$ è ancora un ideale di $A$.
+\begin{description}
+    \item[Sottogruppo] Siccome $I, J \sgr (A, +)$ segue che $I \inters J \sgr (A, +)$.
+    \item[Assorbimento] Sia $a \in A$. Allora per ogni $x \in I \inters J$ vale che $ax \in I$ e $ax \in J$ poiché $I$ e $J$ sono ideali. Da questo segue dunque che $ax \in I \inters J$.
+\end{description}
+
+\begin{example}
+    $m\Z \inters n\Z = \lcm{m, n}\Z$: infatti l'intersezione tra i multipli di $n$ e di $m$ è l'insieme dei multipli del loro minimo comune multiplo.
+\end{example}
+
+Possiamo ora dimostrare la \Cref{prop:gen_ideal_smallest_containing_S}.
+\begin{proof}
+    [Dimostrazione della \Cref{prop:gen_ideal_smallest_containing_S}]
+    Innanzitutto siccome $\ideal[\big] S$ è un ideale che contiene $S$ segue che \[
+        \ideal[\big] S \supseteq \bigunion_{\substack{I \text{ ideale di }A \\[2pt] S \subseteq I \subseteq A}} I. 
+    \] Mostriamo ora il contenimento contrario: sia $x \in \ideal[\big] S$ qualunque. Allora per ogni $I$ ideale di $A$ che contiene $S$ vale che \[
+        x = \sum_{i = 1}^n a_is_i \in I,
+    \] poiché \begin{itemize}
+        \item gli $s_i$ appartengono ad $S$ che è contenuto in $I$;
+        \item $a_is_i \in I$ per ogni $a_i \in A$ per la proprietà di assorbimento;
+        \item la somma di termini in $I$ è ancora un elemento di $I$ in quanto è un gruppo con la somma.
+    \end{itemize} Segue quindi che $x \in I$ per qualsiasi ideale $I$ contenente $S$, dunque $x$ dovrà appartenere alla loro intersezione, da cui \[
+        \ideal[\big] S \subseteq \bigunion_{\substack{I \text{ ideale di }A \\[2pt] S \subseteq I \subseteq A}} I. 
+    \] Segue quindi che i due insiemi sono uguali, ovvero la tesi.
+\end{proof}
+
+\subsubsection{Somma di ideali}
+
+Definiamo la somma tra due sottoinsiemi di $A$ come \[
+    I + J \deq \set*{x + y \given x \in I, y \in J}.    
+\]
+
+\begin{proposition}{Somma di ideali}{}
+    Siano $I, J$ due ideali di $A$. Allora $I+J$ è ancora un ideale di $A$ ed in particolare vale che \[
+        I + J = \ideal[\big]{I, J}.    
+    \]
+\end{proposition}
+\begin{proof}
+    Basta mostrare il secondo punto: da esso discende direttamente il primo.
+
+    Innanzitutto $I + J \subseteq \ideal[\big]{I, J}$ in quanto nel secondo vi sono tutte le possibili somme tra elementi di $I$ e di $J$. 
+    
+    Inoltre possiamo notare che $I \subseteq I + J$ e $J \subseteq I + J$ (basta sceglere come elemento rispettivamente di $J$ e di $I$ lo zero), dunque $I + J$ contiene necessariamente il più piccolo ideale che contiene sia $I$ che $J$, ovvero (per la \Cref{prop:gen_ideal_smallest_containing_S}) $I+J \supseteq \ideal[\big]{I, J}$, da cui la tesi.
+\end{proof}
+
+\begin{example}
+    $m\Z + n\Z = \ideal[\big]{m\Z, n\Z} = \gcd{m, n}\Z$. Mostriamo infatti che gli elementi di $m\Z + n\Z$ sono tutti e soli i multipli del massimo comun divisore tra $m$ e $n$.
+
+    Se $x \in m\Z + n\Z$ allora $x = mk + nh$ per qualche $k, h \in \Z$. Sia $d \deq \gcd{m, n}$: allora \[
+        x = m'dk + n'dh = (m'k + n'h)d \in d\Z.    
+    \] Mostriamo ora l'inclusione contraria: supponiamo $x = dz$ per qualche $z \in \Z$. Per Bézout esistono $x_0$ e $y_0$ tali che $d = x_0m + y_0n$. Moltiplicando entrambi i membri per $z$ otteniamo \[
+        x = dx = (x_0z)m + (y_0z)n \in m\Z + n\Z,    
+    \] che è la tesi.
+\end{example}
+
+\subsubsection{Ideale generato dai prodotti}
+
+Se $I$ e $J$ sono ideali di $A$, si definisce l'ideale prodotto $IJ$ come l'ideale generato da tutti i prodotti di elementi di $I$ per elementi di $J$, ovvero \[
+    IJ \deq \ideal[\big]{\set*{xy \given x \in I, y \in J}}.
+\] Per definizione $IJ$ è un ideale.
+
+\begin{example}
+    $m\Z \cdot n\Z = (mn)\Z$.
+\end{example}
+
+\subsubsection{Radicale di un ideale}
+Sia $I$ un ideale di $A$. Si dice \emph{radicale di $I$} l'insieme \[
+    \Rad{I} \deq \set*{x \in A \given x^n \in I \text{ per qualche } n \in \N}.    
+\] Mostriamo che il radicale di un ideale è sempre un ideale.
+\begin{description}
+    \item[Sottogruppo] Siano $x, y \in \Rad{I}$, ovvero esistono $n, m \in \N$ tali che $x^n, y^m \in I$. Per mostrare che $x + y \in \Rad{I}$ è sufficiente mostrare che esiste un $d \in \N$ tale che $(x + y)^d \in I$.
+    
+    Prendiamo $d \deq n + m$. Allora per il Binomio di Newton (che vale poiché l'anello è commutativo) \[
+        (x + y)^{n + m} = \sum_{i = 0}^{n+m} \binom{n + m}{i} x^iy^{n+m-i}.    
+    \] Osserviamo che per ogni $i$ compreso tra $0$ e $n+m$ si ha necessariamente una delle seguenti: \begin{itemize}
+        \item $i \geq n$, da cui $x^i \in I$ e dunque (per la proprietà di assorbimento di $I$) anche $x_i \cdot y^{n+m-i} \in I$;
+        \item $n + m - i \geq m$, da cui $y^{n + m - i} \in I$ e dunque (per la proprietà di assorbimento di $I$) anche $x_i \cdot y^{n+m-i} \in I$.
+    \end{itemize}
+    \item[Assorbimento] Sia $a \in A$ e sia $x \in \Rad I$ qualunque (cioè $x^n \in I$ per qualche $n \in \N$). Allora vale che $(ax)^n = a^nx^n \in I$, ovvero $ax \in \Rad{I}$.
+\end{description}
+
+\subsubsection{Divisione tra ideali}
+
+Siano $I, J$ ideali di $A$. Si dice \emph{divisione tra $I$ e $J$} l'operazione tra ideali data da \[
+    \IdealDiv[\big]{I:J} \deq \set*{x \in A \given xJ \subseteq X}.    
+\] Mostriamo che $\IdealDiv[\big]{I:J}$ è ancora un ideale di $A$.
+\begin{description}
+    \item[Sottogruppo] Siano $x, y \in \IdealDiv[\big]{I:J}$. Allora \[
+        (x+y)J \subseteq xJ + yJ \subseteq I    
+    \] dove l'ultima inclusione viene dal fatto che $I$ è chiuso per somma.
+    \item[Assorbimento] Sia $a \in A$, $x \in \IdealDiv[\big]{I:J}$. Allora \[
+        axJ = a(xJ) \subseteq aI \subseteq I,    
+    \] da cui $ax \in \IdealDiv[\big]{I:J}$.
+\end{description}

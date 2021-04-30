@@ -1,0 +1,174 @@
+\section{Sottogruppi}
+
+\begin{definition}{Sottogruppo}{sottogruppo}
+    Sia $(G, \ast)$ un gruppo e sia $H \neq \varnothing$.    
+    Allora $H$ insieme ad un'operazione $\ast_H$ si dice \emph{sottogruppo} di $(G, \ast)$ se $(H, \ast_H)$ è un gruppo.
+
+    Si scrive $H \sgr G$ se l'operazione $\ast_H$ è l'operazione $\ast$, ovvero l'operazione del sottogruppo è indotta da $G$.
+\end{definition}
+
+\begin{proposition}{Condizione necessaria e sufficiente per i sottogruppi}{cond_sgr}
+    Sia $(G, \ast)$ un gruppo e sia $H \subseteq G$, $H \neq \emptyset$.
+    Allora $H \sgr G$ se e solo se \begin{enumerate}[label={(\roman*)}]
+        \item \label{prop:cond_sgr:op} $\ast$ è un'operazione su $H$, ovvero per ogni $a, b \in H$ vale che $a\ast b \in H$;
+        \item \label{prop:cond_sgr:inv} ogni elemento di $H$ è invertibile (in $H$), ovvero per ogni $h \in H$ vale che $h\inv \in H$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostriamo entrambi i versi dell'implicazione.
+    \begin{description}
+        \item[\boximpl] Ovvio in quanto se $H \sgr G$ allora $H$ è un gruppo.
+        \item[\boximplby] Sappiamo che $\ast$ è associativa poichè lo è in $G$; dobbiamo quindi mostrare solamente che $e_G \in H$.
+        
+        Per ipotesi $H \neq \emptyset$, dunque esiste un $h \in H$. Siccome $H$ è chiuso per inversi (ipotesi \hyperref[prop:cond_sgr:inv]{(ii)}) dovrà esistere anche $h\inv \in H$, mentre dal fatto che $H$ è chiuso per prodotti (ipotesi \hyperref[prop:cond_sgr:op]{(i)}) deve valere che $h \ast h\inv \in H$. 
+
+        Tuttavia $h \ast h\inv = e_G$, dunque $e_G \in H$ e quindi $H$ è un sottogruppo indotto da $G$. \qedhere
+    \end{description}
+\end{proof}
+
+Un sottogruppo particolarmente importante di qualsiasi gruppo è il \emph{centro del gruppo}:
+
+\begin{definition}
+    {Centro di un gruppo}{centro}
+    Sia $(G, \ast)$ un gruppo. Allora si definisce \emph{centro di $G$} l'insieme \[
+        \Zentr{G} \deq \set*{x \in G \given g\ast x = x\ast g \;\;\forall g \in G}.    
+    \]
+\end{definition}
+
+Intuitivamente, il centro di un gruppo è l'insieme di tutti gli elementi per cui $\ast$ diventa commutativa.
+
+Mostriamo che il centro di un gruppo è un sottogruppo tramite la prossima proposizione.
+
+\begin{proposition}
+    {Proprietà del centro di un gruppo}
+    {centro}
+    Sia $(G, \ast)$ un gruppo e sia $\Zentr{G}$ il suo centro.
+    Allora vale che \begin{enumerate}[label={(\roman*)}]
+        \item $\Zentr{G} \sgr G$;
+        \item $\Zentr{G} = G$ se e solo se $G$ è abeliano.
+    \end{enumerate}
+\end{proposition}
+\begin{proof} Mostriamo le due affermazioni separatamente.
+    \paragraph{$\Zentr{G}$ è un sottogruppo} 
+    Notiamo innanzitutto che $\Zentr{G} \neq \varnothing$ poichè $e_G \in \Zentr{G}$. Per la \Cref{prop:cond_sgr} ci basta mostrare che $*$ è un'operazione su $\Zentr{G}$ e che ogni elemento di $\Zentr{G}$ è invertibile.
+    \begin{enumerate}
+        [label={(\arabic*)}]
+        \item Siano $x, y \in \Zentr{G}$ e mostriamo che $x*y \in \Zentr{G}$, ovvero che per ogni $g \in G$ vale che $g*(x\ast y) = (x\ast y)\ast g$. 
+        \begin{align*}
+            &g\ast (x\ast y) \tag*{(per (G1))}\\
+            =\ &(g\ast x)\ast y \tag*{(dato che $x \in \Zentr{G}$)}\\
+            =\ &(x\ast g)\ast y \tag*{(per (G1))}\\
+            =\ &x\ast (g\ast y) \tag*{(dato che $x \in \Zentr{G}$)} \\
+            =\ &x\ast (y\ast g) \tag*{(per (G1))}\\
+            =\ &(x\ast y)\ast g.
+        \end{align*}
+        \item Sia $x \in \Zentr{G}$, mostriamo che $x\inv \in \Zentr{G}$.
+        
+        Per ipotesi \begin{align*}
+            &g\ast x = x\ast g \tag*{(moltiplico a sinistra per $x\inv$)} \\
+            \iff\ &x\inv \ast  g\ast x = x\inv \ast  x\ast g\tag*{(dato che $x\inv \ast  x = e$)} \\
+            \iff\ &x\inv \ast  g\ast x = g \tag*{(moltiplico a destra per $x\inv$)} \\
+            \iff\ &x\inv \ast  g\ast x\ast x\inv = g\ast x\inv \tag*{(dato che $x\inv \ast  x = e$)} \\
+            \iff\ &x\inv \ast  g = g\ast x\inv
+        \end{align*}
+        da cui $x\inv \in \Zentr{G}$.
+    \end{enumerate}
+
+    Per la \Cref{prop:cond_sgr} segue che $\Zentr{G} \sgr G$.
+
+    \paragraph{$\Zentr{G} = G$ se e solo se $G$ abeliano} Dimostriamo entrambi i versi dell'implicazione.
+    \begin{description}
+        \item[\boximpl ] Ovvia: $\Zentr{G}$ è un gruppo abeliano, dunque se $G = \Zentr{G}$ allora $G$ è abeliano.
+        \item[\boximplby]  Ovvia: $\Zentr{G}$ è l'insieme di tutti gli elementi di $G$ per cui $\ast $ commuta, ma se $G$ è abeliano questi sono tutti gli elementi di $G$, ovvero $\Zentr{G} = G$.  \qedhere
+    \end{description}
+\end{proof}
+
+Un altro esempio è dato dai sottogruppi di $(\Z, +)$.
+
+\begin{definition}
+    {Insieme dei multipli interi}{}
+    Sia $n \in \Z$. Allora chiamo $n\Z$ l'insieme dei multipli interi di $n$ \[
+         n\Z \deq \set*{nk \given k \in \Z}.
+    \]
+\end{definition}
+
+È semplice verificare che $(n\Z, +)$ è un gruppo per ogni $n \in \Z$. In particolare vale la seguente proposizione.
+
+\begin{proposition}
+    {$n\Z$ è sottogruppo di $\Z$}{nZ_sgr_Z}
+    Per ogni $n \in \Z$ vale che $(n\Z, +) \sgr (\Z, +)$.
+\end{proposition}
+\begin{proof}
+    Innanzitutto notiamo che $n\Z \neq \varnothing$ in quanto $n \cdot 0 = 0 \in n\Z$.     
+    Mostriamo ora che $n\Z \sgr \Z$.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Siano $x, y \in n\Z$ e mostriamo che $x+y \in \Z$. 
+        
+        Per definizione di $n\Z$ esisteranno $k, h \in \Z$ tali che $x = nk$, $y = nh$.
+        
+        Allora $x + y = nk + nh = n(k + h) \in n\Z$ in quanto $k + h \in \Z$.
+        \item Sia $x \in n\Z$, mostriamo che $-x \in n\Z$.
+        
+        Per definizione di $n\Z$ esisterà $k \in \Z$ tale che $x = nk$.
+
+        Allora affermo che $-x = n(-k) \in n\Z$. Infatti \[
+            x + (-x) = nk + n(-k) = n(k - k) = 0    
+        \] che è l'elemento neutro di $\Z$.
+    \end{enumerate}
+
+    Dunque per la \Cref{prop:cond_sgr} segue che $n\Z \sgr \Z$, ovvero la tesi.
+\end{proof}
+
+\begin{corollary}{}{nZ_mZ}
+    Siano $n, m \in \Z$. Allora valgono i due fatti seguenti:
+    \begin{enumerate}[label={(\arabic*)}]
+        \item \label{cor:nZ_mZ:subset} $n\Z \subseteq m\Z \iff m \divides n$;
+        \item \label{cor:nZ_mZ:eq} $n\Z = m\Z \iff n = \pm m$.
+    \end{enumerate}
+\end{corollary}
+\begin{proof} Dimostriamo le due affermazioni separatamente.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Dimostriamo entrambi i versi dell'implicazione.
+
+        \begin{description}
+            \item[\boximpl] Supponiamo $n\Z \subseteq m\Z$, ovvero che per ogni $x \in n\Z$ allora $x \in m\Z$.
+            
+            Sia $k \in \Z$ tale che $\gcd{k}{m} = 1$ e sia $x = nk$.
+            
+            Per definizione di $n\Z$ segue che $x \in n\Z$, dunque $x \in m\Z$. Allora dovrà esistere $h \in \Z$ tale che \begin{align*}
+                &x = mh \\
+                \iff\ &nk = mh \\
+                \implies\ &m \divides nk
+                \intertext{Ma abbiamo scelto $k$ tale che $\gcd{k}{m} = 1$, dunque}
+                \implies\ &m \divides n.
+            \end{align*}
+            \item[\boximplby] Supponiamo che $m \divides n$, ovvero $n = mh$ per qualche $h \in \Z$. Allora \[
+                n\Z = (mh)\Z \subseteq m\Z    
+            \] in quanto i multipli di $mh$ sono necessariamente anche multipli di $m$.
+        \end{description}
+        \item Se $n\Z = m\Z$ allora vale che $n\Z \subseteq m\Z$ e $m\Z \subseteq n\Z$, dunque per il punto precedente $m \divides n$ e $n \divides m$, ovvero $n$ e $m$ sono uguali a meno del segno. \qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    {Intersezione di sottogruppi è un sottogruppo}{}
+    Sia $(G, \cdot)$ un gruppo e siano $H, K \sgr G$.
+    Allora $H \inters K \sgr G$.
+\end{proposition}
+\begin{proof}
+    Innanzitutto dato che $e_G \in H$, $e_G \in K$ segue che $e_G \in H \inters K$, che quindi non può essere vuoto.
+
+    Per la \Cref{prop:cond_sgr} è sufficiente dimostrare che $H \inters K$ è chiuso rispetto all'operazione $\cdot$ e che ogni elemento è invertibile.
+
+    \begin{enumerate}[label={(\roman*)}]
+        \item Siano $x, y \in H \inters K$; mostriamo che $xy \in H \inters K$.
+        
+        Per definizione di intersezione sappiamo che $x, y \in H$ e $x, y \in K$. Dato che $H$ è un gruppo varrà che $xy \in H$; per lo stesso motivo $xy \in K$; dunque $xy \in H \inters K$.
+
+        \item Sia $x \in H \inters K$; mostriamo che $x\inv \in H \inters K$.
+        
+        Per definizione di intersezione sappiamo che $x \in H$ e $x \in K$. Dato che $H$ è un gruppo varrà che $x\inv \in H$; per lo stesso motivo $x\inv \in K$; dunque $x\inv \in H \inters K$.
+    \end{enumerate}
+
+    Dunque per la \Cref{prop:cond_sgr} segue che $H \inters K \sgr G$.
+\end{proof}

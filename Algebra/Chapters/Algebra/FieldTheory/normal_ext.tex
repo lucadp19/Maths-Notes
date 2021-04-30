@@ -1,0 +1,147 @@
+\section{Estensioni normali}
+
+Iniziamo questa sezione con un paio di esempi.
+
+\begin{example}
+    Consideriamo il polinomio $x^3 - 2$ in $\Q[x]$. Questo polinomio è monico e irriducibile su $\Q$ (poiché di Eisenstein) e pertanto \[
+        \mu_{\!\!\sqrt[3]{2}} = x^3 - 2.
+    \] Per comodità scriviamo $\alpha \deq \!\sqrt[3]{2}$. Costruiamo allora tutte le possibili estensioni $\phi : \Q(\alpha) \embeds \closure\Q$ tali che $\phi\restrict{\Q} = \id$.
+    
+    Per quanto visto in precedenza ne esistono tante quante i coniugati di $\alpha$, che sono \[
+        \alpha,\; \alpha\zeta_3,\; \alpha\zeta_3^2
+    \] dove $\zeta_3$ è ovviamente una radice primitiva terza dell'unità.
+
+    Segue quindi che \[
+        \phi\parens[\big]{\Q(\alpha)} = \Q\parens[\big]{\phi(\alpha)} = \begin{cases}
+            \Q(\alpha)\\
+            \Q(\alpha\zeta_3)\\
+            \Q\parens*{\alpha\zeta_3^2}.
+        \end{cases}
+    \]
+
+    Tali estensioni sono distinte tra loro: ad esempio $\Q(\alpha)$ è un sottocampo di $\R$ mentre le altre due contengono anche numeri complessi immaginari.
+\end{example}
+
+\begin{example}
+    Sia $p$ un primo e consideriamo il campo $\Q(\zeta_p)$ ottenuto aggiungendo a $\Q$ una radice primitiva $p$-esima dell'unità.
+
+    Il polinomio minimo di $\zeta_p$ su $\Q$ è \[
+        \mu_{\zeta_p}(x) = \frac{x^p - 1}{x - 1} = x^{p-1} + \dots + x + 1.
+    \] In effetti questo polinomio è irriducibile poiché è traslato di un polinomio di Eisenstein ed è monico, quindi deve essere il polinomio minimo di $\zeta_p$.
+    
+    I coniugati di $\zeta_p$ sono quindi \[
+        \zeta_p, \zeta_p^2, \dots, \zeta_p^{p-1}.
+    \] Le estensioni dell'identità a $\Q(\zeta_p)$ dovranno dunue essere della forma \begin{align*}
+        \phi_i : \Q(\zeta_p) &\embeds \closure\Q\\
+        \Q &\mapsto \Q\\
+        \zeta_p &\mapsto \zeta_p^i
+    \end{align*} con $i = 1, \dots, p-1$. Osserviamo ora che per ogni $i$ \[
+        \phi_i\parens[\big]{\Q(\zeta_p)} = \Q\parens[\big]{\phi_i(\zeta_p)} = \Q(\zeta_p^i) = \Q(\zeta).
+    \] In effetti l'inclusione $\Q(\zeta_p) \supseteq \Q(\zeta_p^i)$ è ovvia in quanto in $\Q(\zeta_p)$ c'è l'elemento $\zeta_p^i$ e dunque deve esserci tutto il campo da essa generato. Ma a questo punto possiamo costruire la torre di estensioni \[
+        \begin{tikzcd}            
+            \Q \arrow[r, dash, "p-1"] \arrow[rr, dash, bend left, "p-1"]
+            & \Q\parens[\big]{\zeta_p^i} \arrow[equal, r]
+            & \Q(\zeta_p)
+        \end{tikzcd}
+    \] da cui segue che il grado dell'estensione $\ext{\Q(\zeta_p) / \Q\parens[\big]{\zeta_p^i}}$ è $1$, dunque i due campi devono essere lo stesso campo.
+\end{example}
+
+\begin{definition}
+    {Estensione normale di campi}{}
+    Sia $\ext{\F / \K}$ un'estensione algebrica di campi. $\ext{\F / \K}$ si dice \strong{normale} se per ogni immersione $\phi : \F \embeds \closure\K$ tale che $\phi\restrict{\K} = \id$ si ha \[
+        \phi(\F) = \F.
+    \]  
+\end{definition}
+
+Ad esempio per quanto visto sopra $\ext{\Q(\zeta_p) / \Q}$ è normale, mentre $\ext{\Q\parens*{!\sqrt[3]{2}} / \Q}$ non lo è.
+
+\begin{proposition}
+    {Caratterizzazione delle estensioni normali}{caratt_normal_ext}
+    Sia $\ext{\F / \K}$ un'estensione algebrica (e finita). I seguenti fatti sono equivalenti.
+    \begin{enumerate}
+        \item $\ext{\F / \K}$ è normale.
+        \item Ogni polinomio $f \in \K[x]$ che ha una radice in $\F$ ha tutte le sue radici in $\F$.
+        \item $\F$ è il campo di spezzamento di una famiglia di polinomi di $\K[x]$.  
+    \end{enumerate}
+\end{proposition}
+\begin{remark}
+    I primi due punti della \Cref{prop:caratt_normal_ext} valgono anche per le estensioni algebriche infinite, ma noi la useremo e dimostreremo solo nel caso finito.
+\end{remark}
+\begin{proof}
+    Dimostriamo la catena di implicazioni \[
+        \text{(1)} \implies \text{(2)} \implies \text{(3)}\implies \text{(1)}.
+    \]
+    \begin{description}
+        \item[\fcolorbox{Black}{White}{(1) $\implies$ (2)}]
+        Sia $f \in \K[x]$ e siano $\alpha_1, \dots, \alpha_n \in \closure\K$ le radici di $f$. Supponiamo senza perdita di generalità che $\alpha_1$ appartenga ad $\F$ e dimostriamo che da ciò segue che $\alpha_2, \dots, \alpha_n \in \F$.
+        
+        Siccome $\alpha_1 \in \F$ certamente $\K(\alpha_1) \subseteq \F$. Allora per ogni $i = 1, \dots, n$ definiamo \begin{align*}
+            \phi_i : \K(\alpha_1) &\embeds \K(\alpha_i) \subseteq \closure\K \\
+            \alpha_1 &\mapsto \alpha_i
+        \end{align*} tale che $\phi_i\restrict{\K} = \id$.
+        
+        Dato che $\ext{\F / \K}$ è finita a maggior ragione lo sarà $\ext{\F / \K(\alpha_1)}$. Per la \Cref{prop:finite_ext_embedding} possiamo allora estendere ogni $\phi_i$ ad un'immersione definita su $\F$: \[
+            \tilde\phi_i : \F \embeds \closure\K
+        \] tale che $\tilde\phi_i\restrict{\K(\alpha_1)} = \phi_i$, dunque in particolare $\tilde\phi_i\restrict{\K} = \id$.
+
+        Possiamo quindi applicare l'ipotesi che l'estensione $\ext{\F / \K}$ è normale: $\tilde\phi_i(\F) = \F$ per ogni $i$. In particolare dato che $\alpha_1 \in \K(\alpha_1)$ si ha che \[
+            \tilde\phi_i(\alpha_1) = \phi_i(\alpha_1) = \alpha_i \in \F,
+        \] e dunque $\F$ contiene tutte le radici di $f$. 
+        \item[\fcolorbox{Black}{White}{(2) $\implies$ (3)}]
+        Consideriamo il campo di spezzamento su $\K$ della famiglia \[
+            \FF \deq \set*{\mu_\alpha \given \alpha \in \F},
+        \] dove $\mu_\alpha$ indica il polinomio minimo di $\alpha$ su $\K$. Chiamiamo tale campo $\F_0$.
+        
+        Certamente $\F \subseteq \F_0$: ogni elemento di $\F$ è radice del proprio polinomio minimo, e tale polinomio minimo fa parte della famiglia $\FF$. D'altra parte per definizione \[
+            \F_0 = \K\ParensGen*{\beta \given \beta \text{ radice di qualche } \mu_\alpha \in \FF}.
+        \] Allora ogni $\beta \in \F_0$ è radice di un polinomio $\mu_\alpha$ che ha almeno una radice in $\F$ (ovvero $\alpha$ stessa, per definizione della famiglia $FF$), dunque per ipotesi $\beta \in \F_0$ e quindi $\F_0 \subseteq \F$.
+        
+        Segue quindi che $\F = \F_0$ ed è dunque il campo di spezzamento di una famiglia di polinomi di $\K[x]$. 
+        \item[\fcolorbox{Black}{White}{(3) $\implies$ (1)}]
+        Sia $\F$ il campo di spezzamento su $\K$ di una famiglia $\FF$ di polinomi di $\K[x]$. Siccome l'estensione $\ext{\F / \K}$ è finita, la famiglia è necessariamente finita: \[
+            \FF = \set*{f_1, \dots, f_k}.
+        \]
+
+        Dunque in particolare siano $\set*{\alpha_{ij} \given j = 1, \dots, n_i}$ le radici del polinomio $f_i$: il campo di spezzamento $\F$ può essere descritto come \[
+            \F = \K\ParensGen*{\alpha_{ij} \given i = 1, \dots, k,\; j = 1, \dots, n_i}.
+        \]
+
+        Sia allora $\phi : \F \embeds \closure\K$ tale che $\phi\restrict{\K} = \id$ e mostriamo che $\phi(\F) = \F$. 
+        
+        Osserviamo che per ogni scelta di $i, j$ il polinomio minimo $\mu_{\alpha_{ij}}$ di $\alpha_{ij}$ su $\K$ dovrà dividere $f_i$, poiché $f_i$ è un polinomio che si annulla in $\alpha_{ij}$. Essendo $\phi$ un'immersione di $\ext{\F / \K}$, $\phi$ dovrà mandare $\alpha_{ij}$ in un'altra radice del suo polinomio minimo, che sarà ancora una volta una radice di $f_i$ (poiché il polinomio minimo di $\alpha_{ij}$ divide $f$).
+        
+        Segue quindi che \[
+            \phi(\alpha_{ij}) = \alpha_{i,j'} \in \F
+        \] per un qualche $j' \in \set*{1, \dots, n_i}$.
+        
+        Ma allora $\phi$ manda i generatori di $\F$ in elementi di $\F$, dunque \[
+            \phi(\F) \subseteq \F.
+        \] Siccome $\phi$ è iniettivo segue che $\phi(\F)$ e $\F$ hanno la stessa dimensione finita su $\K$ come spazi vettoriali, dunque $\ExtDegree{\F : \K} = \ExtDegree{\phi(\F) : \K}$, da cui $\phi(\F) = \F$ e quindi $\ext{\F / \K}$ è un'estensione normale.   \qedhere
+    \end{description}
+\end{proof}
+
+\begin{proposition}
+    {Estensione di grado $2 \implies$ normale}{}
+    Sia $\K$ un campo con $\FieldChar \K \neq 2$ e sia $\ext{\F / \K}$ di grado $2$. Allora $\ext{\F / \K}$ è normale.   
+\end{proposition}
+\begin{proof}
+    Sia $\gamma \in \F \setminus \K$. Per quanto dimostrato dalla \Cref{prop:quad_ext=>gen_sqrt} si ha che $\F = \K(\gamma)$. Sia allora \[
+        \mu_\gamma(x) = x^2 + b_1x + b_0 \in \K[x]
+    \]il polinomio minimo di $\gamma$ su $\K$ e siano $\gamma_1, \gamma_2$ le sue radici.
+    
+    Per l'\Cref{rem:quad_ext=>sqrt_discr} sappiamo che \[
+        \F = \K\parens[\Big]{\sqrt{\Delta}}
+    \] dove $\Delta$ è il discriminante dell'equazione \[
+        \mu_\gamma(x) = x^2 + b_1x + b_0 = 0, 
+    \] ovvero $\Delta \deq b_1^2 - 4b_0$. Per la formula risolutiva delle equazioni di secondo grado allora \[
+        \gamma_{1/2} = \frac{-b_1 \pm \sqrt{\Delta}}{2},
+    \] ovvero $\gamma_{1/2} \in \K\parens[\Big]{\sqrt{\Delta}} = \F$.
+    
+    Segue quindi che $\F$ è il campo di spezzamento di $\mu_\gamma$, dunque per la \Cref{prop:caratt_normal_ext} $\ext{\F / \K}$ è normale.  
+\end{proof}
+
+\subsection{Proprietà delle estensioni normali}
+
+Studiamo ora come si comportano le estensioni normali rispetto alle solite operazioni che compiamo sui campi, ovvero l'intersezione, il composto e le torri di estensioni.
+
+\paragraph{Composto ed intersezione}

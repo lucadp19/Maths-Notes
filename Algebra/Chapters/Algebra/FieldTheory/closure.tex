@@ -1,0 +1,126 @@
+\section{Chiusura algebrica e campi di spezzamento}
+
+In molte costruzioni viste nella sezione precedente abbiamo avuto bisogno di creare un campo \emph{universo} che contenesse i campi di nostro interesse. Vogliamo ora rendere più concreta questa costruzione, mostrando che possiamo sempre considerare un campo dato come sottocampo di un campo più grande. 
+
+\begin{definition}
+    {Campo algebricamente chiuso}{}
+    Sia $\K$ un campo. $\K$ si dice \strong{algebricamente chiuso} se ogni polinomio non costante $f \in \K[x]$ ammette almeno una radice in $\K$. 
+\end{definition}
+
+Osserviamo che per il Teorema Fondamentale dell'Algebra il campo $\C$ è un campo algebricamente chiuso, mentre ad esempio $\R$ e $\Q$ non lo sono: il polinomio $x^2 + 1$ è un polinomio di $\Q[x]$ (e quindi di $\R[x]$) ma non ammette radici in nessuno dei due campi.
+
+Inoltre dire che $\K$ è algebricamente chiuso equivale a dire che ogni polinomio non costante si fattorizza su $\K$ in un prodotto di polinomi irriducibili di grado $1$, ovvero che gli unici irriducibili di $\K[x]$ sono i polinomi di grado $1$.
+
+Infine, se $\K$ è algebricamente chiuso non può esistere un'estensione di $\K$ che sia contemporaneamente algebrica e non banale: se $\ext{\bL / \K}$ è un'estensione algebrica e $\alpha \in \bL$ allora $\alpha$ annulla un polinomio di $\K[x]$. Tuttavia un tale polinomio si fattorizza come prodotto di polinomi di primo grado in $\K[x]$, dunque $\alpha$ deve annullare almeno uno dei fattori (perché $\K[x]$ è un dominio di integrità), dunque deve essere un elemento di $\K$. Segue quindi che $\bL = \K$ e l'estensione è banale.
+
+Un campo algebricamente chiuso è quindi un ottimo candidato per fare da \emph{campo universo}, in quanto non c'è alcun modo per uscirne al di fuori senza sfruttare elementi trascendenti.
+
+\begin{definition}
+    {Chiusura algebrica di un campo}{}
+    Sia $\K$ un campo. Si dice \strong{chiusura algebrica} di $\K$ un campo $\closure{\K}$ tale che \begin{enumerate}[(1)]
+        \item $\closure{\K}$ è algebricamente chiuso,
+        \item $\K \embeds \closure{\K}$, ovvero $\K$ può essere considerato un sottocampo di $\closure{\K}$,  
+        \item $\ext{\closure{\K} / \K}$ è un'estensione algebrica.
+    \end{enumerate}
+\end{definition}
+
+Ad esempio $\C$ è la chiusura algebrica di $\R$, in quanto \[
+    \C = \R(i) = \R[i] \isomorph \quot{\R[x]}{\ideal[\big]{x^2 + 1}}.
+\] Invece $\C$ non è la chiusura algebrica di $\Q$ in quanto esistono elementi di $\C$ che non sono algebrici su $\Q$ (ad esempio $\pi$).
+
+Il seguente teorema ci garantisce che possiamo sempre considerare la chiusura algebrica di un campo dato.
+\begin{theorem}
+    {Esistenza ed unicità della chiusura algebrica}{}
+    Sia $\K$ un campo. Allora esiste una chiusura algebrica $\closure{\K}$ di $\K$ ed essa è unica a meno di isomorfismo, ovvero se $\closure{\K}$ e $\closure{\K}'$ sono due chiusure algebriche di $\K$ allora esiste \[
+        \phi : \closure{\K} \xrightarrow{\sim} \closure{\K}'
+    \] tale che $\phi\restrict{\K} = \id$. 
+\end{theorem}
+
+Mostriamo che una chiusura algebrica di $\Q$ è \[
+    \A_{\ext{\C / \Q}} \deq \closure{\Q} = \set*{\alpha \in \C \given \alpha \text{ algebrico su } \Q}.
+\] Abbiamo già mostrato nella \Cref{prop:field_of_all_alg} che un tale $\closure{\Q}$ è un campo e che l'estensione $\ext{\closure{\Q} / \Q}$ è algebrica: rimane quindi solo da mostrare che $\closure{\Q}$ è un campo algebricamente chiuso.
+
+Sia $f \in \Q[x]$ un polinomio non costante. Dato che $\C$ è algebricamente chiuso e $\Q \embeds \C$ esiste una radice $\alpha \in \C$ del polinomio $f$. Dobbiamo far vedere che $\alpha \in \closure{\Q}$: costruiamo la torre di estensioni \begin{equation*}
+    \begin{tikzcd}[every arrow/.append style={dash}]
+        \Q \arrow{r} &\closure{\Q} \arrow{r} &\closure{\Q}(\alpha).
+    \end{tikzcd}
+\end{equation*}
+Dato che $\ext{\closure{\Q} / \Q}$ è algebrica e $\ext{\closure{\Q}(\alpha) / \closure{\Q}}$ è algebrica in quanto semplice e generata da un elemento algebrico su $\Q$ (e quindi su $\closure{\Q}$), per la \Cref{prop:alg_tower} l'estensione $\ext{\closure{\Q}(\alpha) / \Q}$ è algebrica, e quindi $\alpha \in \closure{\Q}$ per definizione.
+
+\begin{remark}
+    La stessa argomentazione può essere usata ogni volta che ho un campo $\K$ immerso in un campo $\Omega$ algebricamente chiuso: la chiusura algebrica di $\K$ \emph{in $\Omega$} è l'insieme \[
+        \closure{\K} = \set*{\alpha \in \Omega \given \alpha \text{ algebrico su } \K}.
+    \]
+\end{remark}
+
+\subsection{Campo di spezzamento}
+
+Partendo da un campo e costruendo la sua chiusura algebrica otteniamo un campo in cui ogni polinomio ha una radice. Tuttavia questa costruzione è \emph{esagerata} nel caso in cui vogliamo estendere un campo solo con le radici di un gruppo di $1$ o pochi polinomi.
+
+\begin{definition}
+    {Campo di spezzamento}{}
+    Sia $\K$ un campo e sia $f \in \K[x]$ con $\deg f \geq 1$. Siano inoltre $\alpha_1, \dots, \alpha_n \in \closure{\K}$ le radici di $f$. Si dice allora \strong{campo di spezzamento} di $f$ su $\K$ il campo generato su $\K$ dalle radici di $f$: \[
+        \K(\alpha_1, \dots, \alpha_n).
+    \]   
+\end{definition}
+
+Più in generale se $f_i \subseteq \K[x]$ è una famiglia di polinomi indicizzata da $i \in \II$, dove $\II$ è un insieme potenzialmente infinito di indici, e se \[
+    \alpha_{i1}, \dots, \alpha_{i,n_i}
+\] sono le radici di $f_i$, allora il campo di spezzamento della famiglia $\FF \deq \set*{f_i \given i \in \II}$ è il campo generato su $\K$ da tutte le radici degli $f_i$, ovvero \[
+    \K\ParensGen[\Big]{\alpha_{ij} \given i \in \II, j = 1, \dots, n_i}.
+\] 
+
+Tuttavia questa costruzione non è necessaria nel caso finito, in quanto dato $\FF = \set*{f_1, \dots, f_m}$ possiamo considerare il polinomio \[
+    f \deq f_1 \cdots f_n.
+\] A questo punto $\alpha$ è radice di un $f_i$ se e solo se è radice di $f$ e quindi il campo di spezzamento della famiglia $\FF$ è uguale al campo di spezzamento del singolo polinomio $f$.
+
+\newthoughtpar{Grado del campo di spezzamento}
+
+Sia $\K$ un campo e sia $\F$ il campo di spezzamento di $f \in \K[x]$ su $\K$. Sia $n \deq \deg f$: dato che $f$ si scompone in $n$ fattori lineari su $\closure{\K}$ esisteranno $n$ radici di $f$. Chiamiamole \[
+    \alpha_1, \dots, \alpha_n \in \closure{\K}
+\] e consideriamo quindi il campo di spezzamento $\F \deq \K(\alpha_1, \dots, \alpha_n)$.
+Per definizione questo è equivalente ad aggiungere una radice alla volta: \[
+    \F = \K(\alpha_1)\dots(\alpha_n).
+\] 
+
+Per calcolare il grado dell'estensione possiamo quindi considerare tutti i campi intermedi \[
+    \F_i \deq \begin{cases}
+        \K &\text{se } i = 0, \\
+        \F_{i-1}(\alpha_i) &\text{se } 0 < 1 \leq n. 
+    \end{cases}
+\] In particolare il campo $\F_0$ è il campo base $\K$, mentre $\F_n = \F$.
+
+Consideriamo allora la torre di estensioni \[
+    \begin{tikzcd}[every arrow/.append style={dash}]
+        \K = \F_0 \arrow{r}
+        & \F_1 \arrow{r}
+        & \dots \arrow{r}
+        &\F_{n-1} \arrow{r}
+        &\F_n = \F
+    \end{tikzcd}
+\] e mostriamo che l'estensione \[
+    \ext{\F_{i+1} / \F_i} = \ext{\F_i(\alpha_{i+1}) / \F_i}
+\] ha grado minore o uguale ad $n - i$.
+
+Consideriamo la scomposizione di $f$ in fattori lineari: \[
+    f(x) = c
+    \underbrace{(x - \alpha_1)\cdots(x-\alpha_i)}_{\textstyle {}\in \F_i}
+    \underbrace{(x - \alpha_{i+1})\cdots(x - \alpha_n)}_{\textstyle {}= g_i(x) \in \F_i[x]}.
+\] In effetti ognuno dei primi $i$ fattori appartiene separatamente ad $\F_i$, dunque il polinomio $g_i(x) = (x-\alpha_{i+1})\cdots(x-\alpha_n)$ deve essere ancora un polinomio di $\F_{i}[x]$.
+
+Tale polinomio ha grado $n-i$ ed è un polinomio che si annulla in $\alpha_{i+1}$: segue quindi che il polinomio minimo di $\alpha_{i+1}$ su $\F_{i}$ divide $g_i$ e dunque ha grado minore o uguale a $n-i$, ovvero l'estensione ha grado minore o uguale ad $n-i$.
+
+Allora per il \Cref{th:ext_tower} si ha che \[
+    \ExtDegree[\big]{\F : \K} 
+    = \prod_{i=0}^{n-1} \ExtDegree[\big]{\F_{i+1} : \F_i} 
+    \leq \prod_{i=0}^{n-1} n - i 
+    = \prod_{k=1}^n k
+    = n!
+\] Vale quindi il seguente risultato.
+
+\begin{theorem}
+    {Grado del campo di spezzamento}{}
+    Sia $\K$ un campo e $f \in \K[x]$ un polinomio di grado $n$. Se $\F$ è il campo di spezzamento di $f$ su $\K$, allora \[
+        \ExtDegree{\F : \K} \leq n!
+    \] 
+\end{theorem}

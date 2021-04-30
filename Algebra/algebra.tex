@@ -1,10 +1,26 @@
-\documentclass[italian,oneside,headinclude,10pt]{scrbook}
+% \documentclass[italian,oneside,headinclude,10pt]{scrbook}
+\documentclass[
+    oneside,
+    10pt,
+    language=italian,
+    pagestyle=notes,
+    fontstyle=palaeuler,
+    thmstyle=boxed,
+    colors
+]{modernth}
     \usepackage[utf8]{inputenc}
     \usepackage[italian]{babel}
     \usepackage[T1]{fontenc}
     \usepackage{textcomp}
     \usepackage{microtype}
-    \usepackage{preamble}
+    \usepackage{algebra} 
+
+\includeonly{
+    Chapters/Arithmetic/group_chapter,
+    Chapters/Algebra/group_chapter,
+    Chapters/Algebra/ring_chapter,
+    Chapters/Algebra/field_chapter
+}
 
 \begin{document}
 
@@ -13,50 +29,37 @@
 \maketitle
 
 \tableofcontents
-\part{Aritmetica}
-% \input{Integers/relations}
-% \input{Integers/naturals}
-% \input{Integers/divisibility}
-% \input{Integers/diophantine}
-% \input{Integers/primes}
+% \part{Aritmetica}
+% \input{Chapters/Arithmetic/Integers/relations}
+% \input{Chapters/Arithmetic/Integers/naturals}
+% \input{Chapters/Arithmetic/Integers/divisibility}
+% \input{Chapters/Arithmetic/Integers/diophantine}
+% \input{Chapters/Arithmetic/Integers/primes}
 
 % % CAPITOLO - CONGRUENZE
-% \input{Integers/congruences}
+% \input{Chapters/Arithmetic/Integers/congruences}
 
-% % CAPITOLO - GRUPPI
-\input{Groups/groups}
-\input{Groups/subgroups}
-\input{Groups/cyclic_groups}
-\input{Groups/homo_groups}
-\input{Groups/products}
-\input{Groups/cosets}
-\input{Groups/iso_theorems}
+% CAPITOLO - GRUPPI
+\include{Chapters/Arithmetic/group_chapter}
 
 % CAPITOLO - ANELLI E CAMPI
-\input{Rings/rings}
-\input{Rings/polynomials}
-\input{Rings/polynomial_fact}
-\input{Rings/polynomial_quot}
-\input{Rings/extensions}
+% \input{Chapters/Arithmetic/Rings/rings}
+% \input{Chapters/Arithmetic/Rings/polynomials}
+% \input{Chapters/Arithmetic/Rings/polynomial_fact}
+% \input{Chapters/Arithmetic/Rings/polynomial_quot}
+% \input{Chapters/Arithmetic/Rings/extensions}
+% \input{Chapters/Arithmetic/Rings/finite_fields}
 
 % -----------    ALGEBRA    ----------- %
 \part{Algebra I}
 
 % CAPITOLO - GRUPPI
-\input{GroupTheory/fund_groups}
-\input{GroupTheory/automorphisms}
-\input{GroupTheory/group_actions}
-\input{GroupTheory/presentations}
-\input{GroupTheory/structure_abelian}
+\include{Chapters/Algebra/group_chapter}
 
 % CAPITOLO - ANELLI
-\chapter{Teoria degli Anelli}
-\input{RingTheory/ideals}
-\input{RingTheory/ring_homo}
-\input{RingTheory/prime_maximal}
-\input{RingTheory/field_of_fractions}
-\input{RingTheory/divisibilty}
-\input{RingTheory/ed-pid-ufd}
-\input{RingTheory/poly_UFD.tex}
+\include{Chapters/Algebra/ring_chapter}
+
+% CAPITOLO - CAMPI
+\include{Chapters/Algebra/field_chapter}
 
 \end{document}

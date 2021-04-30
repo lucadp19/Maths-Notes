@@ -1,0 +1,166 @@
+\section{Decomposizione in prodotti diretti e semidiretti}
+
+Abbiamo studiato in passato cosa sia il prodotto diretto di due gruppi $G$ e $H$ e quali proprietà ha. Vogliamo ora trovare delle condizioni per cui un gruppo possa essere decomposto nel prodotto diretto di suoi sottogruppi.
+
+Iniziamo con due semplici lemmi.
+
+\begin{lemma}
+    {}{H_normal=>HK=KH}
+    Se $H \normal G$, $K \sgr G$ allora $HK = KH$ e dunque segue che $HK \leq G$.   
+\end{lemma}
+\begin{proof}
+    Siccome $H \normal G$ si ha che $gH = Hg$ per ogni $g \in G$, dunque $kH = Hk$ per ogni $k \in K \sgr G$, ovvero $KH = HK$. Per il \Cref{cond_prod_sgr_e'_sgr} segue quindi che $HK = KH \sgr G$.   
+\end{proof}
+
+\begin{lemma}
+    {}{H_K_normal_banal_inters=>HK=KH}
+    Siano $H, K \normal G$ tali che $H \inters K = \set*{e_G}$. Allora gli elementi di $H$ e $K$ commutano, ovvero \[
+        HK = KH.
+    \] 
+\end{lemma}
+\begin{proof}
+    È sufficiente mostrare che per ogni $h \in H, k \in K$ vale $hk = kh$, ovvero $[h, k] = hkh\inv k\inv = e_G$. Osserviamo che per associatività \[
+        [h, k] = h(kh\inv k\inv) = (hkh\inv) k\inv.
+    \] 
+    
+    Il primo è un elemento di $H$, in quanto è il prodotto di $h \in H$ e $kh\inv k\inv \in kHk\inv$, che è uguale ad $H$ poiché $H$ è normale in $G$.
+    
+    Analogamente si mostra che $(hkh\inv)k\inv$ è un elemento di $K$.
+
+    Dunque, essendo entrambi uguali al commutatore $[h, k]$, segue che $[h, k] \in H \inters K = \set*{e_G}$, ovvero $hk = kh$, come volevamo.   
+\end{proof}
+
+Possiamo quindi enunciare e dimostrare il Teorema di Decomposizione nel Prodotto Diretto.
+
+\begin{theorem}
+    {Decomposizione nel prodotto diretto}{decomp_direct_product}
+    Sia $G$ un gruppo, $H, K \sgr G$ tali che \begin{enumerate}[(1)]
+        \item $H, K \normal G$,
+        \item $HK = G$,
+        \item $H \inters K = \set*{e_G}$.   
+    \end{enumerate}  
+    Allora $G \isomorph H \times K$. 
+\end{theorem}
+\begin{proof}
+    Consideriamo la mappa \begin{align*}
+        \phi : H \times K &\to G\\
+        (h, k) &\mapsto hk.
+    \end{align*}
+    Ovviamente la mappa è ben definita (poiché $H, K \sgr G$ e $G$ è chiuso per prodotto). Mostriamo quindi che è un isomorfismo di gruppi.
+
+    \newthought{Omomorfismo} Siano $(h_1, k_1), (h_2, k_2) \in H \times K$. Allora \begin{align*}
+        \phi((h_1, k_1)(h_2, k_2)) 
+        &= \phi((h_1h_2, k_1k_2)) \\
+        &= h_1h_2k_1k_2.
+        \intertext{Dato che $H \inters K = \set*{e_G}$ si applica il \Cref{H_K_normal_banal_inters=>HK=KH}, da cui segue che}
+        &= (h_1k_1) \cdot (h_2k_2)\\
+        &= \phi((h_1, k_1)) \cdot \phi((h_2, k_2)).
+    \end{align*}
+    
+    \newthought{Surgettività} Segue banalmente dall'ipotesi che $G = HK$.
+    
+    \newthought{Iniettività} Si ha che \[
+        \ker \phi = \set*{(h, k) \in H \times K \given \phi((h, k)) = hk = e_G}.
+    \] Tuttavia essendo $h, k \in G$ si ha che il loro prodotto è l'identità se e solo se $h = k\inv$, da cui (siccome $h \in H$, $k\inv \in K$) segue che $h, k \in H \inters K = \set*{e_G}$. Segue quindi che $\ker \phi = \set*{(e_G, e_G)}$, ovvero $\phi$ è iniettivo.   
+
+    Segue quindi che $\phi$ è un isomorfismo di gruppi, come volevamo.
+\end{proof}
+
+Una possibile applicazione è la seguente proposizione.
+\begin{proposition}
+    {}{}
+    Gli unici gruppi di ordine $p^2$ (a meno di isomorfismo) sono \[
+        \Zmod{p^2}, \qquad \Zmod{p} \times \Zmod{p}.
+    \] 
+\end{proposition}
+\begin{proof}
+    Sia $G$ di ordine $p^2$. Abbiamo già dimostrato che ogni $p$-gruppo di ordine $p^2$ è abeliano. Inoltre $G$ è ciclico allora $G \isomorph \Zmod{p^2}$: supponiamo dunque che $G$ non sia ciclico e mostriamo che $G \isomorph \Zmod{p} \times \Zmod{p}$.
+    
+    Siccome $G$ ha ordine $p^2$, i suoi elementi hanno ordine $1, p$ oppure $p^2$. L'unico elemento di ordine $1$ è l'identità, non esistono elementi di ordine $p^2$ poiché altrimenti $G$ sarebbe ciclico, dunque segue che ogni elemento di $G$ diverso dall'identità deve avere ordine $p$.
+
+    Sia quindi $x \in G$ di ordine $p$ e sia $H \deq \gen{x}$; sia inoltre $y \in G \setminus \gen{x}$ e sia $K \deq \gen{y}$.
+    
+    Facciamo alcune osservazioni. \begin{itemize}
+        \item $H$ e $K$ sono normali in $G$ poiché $G$ è abeliano;
+        \item $H \inters K$ è il gruppo banale: infatti $H \inters K$ è un sottogruppo di $H$ e di $K$, dunque l'ordine di $H \inters K$ deve dividere $\card{H} = \card{K} = p$. Dunque deve valere che $H = K = H \inters K$ oppure $H \inters K = \set*{e_G}$, tuttavia la prima opzione è impossibile in quanto $H = \gen{x}$, $K = \gen{y}$ e $y \notin \gen{x}$.
+        \item Vale che \[
+            \card{HK} = \frac{\card{H}\cdot\card{K}}{\card{H \inters K}} = \card{H} \cdot \card{K} = p^2 = \card{G}, 
+        \] dunque $G = HK$.  
+    \end{itemize}
+
+    Per il \Cref{th:decomp_direct_product} segue quindi che $G \isomorph \Zmod{p} \times \Zmod{p}$. 
+\end{proof}
+
+Abbiamo quindi un modo per decomporre un gruppo nel prodotto diretto di due gruppi. Notiamo che a partire da gruppi abeliani, il prodotto diretto genera sempre gruppi abeliani: è impossibile decomporre gruppi non abeliani sottoforma di prodotto diretto di gruppi abeliani. Abbiamo quindi bisogno di un altro modo per costruire nuovi gruppi.
+
+\begin{definition}
+    {Prodotto semidiretto}{semidir_prod}
+    Siano $H, K$ due gruppi e sia \begin{align*}
+        \phi : K &\to \Aut{H}\\
+        k &\mapsto \phi(k) = \phi_k
+    \end{align*} un'azione di $K$ su $H$. Si dice \strong{prodotto semidiretto} di $H$ e $K$ via $\phi$ (e lo si indica $H \semidirect_{\phi} K$) il gruppo avente \begin{itemize}
+        \item come insieme sottostante il prodotto cartesiano $H \times K$,
+        \item come legge di composizione la legge \[
+            (h, k)(h', k') \deq (h \phi_k(h'), kk').
+        \]
+    \end{itemize}
+\end{definition}
+
+Mostriamo che $H \semidirect_{\phi} K$ è effettivamente un gruppo.
+\newthought{Buona definizione} Osserviamo che se $(h, k), (h', k') \in H \semidirect_{\phi} K$ allora \[
+    (h, k)(h', k') = (h\phi_k(h'), kk') \in H \semidirect_{\phi} K
+\] poiché $\phi_k \in \Aut{H}$, dunque $h\phi_k(h') \in H$.
+\newthought{Associatività} Siano $(x, y), (z, t), (h, k) \in H \semidirect_{\phi} K$. Allora \begin{align*}
+    \parens[\big]{(x, y)(z, t)}(h, k) 
+    &= \parens[\big]{x \cdot \phi(y)(z), yt}(h, k)\\
+    &= \parens[\big]{x \cdot \phi(y)(z) \cdot \phi(yt)(h), ytk} \\
+    &= \parens[\Big]{x \cdot \phi(y)(z) \cdot \phi(y)\parens[\big]{\phi(t)(h)}, ytk} \\
+    &= \parens[\Big]{x \cdot \phi(y)\parens[\big]{z \cdot \phi(t)(h)}, ytk} \\
+    &= (x, y)\parens[\big]{z \cdot \phi(t)(h), tk} \\
+    &= (x, y)\parens[\big]{(z, t)(h, k)},
+\end{align*} dunque l'operazione è associativa.
+\newthought{Elemento neutro} L'elemento neutro per $H \semidirect_{\phi} K$ è $(e_H, e_K)$. Infatti per ogni $(h, k) \in H \semidirect_{\phi} K$ si ha che \begin{gather*}
+    (h, k)(e_H, e_K) = (h \cdot \phi(k)(e_H), k \cdot e_K) = (h \cdot e_H, k \cdot e_K) = (h, k).\\
+    (e_H, e_K)(h, k) = (e_H \cdot \phi(e_K)(h), e_K \cdot k) = (e_H \cdot h, e_K \cdot k) = (h, k).
+\end{gather*} Nel primo caso abbiamo usato il fatto che $\phi(k) = \phi_k$ è un omomorfismo, dunque l'immagine di $e_H$ deve essere l'identità, mentre nel secondo caso abbiamo sfruttato il fatto che, essendo $\phi$ un omomorfismo, $\phi(e_K)$ è l'identità di $\Aut{H}$, ovvero $\phi(e_K) = \id$.
+\newthought{Inversi} Sia $(h, k) \in H \semidirect_{\phi} K$: mostriamo che $\parens[\Big]{\phi_{k\inv}(h\inv), k\inv}$ è l'inverso di $(h, k)$. In effetti \begin{gather*}
+    (h, k)\parens[\Big]{\phi_{k\inv}(h\inv), k\inv} 
+    \begin{aligned}[t]
+        &= \parens[\Big]{h \cdot \phi_{k}\parens[\big]{\phi_{k\inv}(h\inv)}, kk\inv} \\
+        &= \parens[\big]{h \cdot \phi_{kk\inv}(h\inv), e_K} \\
+        &= (hh\inv, e_K) \\
+        &= (e_H, e_K).
+    \end{aligned}\\
+    \parens[\Big]{\phi_{k\inv}(h\inv), k\inv}(h, k) 
+    \begin{aligned}[t]
+        &= \parens[\Big]{\phi_{k\inv}(h\inv) \cdot \phi_{k\inv}(h), k\inv k} \\
+        &= \parens[\Big]{\phi_{k\inv}(h\inv h), e_K} \\
+        &= (e_H, e_K).
+    \end{aligned}
+\end{gather*}
+
+\begin{remark}
+    Il prodotto diretto è un caso particolare del prodotto semidiretto. Infatti un prodotto semidiretto $H \semidirect_{\phi} K$ è diretto se e solo se \[
+        (hh', kk') = (h, k)(h', k') = (h\phi_k(h'), kk'),
+    \] ovvero se e solo se $h' = \phi_k(h')$ per ogni $h' \in H$, $k \in K$. Ma questo significa che $\phi_k$ è l'identità per ogni $k \in K$, ovvero che l'azione di $K$ su $H$ è l'azione banale \begin{align*}
+        \phi : K &\to \Aut{H}\\
+        k &\mapsto \id_{H}.
+    \end{align*}  
+\end{remark}
+
+Analogamente al prodotto diretto, sotto alcune condizioni possiamo scomporre un gruppo nel prodotto semidiretto di alcuni suoi sottogurppi.
+
+\begin{theorem}
+    {Decomposizione nel prodotto semidiretto}{decomp_semidir_prod}
+    Sia $G$ un gruppo, $H, K \sgr G$ tali che \begin{enumerate}[(1)]
+        \item $H \normal G$,
+        \item $G = HK$,
+        \item $H \inters K = \set*{e_G}$.  
+    \end{enumerate} 
+    Allora \[
+        G \isomorph H \semidirect_{\phi} K,
+    \] dove $\phi$ è l'azione di $K$ su $H$ per coniugio, ovvero \begin{align*}
+        \phi : K &\to \Aut{H}\\
+        k &\mapsto \phi_k = (h \mapsto khk\inv).
+    \end{align*}
+\end{theorem}

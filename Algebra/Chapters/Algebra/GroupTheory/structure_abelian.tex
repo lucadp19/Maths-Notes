@@ -1,0 +1,86 @@
+\section{Teorema di Struttura per i gruppi abeliani}
+
+\begin{theorem}
+    {Teorema di Struttura dei gruppi abeliani} 
+    {abelian_structure}
+    Sia $G$ un gruppo abeliano finito. Allora $G$ è isomorfo al prodotto diretto di gruppi ciclici:
+    \begin{equation}
+        G \isomorph \Zmod{n_1} \times \cdots \times \Zmod{n_s}.
+    \end{equation} Inoltre questa scrittura è unica se $n_{i+1} \divides n_i$ per ogni $i = 1, \dots, s-1$.
+\end{theorem}
+
+Per dimostrare il teorema di struttura dimostreremo due teoremi intermedi. Iniziamo con una definizione.
+
+\begin{definition}
+    {$p$-Componente di un gruppo abeliano}{} Sia $G$ un gruppo abeliano finito. Dato $p \in \Z$ si dice \emph{$p$-componente} oppure \emph{componente di $p$-torsione} l'insieme \[
+        G_p \deq \set*{g \in G \given \exists k \in \N.\; \ord_{G}{g} = p^k}.
+    \]
+\end{definition}
+
+Si dice anche che la $p$-componente di $G$ è l'insieme di tutti gli elementi di \emph{esponente $p$}, ovvero tutti gli elementi il cui ordine divide $p$.
+Osserviamo inoltre che \begin{enumerate}[label={(\arabic*)}]
+    \item $G_p \sgr G$: infatti dati $x, y \in G_p$, siccome $G$ è abeliano vale che \[
+        \ord_{G}{xy} \divides \lcm*{\ord{x}, \ord{y}} = \lcm*{p^k, p^h} = p^{\min\set*{k, h}},
+    \] da cui $p \divides \ord{xy}$ e quindi $xy \in G_p$. Inoltre per ogni $x \in G_p$ segue che $\ord*{x\inv} = \ord{x}$ (poiché, ad esempio, la mappa $x \mapsto x\inv$ è un automorfismo di $G$, dunque preserva gli ordini), da cui $x\inv \in G_p$.
+    \item $G_p$ è caratteristico in $G$. Infatti gli automorfismi preservano gli ordini degli elementi, quindi tutti gli elementi di esponente $p$ rimangono elementi di esponente $p$ sotto l'azione di qualunque automorfismo.
+\end{enumerate}
+
+Enunciamo ora i due teoremi ausiliari.
+\begin{theorem}
+    {Scomposizione nelle $p$-componenti}{abelian_struct_1} Sia $G$ un gruppo abeliano finito, con $\card*{G} = p_1^{e_1}\cdots p_s^{e_s}$. Allora $G$ è prodotto diretto delle sue $p$-componenti, ovvero \[
+        G \isomorph G_{p_1} \times \cdots \times G_{p_s}.    
+    \] Inoltre questa decomposizione è unica.
+\end{theorem}
+
+\begin{theorem}
+    {Decomposizione di un $p$-gruppo}{abelian_struct_2} Sia $G$ un $p$-gruppo abeliano. Allora esistono e sono univocamente determinati $r_1, \dots, r_t \in \Z$ tali che \[
+        G \isomorph \Zmod{p^{r_1}} \times \cdots \Zmod{p^{r_t}},    
+    \] con $r_1 \geq \dots \geq r_t$.
+\end{theorem}
+
+Mostriamo che i due teoremi intermedi implicano il teorema di struttura.
+\begin{proof} 
+    Mostriamo che la decomposizione esiste ed è unica.
+    \paragraph{Esistenza} Per il \Cref{th:structure_1} vale che 
+    \begin{align*}
+        G 
+        &\isomorph G_{p_1} \times \cdots \times G_{p_s}\\
+        \intertext{Applicando il \Cref{th:structure_2} ai vari $G_{p_i}$ otteniamo:}
+        &
+        \begin{alignedat}[t]{5}
+            \isomorph{} &\Zmod{p_1^{r_{11}}} &\times &\cdots &\times &\Zmod{p_1^{r_{1t_1}}} \times \\
+            &\vdotswithin{\Zmod} &&\vdotswithin{\cdots} &&\vdotswithin{\Zmod}\\
+            \times{} &\Zmod{p_s^{r_{s1}}} &\times &\cdots &\times &\Zmod{p_s^{r_{st_s}}}\\
+        \end{alignedat}
+        \intertext{Applicando il \hyperref[th:cinese_III]{Teorema Cinese del Resto} alle varie "colonne" otteniamo infine che}
+        &\isomorph \Zmod{\parens*{p_1^{r_{11}} \cdots p_s^{r_{s1}}}} \times \cdots \times \Zmod{\parens*{p_1^{r_{1t}} \cdots p_s^{r_{st}}}},
+    \end{align*}
+    dove $t = \max\set*{t_1, \dots, t_s}$ e $r_{ih}$ è posto a $0$ se $h > t_i$. Siccome $r_{i1} \geq \dots \geq r_{1t_1}$ per ogni $i$ segue che \[
+        n_t \divides n_{t-1} \divides \dots \divides n_1,    
+    \] da cui la decomposizione esiste.
+    \paragraph{Unicità} Se avessi due decomposizioni di $G$ diverse che rispettano tutte le condizioni, ripercorrendo gli isomorfismi al contrario avrei un assurdo con la condizione di unicità di uno dei due teoremi (quindi o per la decomposizione di $G$ nelle sue $p$-componenti, o nelle decomposizioni di $G_p$).
+\end{proof}
+
+Dimostriamo i due teoremi intermedi.
+\begin{proof}
+    [Dimostrazione del \Cref{th:abelian_struct_1}]
+    Dimostriamo separatamente l'esistenza e l'unicità.
+    \paragraph{Esistenza} Sia $n \deq \card{G} = p_1^{e_1}\cdots p_s^{e_s}$. Mostriamo la tesi per induzione su $s$.
+    \begin{description}
+        \item[Caso base] Se $s = 1$ allora $G = G_{p_1}$.
+        \item[Passo induttivo] Supponiamo che la tesi valga per tutti i gruppi abeliani di ordine $p_1^{e_1}\cdots p_{s^\prime}^{e_{s^\prime}}$, con $s^\prime < s$ e dimostriamola per $s$.
+        
+        Siano $m, m' \in \Z$ tali che $1 < m, m' < n$, $mm' = n$ e $\gcd{m, m'} = 1$. Da questo segue che i gruppi $mG$ e $m'G$ che contengono tutti i multipli di $m$ e $m'$ sono non banali, in quanto esisteranno $p, q \in \Z$ tali che $p \divides m$, $q \divides m'$, da cui esisteranno degli elementi di ordine $p$, $q$ in $mG$ e $m'G$ rispettivamente.
+        
+        Osserviamo inoltre che \begin{enumerate}
+            \item $mG$ e $m'G$ sono entrambi normali in $G$;
+            \item $mG + m'G = G$;
+            \item $mG \inters m'G = \varnothing$.
+        \end{enumerate}
+        Infatti \begin{enumerate}
+            \item $G$ è abeliano, dunque ogni suo sottogruppo è normale.
+            \item Siccome $\gcd{m, m'} = 1$ esisteranno $h, h' \in \Z$ tali che $mh + m'h' = 1$. Sia ora $g \in G$ qualunque. Moltiplicando l'equazione precedente per $g$ si ha che $mhg + m'h'g = g$, da cui ogni elemento di $G$ può essere scritto come somma di un elemento di $mG$ e un elemento di $m'G$.
+            \item 
+        \end{enumerate}
+    \end{description}
+\end{proof}

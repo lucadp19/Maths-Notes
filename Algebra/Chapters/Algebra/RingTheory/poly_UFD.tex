@@ -1,0 +1,200 @@
+\section{Polinomi come UFD}
+
+Lo scopo di questa sezione sarà dimostrare il seguente teorema.
+\begin{theorem}{}{}
+    Sia $A$ un \UFD. Allora $A[X]$ è un \UFD.
+\end{theorem}
+
+Da questo teorema segue per induzione anche il prossimo corollario.
+\begin{corollary}{}{}
+    Sia $A$ un \UFD. Allora $A[X_1, \dots, X_n]$ è un \UFD.
+\end{corollary}
+
+Dimostriamo innanzitutto che $A[X]$ è un dominio: dati $f, g \in A[X] \setminus \set{0}$ sappiamo che \[
+    \deg fg = \deg f + \deg g \geq 0,    
+\] dunque $fg$ non può essere il polinomio nullo in quanto esso non ha grado. Ricordiamo inoltre che \[
+    \units{A[X]} = \units{A}.    
+\]
+
+Per mostrare che $A[X]$ è un \UFD  sfrutteremo il \Cref{th:caratt_UFD}: dimostreremo quindi che \begin{itemize}
+    \item ogni irriducibile di $A[X]$ è primo;
+    \item ogni catena discendente di divisibilità è stazionaria.
+\end{itemize}
+
+\subsection*{Ogni irriducibile di $A[X]$ è primo}
+
+Per dimostrare che gli irriducibili di $A[X]$ sono anche primi dobbiamo espandere alcuni concetti introdotti nella prima parte.
+
+\begin{definition}
+    {Contenuto di un polinomio}{}
+    Sia $A$ un \UFD, $f \in A[X]$ tale che \[
+        f(X) = \sum_{i=0}^n a_iX^i.    
+    \] Si dice \strong{contenuto} di $f$ la quantità \[
+        \content*{f} \deq \operatorname{mcd}\set*{a_0, \dots, a_n}.
+    \]
+\end{definition}
+
+Osserviamo che, siccome $A$ è un \UFD, $\content*{f}$ è univocamente definito a meno di moltiplicazione per un'unità.
+
+\begin{definition}
+    {Polinomio primitivo}{}
+    Sia $A$ un \UFD, $f \in A[X]$. $f$ si dice \strong{primitivo} se $\content*{f} \sim 1$.
+\end{definition}
+
+È facile mostrare che ogni polinomio può essere scritto come prodotto del suo contenuto e di un polinomio primitivo. 
+
+Infatti sia $f \in A[X]$ e sia $d \deq \content*{f}$. Allora il polinomio \[
+    f'(X) \deq \sum_{i=0}^n \frac{a_i}{d}X^i    
+\] è un polinomio a coefficienti in $A$, in quanto $d \divides a_i$ per ogni $i$. Inoltre essendo $d$ il massimo comun divisore tra tutti gli $a_i$ segue che il contenuto di $f'$ è (associato a) $1$, ovvero $f'$ è primitivo.
+
+\begin{theorem}
+    {Lemma di Gauss}
+    {gauss_generale}
+    Sia $A$ un \UFD e siano $f, g \in A[X]$. Vale che \[
+        \content*{fg} = \content*{f}\content*{g}.    
+    \]
+\end{theorem}
+\begin{proof}
+    Dividiamo la dimostrazione in due casi.
+    \begin{description}
+        \item[Caso 1] Supponiamo $\content*{f} = \content*{g} = 1$ (ovvero entrambi primitivi) e mostriamo che $\content*{fg} = 1$.
+        
+        Se per assurdo $fg$ non fosse primitivo allora $\content*{fg}$ non sarebbe invertibile, da cui (per l'ipotesi che $A$ è un \UFD) esisterebbe un elemento primo $p \in A$ tale che $p \divides \content*{fg}$.
+
+        Consideriamo la proiezione canonica \begin{align*}
+            \pi : A[X] \to \quot{A}{\ideal{p}}[X].
+        \end{align*}
+        Osserviamo che \begin{itemize}
+            \item $\pi\parens[\big]{f(X)}$ non è l'elemento nullo di $\quot{A}{\ideal{p}}[X]$ in quanto $p \ndivides \content*{f} = 1$;
+            \item $\pi\parens[\big]{g(X)}$ non è l'elemento nullo di $\quot{A}{\ideal{p}}[X]$ in quanto $p \ndivides \content*{g} = 1$;
+            \item $\pi\parens[\big]{f(X)}$ è l'elemento nullo di $\quot{A}{\ideal{p}}[X]$.
+        \end{itemize}
+        Ma per la \Cref{prop:primo_sse_dom/max_sse_campo} siccome $\ideal{p}$ è un ideale primo segue che $\quot{A}{\ideal{p}}$ è un dominio, da cui anche $\quot{A}{\ideal{p}}[X]$ è un dominio, dunque abbiamo trovato un assurdo e $\content*{fg} = 1$.
+        \item[Caso 2] Scriviamo \[
+            f(X) = \content*{f}\cdot f'(X), \qquad g(X) = \content*{g}\cdot g'(X),
+        \] dove $f', g'$ sono polinomi primitivi. Allora \[
+            \content*{fg}(fg)' = fg = \content*{f}\content*{g}f'g'.    
+        \] Osserviamo che i polinomi $(fg)'$ e $f'g'$ sono entrambi primitivi: il primo per costruzione, il secondo per il caso precedente.
+        Uguagliamo quindi i contenuti di entrambi i membri: \begin{align*}
+            &\content*{fg} \content[\big]{(fg)'} = \content*{f}\content*{g}\content*{f'g'}\\
+            \iff {}&\content*{fg} \cdot 1 = \content*{f}\content*{g} \cdot 1\\
+            \iff {}&\content*{fg} = \content*{f}\content*{g},
+        \end{align*}
+        cioè la tesi.
+    \end{description}
+\end{proof}
+
+Per il resto della sezione considereremo $\K \deq Q(A)$.
+
+\begin{corollary}{}{primitivo_div_in_K[X]=>div_in_A[X]}
+    Siano $f, g \in A[X]$, $f$ primitivo e tali che $f \divides g$ in $\K[X]$. Allora $f \divides g$ in $A[X]$.
+\end{corollary}
+\begin{proof}
+    $f \divides g$ in $\K[X]$ significa che esiste $h \in \K[X]$ tali che $g = fh$. Sia ora $d \in A$ tale che $h_1(X) \deq d \cdot h(X)$ sia un polinomio a coefficienti in $A$ (basta prendere il massimo comune divisore dei denominatori). Allora $h_1(X)f(X) = d\cdot g(X)$ è a sua volta un polinomio a coefficienti in $A$: prendendo i contenuti si ottiene che \[
+        d\content*{g} = \content*{h_1f} = \content*{h_1}\content*{f} = \content*{h_1},    
+    \] ovvero $d \divides \content*{h_1}$. Ma questo significa che il polinomio $\dfrac{h_1(X)}{d} = h(X)$ è ancora a coefficienti in $A$, che è la tesi.
+\end{proof}
+
+\begin{corollary}{}
+    {rid_in_K[X]=>rid_in_A[X]}
+    Sia $f \in A[X]$. Se $f$ è riducibile in $\K[X]$ (ovvero se esistono $g, h \in \K[X]$ di grado maggiore o uguale a $1$ tali che $f = gh$) allora esiste un $\delta \in \units{\K}$ tale che \begin{itemize}
+        \item $g_1 \deq \delta\cdot g \in A[X]$,
+        \item $h_1 \deq \delta\inv\cdot h \in A[X]$,
+    \end{itemize}
+    da cui $f = g_1h_1$ è riducibile in $A[X]$ e i fattori sono associati ai rispettivi fattori in $\K[X]$.
+\end{corollary}
+\begin{proof}
+    Sia $d \in A$ tale che $g_1 \deq d\cdot g$ sia un polinomio a coefficienti in $A$. Sicuramente $d$ ammette inverso in $\K$, dunque \[
+        f = (d \cdot g)(d\inv \cdot h) = g_1 (d\inv \cdot h) = \content*{g_1}(g_1)'(d\inv \cdot h).    
+    \] Siccome $(g_1)'$ è un polinomio primitivo a coefficienti in $A$ e $(g_1)' \divides f$ in $\K[X]$, per il corollario precedente segue che $(g_1)' \divides f$ in $A[X]$, ovvero $h_1 \deq \content*{g_1} d\inv h$ è un polinomio in $A[X]$ e $\delta \deq d\inv\content*{g}$.
+\end{proof}
+
+Possiamo quindi finalmente caratterizzare gli irriducibili di $A[X]$.
+
+\begin{theorem}{Caratterizzazione degli irriducibili dell'anello dei polinomi}
+    {caratt_irr_A[X]}
+    Sia $A$ un \UFD. Gli irriducibili di $A[X]$ sono tutti e soli i polinomi $f \in A[X]$ che soddisfano una delle seguenti proprietà:
+    \begin{enumerate}
+        \item $f$ è una costante irriducibile in $A$;
+        \item $f$ ha grado maggiore o uguale di $1$, è primitivo ed irriducibile in $\K[X]$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Dimostriamo i due casi separatamente.
+    \begin{description}
+        \item[Caso 1.] Sia $f \in A[X]$ una costante irriducibile in $A$. 
+        
+        Sia $f = gh$ con $g, h \in A[X]$. Allora \[
+            0 = \deg f = \deg g + \deg h,    
+        \] da cui segue che $\deg g = \deg h = 0$, ovvero anche $g$ e $h$ sono costanti. Siccome gli invertibili di $A[X]$ sono gli invertibili di $A$ segue che $f$ è riducibile in $A[X]$ se e solo se $f$ è riducibile in $A$.
+        \item[Caso 2.] Sia $f \in A[X]$ con $\deg f \geq 1$. Mostriamo entrambi i versi dell'implicazione.
+        \begin{description}
+            \item[\boximpl ] Supponiamo che $f$ sia irriducibile in $A[X]$. Scriviamo innanzitutto \[
+                f(X) = \content*{f}\cdot f'(X),    
+            \] da cui segue che $\content*{f}$ è un'unità di $A[X]$, ovvero è un'unità di $A$, da cui $f$ è primitivo.
+
+            Scriviamo ora $f = gh$ in $\K[X]$. Per il \Cref{cor:rid_in_K[X]=>rid_in_A[X]} varrà quindi che $f = g_1h_1$ con $g_1, h_1 \in A[X]$ e $\deg g_1 = \deg g$, $\deg h_1 = \deg h$. Ma $f$ è invertibile in $A$, dunque uno tra $g_1$ e $h_1$ deve essere invertibile. Si ha quindi che \begin{align}
+                &\deg g_1 = 0 \text{ oppure } \deg h_1 = 0 \\
+                \iff &\deg g = 0 \text{ oppure } \deg h = 0\\
+                \iff &g \in \units{\K[X]} \text{ oppure } h \in \units{\K[X]},
+            \end{align}
+            cioè $f$  è irriducibile in $\K[X]$.
+            \item[\boximplby] Supponiamo $f$ primitivo e irriducibile in $\K[X]$.
+            
+            Sia $f = gh$ con $g, h \in A[X]$ (e quindi anche in $\K[X]$). Poiché $f$ è irriducibile in $\K[X]$ segue che uno tra $g$ e $h$ è invertibile in $\K[X]$, cioè è una costante. Supponiamo senza perdita di generalità che $g$ sia costante (ovvero $g(X) = g_0$) e consideriamo il contenuto di entrambi i membri: \[
+                1 = \content*{f} = \content*{gh} = \content*{g}\content*{h} = g_0\cdot\content*{h}.
+            \] Segue quindi che $g_0$ è invertibile in $A$, ovvero $g$ è invertibile in $A[X]$, da cui $f$ è irriducibile in $A[X]$. \qedhere
+        \end{description} 
+    \end{description}
+\end{proof}
+
+\begin{proposition}
+    {Irriducibili e primi negli UFD}{}
+    Sia $A$ un \UFD. Ogni irriducibile di $A[X]$ è anche primo.
+\end{proposition}
+\begin{proof}
+    Sia $f \in A[X]$ irriducibile. Per definizione $f$ è un elemento primo se per ogni $g, h \in A[X]$ vale che \[
+        f \divides gh \text{ (in $A[X]$) } \implies f \divides g \text{ oppure } f \divides h \text{ (in $A[X]$). }
+    \] Dal \Cref{th:caratt_irr_A[X]} si ha che $f$ è irriducibile se e solo se è una costante irriducibile oppure è primitivo e irriducibile in $\K[X]$.
+    
+    Se $f$ è una costante irriducibile, allora $f$ è un elemento primo in $A$ poiché $A$ è un \UFD. Allora supponiamo che $f \divides gh$ per qualche $g, h \in A[X]$. Segue quindi che \[
+        f = \content*{f} \divides \content*{gh} = \content*{g}\content*{h},
+    \] ma per primalità di $f = \content*{f}$ in $A$ segue che \[
+        f \divides \content*{g} \text{ oppure } f \divides \content*{h},
+    \] ovvero \[
+        f \divides g \text{ oppure } f \divides h,
+    \] cioè $f$ è primo in $A[X]$.
+
+    Supponiamo ora che $f$ sia un polinomio di grado maggiore o uguale ad $1$, primitivo e irriducibile in $\K[X]$. Siccome $\K[X]$ è un \ED segue che $f$ è primo in $\K[X]$, cioè se $f \divides gh$ in $A[X]$ allora $f$ divide uno tra $g$ ed $h$ in $\K[X]$. Ma essendo $f$ primitivo vale il \Cref{cor:primitivo_div_in_K[X]=>div_in_A[X]}, ovvero $f$ divide uno tra $g$ e $h$ in $A[X]$, cioè $f$ è primo in $A[X]$. 
+\end{proof}
+
+\subsection*{Ogni catena discendente di divisibilità è stazionaria}
+
+\begin{theorem}{}{catena_disc_A[X]}
+    Sia $\seqn*{f_n}_{n \in \N}$ una successione di elementi di $A[X]$ tali che \[
+        \dots \divides f_3 \divides f_2 \divides f_1 \divides f_0.
+    \] Allora esiste un $n_0$ tale che $f_i \sim f_{n_0}$ per ogni $i \geq n_0$.
+\end{theorem}
+
+Osserviamo innanzitutto che dal \nameref{th:lemma_gauss_generale} si ha che se $f \divides g$ allora $\content*{f} \divides \content*{g}$ e $f' \divides g'$. Infatti se $g = fh$ per qualche $h \in A[X]$ allora $\content*{g} = \content*{f}\content*{h}$ (cioè $\content*{f} \divides \content*{g}$) ma anche \[
+    \content*{g}g' = \content*{f}\content*{h}f'h'
+\] ovvero $f' \divides g'$.
+
+\begin{proof}
+    [Dimostrazione del \Cref{th:catena_disc_A[X]}]
+    Associamo alla successione $\seqn*{f_n}$ le successioni $\seqn*{\content*{f_n}}$ e $\seqn*{f'_n}$. Per quanto osservato sopra si ha che queste due successioni rispettano la stessa catena discendente di divisibilità, cioè per ogni $i geq 0$ si ha \[
+        \content*{f_{i+1}} \divides \content*{f_i} \text{ e } f'_{i+1} \divides f'_i.
+    \] Mostriamo che queste due successioni sono stazionarie:
+    \begin{itemize}
+        \item quella dei contenuti lo è poiché è una catena discendente di divisibilità nell'\UFD $A$, dunque esiste un $m_0$ tale che $\content*{f_i} \sim \content*{f_{m_0}}$ per ogni $i \geq m_0$;
+        \item consideriamo ora la successione dei polinomi primitivi. Associamo ad essa la successione dei gradi $\seqn*{\deg f'_n}$. Siccome per ogni $i \geq 0$ vale che $f'_{i+1} \divides f'_i$ segue che $\deg f'_{i+1} \leq \deg f'_i$. La successione $\seqn*{\deg f'_n}$ è pertanto una successione debolmente decrescente di numeri naturali, e pertanto deve stabilizzarsi.
+        
+        Sia quindi $d_0$ tale che $\deg f'_i = \deg f'_{d_0}$ per ogni $i \geq d_0$. Allora $f'_i$ e $f'_{d_0}$ hanno lo stesso grado e $f'_i \divides f'_{d_0}$, dunque i due polinomi differiscono per una costante. Tuttavia i due polinomi sono primitivi, dunque devono differire per un'unità, ovvero $f'_i \sim f'_{d_0}$ per ogni $i \geq d_0$, cioè la successione è stazionaria. 
+    \end{itemize}
+
+    Sia $n_0 \deq \max\set{m_0, d_0}.$ Da quanto detto sopra segue che, per ogni $i \geq n_0$, $\content*{f_i} \sim \content*{f_{n_0}}$ e $f'_i \sim f'_{n_0}$, ovvero \[
+        f_i = \content*{f_i}f'_i \sim \content*{f_{n_0}}f'_{n_0} = f_{n_0},
+    \] ovvero la successione di polinomi originale è stazionaria.
+\end{proof}
+
+Segue quindi che se $A$ è un \UFD allora $A[X]$ è un \UFD. 

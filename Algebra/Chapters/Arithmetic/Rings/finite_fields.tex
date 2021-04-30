@@ -1,0 +1,134 @@
+\section{Campi finiti}
+
+Un campo $F$ si dice finito se $\card*{F} < +\infty$. Sappiamo già che per ogni $p \in \Z$ primo il campo $\F_p \deq \Zmod{p}$ è un campo finito; vogliamo tuttavia sapere se ne esistono altri.
+
+Consideriamo un polinomio $f \in \F_p[X]$ irriducibile: allora \[
+    F = \quot{\F_p[X]}{\ideal[\big]{f}}    
+\] è un campo e $\ExtDegree*{F : \F_p} = \deg f$. Sia $n$ il grado di $f$: osserviamo l'estensione determina una $\F_p$-base di $F$ formata da $n$ elementi, ovvero della forma \[
+    \set*{v_1, \dots, v_n} \subseteq F.    
+\] Questo significa che ogni elemento di $F$ può essere scritto come combinazione lineare degli elementi della base, ovvero per ogni $\alpha \in F$ esistono $a_1, \dots, a_n$ tali che \[
+    \alpha = a_1v_1 + \dots a_nv_n.    
+\] Siccome ho $p$ possibilità per ogni $a_i$ (tante quante gli elementi di $\F_p$) segue che $\card{F} = p^n$, ovvero $F$ è un campo finito con $p^n$ elementi.
+
+Rimane da dimostrare che per ogni $n$ esiste un polinomio irriducibile di $\F_p[X]$ di grado $n$.
+
+\begin{proposition}
+    Sia $F$ un campo finito. Allora $\card{F} = p^n$ per qualche primo $p \in \Z$.
+\end{proposition}
+\begin{proof}
+    Innanzitutto notiamo che la caratteristica di $F$ non può essere $0$, altrimenti $\Q \embeds F$ e quindi $F$ non sarebbe finito.
+
+    Sia quindi $p$ la caratteristica di $F$: da questo deduciamo che $\F_p \inject F$. Consideriamo quindi l'estensione $\ext{F / \F_p}$: sicuramente il suo grado sarà finito in quanto il campo $F$ è finito, dunque sia $n \deq \ExtDegree*{F : \F_p}$. Questo significa che $F$ è un $\F_p$-spazio vettoriale di dimensione $n$, ovvero \[
+        F = \set*{a_1v_1 + \dots + a_nv_n \given a_i \in \F_p},    
+    \] dove $v_1, \dots, v_n$ sono i vettori della base. 
+
+    Siccome ho $p^n$ diverse combinazioni lineari (poiché posso scegliere ogni $a_i$ in $p = \card*{\F_p}$ modi), segue che la cardinalità di $F$ è $p^n$.
+\end{proof}
+
+In realtà vale una condizione molto più forte, espressa dal seguente teorema.
+
+\begin{theorem}
+    [Campi finiti]
+    {finite_field}
+    Sia $p$ un primo e $n \in \Z$ qualsiasi. Esiste uno e un solo campo finito con $p^n$ elementi in una fissata chiusura algebrica di $\F_p$.
+\end{theorem}
+
+Per dimostrarlo abbiamo bisogno del seguente lemma.
+\begin{lemma}
+    [Criterio della derivata]
+    {criterio_deriv}
+    Sia $f \in K[X]$. Allora $f$ ha radici multiple in $\closure K$ (ovvero ha fattori multipli in $K[X]$) se e solo se $\gcd{f, f'} \neq 1$.
+\end{lemma}
+\begin{proof}
+    Sia $\alpha \in \closure K$ una radice di $f$, ovvero \[
+        f(X) = (X - \alpha)g(X) \;\;\text{in } \closure{K}{X}.    
+    \] Allora la sua derivata sarà \[
+        f'(X) = g(X) + (X-\alpha)g'(X),    
+    \] da cui $f'(\alpha) = g(\alpha)$. Segue quindi che $f'(\alpha) = 0$ se e solo se $g(\alpha) = 0$, ovvero se e solo se $g(X) = (X-\alpha)h(X)$, il che è equivalente a dire che \[
+        f(X) = (X-\alpha)^2 h(X). \qedhere    
+    \]
+\end{proof}
+
+\begin{proof}
+    [Dimostrazione del \Cref{th:finite_field}]
+    Innanzitutto se $F$ ha cardinalità $p^n$ allora $\F_p$ è un suo sottocampo; inoltre $F$ è un'estensione finita di $\F_p$ e quindi è necessariamente algebrica.
+
+    Consideriamo una chiusura algebrica $\closure{\F_p}$ di $\F_p$.
+
+    Cerchiamo ora un campo $F$ tale che $\F_p \subseteq F \subseteq \closure {\F_p}$. Se esiste un tale $F$ il suo gruppo moltiplicativo $\units{F}$ deve essere un gruppo di cardinalità $p^n - 1$. Questo significa che per ogni $\alpha \in \units{F}$ vale che $\alpha^{p^n - 1} = 1$, ovvero ogni elemento di $\units{F}$ è una soluzione dell'equazione \[
+        x^{p^n - 1} = 1.    
+    \] In particolare quindi tutti gli elementi di $F$ sono radici di $x(x^{p^n - 1} - 1) = x^{p^n} - x$, ovvero se $F$ è un sottocampo di $\closure{\F_p}$ con $p^n$ elementi allora dovrà valere che \[
+        F \subseteq \set*{\alpha \in \closure{\F_p} \given \alpha^{p^n} - \alpha = 0}.
+    \]
+
+    Osserviamo che $f(X) = X^{p^n} - X$ ha esattamente $p^n$ radici distinte in $\closure{\F_p}$:
+    \begin{itemize}
+        \item siccome è di grado $p^n$, sicuramente ha al massimo $p^n$ radici distinte;
+        \item inoltre per il \nameref{lem:criterio_deriv} tutte le radici sono distinte: infatti \[
+            f'(X) = p^nX^{p^n - 1} - 1 = -1  
+        \] poiché ci troviamo in un campo di caratteristica $p$. Segue quindi che $\gcd{f, f'} = 1$, da cui tutti i fattori di $f$ sono distinti.
+    \end{itemize}
+    Dunque $\set*{\alpha \in \closure{\F_p} \given \alpha^{p^n} = \alpha}$ ha cardinalità $p^n$: segue quindi che è l'unico possibile sottocampo di $\closure{\F_p}$ con $p^n$ elementi.
+
+    Dimostriamo ora che $F \deq \set*{\alpha \in \closure{\F_p} \given \alpha^{p^n} = \alpha}$ è un campo. 
+    
+    Sicuramente $0, 1 \in F$. Siano poi $\alpha, \beta \in F$, ovvero tali che $\alpha^{p^n} = \alpha$, $\beta^{p^n} = \beta$ e mostriamo che $\alpha \pm \beta, \alpha\beta$ e $\frac{1}{\alpha}$ sono tutti elementi di $F$.
+    \begin{itemize}
+        \item $(\alpha \pm \beta)^{p^n} = \alpha^{p^n} \pm \beta^{p^n} = \alpha \pm \beta$, da cui $\alpha \pm \beta \in F$;
+        \item $(\alpha\beta)^{p^n} = \alpha^{p^n}\beta^{p^n} = \alpha\beta$, da cui $\alpha\beta \in F$;
+        \item $\parens*{\nicefrac{1}{\alpha}}^{p^n} = \parens*{\alpha^{p^n}}\inv = \alpha\inv = \nicefrac{1}{\alpha}$, da cui $\nicefrac{1}{\alpha} \in F$.
+    \end{itemize}
+    Quindi $F$ è un campo di cardinalità $p^n$ ed è in particolare l'unico campo finito con questa cardinalità in $\closure{\F_p}$.
+\end{proof}
+
+Chiameremo quindi $\F_{p^n}$ l'unico campo finito con $p^n$ elementi in una fissata chiusura algebrica di $\F_p$. Inoltre $\F_{p^n}$ è il campo di spezzamento del polinomio $X^{p^n} - X$ su $\F_p$, in quanto contiene $\F_p$ (poiché ha caratteristica $p$) e tutte le radici del polinomio dato (come abbiamo dimostrato).
+
+Tuttavia ancora non abbiamo mostrato che per ogni $n$ esiste un polinomio irriducibile $f \in \F_p[X]$, ovvero che \[
+    \F_{p^n} \isomorph \quot{\F_p[X]}{\ideal[\big]{f(X)}} \isomorph \F_p(\alpha).    
+\]
+
+\begin{theorem}
+    Sia $K$ un campo e sia $G$ un sottogruppo finito del gruppo moltiplicativo di $K$. Allora $G$ è ciclico.
+\end{theorem}
+\begin{proof}
+    Supponiamo che $\card*{G} = n < +\infty$. Osserviamo per ogni $d \in \N$, $G$ contiene al più $d$ radici del polinomio $f_d(X) = X^d - 1$: infatti $f_d$ è di grado $d$, dunque ha al più $d$ radici in $K$ e quindi in particolare in $\units{K}$. 
+
+    Sia quindi $G_d$ il sottogruppo di $G$ tale che \[
+        G_d = \set*{g \in G \given g^d = 1},    
+    \] ovvero l'insieme delle radici di $f_d$ in $G$. Per quanto detto prima, certamente $\card*{G} \leq d$.
+
+    Sia invece $H$ un sottogruppo di $G$ di cardinalità $d$: per il \nameref{th:lagrange} vale che $h^d = 1$ per ogni $h \in H$, ovvero $H \leq G_d$. Esiste quindi al più un solo sottogruppo di $G$ di ordine $d$, da cui tale sottogruppo deve essere $G_d$.
+
+    Sia $k_d$ il numero di elementi di $G$ di ordine $d$: se esiste in $G$ almeno un elemento di ordine $d$ (chiamiamolo $g$) allora il sottogruppo $\gen*{g}$ ha ordine $d$ ed è l'unico sottogruppo di $G$ con un tale ordine (poiché ne esiste al più uno). Segue quindi che $\gen*{g}$ contiene tutti gli elementi di ordine $d$, ovvero $\card*{\gen*{g}} = \eulerphi(d)$.
+
+    Dunque $k_d = 0$ oppure $\eulerphi(d)$. Sicuramente per il \nameref{th:lagrange} se $d$ non divide $n$ allora $k_d = 0$. Vale quindi che \[
+        n = \card*{G} = \sum_{d \divides n} k_d \leq \sum_{d \divides n} \eulerphi(n) = n,    
+    \] dove l'ultimo passaggio è giustificato dal \Cref{cor:n=sum_phi(d)}. Segue quindi che il minore o uguale è un uguale, ovvero che $k_d = \eulerphi(d)$ per ogni $d$ che divide $n$. In particolare $k_n = \eulerphi(n)$, ovvero esistono elementi di ordine $n$, cioè $G$ è ciclico.
+\end{proof}
+
+\begin{corollary}
+    Se $F$ è un campo finito allora $\units{F}$ è ciclico.
+\end{corollary}
+\begin{proof}
+    $\units{F}$ è finito ed è un sottogruppo (improprio) del gruppo moltiplicativo di $F$, dunque è ciclico.
+\end{proof}
+
+\begin{corollary}
+    Per ogni $p$ primo e $n \in \N$ vale che $\F_{p^n}$ è un'estensione semplice di $\F_p$, ovvero esiste $\alpha$ tale che $\F_{p^n} = \F_p(\alpha)$.
+\end{corollary}
+\begin{proof}
+    Sia $\alpha$ tale che $\units{\F_{p^n}} = \gen*{\alpha}$. 
+
+    Certamente $\F_p(\alpha) \subseteq \F_{p^n}$: infatti $\F_p \subseteq \F_{p^n}$ per costruzione e $\alpha \in \F_{p^n}$ poiché $\alpha$ è il generatore del gruppo moltiplicativo.
+
+    D'altro canto se $\beta \in \F_{p^n}$ allora $\beta$ è $0$ (e quindi appartiene a $\F_p$) oppure è invertibile, ovvero $\beta \in \units{\F_{p^n}} = \gen*{\alpha}$, da cui $\beta = \alpha^k \in \F_p(\alpha)$.
+\end{proof}
+
+\begin{corollary}
+    Per ogni $p$ primo e $n \in \N$ esiste un polinomio $f \in \F_p[X]$ irriducibile e di grado $n$.
+\end{corollary}
+\begin{proof}
+    Sappiamo che $\ExtDegree*{\F_{p^n} : \F_p} = n$; inoltre \[
+        \F_{p^n} = \F_p(\alpha) = \F_p[\alpha] \isomorph \quot{\F_p[X]}{\ideal[\big]{\mu_\alpha(X)}},   
+    \] da cui $\mu_\alpha$ deve avere grado $n$. Siccome per definizione è anche irriducibile, segue la tesi.
+\end{proof}

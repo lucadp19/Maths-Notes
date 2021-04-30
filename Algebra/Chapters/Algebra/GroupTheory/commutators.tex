@@ -1,0 +1,46 @@
+\section{Sottogruppo derivato}
+
+\begin{definition}
+    {Commutatore}{}
+    Sia $G$ un gruppo, $x, y \in G$. Si dice \strong{commutatore} di $x, y$ la quantità \[
+        [x, y] \deq xyx\inv y\inv.
+    \]
+\end{definition}
+
+Il commutatore di due elementi ci dice \emph{quanto commutano}: infatti se $xy = yx$ allora $[x, y] = xyx\inv y\inv = e_G$.
+
+\begin{definition}{Sottogruppo derivato}{}
+    Sia $G$ un gruppo. Si dice \strong{sottogruppo dei commutatori di $G$}, oppure \strong{sottogruppo derivato} di $G$ il gruppo \[
+        G' = [G, G] \deq \gen*{[x, y] \given x, y \in G}.
+    \]
+\end{definition}
+
+Sicuramente $G' \sgr G$ in quanto è generato da elementi di $G$. In particolare vale la seguente proposizione.
+
+\begin{proposition}
+    {}{}
+    Sia $G$ un gruppo.
+    \begin{enumerate}[(1)]
+        \item $G'$ è caratteristico in $G$.
+        \item Sia $H \normal G$. Allora $\quot{G}{H}$ è abeliano se e solo se $G' \subseteq H$.   
+        \item $G'$ è banale se e solo se $G$ è abeliano.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Dimostiamo le tre affermazioni.
+    \begin{enumerate}[(1)]
+        \item Sia $\phi \in \Aut{G}$ qualunque e mostriamo che $\phi(G') \subseteq G'$. Sia $S \deq \set*{[x, y] \given x, y \in G}$: dato che $G' = \gen{S}$ si ha \[
+            \phi(G') = \phi(\gen{S}) = \gen[\big]{\phi(S)},
+        \] dove l'ultima uguaglianza viene dal fatto che $\phi$ è un omomorfismo di gruppi. Basta allora mostrare che per ogni commutatore $[x, y] \in S$ vale che $\phi([x, y]) \in G'$. In effetti \[
+            \phi([x, y]) = \phi(xyx\inv y\inv) = \phi(x)\phi(y)\phi(x)\inv \phi(y)\inv = \squared*{\phi(x), \phi(y)} \in G',
+        \] dunque $\phi(G') \subseteq G'$, ovvero $G$ è caratteristico in $G$.
+        \item $\quot{G}{H}$ è abeliano se e solo se per ogni $xH, yH \in \quot{G}{H}$ si ha \[
+            xHyH = yHxH.
+        \] Siccome per ipotesi $H \normal G$ questo è equivalente a $xyH = yxH$, ovvero \[
+            (yx)\inv xy = x\inv y\inv xy = [x\inv, y\inv] \in H.
+        \] Dunque l'insieme $S$ di generatori deve essere un sottoinsieme di $H$, dunque essendo $H$ un gruppo segue che $\gen{S} = G' \sgr H$.
+        \item Segue dal punto precedente: $G$ è abeliano se e solo se $\quot{G}{H}$ è abeliano per qualsiasi $H \normal G$, ovvero se $G' \subseteq H$ per ogni $H \normal G$. Ma l'unico gruppo contenuto in ogni sottogruppo normale è $\set*{e_G}$ (poiché anch'esso è normale), dunque $G$ è abeliano se e solo se $G' = \set*{e_G}$.  \qedhere   
+    \end{enumerate}
+\end{proof}
+
+Segue quindi che $G'$ è il più piccolo sottogruppo normale di $G$ che renda il quoziente abeliano (poiché ogni tale sottogruppo deve contenere $G'$): il quoziente $\quot{G}{G'}$ è dunque il più \emph{grande} quoziente abeliano di $G$, e si chiama per questo \strong{abelianizzato} di $G$. 

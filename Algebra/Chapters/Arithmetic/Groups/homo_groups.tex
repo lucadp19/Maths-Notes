@@ -1,0 +1,409 @@
+\section{Omomorfismi di gruppi}
+
+\begin{definition}{Omomorfismo tra gruppi}{omo_gruppi}
+    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi. Allora la funzione \[
+        f : G_1 \to G_2    
+    \] si dice \emph{omomorfismo di gruppi} se per ogni $x, y \in G_1$ vale che \begin{equation}
+        f(x * y) = f(x) \star f(y).
+    \end{equation}
+    L'insieme di tutti gli omomorfismi da $G_1$ a $G_2$ si indica con $\Hom{G_1, G_2}$.
+\end{definition}
+
+\begin{example}
+    Ad esempio la funzione \begin{align*}
+    \pi_n : \Z &\to \Zmod{n}\\
+    a &\mapsto [a]_n
+\end{align*} è un omomorfismo tra i gruppi $\Z$ e $\Zmod{n}$. Infatti vale che \[
+    \pi_n(a + b) = \eqcl{a + b} = \eqcl a + \eqcl b = \pi_n(a) + \pi_n(b).
+\] Questo particolare omomorfismo si dice \emph{riduzione modulo $n$}.
+\end{example}
+
+\begin{example}
+    Un altro esempio è la funzione \begin{align*}
+    f : (\R, +) &\to (\R^+, {\cdot})\\
+    x &\mapsto e^x.
+\end{align*} Infatti vale che \[
+    f(x + y) = e^{x + y} = e^xe^y = f(x)f(y).    
+\]
+\end{example}
+
+\begin{proposition}
+    {Composizione di omomorfismi}{comp_omo}
+    Siano $(G_1, *)$, $(G_2, \star)$, $(G_3, \cdot)$ tre gruppi e siano $\phi : G_1 \to G_2$ e $\psi : G_2 \to G_3$ omomorfismi.
+
+    Allora la funzione $\psi \circ \phi : G_1 \to G_3$ è un omomorfismo tra i gruppi $G_1$ e $G_3$.
+\end{proposition}
+\begin{proof}
+    Siano $h, k \in G_1$ e dimostriamo che \[
+        (\psi \circ \phi)(h * k) = (\psi \circ \phi)(h) \cdot (\psi \circ \phi)(k).
+    \] Infatti vale che
+    \begin{align*}
+        (\psi \circ \phi)(h * k) &= \psi(\phi(h * k)) \tag{$\phi$ omo.}\\
+        &= \psi(\phi(h) \star \phi(k)) \tag{$\psi$ omo.}\\
+        &= \psi(\phi(h)) \cdot \psi(\phi(k)) \\
+        &= (\psi \circ \phi)(h) \cdot (\psi \circ \phi)(k)
+    \end{align*}
+    che è la tesi.
+\end{proof}
+
+Dato che un omomorfismo è una funzione, possiamo definire i soliti concetti di immagine e controimmagine.
+
+\begin{definition}
+    {Immagine e controimm. di un omomorf. attraverso un insieme}{omo_imm_controimm}
+    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $f : G_1 \to G_2$ un omomorfismo.
+
+    Siano $H \sgr G_1$, $K \sgr G_2$. Allora definiamo l'insieme \[
+        f(H) \deq \set*{f(h) \in G_2 \given h \in H} \subseteq G_2    
+    \] detto \emph{immagine di $f$ attraverso $H$}, e l'insieme \[
+        f\inv(K) \deq \set*{g \in G_1 \given f(g) \in K} \subseteq G_1
+    \] detto \emph{controimmagine di $f$ attraverso $K$}.
+
+    Definiamo inoltre l'\emph{immagine dell'omomorfismo $f$} come \[
+        \Imm f \deq f(G_1) = \set*{f(g) \in G_2 \given g \in G_1}.     
+    \]
+\end{definition}
+
+Per gli omomorfismi definiamo inoltre un concetto nuovo, il \emph{nucleo} o \emph{kernel} dell'omomorfismo.
+
+\begin{definition}
+    {Kernel di un omomorfismo}{kernel_omo}
+    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $f : G_1 \to G_2$ un omomorfismo.
+
+    Allora si dice \emph{kernel} o \emph{nucleo} dell'omomorfismo $f$ l'insieme \[
+        \ker f \deq \set*{g \in G_1 \given f(g) = e_2} \subseteq G_1.    
+    \]
+\end{definition}
+
+Osserviamo che possiamo anche esprimere il nucleo di un omomorfismo in termini della controimmagine del sottogruppo banale $\set*{e_2}$: \[
+    \ker f = f\inv(\set*{e_2}).
+\]
+
+\begin{proposition}
+    {Proprietà degli omomorfismi}{prop_omo}
+    Siano $(G_1, \cdot)$, $(G_2, \star)$ due gruppi e sia $f : G_1 \to G_2$ un omomorfismo.
+
+    Allora valgono le seguenti affermazioni.
+    \begin{enumerate}[label={(\roman*)}]
+        \item \label{prop:prop_omo:e_va_in_e'}$f(e_1) = e_2$;
+        \item \label{prop:prop_omo:inv_passa_dentro}$f(x\inv) = f(x)\inv$;
+        \item \label{prop:prop_omo:f(H)_sgr_cod} per ogni $H \sgr G_1$ vale che $f(H) \sgr G_2$;
+        \item \label{prop:prop_omo:f\inv(K)_sgr_dom}  per ogni $K \sgr G_2$ vale che $f\inv(K) \sgr G_1$;
+        \item \label{prop:prop_omo:imm_ker_sgr}$f(G_1) \sgr G_2$ e $\ker f \sgr G_1$;
+        \item \label{prop:prop_omo:cond_iniett}$f$ è iniettivo se e solo se $\ker f = \set*{e_1}$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof} Dimostriamo le varie proprietà separatamente.
+    \begin{enumerate}[label={(\roman*)}]
+        \item $f(e_1) \stackrel{\text{(el. neutro)}}{=} f(e_1 \cdot e_1) \stackrel{\text{(omo.)}}{=} f(e_1) \star f(e_1)$.
+        
+        Applicando la legge di cancellazione \ref{prop:prop_grp:canc} otteniamo \[
+            e_2 = f(e_1).    
+        \]
+        \item Sfruttando il punto \Cref{prop:prop_omo:e_va_in_e'} sappiamo che \begin{align*}
+            e_2 = f(e_1) = f(x \cdot x\inv) = f(x)\star f(x\inv) \\
+            e_2 = f(e_1) = f(x\inv \cdot x) = f(x\inv)\star f(x).
+        \end{align*} Dalla prima segue che $f(x\inv)$ è inverso a destra di $f(x)$, dalla seconda che $f(x\inv)$ è inverso a sinistra di $f(x)$.
+
+        Dunque concludiamo che $f(x\inv)$ è inverso di $f(x)$, ovvero \[
+            f(x)\inv = f(x\inv).    
+        \]
+        \item Sia $H \sgr G_1$. Dato che $H \neq \varnothing$ esisterà un $h \in H$, dunque $f(H)$ non puo' essere vuoto in quanto dovrà contenere $f(h)$ (sicuramente $e_2 \in f(H)$).
+        
+        Dunque per la \Cref{prop:cond_sgr} basta mostrare che $f(H)$ è chiuso rispetto al prodotto e che l'inverso di ogni elemento di $f(H)$ è ancora in $f(H)$.
+
+        \begin{enumerate}[label={(\arabic*)}]
+            \item Mostriamo che se $x, y \in f(H)$ allora $x\star y \in f(H)$.
+            
+            Per definizione di $f(H)$ dovranno esistere $h_x, h_y \in H$ tali che $x = f(h_x)$ e $y = f(h_y)$. Allora \begin{align*}
+                x\star y &= f(h_x)\star f(h_y) \tag*{\text{($f$ è omo)}}\\
+                &= f(h_x \cdot h_y) \tag*{$H$ è sottogr. di $G_1$}\\
+                &\in f(H).
+            \end{align*}
+            \item Mostriamo che se $x \in f(H)$ allora $x\inv \in f(H)$.
+            
+            Per definizione di $f(H)$ dovrà esistere $h \in H$ tale che $x = f(h)$. Dato che $H \sgr G_1$ allora $h\inv \in H$.
+
+            Dunque $f(h\inv) \in f(H)$, ma per il punto \ref{prop:prop_omo:inv_passa_dentro} sappiamo che \[
+                f(h\inv) = f(h)\inv = x\inv \in f(H).   
+            \]
+        \end{enumerate}
+        Dunque $f(H) \sgr G_2$.
+        \item Sia $K \sgr G_2$. Dato che $e_2 \in K$, sicuramente $f\inv(K) \neq \varnothing$, in quanto $e_1 = f\inv(e_2) \in f\inv(K)$.
+        
+        Dunque per la proposizione \Cref{prop:cond_sgr} basta mostrare che $f\inv(K)$ è chiuso rispetto al prodotto e che l'inverso di ogni elemento di $f\inv(K)$ è ancora in $f\inv(K)$.
+
+        \begin{enumerate}[label={(\arabic*)}]
+            \item Mostriamo che se $x, y \in f\inv(K)$ allora $x* y \in f\inv(K)$.
+            
+            Per definizione di $f\inv(K)$ sappiamo che \begin{align*}
+                x \in f\inv(K) &\iff f(x) \in K \\
+                y \in f\inv(K) &\iff f(y) \in K.
+            \end{align*}
+            
+            Dato che $K \sgr G_2$ allora segue che \[
+                f(x) \star f(y) = f(x * y) \in K     
+            \] ovvero $x * y \in f\inv(K)$.
+            \item Mostriamo che se $x \in f\inv(K)$ allora $x\inv \in f\inv(K)$.
+            
+            Per definizione di $f\inv(K)$ sappiamo che \[
+                x \in f\inv(K) \iff f(x) \in K.    
+            \] 
+            
+            Dato che $K \sgr G_2$ segue che $f(x)\inv \in K$, ma per il punto \ref{prop:prop_omo:inv_passa_dentro} sappiamo che $f(x)\inv = f(x\inv)$, dunque \[
+                f(x\inv) \in K \implies x\inv \in f\inv(K).  
+            \]
+        \end{enumerate}
+        Dunque $f\inv(K) \sgr G_1$.
+        \item Dato che $G_1 \sgr G_1$ per il punto \ref{prop:prop_omo:f(H)_sgr_cod} segue che $\Imm f = f(G_1) \sgr G_2$.
+        
+        Per definizione $\ker f = f\inv(\set*{e_2})$; inoltre $\set*{e_1} \sgr G_2$, dunque per il punto \ref{prop:prop_omo:f\inv(K)_sgr_dom} segue che $\ker f \sgr G_1$.
+        \item Dimostriamo entrambi i versi dell'implicazione.
+        \begin{description}
+            \item[\boximpl ] Supponiamo che $f$ sia iniettivo. Allora $\abs*{f\inv(\set*{e_2})} = 1$.
+            
+            Tuttavia sicuramente $e_1 \in f\inv(\set*{e_2}) = \ker f$ (in quanto $f(e_1) = e_2$), dunque dovrà necessariamente essere $\ker f = \set* {e_1}$.
+            \item[\boximplby] Supponiamo che $\ker f = \set*{e_1}$.
+            
+            Siano $x, y \in G_1$ tali che $f(x) = f(y)$. Moltiplicando entrambi i membri (ad esempio a destra) per $f(y)\inv \in G_2$ otteniamo \begin{align*}
+                &f(x)\star f(y)\inv = f(y)\star f(y)\inv \tag{per la \ref{prop:prop_omo:inv_passa_dentro}}\\
+                \iff &f(x)\star f(y\inv) = e_2 \tag{$f$ è omomorf.}\\
+                \iff &f(x* y\inv) = e_2 \tag{def. di $\ker f$}\\
+                \iff &x* y\inv \in \ker f \tag{ipotesi: $\ker f = \set*{e_1}$}\\
+                \iff &x*y\inv = e_1 \tag{moltiplico a dx per $y$}\\
+                \iff &x = y.
+            \end{align*}
+
+            Dunque $f(x) = f(y)$ implica che $x = y$, ovvero $f$ è iniettivo.
+        \end{description}
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    {Omomorfismi e ordine}{omo_ord}
+    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $f : G_1 \to G_2$ omomorfismo.
+
+    Allora valgono le seguenti due affermazioni \begin{enumerate}[label={(\roman*)}]
+        \item \label{prop:omo_ord:ord_f_div_ord_x} per ogni $x \in G$ vale che $\ord_{G_2}{f(x)} \divides \ord_{G_1}{x}$;
+        \item \label{prop:omo_ord:inj_sse_ord_f=ord_x} $f$ è iniettivo se e solo se $\ord_{G_2}{f(x)} = \ord_{G_1}{x}$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Innanzitutto diciamo che se $\ord x = +\infty$ allora $\ord{f(x)} \divides \ord{x}$ qualunque sia $\ord{f(x)}$ (anche se è $+\infty$).
+
+    \begin{enumerate}[label={(\roman*)}]
+        \item Sia $x \in G_1$. Se $\ord x = +\infty$ allora abbiamo finito, dunque supponiamo $\ord x = n$ per qualche $n \in \Z$, $n > 0$.
+        
+        Per definizione di ordine questo significa che $x^n = e_1$.
+        Allora \begin{align*}
+            f(x)^n &= f(x) \star \cdots \star f(x) \tag{$f$ è omo.}\\
+            &= f(x^n) \\
+            &= f(e_1) \tag{prop. \ref{prop:prop_omo:e_va_in_e'}}\\
+            &= e_2.
+        \end{align*}
+
+        Dunque $f(x)^n = e_2$, quindi per la \Cref{prop:sgr_generato:ord_div_n} segue che \[
+            \ord{f(x)} \divides n = \ord x.    
+        \]
+        \item Dimostriamo entrambi i versi dell'implicazione.
+        \begin{description}
+            \item[\boximpl ] Supponiamo $f$ iniettiva. \begin{itemize}
+                \item Se $\ord{f(x)} = +\infty$ allora per il punto \ref{prop:omo_ord:ord_f_div_ord_x} sappiamo che $+\infty \divides \ord x$, dunque $\ord x = +\infty = \ord{f(x)}$.
+                \item Se $\ord{f(x)} = m < +\infty$ allora \[
+                    f(x)^m = e_2 \iff f(x) \star \dots \star f(x) = e_2 \iff f(x^m) = e_2,    
+                \] ovvero $x^m \in \ker f$.
+
+                Ma $f$ è iniettiva, dunque per \ref{prop:prop_omo:cond_iniett} $\ker f = \set*{e_1}$, da cui segue che $x^m = e_1$. 
+                Dunque per la \Cref{prop:sgr_generato:ord_div_n} segue che \[
+                    \ord x \divides m = \ord{f(x)}.    
+                \]
+
+                Inoltre per il punto \ref{prop:omo_ord:ord_f_div_ord_x} sappiamo che $\ord{f(x)} \divides \ord x$, dunque $\ord{f(x)} = \ord x$.
+            \end{itemize} 
+            \item[\boximplby] Sia $x \in \ker f$, ovvero $f(x) = e_2$. Allora \[
+                1 = \ord_{G_2}{e_2} = \ord{f(x)} \stackrel{\text{hp.}}{=} \ord_{G_1}{x}.
+            \] 
+            
+            Ma $\ord x = 1$ se e solo se $x = e_1$, ovvero $\ker f = \set*{e_1}$, dunque per la \Cref{prop:prop_omo:cond_iniett} $f$ è iniettiva.
+        \end{description}
+    \end{enumerate}
+\end{proof}
+
+\subsection{Isomorfismi}
+
+Gli omomorfismi bigettivi sono particolarmente importanti e vanno sotto il nome di \emph{isomorfismi}.
+
+\begin{definition}
+    {Isomorfismo}{isomorfismo}
+    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $\phi : G_1 \to G_2$ un omomorfismo.
+
+    Allora se $\phi$ è bigettivo si dice che $\phi$ è un \emph{isomorfismo}. Inoltre i gruppi $G_1$ e $G_2$ si dicono \emph{isomorfi} e si scrive $G_1 \isomorph G_2$.
+\end{definition}
+
+\begin{corollary}{Transitività della relazione di isomorfismo}{trans_isomorf}
+    Siano $(G_1, *)$, $(G_2, \star)$, $(G_3, \cdot)$ tre gruppi tali che $G_1 \isomorph G_2$ e $G_2 \isomorph G_3$: allora $G_1 \isomorph G_3$.
+\end{corollary}
+\begin{proof}
+    Dato che $G_1 \isomorph G_2$ e $G_2 \isomorph G_3$ dovranno esistere due isomorfismi $\phi : G_1 \to G_2$ e $\psi : G_2 \to G_3$.
+
+    Per la \Cref{prop:comp_omo} la funzione $\psi \circ \phi$ è ancora un isomorfismo; inoltre la composizione di funzioni bigettive è ancora bigettiva, da cui segue che $\psi \circ \phi$ è un isomorfismo tra $G_1$ e $G_3$ e quindi $G_1 \isomorph G_3$.
+\end{proof}
+
+Due gruppi isomorfi sono sostanzialmente lo stesso gruppo, a meno di "cambiamenti di forma". In particolare gli isomorfismi inducono naturalmente una bigezione sui sottogruppi dei due gruppi isomorfi, come ci dice la seguente proposizione.
+
+\begin{proposition}
+    {Bigezione tra i sottogruppi di gruppi isomorfi} {big_sottogrp_isom}
+    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $\phi : G_1 \to G_2$ un isomorfismo.
+
+    Siano inoltre $\HH$ e $\KK$ tali che \begin{align*}
+        \HH = \set*{H \given H \sgr G_1}, \quad \KK = \set*{K \given K \sgr G_2}.
+    \end{align*}
+
+    Allora la funzione \begin{align*}
+        f : \HH &\to \KK \\
+        H &\mapsto \phi(H)
+    \end{align*} è bigettiva.
+\end{proposition}
+\begin{proof}
+    Siccome $H \sgr G_1$ e $\phi$ è un omomorfismo, allora $f(H) = \phi(H) \sgr G_2$ (ovvero $f(H) \in \KK$) per la \Cref{prop:prop_omo:f(H)_sgr_cod}; dunque $f$ è ben definita.
+
+    Definiamo ora una seconda funzione \begin{align*}
+        g : \KK &\to \HH\\
+        K &\mapsto \phi\inv(K).
+    \end{align*} Anch'essa ben definita per la \Cref{prop:prop_omo:f\inv(K)_sgr_dom}.
+
+    Consideriamo ora le funzioni $g \circ f$ e $f \circ g$. Per la bigettività di $\phi$ vale che \begin{align*}
+        &(g \circ f)(H) = \phi\inv(\phi(H)) = H &\forall H \in \HH\\
+        &(f \circ g)(K) = \phi(\phi\inv(K)) = K &\forall K \in \KK
+    \end{align*} ovvero la funzione $f$ è bigettiva e definisce quindi una bigezione tra l'insieme dei sottogruppi di $G_1$ e l'insieme dei sottogruppi di $G_2$.
+\end{proof}
+
+\begin{theorem}
+    {Isomorfismi di gruppi ciclici}{iso_ciclico}
+    Sia $(G, \cdot)$ un gruppo ciclico. Allora \begin{enumerate}[label={(\roman*)}]
+        \item se $\abs G = +\infty$ segue che $G \isomorph \Z$;
+        \item se $\abs G = n < +\infty$ segue che $G \isomorph \Zmod n$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Per ipotesi $G = \gen*{g} = \set*{g^k \given k \in \Z}$ per qualche $g \in G$.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Se $\abs G = +\infty$ allora $\abs*{\gen*{g}} = +\infty$, ovvero per ogni $k, h \in \Z$ con $k \neq h$ segue che $g^k \neq g^h$. Sia allora \begin{align*}
+            \phi : \Z &\to G\\
+            k &\mapsto g^k.
+        \end{align*}
+
+        Per definizione di $G = \gen{g}$ questa funzione è surgettiva. Dato che $G$ ha ordine infinito segue che questa funzione è iniettiva. Mostriamo che è un omomorfismo. \[
+            \phi(k + h) = g^{k + h} = g^kg^h = \phi(k)\phi(h).    
+        \]
+
+        Dunque $\phi$ è un isomorfismo e $G \isomorph \Z$.
+        \item Dato che $\abs{G} = n$ per la \Cref{prop:sgr_generato} sappiamo che $\ord g = n$, ovvero che $g^n = e_G$. Sia allora \begin{align*}
+            \phi : \Zmod n &\to G\\
+            \eqcl a &\mapsto g^a
+        \end{align*} dove $a$ è un generico rappresentante della classe $\eqcl a \in \Zmod n$. \begin{itemize}
+            \item Mostriamo che $\phi$ è ben definita. Siano $a, b \in \eqcl a$ e mostriamo che $\phi(\eqcl a) = \phi(\eqcl b)$, ovvero che $g^a = g^b$. 
+            
+            Per ipotesi $a \congr b \Mod{n}$, ovvero $a = b+nk$ per qualche $k \in \Z$. Dunque \[
+                g^a = g^{b + nk} = g^b(g^n)^k = g^b    
+            \] poiché $g^n = e_G$.
+            \item Mostriamo che $\phi$ è un omomorfismo. \[
+                \phi(\eqcl a + \eqcl b) = g^{a + b} = g^ag^b = \phi(\eqcl a)\phi(\eqcl b).
+            \] \item Mostriamo che $\phi$ è surgettiva. \[
+                \Im \phi = \phi(\Zmod n) = \set*{g^0, g^1, \dots, g^n} = \gen g = G.    
+            \]
+        \end{itemize}
+        Ma $\abs*{\Zmod n} = \abs*{G}$, dunque per cardinalità $\phi$ è anche iniettiva e dunque è bigettiva. 
+        Quindi $\phi$ è un isomorfismo e $G \isomorph \Zmod n$.
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    {Sottogruppi del gruppo ciclico}{sgr_gruppo_ciclico}
+    Sia $(G, \cdot)$ un gruppo ciclico.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Se $G$ è infinito e $H \sgr G$ allora segue che $H = \gen*{g^n}$ per qualche $g \in G$, $n \in \Z$.
+        \item Se $G$ ha ordine $n$ finito, allora $G$ ammette uno e un solo sottogruppo per ogni divisore di $n$.
+        Inoltre se $H \sgr G$ allora $H$ è ciclico.
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    Ricordiamo che \begin{enumerate}
+        \item i sottogruppi di $\Z$ sono tutti e soli della forma $n\Z$ al variare di $n \in \N$ per la \Cref{prop:sgr_Z},
+        \item i sottogruppi di $\Zmod{n}$ hanno tutti cardinalità che divide $n$ per la \Cref{prop:sgr_Z/nZ:ciclico_ord_d}. Inoltre, per ogni $d$ che divide $n$ vi è uno e un solo sottogruppo di $\Zmod{n}$ di cardinalità $d$, per la \Cref{prop:sgr_Z/nZ:unosolo_ord_d}.
+        \item per la \Cref{prop:big_sottogrp_isom} sappiamo che se $f : G_1 \to G_2$ è un isomorfismo, allora \[
+            \set*{K \given K \sgr G_2} = \set*{f(H) \given H \sgr G_1}. 
+        \]
+    \end{enumerate}
+
+    Mostriamo le due affermazioni separatamente.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Se $G$ è ciclico ed infinito allora per il \Cref{th:iso_ciclico} segue che esiste un isomorfismo \begin{align*}
+            \phi : \Z &\to G \\
+            k &\mapsto g^k.
+        \end{align*}
+
+        Per la bigezione tra i sottogruppi di $\Z$ e $G$ allora ogni sottogruppo di $G$ dovrà essere scritto come immagine di qualche sottogruppo di $\Z$, ma come abbiamo osservato sopra i sottogruppi di $\Z$ sono tutti e solo della forma $n\Z$ per qualche $n \in \N$.
+        
+        Dunque i sottogruppi di $G$ sono \[
+            \set*{K \given K \sgr G} = \set*{\phi(n\Z) = \gen*{g^n} \given n \in \N}.    
+        \]
+        \item Se $G$ è ciclico ed è finito, allora $G = \gen*{g}$ per qualche $g \in G$, e inoltre $\abs*{G} = \ord{g} = n$ per qualche $n$ finito.
+        
+        Allora per il \Cref{th:iso_ciclico} esiste un isomorfismo \begin{align*}
+            \psi : \Zmod n &\to G\\
+            \eqcl a &\mapsto g^a.
+        \end{align*}
+
+        Per l'osservazione 2) sopra i sottogruppi di $\Zmod n$ sono tutti e solo della forma $\displaystyle \gen*{\eqcl{d}}$, dunque per l'osservazione 3) segue che \[
+            \set*{K \given K \sgr G} = \set*{
+                \psi(\gen*{\eqcl{d}}) 
+            = \gen*{g^{d}} \given d \divides n}. \qedhere   
+        \] 
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}{Automorfismo}{}
+    Sia $(G, \cdot)$ un gruppo e sia $\phi : G \to G$ un isomorfismo. Allora $\phi$ viene detto \emph{automorfismo} e l'insieme di tutti gli automorfismi di un gruppo $G$ si denota con $\Aut{G}$.
+\end{definition}
+
+\begin{proposition}{Gruppo degli automorfismi}{}
+    Sia $(G, \cdot)$ un gruppo. Allora la struttura $(\Aut{G}, \circ)$ (dove $\circ$ è la composizione di funzioni) è un gruppo.
+\end{proposition}
+\begin{proof}
+    Mostriamo che valgono gli assiomi di gruppo.
+    \newthought{Chiusura} La composizione di funzioni è un'operazione su $\Aut{G}$ in quanto la composizione di due omomorfismi è un omomorfismo (per la \Cref{prop:comp_omo}) e la composizione di due funzioni bigettive è ancora bigettiva, dunque la composizione di due automorfismi è ancora un automorfismo.
+    \newthought{Associatività} La composizione di funzioni è associativa.
+    \newthought{Elemento neutro} L'elemento neutro di $\Aut{G}$ è \begin{align*}
+        \id_G : G &\to G \\
+        g &\mapsto g.
+    \end{align*}  Infatti $\id_G$ è un automorfismo di $G$ e inoltre per ogni $f \in \Aut{G}$ vale che\[
+        \id_G \circ{} f = f = f \circ \id_G.
+    \]
+    \newthought{Invertibilità} Le funzioni in $\Aut{G}$ sono bigettive, dunque invertibili, e le loro inverse sono ancora automorfismi.
+    Dunque $(\Aut{G}, \circ)$ è un gruppo.
+\end{proof}
+
+\subsection{Omomorfismi di gruppi ciclici}
+
+Studiamo ora gli insiemi $\Hom{G_1, G_2}$ dove $G_1$ e $G_2$ sono gruppi ciclici. Per il \Cref{th:iso_ciclico} è sufficiente studiare gli omomorfismi tra i gruppi $\Z$ e $\Zmod{n}$ (con $n \in \N$ qualunque).
+
+\newthought{Omomorfismi con dominio $\Z$} Consideriamo l'insieme $\Hom{\Z. G}$ dove $(G, \cdot)$ è un gruppo ciclico qualunque (quindi può essere isomorfo a $\Z$ oppure a $\Zmod n$ per qualche $n \in \N$). 
+
+Sia $g \deq f(1)$. Allora possiamo mostrare per induzione che $f(n) = g^n$ per ogni $n \geq 0$. Per i negativi siccome $f$ è un omomorfismo vale che \[
+    f(-n) = f(n)\inv = (g^n)\inv = g^{-n},    
+\] da cui segue che gli omomorfismi $\Z \to G$ sono tutti della forma \[
+    f(k) = g^k \quad \forall k \in \Z
+\] e sono tutti identificati univocamente dal valore di $f(1)$.
+
+Viceversa, per ogni $g \in G$ esiste un omomorfismo \begin{align*}
+    \phi_g : \Z &\to G \\
+    k &\mapsto g^k.
+\end{align*} Questa funzione è un omomorfismo poiché \[
+    \phi_g(k_1 + k_2) = g^{k_1 + k_2} = g^{k_1}g^{k_2} = \phi_g(k_1)\phi_g(k_2).
+\]
+
+Vi è dunque una bigezione tra $\Hom{\Z, G}$ e $G$, data dalle due mappe \begin{align*}
+    \Hom{\Z, G} &\leftrightarrow G\\
+    f &\mapsto f(1)\\
+    \phi_g &\mapsfrom g.
+\end{align*}

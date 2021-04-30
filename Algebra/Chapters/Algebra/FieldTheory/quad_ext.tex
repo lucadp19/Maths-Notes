@@ -1,0 +1,47 @@
+\section{Estensioni quadratiche}
+
+Facciamo una breve parentesi sulle estensioni quadratiche di campi, ovvero sulle estensioni di grado $2$. Per dimostrare i risultati di questa sezione avremo bisogno di escludere il caso in cui la caratteristica dei campi è $2$. 
+
+\begin{proposition}
+    {Ogni estensione quadratica è generata da una radice quadrata}{quad_ext=>gen_sqrt}
+    Sia $\ext{\F / \K}$ un'estensione quadratica, con $\FieldChar \K \neq 2$. Allora esiste $\beta \in \F$ tale che $\beta^2 \in \K$ e \[
+        \F = \K(\beta).
+    \]  
+\end{proposition}
+
+\begin{remark}
+    $\F$ è \emph{generata da una radice} nel senso che se $\beta^2 = k \in \K$ allora $\F = \K\parens[\Big]{\!\sqrt{k}}$. 
+\end{remark}
+
+\begin{proof}
+    Consideriamo $\gamma \in \F \setminus \K$. Questa scelta genera una torre di estensioni \[
+        \begin{tikzcd}
+            \K \arrow[r] \arrow[rr, bend left, "2"]
+            &\K(\gamma) \arrow[r]
+            &\F.
+        \end{tikzcd}
+    \] Siccome $\gamma \notin \K$ si ha che $\ExtDegree{\K(\gamma) : \K} \geq 2$, ma il fatto che $\ExtDegree{\F : \K} = 2$ forza $\ExtDegree{\K(\gamma) : \K} = 2$. Allora per il \Cref{th:ext_tower} si ha che \[
+        \ExtDegree{\F : \K(\gamma)} 
+        = \frac{\ExtDegree{\F : \K}}{\ExtDegree{\K(\gamma) : \K}} 
+        = \frac{2}{2} 
+        = 1,
+    \] ovvero $\F = \K(\gamma)$.
+    
+    A questo punto consideriamo $\mu_\gamma \in \K[x]$. Siccome l'estensione è di grado $2$ si avrà \[
+        \mu_\gamma(x) = x^2 + b_1x + b_0.
+    \] Valutandolo in $\gamma$ otteniamo \begin{align*}
+        \gamma^2 + b_1\gamma + b_0 = 0\\
+        \iff {}&\parens*{\gamma + \frac12b_1}^2 + b_0 - \frac{b_1^2}{4} = 0\\
+        \iff {}&\parens*{\gamma + \frac12b_1}^2 = \frac{b_1^2}{4} - b_0 \in \K.
+    \end{align*} Segue dunque che $\beta \deq \gamma + \frac12b_1$ è un elemento di $\F$ tale che $\beta^2 \in \K$. Inoltre \[
+        \K(\beta) = \K\parens*{\gamma + \frac12b_1} = \K(\gamma) = \F,
+    \] cioè la tesi.
+\end{proof}
+
+\begin{remark} \label{rem:quad_ext=>sqrt_discr}
+    Notiamo che nella dimostrazione della \Cref{prop:quad_ext=>gen_sqrt} abbiamo scelto \[
+        \beta^2 = \frac{b_1^2}{4} - b_0 = \frac{b_1^2 - 4b_0}{4}
+    \] che è il discriminante dell'equazione $x^2 + b_1x + b_0$ diviso per $4$. Segue quindi che \[
+        \F = \K(\beta) = \K\parens*{\frac{\sqrt{\Delta}}{2}} = \K\parens[\Big]{\sqrt{\Delta}}
+    \] posto che $\K$ abbia caratteristica diversa da $2$. 
+\end{remark}

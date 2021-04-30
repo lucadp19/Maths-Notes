@@ -1,0 +1,480 @@
+\section{Estensioni di campi}
+
+Spesso, dato un campo $\K$, siamo interessati a risolvere equazioni polinomiali a coefficienti in $\K$: vogliamo quindi trovare tutte le radici di un dato polinomio. Tuttavia ciò non sempre è possibile: i classici esempi sono $x^2 - 2 \in \Q[x]$ e $x^2 + 1 \in \R[x]$. Questi polinomi sono di grado $2$, ma sono comunque irriducibili: le loro radici non sono nel campo dato ma in qualche campo \emph{più grande}.   
+
+Lo studio della Teoria dei Campi inizia pertanto con lo studio di tutti i modi di poter \emph{estendere} un campo dato, come il campo dei razionali $\Q$ o il campo degli interi modulo $p$ primo $\F_p \deq \Zmod{p}$, aggiungendo nuovi elementi più o meno estranei al campo originale.
+
+\begin{definition}
+    {Estensione di campi}{}
+    Siano $\K, \bL$ due campi con $\K \subseteq \bL$. Allora si dice che \strong{$\bL$ estende $\K$}, e si indica l'estensione con $\ext{\bL / \K}$.  
+\end{definition}
+
+Più in generale un'estensione può essere realizzata come un'immersione $\iota : \K \embeds \bL$: in tal caso infatti l'immagine di $\K$ mediante $\iota$ sarebbe un campo isomorfo a $\K$ contenuto in $\bL$. Le estensioni $\ext{\bL / \K}$ e $\ext{\bL / \iota(\K)}$ vengono perciò accomunate e parleremo di inclusione tra campi anche quando in realtà c'è semplicemente un'immersione.
+
+Inoltre le immersioni sono l'unico modo per costruire omomorfismi non banali fra campi.
+\begin{lemma}
+    {}{}
+    Ogni omomorfismo non banale che ha come dominio un campo è iniettivo ed è quindi un'immersione.
+\end{lemma}
+\begin{proof}
+    Consideriamo l'omomorfismo di anelli $\phi : \K \to A$, dove $\K$ è un campo mentre $A$ può essere un anello qualsiasi. Sappiamo che $\ker \phi$ è un ideale di $\K$, ma gli unici ideali di $\K$ sono $\ideal{0}$ e $\K$ stesso, dunque o $\phi$ è iniettivo oppure è banale.  
+\end{proof}
+
+Consideriamo quindi un elemento $\alpha \in \bL$ e cerchiamo di costruire l'estensione di $\K$ \strong{generata} da $\alpha$, ovvero la più piccola estensione di $\K$ contenente sia $\K$ che l'elemento $\alpha$ dato. Indicheremo tale estensione con $\K(\alpha)$. Un'estensione generata da un singolo elemento si dirà \strong{semplice}.
+
+Il modo principe per costruire una tale estensione consiste nel considerare un omomorfismo di anelli: \begin{equation} \label{eq:evaluation_omom}
+    \begin{aligned}
+        \phi_\alpha : \K[x] &\to \K[\alpha] \subseteq \bL\\
+        f(x) &\mapsto f(\alpha),
+    \end{aligned}
+\end{equation} dove $\K[\alpha]$ è l'insieme di tutte le espressioni polinomiali in $\alpha$. Per il \nameref{th:first_iso} possiamo disegnare il seguente diagramma commutativo:
+\[
+    \begin{tikzcd}
+        \K[x] \arrow[dr, swap, "\pi"] \arrow[rr, two heads, "\phi_\alpha"] & & \K[\alpha] \\
+        &\quot{\K[x]}{\ker \phi_\alpha} \arrow[ur, swap, two heads, hook, "\overline{\phi_\alpha}"] &
+    \end{tikzcd}
+\] da cui segue che \[
+    \quot{\K[x]}{\ker \phi_\alpha} \isomorph \K[\alpha].
+\] Per avanzare nello studio di $\K[\alpha]$ abbiamo però bisogno di più informazioni su $\ker \phi_\alpha$.  
+
+Introduciamo quindi il concetto di elementi algebrici e trascendenti.
+
+\begin{definition}
+    {Elementi algebrici e trascendenti}{}
+    Sia $\ext{\bL / \K}$ un'estensione di campi e sia $\alpha \in \bL$. $\alpha$ si dice \begin{itemize}
+        \item \strong{algebrico} se esiste un polinomio $f \in \K[x] \setminus \set*{0}$ tale che \[
+            f(\alpha) = 0,
+        \] 
+        \item \strong{trascendente} altrimenti.
+    \end{itemize}  
+\end{definition}
+
+In altri termini, $\alpha \in \bL$ è algebrico se e solo se esiste un $f \in \K[x]$ non nullo tale che $\phi_\alpha(f) = f(\alpha) \neq 0$, ovvero se e solo se $\ker \phi_\alpha \neq 0$.
+
+Osserviamo inoltre che essendo $\K[\alpha] \subseteq \bL$ un sottoanello di un campo, esso deve essere necessariamente un dominio di integrità, dunque $\ker \phi_\alpha$ deve essere un ideale primo in $\K[x]$. Essendo $\K[x]$ un \PID (poiché $\K[x]$ è un dominio euclideo) se $\ker \phi_\alpha \neq \ideal[\big]{0}$ per la \Cref{prop:primes_PID_are_(0)_and_maximals} segue quindi che $\ker \phi_\alpha$ è un ideale massimale e dunque $\quot{\K[x]}{\ker \phi_\alpha} \isomorph \K[\alpha]$ è un campo.
+
+Dato che ogni polinomio in $\alpha$ è \emph{combinazione algebrica} di elementi di $\K \union \set*{\alpha}$, certamente $\K[\alpha] \subseteq \K(\alpha)$. D'altro canto però $\K(\alpha)$ è il più piccolo campo contenente $\K$ e $\alpha$, dunque necessariamente $\K[\alpha] \supseteq \K(\alpha)$.
+
+Abbiamo quindi dimostrato il seguente teorema.
+
+\begin{theorem}
+    {}{}
+    Sia $\ext{\bL / \K}$ un'estensione di campi, $\alpha \in \bL$ algebrico su $\K$. Allora \[
+        \K(\alpha) = \K[\alpha] \isomorph \quot{\K[x]}{\ker \phi_\alpha},
+    \] dove $\phi_\alpha$ è l'omomorfismo di valutazione definito in \eqref{eq:evaluation_omom}.
+\end{theorem}
+
+Nel caso $\phi_\alpha$ abbia nucleo banale invece otteniamo che \[
+    \K[\alpha] \isomorph \quot{\K[x]}{\ker \phi_\alpha} = \K[x],
+\] quindi $\K[\alpha]$ non è un campo e non può quindi essere il campo $\K(\alpha)$.  
+
+Possiamo tuttavia considerare il campo dei quozienti \[
+    Q\parens[\big]{\K[\alpha]} \deq \set*{\frac{f(\alpha)}{g(\alpha)} \given f, g \in \K[x]}.
+\] Notiamo che non c'è bisogno della richiesta $g(\alpha) \neq 0$ in quanto questo è garantito dal fatto che $\alpha$ è trascendente su $\K$. Per quanto studiato in precedenza, il campo dei quozienti di un anello è il più piccolo campo contenente l'anello di partenza: dunque $Q\parens[\big]{\K[\alpha]}$ è il più piccolo campo contenente $\K$ e $\alpha$, dunque per definizione è uguale a $\K(\alpha)$.
+
+\begin{remark}
+    Questa caratterizzazione di $Q\parens[\big]{\K[\alpha]}$ vale anche nel caso in cui $\alpha$ sia algebrico su $\K$. 
+\end{remark}
+
+\begin{proposition}
+    {}{}
+    Sia $\ext{\bL / \K}$ un'estensione di campi, $\alpha \in \bL$ trascendente su $\K$. Allora \[
+        \K(\alpha) \isomorph \K(x),
+    \] dove $\K(x)$ è il campo delle funzioni razionali a coefficienti in $\K$, ovvero \[
+        \K(x) \deq \set*{\frac{f(x)}{g(x)} \given f, g \in \K[x]} = Q\parens[\big]{\K[x]}.
+    \] 
+\end{proposition}
+\begin{proof}
+    Consideriamo la mappa \begin{align*}
+        \psi : \K(x) &\to \K(\alpha)\\
+        \frac{f(x)}{g(x)} &\mapsto \frac{f(\alpha)}{g(\alpha)}.
+    \end{align*} Innanzitutto tale mappa è sempre ben definita, in quanto per ogni polinomio $p \in \K[x]$ si ha che $p(\alpha) \neq 0$ (in quanto $\alpha$ è trascendente su $\K$). Inoltre è certamente un omomorfismo di campi (poiché è semplicemente una valutazione di una funzione polinomiale) ed è ovviamente surgettiva per come abbiamo caratterizzato $\K(\alpha)$.
+    
+    Resta da mostrare l'iniettività, ma questo è ovvio poiché $\psi$ è un omomorfismo di campi non banale (ad esempio possiamo notare che $\psi(1) = 1$), dunque deve essere iniettivo.
+\end{proof}
+
+Torniamo ora a considerare il caso in cui $\alpha \in \bL$ sia un elemento algebrico su $\K$. L'isomorfismo $\K(\alpha) \isomorph \quot{\K[x]}{\ker \phi_\alpha}$ si basa sul quoziente per il nucleo dell'omomorfismo di valutazione $\phi_\alpha$, quindi possiamo studiare un po' più precisamente come è fatto questo nucleo.
+
+Dato che siamo in un \PID certamente $\ker \phi_\alpha = \ideal[\big]{\mu_\alpha}$ per qualche $\mu_\alpha \in \K[x]$. Siccome $\ker \phi_\alpha$ è un ideale massimale, certamente $f$ deve essere un polinomio irriducibile in $\K[x]$, inoltre per la \Cref{prop:ED=>PID} essendo $\K[x]$ anche un \ED segue che $\mu_\alpha$ è un elemento di grado minimo tra tutti gli elementi di $\ideal[\big]{\mu_\alpha}$. Infine dato che gli elementi di grado minimo differiscono per una costante, posso scegliere $\mu_\alpha$ in modo che sia monico.
+
+\begin{proposition}
+    {Polinomio minimo di un elemento algebrico}{}
+    Sia $\ext{\bL / \K}$ un'estensione di campi, $\alpha \in \bL$ algebrico su $\K$. Allora esiste un unico polinomio monico, irriducibile in $\K[x]$, di grado minimo tra i polinomi appartenenti a $\ker \phi_\alpha$ e quindi tale che \[
+        \ker \phi_\alpha = \ideal[\big]{\mu_\alpha}.
+    \] Tale polinomio si dice \strong{polinomio minimo} di $\alpha$ su $\K$.
+\end{proposition}
+\begin{proof}[Dimostrazione alternativa]
+    Ne abbiamo dato una dimostrazione sopra sfruttando le proprietà dei domini euclidei. Se volessimo limitarci a considerazioni più elementari, possiamo innanzitutto considerare che sicuramente \[
+        S \deq \set*{\deg f \in \N \given f \in \ker \phi_\alpha} \subseteq \N
+    \] è un sottoinsieme non vuoto di $\N$ (poiché $\alpha$ è algebrico), dunque ammette un minimo. 
+    Possiamo sceglierlo certamente monico, poiché se $f$ è di grado minimo ma non monico basta dividere $f$ per il suo coefficiente di testa.
+
+    \newthought{$\mu_\alpha$ è irriducibile} Supponiamo per assurdo $\mu_\alpha = pq$ dove $p, q \in \K[x]$ di grado minore di $\mu_\alpha$. Dato che $\mu_\alpha \in \ker \phi_\alpha$ segue che $0 = \mu_\alpha(\alpha) = p(\alpha)q(\alpha)$ in $\bL$. Ma allora per la proprietà di annullamento del prodotto segue che $p(\alpha) = 0$ oppure $q(\alpha) = 0$, e ciò è assurdo in quanto $\mu_\alpha$ è il polinomio di grado minimo che si annulla in $\alpha$.
+    
+    \newthought{$\mu_\alpha$ genera $\ker \phi_\alpha$} Siccome $\mu_\alpha \in \ker \phi_\alpha$ certamente \[
+        \ideal[\big]{\mu_\alpha} = \set*{\mu_\alpha \cdot p \given p \in \K[x]} \subseteq \ker \phi_\alpha.
+    \] Sia quindi $f \in \ker \phi_\alpha$. Per divisione euclidea $f = q\mu_\alpha + r$, dove $r = 0$ oppure $0 \leq \deg r < \deg \mu_\alpha$. Valutando l'espressione in $\alpha$ otteniamo $f(\alpha) = q(\alpha)\mu_\alpha(\alpha) + r(\alpha)$. Siccome $f, \mu_\alpha \in \ker \phi_\alpha$ questo implica che $0 = r(\alpha)$, ma se $r$ non fosse identicamente nullo ciò sarebbe assurdo, in quanto sarebbe un polinomio in $\ker \phi_\alpha$ con grado minore di $\mu_\alpha$. Segue quindi che $r = 0$, ovvero \[
+        \ker \phi_\alpha \subseteq \ideal[\big]{\mu_\alpha}.
+    \] 
+    \newthought{$\mu_\alpha$ è unico} Vogliamo infine mostrare che $\mu_\alpha$ è l'unico polinomio monico di grado minimo che si annulla in $\alpha$. Per il punto precedente ogni polinomio $f$ che si annulla in $\alpha$ (ovvero che appartiene a $\ker \phi_\alpha$) è della forma $f = q\mu_\alpha$. Abbiamo due casi. \begin{itemize}
+        \item Se $\deg q > 0$ allora $\deg f = \deg q + \deg \mu_\alpha$ quindi $f$ non ha grado minimo.
+        \item Se $\deg q = 0$ allora $q = k \in \units{\K}$. Se $f = k\mu_\alpha$ e $f$ e $\mu_\alpha$ sono entrambi monici allora $k = 1$, ovvero $f = \mu_\alpha$.
+    \end{itemize} Segue dunque l'unicità di $\mu_\alpha$. 
+\end{proof}
+
+Prima di passare al grado di un'estensione generalizziamo il concetto di estensione semplice ad un'estensione \emph{finitamente generata}.
+\begin{definition}
+    Sia $\ext{\bL / \K}$ un'estensione di campi e siano $\alpha_1, \dots, \alpha_n \in \bL$. Chiameremo \[
+        \K(\alpha_1, \dots, \alpha_n)
+    \] il più piccolo sottocampo di $\bL$ contenente $\K$ e tutti gli $\alpha_i$. 
+\end{definition}
+
+Nel caso in cui gli $\alpha_i$ siano tutti algebrici su $\K$, esattamente come prima questo campo è isomorfo all'anello $\K[\alpha_1, \dots, \alpha_n]$.
+\begin{proposition}
+    {}{}
+    Sia $\ext{\bL / \K}$ un'estensione di campi e siano $\alpha_1, \dots, \alpha_n \in \bL$ algebrici su $\K$. Allora $\K[\alpha_1, \dots, \alpha_n]$ è un campo ed in particolare \[
+        \K[\alpha_1, \dots, \alpha_n] = \K(\alpha_1, \dots, \alpha_n).
+    \]
+\end{proposition} 
+\begin{proof}
+    Dimostriamo che $\K[\alpha_1, \dots, \alpha_n]$ è un campo per induzione.
+    \newthought{Caso base} Se $n = 1$ allora $\K[\alpha] \isomorph \K(\alpha)$ come abbiamo già dimostrato.
+    \newthought{Passo induttivo} Supponiamo che la tesi sia vera per $m < n$ e dimostriamola per $n$. Allora \[
+        \K[\alpha_1, \dots, \alpha_n] = \K[\alpha_1, \dots, \alpha_{n-1}][\alpha_n] = \F[\alpha_n],
+    \] dove $\F \deq \K[\alpha_1, \dots, \alpha_{n-1}]$ è un campo per l'ipotesi induttiva. Ma allora $\alpha_n$ è algebrico su $\F$ poiché $\K \embeds \F$ e $\alpha_n$ è un elemento algebrico su $\K$, dunque per il caso base $\F[\alpha_n]$ è un campo.
+    
+    Mostriamo ora che $\K[\alpha_1, \dots, \alpha_n]$ è \emph{il più piccolo campo} contenente $\K$ e gli $\alpha_i$, ovvero $\K[\alpha_1, \dots, \alpha_n]$ è l'intersezione di tutti i sottocampi di $\bL$ contenenti $\K$ e gli $\alpha_i$, che abbiamo denotato con $\K(\alpha_1, \dots, \alpha_n)$.
+    
+    Sicuramente $\K[\alpha_1, \dots, \alpha_n]$ è un campo contenente gli elementi richiesti, dunque è uno degli elementi dell'intersezione, e quindi contiene $\K(\alpha_1, \dots, \alpha_n)$. D'altro canto ogni campo contenente $\K$ e gli $\alpha_i$ dovrà contenere tutte le espressioni polinomiali negli $\alpha_i$, dunque $\K[\alpha_1, \dots, \alpha_n]$ è contenuto in $\K(\alpha_1, \dots, \alpha_n)$, da cui la tesi.    
+\end{proof}
+
+\newthoughtpar{Grado di un'estensione}
+Vogliamo ora misurare quanto sia \emph{grande} un'estensione di campi. Per farlo torna comodo osservare che se $\ext{\bL / \K}$ è un'estensione, allora $\bL$ può essere pensato come uno spazio vettoriale su $\K$ dove le operazioni sono \begin{align*}
+    &\alpha + \beta \in \bL &&\text{con } \alpha, \beta \in \bL\\
+    &k\alpha \in \bL        &&\text{con } k \in \K, \alpha \in \bL.
+\end{align*}  
+
+\begin{definition}
+    {Grado di un'estensione}{}
+    Sia $\ext{\bL / \K}$ un'estensione di campi. Si dice \strong{grado} dell'estensione la quantità \[
+        \ExtDegree{\bL : \K} \deq \deg_{\K} \bL,
+    \] ovvero la dimensione di $\bL$ come $\K$-spazio.
+\end{definition}
+
+Nel caso in cui l'estensione sia semplice possiamo sfruttare il polinomio minimo per ricavare informazioni sul grado. 
+\begin{proposition}{}{caratt_ext_degree}
+    Sia $\ext{\bL / \K}$ un'estensione di campi e sia $\alpha \in \bL$. Vale che \[
+        \ExtDegree{\K(\alpha): \K} = \begin{cases}
+            +\infty, &\text{se $\alpha$ è trascendente su $\K$}\\
+            \deg \mu_\alpha, &\text{se $\alpha$ è algebrico su $\K$}.
+        \end{cases}
+    \] 
+\end{proposition}
+\begin{proof}
+    Se $\alpha$ è trascendente si ha che $\K(\alpha) \isomorph \K(x)$, e $\K(x)$ ha dimensione infinita su $\K$ poiché $1, x, x^2, \dots$ sono tutti linearmente indipendenti su $\K$.
+    
+    Invece consideriamo $\alpha \in \bL$ algebrico su $\K$. Per quanto mostrato in precedenza \[
+        \K(\alpha) = \K[\alpha] \isomorph \quot{\K[x]}{\ideal[\big]{\mu_\alpha}}.
+    \] L'anello quoziente $\quot{\K[x]}{\ideal[\big]{\mu_\alpha}}$ ha come elementi tutte e sole le classi di equivalenza dei resti delle divisioni per $\mu_\alpha$, dunque i suoi elementi sono \[
+        \quot{\K[x]}{\ideal[\big]{\mu_\alpha}} = \set*{\eqcl{f} \given \deg f < \deg \mu_\alpha}.
+    \] Segue quindi che una base di $\quot{\K[x]}{\ideal[\big]{\mu_\alpha}}$ come $\K$-spazio è data da $\eqcl{1}, \eqcl{x}, \dots, \eqcl{x^{n-1}}$, dove $n \deq \deg \mu_\alpha$. Siccome due spazi vettoriali di dimensione finita sono isomorfi se e solo se hanno la stessa dimensione, segue che $\K(\alpha)$ ha dimensione $n$ su $\K$, come volevamo. 
+\end{proof}
+
+\begin{remark}
+    In particolare una possibile scelta dell'isomorfismo \[
+        \quot{\K[x]}{\ideal[\big]{\mu_\alpha}} \isomorph \K(\alpha)
+    \] è data dalla funzione $\eqcl{x} \mapsto \alpha$, da cui \[
+        \parens*{1, \alpha, \dots, \alpha^{n-1}}
+    \] è una $\K$-base di $\K(\alpha)$.  
+\end{remark}
+
+\newthoughtpar{Estensioni algebriche}
+
+Oltre a studiare estensioni semplici della forma $\ext{\K(\alpha) / \K}$ con $\alpha$ algebrico su $\K$ vogliamo studiare anche estensioni generate da più elementi. In particolare siamo interessati alle estensioni per cui \emph{tutti} gli elementi del campo più grande sono algebrici sul sottocampo.
+
+\begin{definition}
+    {Estensione algebrica}{}
+    Un'estensione $\ext{\bL / \K}$ si dice \strong{algebrica} se ogni $\alpha \in \bL$ è algebrico su $\K$.  
+\end{definition}
+
+Vale in particolare la seguente proposizione.
+\begin{proposition}
+    {Ogni estensione finita è algebrica}{finite_ext=>alg_ext}
+    Sia $\ext{\bL / \K}$ un'estensione di campi finita, ovvero tale che $\ExtDegree{\bL : \K} < +\infty$. Allora $\ext{\bL / \K}$ è un'estensione algebrica.   
+\end{proposition}
+\begin{proof}
+    Sia $n \deq \ExtDegree{\bL : \K}$ e sia $\alpha \in \bL$. Per definizione $\alpha$ è algebrico su $\K$ se e solo se esiste un polinomio $f \in \K[x] \setminus \set{0}$ tale che $f(\alpha) = 0$, ovvero se e solo se esistono $k_0, \dots, k_{m - 1} \in \K$ tali che \[
+        k_0 + k_1\alpha + k_2\alpha^2 + \dots k_{m-1}\alpha^{m-1} = 0,
+    \] ovvero se e solo se le potenze di $\alpha$ non sono tutte linearmente indipendenti.
+
+    Consideriamo allora $\set*{1, \alpha, \dots, \alpha^n} \subseteq \bL$: questo è un insieme di $n+1$ elementi in uno spazio vettoriale di dimensione $n$: queste potenze non sono linearmente indipendenti e dunque $\alpha$ è algebrico. Infatti essendo linearmente dipendenti dovranno esistere $k_0, \dots, k_n \in \K$ non tutti nulli tali che \[
+        k_0 + k_1\alpha + k_2\alpha^2 + \dots k_{n}\alpha^{n} = 0,
+    \] dunque il polinomio \[
+        f(x) \deq k_0 + k_1x + \dots + k_nx^n
+    \] è un polinomio non identicamente nullo che si annulla in $\alpha$.
+
+    Per generalità di $\alpha$ segue quindi che l'estensione $\ext{\bL / \K}$ è algebrica. 
+\end{proof}
+
+Il viceversa tuttavia è falso: come vedremo successivamente esistono estensioni algebriche infinite.
+
+\subsection{Proprietà delle torri e del composto}
+
+Vogliamo ora studiare come si comportano le estensioni quando vengono \emph{eseguite in sequenza} oppure composte tra loro.
+
+\begin{theorem}
+    {Torri di Estensioni}{ext_tower}
+    Siano $\K \subseteq \F \subseteq \bL$ campi. Allora $\ext{\bL / \K}$ è finita se e solo se $\ext{\bL / \F}$ e $\ext{\F / \K}$ sono finite, e in tal caso \[
+        \ExtDegree{\bL : \K} = \ExtDegree{\bL : \F} \cdot \ExtDegree{\F : \K}.
+    \]    
+\end{theorem}
+\begin{proof}
+    Sia $\beta_1, \dots, \beta_n$ una $K$-base di $F$ e $\alpha_1, \dots, \alpha_m$ una $F$-base di $L$. Mostriamo che \[
+        \set*{\alpha_i\beta_j}^{i = 1, \dots, m}_{j = 1, \dots, n}  
+    \] è una $K$-base di $L$.
+
+    \newthought{Generatori}
+    Siccome $\set{\alpha_1, \dots, \alpha_n}$ è una $F$-base di $L$ vale che per ogni $\alpha \in L$ esistono $\lambda_1, \dots, \lambda_n \in F$ tali che \[
+        \alpha = \sum_{i=1}^n \lambda_i\alpha_i.    
+    \] Inoltre, siccome $\set{\beta_1, \dots, \beta_n}$ è una $K$-base di $F$, per ogni $\lambda_i$ esisteranno $a_{i1}, \dots, a_{im} \in K$ tali che \[
+        \lambda_i = \sum_{j=1}^m a_{ij}\beta_j.    
+    \] Possiamo quindi scrivere \begin{align*}
+        \alpha &= \sum_{i=1}^n \parens*{\sum_{j=1}^m a_{ij}\beta_j} \alpha_i\\
+        &= \sum_{i=1}^n \sum_{j=1}^m a_{ij}\beta_j\alpha_i,
+    \end{align*} da cui l'insieme dato è un insieme di generatori di $L$.
+
+    \newthought{Indipendenza lineare}
+    Mostriamo che se esistono $a_{ij} \in K$ tali che \[
+        \sum_{i=1}^n \sum_{j=1}^m a_{ij}\beta_j\alpha_i = 0
+    \] allora essi sono tutti uguali a $0$.
+    Osserviamo che \[
+        \sum_{i=1}^n \sum_{j=1}^m a_{ij}\beta_j\alpha_i = \sum_{i=1}^n \parens*{\sum_{j=1}^m a_{ij}\beta_j} \alpha_i,
+    \] dove il vettore interno è un elemento di $F$. Siccome i $\alpha_i$ formano una $F$-base di $L$ segue quindi che per ogni $i$ \[
+        \sum_{j=1}^m a_{ij}\beta_j = 0.
+    \] Ma i $\beta_j$ formano una $K$-base di $F$, dunque $a_{ij} = 0$ per ogni $i, j$, da cui i vettori sono indipendenti.
+
+    Segue quindi infine che i vettori $\alpha_i\beta_j$ formano una $K$-base di $L$, da cui la tesi.
+\end{proof}
+
+La proprietà delle torri di estensioni ci consente di dimostrare che un'estensione è finita se e solo se è generata da un numero finito di elementi algebrici.
+
+\begin{proposition}
+    {}{finite<=>finitely_generated_alg_elements}
+    Sia $\ext{\bL / \K}$ un'estensione di campi. Allora $\ext{\bL / \K}$ è finita se e solo se è finitamente generata da elementi algebrici su $\K$, ovvero se e solo se esistono $\alpha_1, \dots, \alpha_n \in \bL$ algebrici su $\K$ tali che \[
+        \bL = \K(\alpha_1, \dots, \alpha_n).
+    \] 
+\end{proposition}
+\begin{proof}
+    Il fatto che se un'estensione finita essa è finitamente generata da elementi algebrici è ovvio: infatti per la \Cref{prop:finite_ext=>alg_ext} l'estensione è algebrica, dunque ogni elemento di $\bL$ è algebrico su $\K$. 
+    
+    Se $n \deq \ExtDegree{\bL : \K}$ allora esisterà una $\K$-base di $\bL$: chiamiamo i suoi elementi $\alpha_1, \dots, \alpha_n$. Segue quindi che ogni elemento di $\bL$ è esprimibile come $\K$-combinazione lineare di $\alpha_1, \dots, \alpha_n$ e dunque \[
+        \bL = \K(\alpha_1, \dots, \alpha_n).
+    \] Infine questi elementi sono tutti algebrici su $\K$ poiché l'estensione $\ext{\bL / \K}$ è algebrica.
+
+    Mostriamo ora l'altra implicazione: sia \[
+        \bL \deq \K(\alpha_1, \dots, \alpha_n)
+    \] con $\alpha_1, \dots, \alpha_n$ algebrici su $\K$ e mostriamo che questa estensione è finita. Procediamo per induzione sul numero dei generatori:
+
+    \newthought{Caso base} Se $\bL = \K(\alpha)$ e $\alpha$ è algebrico allora il grado dell'estensione è uguale al grado del polinomio minimo di $\alpha$ su $\K$ per la \Cref{prop:caratt_ext_degree}.
+    \newthought{Passo induttivo} Supponiamo che la tesi sia vera per ogni $m < n$ e dimostriamola per $n$. Possiamo allora costuire la torre di estensioni \[
+        \begin{tikzcd}[every arrow/.append style={dash}]
+            \K \arrow{r} & \F \deq \K(\alpha_1, \dots, \alpha_{n-1}) \arrow{r} & \F(\alpha_n) = \bL.
+        \end{tikzcd}
+    \] Per ipotesi induttiva l'estensione $\ext{\F / \K}$ è finita; inoltre $\ext{\bL / \F(\alpha_n)}$ è finita in quanto è semplice ed è generata da un elemento algebrico (se $\alpha_n$ è algebrico su $\K$ lo è anche su ogni sua estensione $\F$, in quanto il polinomio che $\alpha$ annulla appartiene sia a $\K[x]$ che ad ogni $\F[x]$).
+
+    Per il \Cref{th:ext_tower} segue quindi che $\ext{\bL / \K}$ è finita, ovvero la tesi.
+\end{proof}
+
+Possiamo inoltre studiare l'insieme formato da tutti gli elementi algebrici di un'estensione.
+
+\begin{proposition}
+    {Campo degli elementi algebrici}{field_of_all_alg}
+    Sia $\ext{\bL / \K}$ un'estensione di campi e sia \begin{equation}
+        \A_{\ext{\bL / \K}} \deq \set*{\alpha \in \bL \given \alpha \text{ algebrico su } \K}.
+    \end{equation} Allora $\A_{\ext{\bL / \K}}$ è un campo ed in particolare l'estensione $\ext{\A_{\ext{\bL / \K}} / \K}$ è algebrica. 
+\end{proposition}
+\begin{proof} 
+    Per alleggerire la notazione definiamo $\A \deq \A_{\ext{\bL / \K}}$. 
+
+    Ovviamente se $\A$ è un campo allora conterrà $\K$ (in quanto ogni elemento $a \in K$ annulla almeno un polinomio in $\K[x]$, come ad esempio $(x-a)$), e dato che $\A$ è formato solo da elementi algebrici su $\K$ necessariamente l'estensione $\ext{\A / \K}$ sarà algebrica.
+    
+    Per mostrare che $\A$ è un campo basta dimostrare che per ogni $\alpha, \beta \in \A$ gli elementi $\alpha + \beta, \alpha\beta$ e $\nicefrac1{\alpha}$ sono ancora elementi di $\A$.
+    
+    Per definizione $\alpha, \beta \in \A$ significa che l'estensione $\ext{\K(\alpha, \beta) / \K}$ è generata da un numero finito di elementi algebrici su $\K$ e dunque per la \Cref{prop:finite<=>finitely_generated_alg_elements} è finita. 
+    
+    Per la \Cref{prop:finite_ext=>alg_ext} segue che $\ext{\K(\alpha, \beta) / \K}$ è algebrica, ogni elemento che appartiene a $\K(\alpha, \beta)$ è algebrico su $\K$. In particolare essendo $\K(\alpha, \beta)$ un campo necessariamente $\alpha + \beta, \alpha\beta$ e $\nicefrac1{\alpha}$ appartengono a $\K(\alpha, \beta)$, dunque sono algebrici su $\K$, dunque appartengono ad $\A$. Segue quindi la tesi. 
+\end{proof}
+
+Usando l'idea della proposizione precedente possiamo far vedere che esistono estensioni algebriche infinite, e quindi che l'implicazione contraria della \Cref{prop:finite_ext=>alg_ext} non vale.
+
+Consideriamo $\Q \embeds \C$ e l'insieme \[
+    \A_{\ext{\C / \Q}} 
+    \deq \closure{\Q}
+    = \set*{\alpha \in \C \given \alpha \text{ algebrico su } \K}.
+\] Per la \Cref{prop:field_of_all_alg} $\closure{\Q}$ è un campo e $\ext{\closure{\Q} / \Q}$ è un'estensione algebrica.
+
+Fissato $n \geq 2$ consideriamo ora la torre di estensioni \[
+    \begin{tikzcd}[every arrow/.append style={dash}]
+        \Q \arrow{r} 
+        &\Q\parens[\Big]{\!\sqrt[n]{2}} \arrow{r} 
+        & \closure{\Q}.
+    \end{tikzcd}
+\] La prima estensione ha grado $n$: infatti il polinomio minimo di $\!\!\sqrt[n]{2}$ su $\Q$ è \[
+    \mu_{\!\!\sqrt[n]{2}}(x) = x^n - 2.
+\] In effetti questo polinomio è monico, si annulla in $\!\!\sqrt[n]{2}$ ed è irriducibile per il criterio di Eisenstein applicato con $p = 2$. 
+
+In particolare segue quindi (per il \Cref{th:ext_tower}) che $\ExtDegree{\closure{\Q} : \Q} \geq n$ per ogni $n \geq 2$, dunque $\closure{\Q}$ deve avere grado infinito su $\Q$.   
+
+\subsection{Composto di due estensioni}
+
+Definiamo ora il composto di due estensioni di $\K$.
+
+\begin{definition}{Composto di estensioni}{}
+    Consideriamo un campo $\Omega$ tale che $\F, \bL \subseteq \Omega$ siano due suoi sottocampi. Si dice \strong{composto} di $\F$ e $\bL$ il campo \[
+        \F\bL \deq \F(\bL) = \bL(\F)
+    \] ovvero il sottocampo di $\Omega$ che ha come generatori tutti gli elementi di $\F$ e di $\bL$, ovvero il più piccolo sottocampo di $\Omega$ contenente $\F \union \bL$.  
+\end{definition}
+
+Quando studiamo delle estensioni composte è comodo disegnare il \emph{diagramma} delle estensioni: se $\F, \bL \subseteq \Omega$ sono due sottocampi di $\Omega$ e $\K$ è un sottocampo di $\F$ e di $\bL$ possiamo considerare il diagramma  
+\begin{equation}
+    \label{eq:composite_ext}
+    \begin{tikzcd}[every arrow/.append style={dash}]
+            & \F\bL &\\
+        \bL \arrow{ur}  & & \F \arrow{ul} \\
+            & \K \arrow{ul} \arrow{ur} \arrow{uu}
+    \end{tikzcd}
+\end{equation}
+
+Aggiungendo delle condizioni ai gradi delle sottoestensioni possiamo ricavare informazioni sui gradi delle sovraestensioni tramite le prossime proposizioni.
+
+\begin{proposition}
+    {Proprietà del composto}{composite_ext}
+    Siano $\F, \bL \subseteq \Omega$ dei campi e sia $\K$ un sottocampo comune a $\F$ e $\bL$ tale che le estensioni $\ext{\F / \K}$, $\ext{\bL / \K}$ siano finite. Consideriamo il diagramma di estensioni 
+    \begin{equation}
+        \label{eq:composite_ext_mn}
+        \begin{tikzcd}[every arrow/.append style={dash}]
+                & \F\bL &\\
+            \bL \arrow{ur}  & & \F \arrow{ul} \\
+                & \K \arrow["m"]{ul} \arrow["n", label=below right]{ur} \arrow{uu}
+        \end{tikzcd}
+    \end{equation} dove $m \deq \ExtDegree{\bL : \K}$, $n \deq \ExtDegree{\F : \K}$. 
+    
+    Allora $\ext{\F\bL / \K}$ è un'estensione finita e \begin{gather}
+        \lcm{m, n} \divides \ExtDegree{\F\bL : \K},\\
+        \ExtDegree{\F\bL : \K} \leq \ExtDegree{\F : \K}\ExtDegree{\bL : \K} = mn.
+    \end{gather}
+\end{proposition}
+\begin{proof}
+    Siccome le estensioni $\ext{\bL / \K}$ e $\ext{\F / \K}$ hanno rispettivamente grado $m$ e $n$ esisteranno degli elementi $\alpha_1, \dots, \alpha_m \in \bL$ e $\beta_1, \dots, \beta_n \in \F$ che formano rispettivamente una $\K$-base di $\bL$ e di $\F$.
+    
+    Dato che queste due estensioni sono finite possiamo osservare che \[
+        \F\bL = \F(\bL) = \F(\K, \alpha_1, \dots, \alpha_n) = \K(\alpha_1, \dots, \alpha_m, \beta_1, \dots, \beta_n).
+    \]
+
+    Notiamo ora che ogni elemento di $\F\bL$ è una combinazione algebrica degli elementi di $\F$ e di $\bL$. Sappiamo che ogni elemento di $\bL$ può essere espresso come $\K$-combinazione lineare degli $\alpha_i$ e ogni elementi di $\F$ può essere espresso come $\K$-combinazione lineare dei $\beta_j$: segue quindi che gli elementi di $\F\bL$ possono essere espressi come prodotti di $\K$-combinazioni lineari degli $\alpha_i$ e dei $\beta_j$, che diventano quindi combinazioni lineari di $\alpha_i\beta_j$ al variare di $i = 1, \dots, m$, $j = 1, \dots, n$.
+    
+    Segue in particolare che $\set*{\alpha_i\beta_j \given i = 1, \dots, m,\ j = 1, \dots, n}$ è un insieme di generatori per $\F\bL$, dunque la dimensione di $\F\bL$ come $\K$-spazio è certamente minore o uguale di $mn$, ovvero \[
+        \ExtDegree{\F\bL : \K} \leq \ExtDegree{\F : \K}\ExtDegree{\bL : \K}.
+    \] 
+
+    Dato che $\ExtDegree{\F\bL : \K}$ è finito per il \Cref{th:ext_tower} segue che \[
+        \ExtDegree{\F\bL : \K} \leq \ExtDegree{\F\bL : \bL}\ExtDegree{\bL : \K}, \qquad
+        \ExtDegree{\F\bL : \K} \leq \ExtDegree{\F\bL : \F}\ExtDegree{\F : \K}.
+    \] Dalla prima segue che $m \divides \ExtDegree{\F\bL : \K}$, mentre dalla seconda segue che $n \divides \ExtDegree{\F\bL : \K}$, dunque \[
+        \lcm{m, n} \divides \ExtDegree{\F\bL : \K}, 
+    \] come volevamo.
+\end{proof}
+
+Dalla \Cref{prop:composite_ext} seguono due semplici corollari.
+
+\begin{corollary}
+    {}{}
+    Considerando il diagramma di estensioni come in \eqref{eq:composite_ext_mn}, si ha che \begin{equation}
+        \ExtDegree{\F\bL : \F} \leq \ExtDegree{\bL : \K} = m, \qquad \ExtDegree{\F\bL : \bL} \leq \ExtDegree{\F : \K} = n.
+    \end{equation}
+\end{corollary}
+\begin{proof}
+    Per la \Cref{prop:composite_ext} si ha che \[
+        \ExtDegree{\F\bL : \K} \leq \ExtDegree{\F : \K}\ExtDegree{\bL : \K} = mn.
+    \] Per il \Cref{th:ext_tower} segue quindi che \begin{enumerate}[(1)]
+        \item $\ExtDegree{\F\bL : \K} = \ExtDegree{\F\bL : \F}\ExtDegree{\F : \K} = \ExtDegree{\F\bL : \F} \cdot n \leq mn$, dunque deve essere \[
+            \ExtDegree{\F\bL : \F} \leq m.
+        \]
+        \item $\ExtDegree{\F\bL : \K} = \ExtDegree{\F\bL : \bL}\ExtDegree{\bL : \K} = \ExtDegree{\F\bL : \bL} \cdot m \leq mn$, dunque \[
+            \ExtDegree{\F\bL : \bL} \leq n. \qedhere
+        \]
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    {}{}
+    Considerando il diagramma di estensioni come in \eqref{eq:composite_ext_mn}, se $\gcd{m, n} = 1$ si ha che \begin{equation}
+        \ExtDegree{\F\bL : \K} = mn
+    \end{equation} e dunque \begin{equation}
+        \ExtDegree{\F\bL : \F} = \ExtDegree{\bL : \K} = m, \qquad \ExtDegree{\F\bL : \bL} = \ExtDegree{\F : \K} = n.
+    \end{equation}
+\end{corollary}
+\begin{proof}
+    Per il \Cref{prop:composite_ext} si ha che \[
+        \lcm{m, n} \divides \ExtDegree{\F\bL : \K} \leq mn.
+    \] Tuttavia siccome $\gcd{m, n} = 1$ segue che $\lcm{m, n} = mn$, dunque $\ExtDegree{\F\bL : \K} = mn$.
+    
+    A questo punto per il \Cref{th:ext_tower} si ha che \begin{gather*}
+        \ExtDegree{\F\bL : \F} = \frac{\ExtDegree{\F\bL : \K}}{\ExtDegree{\F : \K}} = \frac{mn}{n} = m,\\
+        \ExtDegree{\F\bL : \bL} = \frac{\ExtDegree{\F\bL : \K}}{\ExtDegree{\bL : \K}} = \frac{mn}{m} = n,
+    \end{gather*}
+    come volevamo.
+\end{proof}
+
+Le torri di estensioni e il composto preservano le estensioni algebriche, come dimostrato dalle prossime due proposizioni.
+
+\begin{proposition}
+    {}{alg_tower}
+    Siano $\K \subseteq \F \subseteq \bL$ campi. Allora $\ext{\bL / \K}$ è algebrica se e solo se $\ext{\bL / \F}$ e $\ext{\F / \K}$ sono algebriche.
+\end{proposition}
+\begin{proof}
+    Dimostriamo entrambe le implicazioni.
+    \begin{description}
+        \item[\boximpl] Questa implicazione è ovvia. Essendo $\F \subseteq \bL$ ogni elemento di $\F$ deve essere algebrico su $\K$ (poiché ogni elemento di $\F$ è anche un elemento di $\bL$). Invece se $\alpha \in \bL \setminus \F$ siccome è algebrico su $\K$ allora esiste un polinomio non nullo in $\K[x]$ che si annulla in $\alpha$: questo polinomio può anche essere interpretato come polinomio in $\F[x]$ e dunque $\alpha$ è algebrico su $\F$.
+        \item[\boximplby] Sia $\alpha \in \bL$ qualsiasi: vogliamo mostrare che se $\ext{\bL / \F}$ e $\ext{\F / \K}$ sono algebriche allora $\alpha$ è algebrico su $\K$.
+        
+        Dato che $\ext{\bL / \F}$ è algebrica sicuramente esiste un polinomio $f \in \F[x] \setminus \set*{0}$ che si annulla in $\alpha$, ovvero esiste \[
+            f(x) = \sum_{i=0}^n a_{i}x^i
+        \] tale che $f(\alpha) = 0$. Consideriamo allora l'estensione \[
+            \bL_0 \deq \K(a_1, \dots, a_n).
+        \] Dato che $\ext{\F / \K}$ è algebrica necessariamente $a_1, \dots, a_n$ sono algebrici su $\K$, dunque per la \Cref{prop:finite<=>finitely_generated_alg_elements} segue che l'estensione $\ext{\bL_0 / \K}$ è finita. Inoltre il polinomio $f$ appartiene a $\bL_0[x]$, dunque $\alpha$ è algebrico su $\bL_0$.   
+        
+        Consideriamo allora la torre di estensioni \[
+            \begin{tikzcd}[every arrow/.append style={dash}]
+                \K \arrow{r} & \bL_0 \arrow{r} & \bL(\alpha).
+            \end{tikzcd}
+        \] Come abbiamo appena mostrato $\ext{\bL_0 / \K}$ è finita; d'altro canto essendo $\alpha$ algebrico su $\bL_0$ l'estensione $\ext{\bL(\alpha) / \bL}$ è finita e quindi per il \Cref{th:ext_tower} segue che $\ext{\bL_0(\alpha) / \K}$ è finita.
+
+        Per la \Cref{prop:finite_ext=>alg_ext} segue quindi che $\ext{\bL_0(\alpha) / \K}$ è algebrica. In particolare dunque $\alpha$ è algebrico su $\K$.
+        
+        Per generalità di $\alpha$ segue quindi che ogni elemento di $\bL$ è algebrico su $\K$ e quindi l'estensione $\ext{\bL / \K}$ è algebrica. \qedhere
+    \end{description}
+\end{proof}
+
+\begin{proposition}
+    {}{}
+    Siano $\bL, \F \subseteq \Omega$ campi tali che $\K \subseteq \bL, \F$. Allora $\ext{\F\bL / \K}$ è algebrica se e solo se $\ext{\F / \K}$ e $\ext{\bL / \K}$ sono algebriche.  
+\end{proposition}
+\begin{proof}
+    Dimostriamo separatamente le due implicazioni.
+    \begin{description}
+        \item[\boximpl] Quest'implicazione è ovvia: siccome $\F$ (rispettivamente $\bL$) è un sottocampo di $\F\bL$ ogni elemento di $\F$ (risp. $\bL$) è un elemento di $\F\bL$ e dunque per ipotesi è algebrico su $\K$, da cui l'estensione $\ext{\F / \K}$ (risp. $\ext{\bL / \K}$) è algebrica.
+        \item[\boximplby] Sia $\alpha \in \F\bL$. Per definizione di composto ogni elemento di $\F\bL$ è una somma o un prodotto di elementi di $\F$ e di $\bL$, tuttavia essendo entrambi i campi immersi in $\Omega$, essendo le operazioni di $\Omega$ commutative e dato che la somma/prodotto di elementi di $\F$ (risp. $\bL$) sono ancora elementi di $\F$ (risp. $\bL$) un elemento di $\F\bL$ sarà della forma \[
+            \alpha = \sum_{i=1}^n \alpha_i\beta_i
+        \] con gli $\alpha_i \in \F$ e i $\beta_i \in \bL$.
+        
+        Allora \[
+            \alpha \in \M \deq \K(\alpha_1, \dots, \alpha_n, \beta_1, \dots, \beta_n).
+        \] Inoltre siccome gli $\alpha_i$ e i $\beta_i$ sono algebrici su $\K$ (poiché sono elementi di $\F$ e di $\bL$ e le estensioni $\ext{\F / \K}$ e $\ext{\bL / \K}$ sono algebriche su $\K$) segue che $\M$ è un'estensione di $\K$ finitamente generata da elementi algebrici su $\K$. 
+        
+        Per la \Cref{prop:finite<=>finitely_generated_alg_elements} segue che $\M$ è un'estensione finita di $\K$ e dunque (per la \Cref{prop:finite_ext=>alg_ext}) è un'estensione algebrica di $\K$.       
+        In particolare quindi $\alpha$ è algebrico su $\K$. 
+        
+        Per generalità di $\alpha$ segue quindi che ogni elemento di $\F\bL$ è algebrico su $\K$, ovvero la tesi.
+    \end{description}
+\end{proof}

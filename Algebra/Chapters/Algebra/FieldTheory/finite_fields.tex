@@ -1,0 +1,208 @@
+\section{Campi finiti}
+
+Finora abbiamo genericamente studiato estensioni di campi qualsiasi, pensando a $\Q$ nella maggior parte dei casi. Tuttavia, non tutti i campi sono infiniti perché esistono i campi $\F_p \deq \Zmod{p}$ al variare di $p$ primo. Mostreremo in questa sezione che questi campi non sono gli unici campi finiti e determineremo univocamente (a meno di isomorfismo) tutti i campi finiti esistenti.
+
+\subsection{Caratteristica di un anello}
+
+Sia $R$ un anello commutativo con identità qualsiasi e consideriamo la mappa \begin{align*}
+    \eta: \Z &\to R \\
+    n &\mapsto n \cdot 1_R \deq \underbrace{1_R + 1_R + \dots + 1_R}_{n \text{ volte}}.
+\end{align*}
+
+Tale mappa è ovviamente un omomorfismo di anelli, dunque possiamo considerare il suo nucleo \[
+    \ker \eta = \set*{n \in \Z \given n \cdot 1_R = 0}.
+\]
+
+\begin{remark}
+    $\eta$ è in realtà l'unico omomorfismo di anelli $\Z \to R$.
+\end{remark}
+
+\begin{definition}
+    {Caratteristica di un anello}{}
+    Sia $R$ un anello commutativo con identità e sia $\eta : \Z \to R$ l'unico omomorfismo di anelli da $\Z$ in $R$. 
+    Si dice \strong{caratteristica} di $R$ la quantità \[
+        \FieldChar R \deq \begin{cases}
+            0 &\text{se } \ker \eta = \ideal[\big]{0}\\
+            n &\text{se } \ker \eta = \ideal[\big]{n} = n\Z.
+        \end{cases}
+    \]
+\end{definition}
+
+Un anello qualsiasi può avere una caratteristica uguale ad un qualunque intero positivo; nel caso dei campi però vi sono delle limitazioni.
+
+\begin{proposition}
+    {Caratteristica di un campo}{}
+    Sia $\K$ un campo. Allora $\FieldChar \K = 0$ oppure $\FieldChar \K = p$ con $p \in \Z$ primo.
+\end{proposition}
+\begin{proof}
+    Supponiamo per assurdo che $\K$ abbia caratteristica $n$ con $n$ non primo e $n \neq 0$. 
+    
+    Se $\FieldChar \K = 1$ allora $\eta(1) = 1_{\K} = 0_{\K}$, ma ciò è assurdo in quanto $0_{\K} \neq 1_{\K}$. 
+    
+    Segue quindi che $n > 1$. Essendo $\Z$ un \UFD, dato che $n$ è non-primo $n$ è anche riducibile, ovvero esistono $1 < a, b < n$ tali che $n = ab$. Ma allora \begin{align*}
+        &\eta(n)
+        = \eta(a)\eta(b)
+        = 0_{\K} \\
+        \iff {}&\eta(a) = 0_{\K} \;\text{ oppure }\; \eta(b) = 0_{\K} \\
+        \iff {}&
+        a \in \ker \eta \;\text{ oppure }\; b \in \ker \eta.
+    \end{align*} 
+    Tuttavia ciò è assurdo poiché $a, b < n$ e dunque $a, b \notin \ker \eta$.
+    
+    Segue quindi che $\FieldChar \K$ è $0$ oppure un primo. 
+\end{proof}
+
+Nel caso $\FieldChar \K = 0$ allora il nucleo di $\Z \xrightarrow{\eta} \K$ è banale, da cui $\Z \embeds \K$. Segue quindi che il campo delle frazioni di $\Z$ è contenuto in $\K$ (poiché il campo delle frazioni di un anello è per definizione il più piccolo campo contenente tale anello), ovvero \[
+    \Q \embeds \K.
+\]  
+
+Nel caso invece in cui $\FieldChar \K = p$ possiamo considerare il diagramma dato dal \Cref{th:first_iso}: \[
+    \begin{tikzcd}
+        \Z \arrow[dr, two heads, "\pi"] \arrow[rr, "\eta"] & & \K \\
+        & \quot{\Z}{\ker \eta} = \Zmod{p} \arrow[ur, hook] 
+    \end{tikzcd}
+\] Segue quindi che \[
+    \Zmod{p} = \F_p \embeds \K.
+\]
+
+Vale quindi il seguente risultato.
+\begin{theorem}
+    {Esistenza del campo base}{}
+    Sia $\K$ un campo qualunque.
+    \begin{enumerate}[(1)]
+        \item Se $\FieldChar \K = 0$ allora $\Q \embeds \K$.
+        \item Se $\FieldChar \K = p$ allora $\F_p \embeds \K$.  
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Campi finiti}
+
+Vogliamo ora dimostrare che esistono campi finiti che non siano isomorfi ad $\F_p$ e studiare la loro forma.
+
+Sia quindi $f \in \F_p[x]$ un polinomio irriducibile e consideriamo il campo \[
+    \F \deq \quot{\F_p[x]}{\ideal[\big]{f}}.
+\] Dato che $\F$ è ottenuto quozientando $\F_p[x]$ per un polinomio di grado $n \deq \deg f$, una sua $\F_p$-base sarà data dalle classi di resto delle potenze di $x$, ovvero da $\parens[\big]{\eqcl{1}, \eqcl{x}, \dots, \eqcl*{x^{n-1}}}$.
+
+Ogni elemento di $\F$ può quindi essere espresso come $\F_p$-combinazione lineare di questi elementi, ovvero \[
+    \F = \set*{\sum_{i=0}^{n-1} a_i\eqcl{x^i} \given a_i \in \F_p}.
+\] Dato che ogni $a_i$ può essere scelto in $p$ modi (in quanto $\F_p$ ha $p$ elementi) segue che $\F$ ha $p^n$ elementi, e dunque è anch'esso un campo finito.
+
+Dobbiamo ora risolvere tre problemi.
+\begin{enumerate}[(1)]
+    \item Posso costruire campi finiti con un numero di elementi che non sia una potenza di un primo?
+    \item Dato $p$ primo e $n > 1$, esiste sempre un campo con $p^n$ elementi? 
+    \item Esiste sempre un polinomio $f \in \F_p[x]$ irriducibile e di grado $n$? 
+    \item Se esistono due polinomi diversi $f, g \in \F_p[x]$, in che relazione sono i campi ottenuti quozientando $\F_p[x]$ per l'ideale generato da $f$ e da $g$?   
+\end{enumerate}
+
+La prossima proposizione risponde alla prima domanda.
+\begin{proposition}
+    {}{}
+    Se $\F$ è un campo finito, allora $\card{\F} = p^n$ per qualche primo $p$ e qualche $n \in \N$. 
+\end{proposition}
+\begin{proof}
+    Osserviamo che $\FieldChar \F$ non può essere $0$, poiché in quel caso $\Q \embeds \F$ e dunque $\F$ sarebbe infinito.
+
+    Sia quindi $p \deq \FieldChar \F$ primo: per quanto studiato in precedenza $\F_p \embeds \F$, e quindi il grado dell'estensione $\ext{\F / \F_p}$ deve essere finito in quanto $\F$ è finito.
+    
+    Sia dunque $n \deq \ExtDegree{\F:\F_p}$. Allora se $\parens*{v_1, \dots, v_n}$ è una $\F_p$-base di $\F$ si ha che \[
+        \F = \set*{\sum_{i=1}^n a_iv_i \given a_i \in \F_p}
+    \] e dunque, dato che abbiamo $p$ possibili scelte per ognuno degli $a_i$ e queste sono tutte distinte poiché $\parens[\big]{v_i}$ è una $\F_p$-base di $\F$, $\F$ ha $p^n$ elementi.
+\end{proof}
+
+In realtà vale una condizione molto più forte, che risponde alle domande (2) e (4).
+\begin{theorem}
+    {}{exist_unique_F_p^n}
+    Per ogni $p$ primo, $n \in \N$ esiste un unico campo con $p^n$ elementi in una fissata chiusura algebrica di $\F_p$. 
+\end{theorem}
+
+Per dimostrare questo teorema abbiamo bisogno del concetto di derivata formale di un polinomio e del cosiddetto \strong{criterio della derivata}.
+
+\begin{definition}
+    {Derivata formale di un polinomio}{}
+    Sia $R$ un anello e $f \in R[x]$. Se \[
+        f(x) = \sum_{k=0}^n a_kx^k
+    \] si dice \strong{derivata formale} di $f$ il polinomio \[
+        Df(x) = f'(x) \deq \sum_{k=1}^{n} ka_kx^{k-1}.
+    \]
+\end{definition}
+
+La derivata formale è esattamente la derivata nel senso analitico e pertanto rispetta tutte le proprietà solite, soltanto che nel contesto di anelli e campi non sempre è possibile definire un concetto di limite e quindi non possiamo usare la \emph{derivata analitica}.
+
+\begin{proposition}
+    {Criterio della derivata}{crit_deriv}
+    Sia $\K$ un campo qualsiasi. Allora $f \in \K[x]$ ha radici multiple in $\closure{\K}$ se e solo se $\gcd{f, f'} \neq 1$, ovvero se e solo se $f$ ha radici in comune con la sua derivata.
+\end{proposition}
+\begin{proof}
+    Sia $\alpha \in \closure{\K}$ una radice di $f$, ovvero \[
+        f(x) = (x-\alpha)g(x) \qquad \text{in } \closure{\K}[x].
+    \] Allora \[
+        f'(x) = g(x) + (x-\alpha)g'(x),
+    \] da cui, valutando i polinomi in $\alpha$, segue che \[
+        f'(\alpha) = g(\alpha) + (\alpha-\alpha)g'(\alpha) = g(\alpha).
+    \]
+
+    Segue quindi che $\alpha$ è una radice in comune tra $f$ e $f'$, ovvero $f'(\alpha) = 0$, se e solo se $g(\alpha) = 0$, ovvero $g(x) = (x-\alpha)h(x)$, ovvero \[
+        f(x) = (x-\alpha)^2h(x). \qedhere
+    \]  
+\end{proof}
+
+\begin{corollary}
+    {}{crit_deriv_irrid}
+    Sia $f \in \K[x]$ irriducibile. Allora $f$ ha radici multiple in $\closure{\K}$ se e solo se $f' = 0$. 
+\end{corollary}
+\begin{proof}
+    Per il \nameref{prop:crit_deriv} $f$ ha radici multiple se e solo se $\gcd{f, f'} \neq 1$. Siccome $f$ è irriducibile però segue che $\gcd{f, f'} \in \set*{1, f}$, dunque si hanno radici multiple se e solo se $\gcd{f, f'} = f$, ovvero se e solo se $f$ divide $f'$. Ma $f'$ ha grado minore di $f$, dunque ciò è possibile se e solo se $f' = 0$.     
+\end{proof}
+
+Possiamo quindi dimostrare il \Cref{th:exist_unique_F_p^n}.
+\begin{proof}
+    [Dimostrazione del \Cref{th:exist_unique_F_p^n}]
+    Innanzitutto sicuramente se $\card{\F} = p^n$ allora $\F_p \embeds \F$. Inoltre $\ext{\F / \F_p}$ è sicuramente un'estensione finita (poiché $\F$ è finito) e dunque per la \Cref{prop:finite_ext=>alg_ext} si ha che $\ext{\F / \F_p}$ è algebrica. 
+    
+    Sia allora $\closure{\F_p}$ una chiusura algebrica di $\F_p$: vogliamo mostrare che esiste un $\F$ tale che \[
+        \begin{tikzcd}[every arrow/.append style={hook}]
+            \F_p \arrow[r]
+            &\F \arrow[r]
+            &\closure{\F}.
+        \end{tikzcd}
+    \] Se tale $\F$ esiste, il suo gruppo moltiplicativo $\units{\F}$ ha ordine $p^n - 1$. Questo significa che per ogni $\alpha \in \units{\F} = \F \setminus \set{0}$ si ha che \[
+        \alpha^{p^n - 1} = 1,
+    \] ovvero che $\alpha$ è radice del polinomio $x^{p^n - 1} - 1$.
+
+    Segue quindi che ogni elemento di $\F$ è radice del polinomio \[
+        \Psi(x) \deq x\parens*{x^{p^n - 1} - 1} = x^{p^n} - x,
+    \] in quanto $0$ è radice poiché annulla il fattore $x$, mentre gli altri elementi sono invertibili e come abbiamo mostrato annullano $x^{p^n - 1} - 1$.
+    
+    Vale quindi che \[
+        \F \subseteq \set*{\alpha \in \closure{\F_p} \given \alpha^{p^n} - \alpha = 0}.
+    \] Osservo ora che il polinomio $\Psi$ ha esattamente $p^n$ radici distinte in $\closure{\F_p}$. In effetti
+    \begin{itemize}
+        \item ne ha al più $p^n$ poiché ha grado $p^n$;
+        \item per il \nameref{prop:crit_deriv}, dato che $\F$ ha caratteristica $p$ si ha che \[
+            D\Psi(x) = px^{p^n - 1} - 1 = -1
+        \] e quindi $\gcd{\Psi, \Psi'} = 1$ e quindi tutte le radici di $\Psi$ sono distinte.
+    \end{itemize}
+    
+    Segue quindi che se $\F$ è un campo, allora è l'unico possibile campo contenuto in $\closure{\F_p}$ di cardinalità $p^n$.
+    
+    Basta ora mostrare che $\F$ è effettivamente un campo.
+    Sicuramente $0$ e $1$ sono elementi di $\F$ in quanto sono radici di $\Psi$. Mostriamo allora che se $\alpha, \beta$ sono radici di $\Psi$ segue che $\alpha \pm \beta$, $\alpha\beta$ e $\nicefrac{1}{\alpha}$ sono ancora radici di $\Psi$.
+    
+    Osserviamo che $\lambda$ è radice di $\Psi$ se e solo se $\lambda^{p^n} = \lambda$. Allora \begin{align*}
+        &\alpha\pm\beta \in \F: &&(\alpha\pm\beta)^{p^n} = \alpha^{p^n}\pm\beta^{p^n} = \alpha\pm\beta, \\
+        &\alpha\beta \in \F: &&(\alpha\beta)^{p^n} = \alpha^{p^n}\beta^{p^n} = \alpha\beta\\
+        &\frac1{\alpha} \in \F: &&\parens*{\frac{1}{\alpha}}^{p^n} = \frac{1}{\alpha^{p^n}} = \frac1{\alpha}.
+    \end{align*} 
+
+    $\F$ è quindi un campo, da cui la tesi. 
+\end{proof}
+
+\begin{definition}
+    {}{}
+    Fissata una chiusura algebrica $\closure{\F_p}$ di $\F_p$, denotiamo con $\F_{p^n}$ l'unico sottocampo di $\closure{\F_p}$ con $p^n$ elementi.
+\end{definition}
+
+\begin{remark}
+    Non abbiamo ancora dimostrato che per ogni $p$ primo, $n \in \N$ esiste un polinomio irriducibile di grado $n$ in $\F_p[x]$! 
+\end{remark}

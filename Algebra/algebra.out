@@ -1,9 +1,4 @@
 \BOOKMARK [0][-]{section*.1}{Indice}{}% 1
-\BOOKMARK [0][-]{chapter.1}{Gruppi}{}% 2
-\BOOKMARK [1][-]{section.1.1}{Introduzione ai gruppi}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.2}{Sottogruppi}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.3}{Generatori e gruppi ciclici}{chapter.1}% 5
-\BOOKMARK [1][-]{section.1.4}{Omomorfismi di gruppi}{chapter.1}% 6
 \BOOKMARK [-1][-]{part.1}{Algebra I}{}% 7
 \BOOKMARK [0][-]{chapter.2}{Teoria dei Gruppi}{part.1}% 8
 \BOOKMARK [1][-]{section.2.1}{Gruppi e generatori}{chapter.2}% 9
@@ -30,3 +25,7 @@
 \BOOKMARK [1][-]{section.4.4}{Estensioni quadratiche}{chapter.4}% 30
 \BOOKMARK [1][-]{section.4.5}{Estensione di omomorfismi}{chapter.4}% 31
 \BOOKMARK [1][-]{section.4.6}{Estensioni normali}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.7}{Gruppo di Galois}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.8}{Gruppo di Galois di campi finiti}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.9}{Teorema dell'elemento primitivo}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.10}{Teorema di Corrispondenza di Galois}{chapter.4}% 36

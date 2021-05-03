@@ -200,7 +200,7 @@ Dimostriamo ora il caso più generale possibile, ovvero quello in cui l'estensio
     \newthought{Passo induttivo} Supponiamo che la tesi sia vera per ogni $m < n$ e dimostriamolo per $n$.
     
     Sia $\alpha \in \bL \setminus \K$. Possiamo costruire la torre di estensioni \[
-        \begin{tikzcd}
+        \begin{tikzcd}[every arrow/.append style={dash}]
             \K \arrow[r, "m"] \arrow[rr, bend left, "n"] &
             \K(\alpha) \arrow[r, "d"] &
             \bL.

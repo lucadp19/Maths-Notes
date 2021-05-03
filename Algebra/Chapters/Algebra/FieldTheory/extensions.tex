@@ -11,8 +11,8 @@ Sia quindi $\alpha \in \L$ un elemento algebrico su $\K$ e consideriamo ora l'om
 
 Infatti consideriamo il seguente diagramma (dato dal \nameref{th:first_iso}): \[
     \begin{tikzcd}
-            \K[X] \arrow[d, swap, "\pi"] \arrow[r, two heads, "\phi_\alpha"] & \K[\alpha] \\
-            \quot{\K[X]}{\ker \phi_\alpha} \arrow[ur, swap, two heads, hook, "\overline{\phi_\alpha}"] &
+            \K[X] \arrow[dr, swap, "\pi"] \arrow[rr, two heads, "\phi_\alpha"] & & \K[\alpha] \\
+            & \quot{\K[X]}{\ker \phi_\alpha} \arrow[ur, swap, two heads, hook, "\overline{\phi_\alpha}"] &
         \end{tikzcd}
 \] Per il \nameref{th:first_iso} segue quindi che \[
     \K[\alpha] \isomorph \quot{\K[X]}{\ker \phi_\alpha}.

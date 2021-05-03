@@ -1,0 +1,283 @@
+\section{Gruppo di Galois}
+
+Possiamo finalmente costruire l'oggetto che ci consentirà di studiare le estensioni finite di campi.
+
+\begin{definition}
+    {$\K$-automorfismo}{}
+    Sia $\ext{\E / \K}$ un'estensione di campi. Un \strong{$\K$-automorfismo} di $\E$ è un isomorfismo di campi \[
+        \phi : \E \to \E
+    \] tale che $\phi\restrict{\K} = \id$. Denoteremo il gruppo dei $\K$-automorfismi di $\E$ come $\Aut_{\K}{\E}$. 
+\end{definition}
+
+Finora abbiamo studiato solamente immersioni della forma $\E \embeds \closure\K$ che lasciano fisse $\K$. L'osservazione chiave è che se $\ext{\E / \K}$ è un'estensione normale, allora ogni immersione $\phi : \E \embeds \closure\K$ che fissa $\K$ ha come immagine $\E$ stesso, e quindi è un $\K$-automorfismo di $\E$.
+
+Con un piccolo abuso di linguaggio possiamo quindi dire che \[
+    \Aut_{\K}{\E} \deq \set*{\phi : \E \IsomTo \E \given \phi\restrict\K = \id}.
+\]
+
+\begin{definition}
+    {Estensioni e gruppi di Galois}{}
+    Sia $\ext{\E / \K}$ un'estensione normale e separabile. Diremo allora che $\ext{\E / \K}$ è \strong{di Galois} e il suo \strong{gruppo di Galois} è \[
+        \Gal{\E, \K} \deq \Aut_{\K}{\E}.
+    \]
+\end{definition}
+
+$\Gal{\E, \K}$ è effettivamente un gruppo rispetto alla composizione: in effetti \begin{itemize}
+    \item $\id : \E \to \E$ è l'identità del gruppo ed è certamente un $\K$-automorfismo di $\E$,
+    \item se $\phi, \psi \in \Gal{\E, \K}$ allora $\phi \circ \psi$ è ancora un automorfismo di $\E$ e banalmente fissa $\K$,
+    \item infine se $\phi \in \Gal{\E, \K}$ allora $\phi\inv$ è ancora un $\K$-automorfismo di $\E$.  
+\end{itemize}
+
+Inoltre per quanto studiato precedentemente il numero di elementi di $\Gal{\E, \K}$ è il numero di modi di estendere l'identità $\K \to \K$ ad un omomorfismo $\E \embeds \closure\K$, e dunque \begin{equation}
+    \card[\big]{\Gal{\E, \K}} = \ExtDegree{\E : \K}.
+\end{equation}
+
+Possiamo ora rafforzare il \Cref{th:deg_splitting_field_basic}.
+
+\begin{theorem}
+    {Grado del campo di spezzamento}{deg_splitting_field_complete}
+    Sia $f \in \K[x]$ irriducibile di grado $n$ e sia $\F$ il campo di spezzamento di $f$ su $\K$. Vale che $\Gal{\F, \K} \embeds \Sym_n$ ed in particolare \[
+        n \divides \ExtDegree{\F : \K} \divides n!
+    \]
+\end{theorem}
+
+Prima di dimostrare il \Cref{th:deg_splitting_field_complete} dimostriamo il seguente lemma.
+\begin{lemma}
+    {}{gal_action}
+    Sia $\ext{\F / \K}$ di Galois, e sia $f \in \K[x]$ con radici $\alpha_1, \dots, \alpha_n \in \closure\K$. 
+    
+    Se almeno una radice $\alpha_i$ appartiene a $\F$, allora $\Gal{\F, \K}$ agisce sulle radici di $f$. Inoltre se $f$ è irriducibile, tale azione è fedele.
+\end{lemma}
+\begin{proof}
+    Osserviamo inizialmente che se almeno un $\alpha_i \in \F$ allora per normalità di $\ext{\F / \K}$ tutte le radici di $f$ appartengono a $\F$.
+    
+    Costruiamo dunque la seguente azione di $\Gal{\F, \K}$ su $\set*{\alpha_1, \dots, \alpha_n}$:
+    \begin{equation}\label{eq:gal_action}
+        \begin{aligned}
+           \Phi : \Gal{\F, \K} &\to \Sym \set*{\alpha_1, \dots, \alpha_n}\\
+            \phi &\mapsto \phi\restrict{\set*{\alpha_1, \dots, \alpha_n}}. 
+        \end{aligned}
+    \end{equation}
+
+    \newthought{Buona definizione} Vogliamo mostrare che per ogni $\phi \in \Gal{\F, \K}$ si ha che $\phi\restrict{\set*{\alpha_1, \dots, \alpha_n}}$ è effettivamente una bigezione di $\set*{\alpha_1, \dots, \alpha_n}$ in sé.
+    
+    Sia allora $\alpha$ una radice qualsiasi di $f$. Per definizione segue che il polinomio minimo $\mu_\alpha$ di $\alpha$ su $\K$ divide $f$. Tuttavia $\phi$ è un'immersione di $\ext{\F / \K}$, dunque manda ogni radice di $\mu_\alpha$ in un'altra sua radice, che sarà quindi anche una radice di $f$.
+
+    Segue quindi che \[
+        \phi\parens*{\set*{\alpha_1, \dots, \alpha_n}} 
+        = \set*{\phi(\alpha_1), \dots, \phi(\alpha_n)} 
+        \subseteq \set*{\alpha_1, \dots, \alpha_n}.
+    \] Inoltre siccome $\phi$ è iniettivo segue che i $\phi(\alpha_i)$ sono tutti distinti, dunque i due insiemi hanno la stessa cardinalità e quindi sono lo stesso insieme. 
+    
+    Dunque $\phi\restrict{\set*{\alpha_1, \dots, \alpha_n}}$ è una bigezione di $\set*{\alpha_1, \dots, \alpha_n}$ in sé, e quindi $\Phi$ è ben definita.
+    \newthought{Omomorfismo} Si ha che \[
+        \Phi(\phi \circ \psi) 
+        = (\phi \circ \psi)\restrict{\set*{\alpha_i}} 
+        = \phi\parens*{\psi\restrict{\set*{\alpha_i}}} 
+        = \phi\restrict{\set*{\alpha_i}} \circ \psi\restrict{\set*{\alpha_i}},
+    \] dunque $\Phi$ è un omomorfismo di gruppi.
+
+    Abbiamo quindi dimostrato che $\Phi$ è un'azione di $\Gal{\F, \K}$ sull'insieme delle radici di $f$. 
+    
+    Supponiamo ora che $f$ sia irriducibile. Per mostrare che l'azione sia transitiva basta far vedere che \[
+        \orb{\alpha_1} = \set*{\phi(\alpha_1) \given \phi \in \Gal{\F, \K}} = \set*{\alpha_1, \dots, \alpha_n},
+    \] ovvero che esista un'unica orbita per quest'azione.
+    
+    Consideriamo la seguente torre di estensioni: \[
+        \begin{tikzcd}[every arrow/.append style={dash}]
+            \K \arrow[r, "n"]
+            &\K(\alpha_1) \arrow[r]
+            &\F
+        \end{tikzcd}
+    \] Per il \Cref{th:extending_phi_K(a)} esistono $n$ immersioni $\phi_i : \K(\alpha_1) \embeds \K(\alpha_i) \subseteq \closure\K$ tali che $\phi_i\restrict{\K} = \id$ e $\alpha_1 \mapsto \alpha_i$. Inoltre ogni tale immersione si estende ad $\F$ e per normalità di $\ext{\F / \K}$ si estenderà a elementi di $\Gal{\F, \K}$.
+    
+    Segue quindi che l'azione è transitiva, come volevamo.     
+\end{proof}
+
+\begin{proof}[Dimostrazione del \Cref{th:deg_splitting_field_complete}]
+    Siano $\alpha_1, \dots, \alpha_n \in \closure\K$ le radici di $f$, ovvero $\F = \K(\alpha_1, \dots, \alpha_n)$. Possiamo costruire l'estensione \[
+        \begin{tikzcd}[every arrow/.append style={dash}]
+            \K \arrow[r]
+            & \K(\alpha_1) \arrow[r]
+            & \F
+        \end{tikzcd}
+    \] Siccome $f$ è irriducibile e di grado $n$ sicuramente avremo che $\ExtDegree{\K(\alpha_1) : \K} = n$, ovvero $n \divides \ExtDegree{\F : \K}$.
+    
+    Mostriamo ora che $\Gal{\F, \K} \embeds \Sym_n$: da questo seguirà quindi per cardinalità che \[
+        \card{\Gal{\F, \K}} = \ExtDegree{\F : \K} \divides n! = \card{\Sym_n}.
+    \] Per far ciò sfruttiamo l'azione di $\Gal{\F, \K}$ su $\set*{\alpha_1, \dots, \alpha_n}$ data dalla \eqref{eq:gal_action} nella dimostrazione del \Cref{lem:gal_action}. Dato che $\F = \K(\alpha_1, \dots, \alpha_n)$ segue che \[
+        \ker \Phi = \set*{\phi \in \Gal{\F, \K} \given \phi(\alpha_i) = \alpha_i \;\;\forall i} = \set*{id},
+    \] poiché se $\phi$ fissa $\K$ e tutti i generatori, deve fissare tutto $\F$. 
+    
+    Segue quindi che l'azione di $\Gal{\F, \K}$ è fedele, ovvero $\Gal{\F, \K}$ si immerge in $\Sym_n$, da cui segue la tesi. 
+\end{proof}
+
+\section{Gruppo di Galois di campi finiti}
+
+Consideriamo un'estensione di campi finiti $\ext{\F_{q^d} / \F_q}$ dove $q \deq p^r$: vogliamo mostrare che tale estensione è normale e quindi di Galois (assumeremo sempre la separabilità). Osserviamo che per le proprietà delle torri di estensioni \[
+    \begin{tikzcd}[every arrow/.append style={dash}]
+        \F_p \arrow[r]
+        &\F_{p^r} = \F_q \arrow[r]
+        &\F_{q^d} = \F_{p^{dr}}
+    \end{tikzcd}
+\] è sufficiente dimostrare che $\ext{\F_{p^n} / \F_p}$ sia di Galois. 
+
+Sia quindi $\phi : \F_{p^n} \to \closure{\F_p}$ tale che $\phi\restrict{\F_p} = \id$. Allora $\F_{p^n}$ e $\phi\parens[\big]{\F_{p^n}}$ sono entrambi sottocampi di $\closure{\F_p}$ di $p^n$ elementi, da cui per il \Cref{th:exist_unique_F_p^n} devono essere uguali, ovvero $\ext{\F_{p^n} / \F_p}$ è normale e pertanto ogni estensione di campi finiti è normale.   
+
+\begin{theorem}
+    {Le estensioni di campi finiti hanno gruppo di Galois ciclico}{}
+    Sia $q \deq p^r$ con $p$ primo. Allora \[
+        \Gal{\F_{q^d}, \F_{q}} \isomorph \gen*{\Phi}
+    \] dove \begin{equation}
+        \begin{aligned}
+            \Phi : \F_{q^d} &\to \F_{q^d}\\
+            \alpha &\mapsto \alpha^q
+        \end{aligned}
+    \end{equation} è il cosiddetto \strong{automorfismo di Frobenius}.
+\end{theorem}
+\begin{proof}
+    Innanzitutto mostriamo che $\alpha \mapsto \alpha^q$ è effettivamente un elemento di $\Gal{\F_{q^d}, \F_q}$.
+    
+    Esso è un omomorfismo di anelli in quanto \begin{gather*}
+        \Phi(\alpha + \beta) = (\alpha + \beta)^{q} = \alpha^q + \beta^q\\
+        \Phi(\alpha\beta) = (\alpha\beta)^q = \alpha^q\beta^q,
+    \end{gather*} dove abbiamo usato il fatto che $q = p^r$ e siamo in campi di caratteristica $p$. Inoltre è iniettivo in quanto \[
+        \ker \Phi = \set*{\alpha \in \F_{q^d} \given \Phi(\alpha) = \alpha^q = 0} = {0},
+    \] dunque trattandosi di campi finiti deve essere surgettivo e quindi un isomorfismo.
+
+    Inoltre per definizione di \[
+        \F_q = \set*{\gamma \in \closure{\F_p} \given \gamma^q = \gamma}
+    \] si ha che $\Phi\restrict{\F_q} = \id$, dunque $\Phi \in \Gal{\F_{q^d}, \F_q}$.
+    
+    Ora siccome $\card[\Big]{\Gal{\F_{q^d}, \F_q}} = \ExtDegree{\F_{q^d} : \F_q} = d$ si ha che $k \deq \ord{\Phi} \divides d$. D'altro canto se $\Phi^k = \id$ allora $\Phi(\alpha) = \alpha^{q^k} = \alpha$ per ogni elemento $\alpha \in \F_{q^d}$. Dunque il polinomio \[
+        f \deq x^{q^k} - x
+    \] ha come radici tutti i $q^d$ elementi di $\F_{q^d}$. Siccome $\F_{q^d}$ è un campo ciò implica che \[
+        \deg f = q^k \geq q^d,
+    \] ovvero $k \geq d$.
+    
+    Segue quindi che $k = d$, ovvero $\ord{\Phi} = \card[\Big]{\Gal{\F_{q^d}, \F_q}}$, da cui $\Phi$ è un generatore di $\Gal{\F_{q^d}, \F}$ e quindi quest'ultimo è ciclico. 
+\end{proof}
+
+\section{Teorema dell'elemento primitivo}
+
+Prima di enunciare il teorema, diamo un esempio motivazionale.
+\begin{example}
+    Consideriamo $\E \deq \Q\parens[\Big]{\sqrt{2}, \sqrt{3}} \supseteq \Q$. Il diagramma di estensioni \[
+        \begin{tikzcd}
+            &\E = \Q\parens[\Big]{\sqrt{3}, \sqrt{2}} &\\
+            \Q\parens[\Big]{\sqrt{2}} \arrow[ur] & &\Q\parens[\Big]{\sqrt{3}} \arrow[ul] \\
+            & \Q \arrow[ul, "\text{norm.}", "2"'] \arrow[uu, "norm.", "4"'] \arrow[ur, "2", "\text{norm.}"']
+        \end{tikzcd}
+    \] ci dice che $\ext{\Q\parens[\Big]{\sqrt{2}} / \Q}$ e $\ext{\Q\parens[\Big]{\sqrt{3}} / \Q}$ sono entrambe estensioni normali (poiché di grado $2$) e pertanto $\ext{\E / \Q}$ è anch'essa normale. Inoltre per la \Cref{prop:composite_ext} abbiamo che \[
+        2 \divides \ExtDegree{\E : \Q} \leq 4.
+    \] Tuttavia se $\ExtDegree{\E : \Q}$ fosse $2$ allora $\E = \Q\parens[\Big]{\sqrt{2}} = \Q\parens[\Big]{\sqrt{3}}$ e ciò è evidentemente assurdo.
+    
+    Consideriamo ora l'azione di un generico elemento di $\Gal{\E , \Q}$ sui generatori di $\E$. Siccome ogni $\Q$-automorfismo deve mandare i generatori in altre radici del loro polinomio minimo, segue che \[
+        \sqrt{2} \mapsto \pm\sqrt{2}, \qquad \sqrt{3} \mapsto \pm\sqrt{3}.
+    \] Abbiamo quindi $4$ possibilità: \[
+        \phi_1 = \begin{cases}
+            \sqrt{2} \mapsto \sqrt{2}\\
+            \sqrt{3} \mapsto \sqrt{3}
+        \end{cases}, \quad 
+        \phi_2 = \begin{cases}
+            \sqrt{2} \mapsto -\sqrt{2}\\
+            \sqrt{3} \mapsto \sqrt{3}
+        \end{cases}, \quad 
+        \phi_3 = \begin{cases}
+            \sqrt{2} \mapsto \sqrt{2}\\
+            \sqrt{3} \mapsto -\sqrt{3}
+        \end{cases}, \quad 
+        \phi_4 = \begin{cases}
+            \sqrt{2} \mapsto -\sqrt{2}\\
+            \sqrt{3} \mapsto -\sqrt{3}
+        \end{cases}.
+    \]
+
+    Dunque $\Gal{\E, \Q}$ è un gruppo di ordine $4$ e dato che per ogni $\phi_i$ si ha $\phi_i^2 = \id$ segue che \[
+        \Gal{\E, \Q} \isomorph \Zmod{2} \times \Zmod{2}.
+    \]
+    
+    Vogliamo ora dimostrare che $\Q\parens[\Big]{\sqrt{2}, \sqrt{3}} = \Q\parens[\Big]{\sqrt{2} + \sqrt{3}}$. 
+    
+    Ovviamente $\sqrt{2} + \sqrt{3} \in \Q\parens[\Big]{\sqrt{2}, \sqrt{3}}$, dunque $\Q\parens[\Big]{\sqrt{2}, \sqrt{3}} \supseteq \Q\parens[\Big]{\sqrt{2} + \sqrt{3}}$.
+    
+    Per quanto riguarda l'altro contenimento consideriamo la torre di estensioni \[
+        \begin{tikzcd}[every arrow/.append style={dash}]
+             \Q \arrow[r] \arrow[rr, "4", bend left]
+            &\Q\parens[\Big]{\sqrt{2} + \sqrt{3}} \arrow[r]
+            &\E;
+        \end{tikzcd}
+    \] riuscendo a dimostrare che $\ExtDegree{\Q\parens[\Big]{\sqrt{2} + \sqrt{3}} : \Q} = 4$ avremo la tesi.
+
+    Consideriamo allora le immagini di $\sqrt{2} + \sqrt{3}$ mediante gli elementi di $\Gal{\E, \Q}$: \[
+        \phi_1\parens[\Big]{\sqrt{2} + \sqrt{3}} = \sqrt{2} + \sqrt{3}, \;\;
+        \phi_2\parens[\Big]{\sqrt{2} + \sqrt{3}} = -\sqrt{2} + \sqrt{3}, \;\;
+        \phi_3\parens[\Big]{\sqrt{2} + \sqrt{3}} = \sqrt{2} - \sqrt{3}, \;\;
+        \phi_4\parens[\Big]{\sqrt{2} + \sqrt{3}} = -\sqrt{2} - \sqrt{3}.
+    \] 
+    Tali immagini sono tutte distinte, in quanto sono diverse combinazioni lineari degli elementi di una base di $\ext{\E / \Q}$, che è ad esempio \[
+        \set*{1, \sqrt{2}, \sqrt{3}, \sqrt{2 \cdot 3} = \sqrt{6}}.
+    \] 
+    Siccome ogni elemento algebrico su $\Q$ viene mandato in suoi coniugati dalle immersioni di $\ext{\E / \Q}$ segue che $\sqrt{2} + \sqrt{3}$ ha almeno $4$ coniugati, ovvero $\ext{\Q\parens[\Big]{\sqrt{2} + \sqrt{3}} / \Q}$ ha almeno grado $4$.
+
+    Tuttavia non può avere grado superiore a $4$, quindi $\E = \Q\parens[\Big]{\sqrt{2} + \sqrt{3}}$. 
+\end{example}
+
+\begin{remark}
+    In questo caso particolare è automatico che se i $4$ coniugati di $\gamma \deq \sqrt{2} + \sqrt{3}$ sono distinti allora $\ext{\Q(\gamma) / \Q}$ ha grado $4$: infatti l'estensione $\ext{\E / \Q}$ è normale, dunque siccome $\gamma \in \E$ segue che tutti i suoi coniugati sono elementi di $\E$. 
+    
+    Inoltre dato che il polinomio minimo di $\gamma$ su $\Q$ è irriducibile l'azione di $\Gal{\E, \Q}$ sui coniugati di $\gamma$ è transitiva, dunque l'insieme \[
+        \orb{\gamma} = \set*{\phi_1(\gamma), \phi_2(\gamma), \phi_3(\gamma), \phi_4(\gamma)}
+    \] contiene tutti i coniugati di $\gamma$ almeno una volta, dunque $\gamma$ ha al più $4$ coniugati.
+
+    Mostrando che gli elementi di $\orb{\gamma}$ sono distinti otteniamo che sono esattamente $4$.
+\end{remark}
+
+Il fatto che esista un elemento \emph{primitivo} per $\ext{\E / \Q}$, ovvero un elemento $\gamma \in \E$ tale che $\E = \Q(\gamma)$, non è un caso, come mostrato dal prossimo teorema.
+
+\begin{theorem}
+    {Teorema dell'Elemento Primitivo}{primitive_element}
+    Sia $\ext{\E / \K}$ un'estensione finita e separabile. Allora esiste $\gamma \in \E$ tale che $\E = \K(\gamma)$. 
+\end{theorem}
+\begin{proof}
+    Dividiamo la dimostrazione in due casi, a seconda se $\K$ è un campo infinito o finito.
+    \paragraph{$\K$ campo infinito} Siccome $\ext{\E / \K}$ è finita deve essere finitamente generata, ovvero $\E = \K(\alpha_1, \dots, \alpha_n)$. Mostriamo che $\E = \K(\gamma)$ per induzione: in particolare mostriamo che un'estensione generata da due elementi può essere generata anche da uno solo, e da ciò segue (induttivamente) che ogni estensione finita può essere generata da un singolo elemento.
+
+    Poniamo quindi $\E = \K(\alpha, \beta)$ con $\ExtDegree{\E : \K} = n$. Allora per il \Cref{th:finite_ext_embedding} esistono $n$ immersioni \[
+        \phi_1, \dots, \phi_n : \E \embeds \closure\K
+    \] tali che $\phi_i\restrict\K = \id$.
+    
+    Costruiamo il seguente polinomio in $\closure\K[x]$: \[
+        F \deq \prod_{i < j} \parens[\Big]{\phi_i(\alpha) + x\phi_i(\beta) - \phi_j(\alpha) - x\phi_j(\beta)} \in \closure\K[x].
+    \] Osserviamo che $F$ non è il polinomio nullo: in effetti se per assurdo lo fosse dovrebbe essere $0$ uno dei fattori, ovvero dovrebbero esistere $i < j$ tali che \[
+        \phi_i(\alpha) + x\phi_i(\beta) = \phi_j(\alpha) + x\phi_j(\beta),
+    \] ovvero per definizione di uguaglianza tra polinomi \[
+        \phi_i(\alpha) = \phi_j(\alpha), \qquad \phi_i(\beta) = \phi_j(\beta).
+    \] Ma se $\phi_i, \phi_j$ sono due immersioni $\E \embeds \closure\K$ che fissano sia l'identità che i generatori di $\K$ allora $\phi_i = \phi_j$, e ciò è assurdo in quanto le $n$ immersioni sono distinte.
+
+    Inoltre per come abbiamo definito $F$ si ha che $\deg F \leq \binom{n}{2}$, dunque $F$ ha al più $\binom{n}{2}$ radici in $\closure\K$. Siccome $\K$ è un campo infinito, dovrà esistere $k \in \K$ tale che la valutazione di $F$ in $k$ è diversa da $0$, ovvero \[
+        F(k) = \prod_{i < j} \parens[\Big]{\phi_i(\alpha) + k\phi_i(\beta) - \phi_j(\alpha) - k\phi_j(\beta)} \neq 0.
+    \] Ma $\phi_i(\alpha) + k\phi_i(\beta) = \phi_i(\alpha) + \phi_i(k)\phi_i(\beta) = \phi_i(\alpha + k\beta)$ in quanto $k \in \K$ e $\phi_i$ agisce banalmente su $\K$, e analogamente per $\phi_j$. Dunque \[
+        \prod_{i < j} \parens[\Big]{\phi_i(\alpha + k\beta) - \phi_j(\alpha + k\beta)} \neq 0,
+    \] il che implica che per ogni $i \neq j$ \[
+        \phi_i(\alpha + k\beta) \neq \phi_j(\alpha + k\beta)
+    \] ovvero $\gamma \deq \alpha+k\beta$ ha almeno $n$ coniugati distinti.
+
+    Inoltre $\K(\gamma) \subseteq \E$ in quanto $\gamma \in \E = \K(\alpha, \beta)$, dunque possiamo costruire la torre di estensioni \[
+        \begin{tikzcd}[every arrow/.append style={dash}]
+            \K \arrow[r, "\geq n"] \arrow[rr, bend left, "n"]
+            &\K(\gamma) \arrow[r]
+            &\E = \K(\alpha, \beta).
+        \end{tikzcd}
+    \] Segue quindi che $\K(\gamma)$ ha lo stesso grado ($n$) di $\E$ su $\K$ e dunque deve valere anche l'altro contenimento, ovvero $\E = \K(\gamma)$ e quindi $\gamma$ è un elemento primitivo per $\E$.   
+
+    \paragraph{$\K$ campo finito} Siccome l'estensione $\ext{\E / \K}$ è finita segue che anche $\E$ è un campo finito, dunque per la \Cref{prop:sgr_molt_finite_field} il suo gruppo moltiplicativo è ciclico: \[
+        \units{\E} = \E \setminus \set*{0} = \gen*{\gamma}.
+    \] Dunque $\gamma$ da solo genera tutti gli elementi non nulli e $0 \in \K$, dunque $\E = \K(\gamma)$.  
+\end{proof}
+
+\begin{remark}
+    Nella dimostrazione del \Cref{th:primitive_element} nel caso infinito abbiamo dimostrato che ogni elemento $k \in \K$ \emph{tranne un numero finito} soddisfa la proprietà \[
+        \K(\alpha, \beta) = \K(\alpha + k\beta).
+    \]
+\end{remark}

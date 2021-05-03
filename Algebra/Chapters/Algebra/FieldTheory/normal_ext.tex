@@ -80,7 +80,7 @@ Ad esempio per quanto visto sopra $\ext{\Q(\zeta_p) / \Q}$ è normale, mentre $\
             \alpha_1 &\mapsto \alpha_i
         \end{align*} tale che $\phi_i\restrict{\K} = \id$.
         
-        Dato che $\ext{\F / \K}$ è finita a maggior ragione lo sarà $\ext{\F / \K(\alpha_1)}$. Per la \Cref{prop:finite_ext_embedding} possiamo allora estendere ogni $\phi_i$ ad un'immersione definita su $\F$: \[
+        Dato che $\ext{\F / \K}$ è finita a maggior ragione lo sarà $\ext{\F / \K(\alpha_1)}$. Per il \Cref{th:finite_ext_embedding} possiamo allora estendere ogni $\phi_i$ ad un'immersione definita su $\F$: \[
             \tilde\phi_i : \F \embeds \closure\K
         \] tale che $\tilde\phi_i\restrict{\K(\alpha_1)} = \phi_i$, dunque in particolare $\tilde\phi_i\restrict{\K} = \id$.
 
@@ -145,3 +145,68 @@ Ad esempio per quanto visto sopra $\ext{\Q(\zeta_p) / \Q}$ è normale, mentre $\
 Studiamo ora come si comportano le estensioni normali rispetto alle solite operazioni che compiamo sui campi, ovvero l'intersezione, il composto e le torri di estensioni.
 
 \paragraph{Composto ed intersezione}
+
+\begin{proposition}
+    {}{}
+    Dato il diagramma di estensioni di campo \[
+        \begin{tikzcd}[every arrow/.append style={dash}]
+                & \F\bL & \\
+            \F \arrow[ur] & &\bL \arrow[ul] \\
+                & \F \inters \bL \arrow[ur] \arrow[ul] &\\
+                & \K \arrow[uul, blue, "\text{norm.}"]
+                     \arrow[uur, blue, labels=below right,"\text{norm.}"]
+                     \arrow[u, Maroon]
+                     \arrow[uuu, dashed, Maroon, bend left]
+        \end{tikzcd}
+    \] dove $\ext{\F / \K}$ e $\ext{\bL / \K}$ (segnate in blu) sono estensioni normali. Allora $\ext{\F\bL / \K}$ e $\ext{\F \inters \bL / \K}$ (segnate in rosso) sono normali.
+\end{proposition}
+\begin{proof}
+    Dimostriamo i due casi separatamente.
+    \newthought{Composto} Sia $\phi : \F\bL \embeds \closure\K$ tale che $\phi\restrict{\K} = \id$. Per definizione \[
+        \phi(\F\bL) = \phi\parens[\big]{\F(\bL)} = \phi(\F)\parens[\big]{\phi(\bL)}.
+    \] Ma $\phi$ è un'immersione che ristretta a $\K$ fa $\id$, dunque per normalità di $\F$ e di $\bL$ si ha che \[
+        \phi(\F\bL) = \F\bL,
+    \] ovvero $\ext{\F\bL / \K}$ è normale.
+    \newthought{Intersezione} Sia $\psi : \F \inters \bL \embeds \closure\K$ tale che $\psi\restrict{\K} = \id$. Sia $\alpha \in \F \inters \bL$: allora $\phi(\alpha)$ è certamente un elemento di $\phi(\F)$ e di $\phi(\bL)$, dunque \[
+        \phi(\F \inters \bL) \subseteq \phi(\F) \inters \phi(\bL) = \F \inters \bL.
+    \] D'altro canto però $\F \inters \bL$ e $\phi(\F \inters \bL)$ hanno lo stesso grado su $\K$ in quanto $\phi$ è iniettivo.
+    
+    Segue quindi che $\F \inters \bL = \phi(\F \inters \bL)$, ovvero $\ext{\F \inters \bL / \K}$ è un'estensione normale.
+\end{proof}
+
+\paragraph{Torri}
+
+\begin{proposition}
+    {}{}
+    Siano $\K \embeds \F \embeds \bL$ campi tali che $\ext{\bL / \K}$ è normale. Allora $\ext{\bL / \F}$ è normale.
+\end{proposition}
+
+Il relativo diagramma delle estensioni in questo caso è \[
+    \begin{tikzcd}[every arrow/.append style={dash}]
+        \K \arrow[r] \arrow[rr, bend left, blue, "\text{norm.}"]
+        &\F \arrow[r, Maroon]
+        &\bL.
+    \end{tikzcd}
+\]
+
+\begin{proof}
+    Sia $\phi : \bL \embeds \closure\K$ tale che $\phi\restrict{\F} = \id$. Allora in particolare $\phi\restrict{\K} = \id$, in quanto $\K \subseteq \F$. Per normalità di $\ext{\bL / \K}$ segue quindi che $\phi(\bL) = \bL$, ovvero $\ext{\bL / \F}$ è normale.    
+\end{proof}
+
+\begin{remark}
+    Non possiamo dedurre nessuna altra relazione! Ad esempio la torre di estensioni \[
+        \begin{tikzcd}[every arrow/.append style={dash}]
+            \Q \arrow[r] 
+            & \Q\parens*{\sqrt[3]{2}} \arrow[r]
+            & \Q\parens*{\sqrt[3]{2}, \zeta_3}
+        \end{tikzcd}
+    \] è tale che $\ext{\Q\parens*{\sqrt[3]{2}, \zeta_3} / \Q}$ è normale, ma $\ext{\Q\parens*{\sqrt[3]{2}} / \Q}$ non lo è (in quanto contiene una radice di $x^3 - 2 \in \Q[x]$ ma non tutte le sue radici).
+
+    Allo stesso modo la torre \[
+        \begin{tikzcd}[every arrow/.append style={dash}]
+            \Q \arrow[r, "2"] 
+            & \Q\parens*{\sqrt{2}} \arrow[r, "2"]
+            & \Q\parens*{\sqrt[4]{2}}
+        \end{tikzcd}
+    \] è formata da due estensioni di grado $2$ in sequenza, che sono quindi normali, ma $\ext{\Q\parens*{\sqrt[4]{2}}}$ non è normale poiché $\Q\parens*{\sqrt[4]{2}}$ contiene una radice di $x^4 - 2$ ma non tutte.   
+\end{remark}

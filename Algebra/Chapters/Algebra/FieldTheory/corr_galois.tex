@@ -1,0 +1,242 @@
+\section{Teorema di Corrispondenza di Galois}
+
+In questa sezione enunciamo e dimostriamo il Teorema culmine della Teoria di Galois, che dà una corrispondenza biunivoca tra i sottogruppi di $\Gal{\E , \K}$ e i campi intermedi dell'estensione di Galois $\ext{\E / \K}$.
+
+Innanzitutto consideriamo una torre di estensioni \[
+    \begin{tikzcd}[every arrow/.append style={dash}]
+        \K \arrow[r] &\F \arrow[r] &\E
+    \end{tikzcd}
+\] e ricordiamo che se $\ext{\E / \K}$ è normale allora anche $\ext{\E / \F}$ lo è. Dato che consideriamo solamente estensioni separabili, questo significa che se $\ext{\E / \K}$ è di Galois (cioè normale e separabile) anche $\ext{\E / \F}$ lo è. Possiamo dunque considerare il gruppo di Galois di quest'ultima estensione, ovvero \[
+    \Gal{\E, \F} \deq \set*{\sigma : \E \IsomTo \E \given \sigma\restrict{\F} = \id}.
+\] Ma siccome $\F \supseteq \K$ ogni $\F$-automorfismo di $\E$ è anche un $\K$-automorfismo (ovvero ogni automorfismo che fissa $\F$ fissa anche il suo sottocampo $\K$), e dunque è un elemento di $\Gal{\E, \K}$: segue quindi che \[
+    \Gal{\E, \F} \sgr \Gal{\E, \K}
+\] per ogni $\F$ \emph{campo intermedio}, ovvero $\K \subseteq \F \subseteq \E$. 
+
+Viceversa, dato un sottogruppo $H \sgr \Gal{\E, \K}$ possiamo considerare il sottoinsieme di $\E$ che è \emph{fissato} da $H$, ovvero che viene mandato in sé da ogni automorfismo di $\E$ appartenente ad $H$.
+
+\begin{definition}
+    {Campo fisso}{}
+    Sia $\ext{\E / \K}$ di Galois e sia $H \sgr \Gal{\E, \K}$. Si dice \strong{campo fisso} di $H$ l'insieme \[
+        \E^H = \FixF{H} \deq \set*{\alpha \in \E \given \sigma(\alpha) = \alpha \text{ per ogni } \sigma \in H}.
+    \]
+\end{definition}
+
+\begin{proposition}
+    {}{}
+    Il campo fisso $\E^H$ è un campo, ed in particolare $\K \subseteq \E^H \subseteq \E$. 
+\end{proposition}
+\begin{proof}
+    Sicuramente $\E^H$ è intermedio tra $\K$ ed $\E$: infatti per definizione è un sottoinsieme di $\E$, e ogni elemento di $\K$ appartiene ad $\E^H$ poiché ogni elemento di $\Gal{\E, \K}$ fissa $\K$, e quindi a maggior ragione $\K$ è fissato dagli elementi di un sottogruppo di $\Gal{\E, \K}$.
+    
+    Per mostrare che $\E^H$ è un campo basta quindi mostrare che per ogni $\alpha, \beta \in \E^H$ si ha che $\alpha \pm \beta, \alpha\beta$ e $\nicefrac1\alpha$ appartengono ancora ad $\E^H$. Sia quindi $\sigma \in H$ qualsiasi e mostriamo che fissa anche questi elementi. \begin{align*}
+        &\alpha\pm\beta \in \E^H: &&\sigma(\alpha\pm\beta) = \sigma(\alpha) \pm \sigma(\beta) = \alpha\pm\beta.\\
+        &\alpha\beta \in \E^H: &&\sigma(\alpha\beta) = \sigma(\alpha)\cdot\sigma(\beta) = \alpha\beta.\\
+        &\frac1{\alpha} \in \E^H: &&\sigma\parens*{\frac{1}{\alpha}} = \frac{1}{\sigma{\alpha}} = \frac{1}{\alpha}.
+    \end{align*}
+    Dunque $\E^H$ è un campo. 
+\end{proof}
+
+Possiamo dunque enunciare il Teorema di Corrispondenza di Galois.
+
+\begin{theorem}
+    {Teorema di Corrispondenza di Galois}{corr_galois}
+    Sia $\ext{\E / \K}$ un'estensione di Galois e siano \[
+        \mathscr{F} \deq \set*{\F \text{ campo} \given \K \subseteq \F \subseteq \E}, \qquad \mathscr{G} \deq \set*{H \given H \sgr \Gal{\E, \K}}
+    \] rispettivamente l'insieme dei campi intermedi di $\ext{\E / \K}$ e l'insieme dei sottogruppi di $\Gal{\E, \K}$.
+    Allora esiste una corrisponenza biunivoca \begin{equation}
+        \begin{aligned}
+            \mathscr{F} &\biject \mathscr{G}\\
+            \F &\xmapsto{\eta} \Gal{\E, \F}\\
+            \E^H &\mapsfrom{\mu} H
+        \end{aligned}
+    \end{equation} e le mappe $\eta$ e $\mu$ sono l'una l'inversa dell'altra. Inoltre $H \normal \Gal{\E, \K}$ se e solo se $\ext{\E^H / \K}$ è normale (e quindi di Galois) ed in tal caso \[
+        \Gal{\E^H, \K} \isomorph \frac{\Gal{\E, \K}}{\Gal{\E, \E^H}} = \frac{\Gal{\E, \K}}{H}.
+    \]
+\end{theorem}
+
+Per dimostrarlo useremo i seguenti due lemmi.
+
+\begin{lemma}
+    {}{galois_1}
+    Sia $\ext{\E / \K}$ un'estensione di Galois e sia $H \sgr \Gal{\E, \K}$. Vale che \begin{equation}
+        \E^H = \K \qquad \iff \qquad H = \Gal{\E, \K},
+    \end{equation} ovvero il campo fisso di $H$ è il campo base se e solo se $H$ è l'intero gruppo di Galois dell'estensione.
+\end{lemma}
+\begin{proof}
+    Mostriamo entrambi i versi dell'implicazione.
+    \begin{description}
+        \item[\boximpl] Supponiamo che $\E^H = \K$. Per il \Cref{th:primitive_element} $\E = \K(\alpha)$. Allora consideriamo il polinomio \[
+            f = \prod_{\sigma \in H} \parens[\big]{x - \sigma(\alpha)} \in \E[x]
+        \] Tale polinomio ha evidentemente grado uguale all'ordine di $H$; inoltre è un polinomio che si annulla in $\alpha$. Mostriamo ora che $f \in \E^H[x] = \K[x]$. Infatti se $\rho \in H$ qualsiasi si ha che \[
+            \rho f = \prod_{\sigma \in H} \parens[\big]{x - \rho\sigma(\alpha)} = \prod_{\sigma' \in H} \parens[\big]{x - \sigma'(\alpha)},
+        \] dove l'ultima uguaglianza viene dal fatto che la funzione $H \ni \sigma \mapsto \rho\sigma \in H$ è un automorfismo di $H$.
+
+        Dunque $f$ è invariante per l'azione di $H$ e quindi appartiene a $\E^H[x] = \K[x]$. Ma allora se $\mu_\alpha \in \K[x]$ è il polinomio minimo di $\alpha$ su $\K$, siccome $f$ si annulla in $\alpha$ avremo che $\mu_\alpha \divides f$, e quindi \[
+            \card[\big]{\Gal{\E, \K}} = \ExtDegree{\E : \K} = \ExtDegree{\K(\alpha) : \K} = \deg \mu_\alpha \leq \deg f = \card*{H},
+        \] da cui segue necessariamente che $H = \Gal{\E, \K}$.
+        \item[\boximplby] Sia $G \deq \Gal{\E, \K}$ e mostriamo che $\E^G = \K$. Se per assurdo fosse $\E^G \supsetneq \K$ allora $\ExtDegree{\E^G : \K} > 1$, dunque deve esistere almeno un'immersione \[
+            \phi : \E^G \embeds \closure\K
+        \] tale che $\phi\restrict\K = \id$ e $\phi \neq \id$.
+        
+        Per il \Cref{th:finite_ext_embedding} possiamo allora estendere $\phi$ ad un'immersione \[
+            \tilde\phi : \E \embeds \closure\K
+        \] tale che $\tilde\phi\restrict{\E^G} = \phi$. Ma allora \[
+            \tilde\phi\restrict\K = \phi\restrict\K = \id,
+        \] dunque $\tilde\phi$ è un'immersione $\E \embeds \closure\K$ che fissa $\K$. Per normalità di $\ext{\E / \K}$ segue quindi che $\tilde\phi(\E) = \E$, dunque $\tilde\phi \in \Gal{\E, \K} = G$. Per definizione di campo fisso allora $\tilde\phi$ fissa $\E^G$, ovvero $\tilde\phi\restrict{\E^G} = \id$, il che è assurdo in quanto abbiamo supposto che \[
+            \tilde\phi\restrict{\E^G} = \phi \neq \id.
+        \]
+
+        Segue quindi che $\E^G = \K$, cioè la tesi.
+    \end{description}
+\end{proof}
+
+\begin{lemma}
+    {}{galois_2}
+    Nelle ipotesi del \Cref{th:corr_galois} sia $\H \sgr \Gal{\E, \K}$ e sia $\sigma \in H$. Allora \[
+        \E^{\sigma H\sigma\inv} = \sigma\parens*{\E^H}.
+    \]  
+\end{lemma}
+\begin{proof}
+    Per definizione \[
+        \E^H = \set*{\alpha \in \E \given \phi(\alpha) = \alpha \text{ per ogni } \phi \in H}.
+    \] Si ha dunque che \begin{align*}
+        \sigma\parens*{\E^H} 
+        &= \set*{\sigma(\alpha) \in \E \given \alpha \in \E^H}\\
+        &= \set[\big]{\sigma(\alpha) \in \E \given \phi(\alpha) = \alpha\quad\forall \phi \in H} \\
+        \intertext{Poniamo $\beta \deq \sigma(\alpha)$, ovvero $\alpha = \sigma\inv(\beta)$.}
+        &= \set[\Big]{\beta \in \E \given \sigma\inv(\beta) = \phi\sigma\inv(\beta)\quad\forall\phi \in H } \\
+        &= \set*{\beta \in \E \given \beta = \sigma\phi\sigma\inv(\beta) \quad\forall\phi \in H}\\
+        &= \set*{\beta \in \E \given \beta = \psi(\beta)\quad\forall \psi \in \sigma H\sigma\inv}\\
+        &= \E^{\sigma H\sigma\inv}. \qedhere
+    \end{align*}
+\end{proof}
+
+Possiamo ora dimostrare il \nameref{th:corr_galois}.
+\begin{proof}[Dimostrazione del \nameref{th:corr_galois}]
+    Le due mappe $\eta, \mu$ sono ben definite per quanto mostrato all'inizio della sezione. Dimostriamo allora che $\mu \circ \eta = \id_{\mathscr{F}}$ e $\eta \circ \mu = \id_{\mathscr{G}}$. 
+
+    \paragraph{Bigezione}    
+    Se $\F \in \mathscr{F}$ qualunque si ha che \[
+        (\mu \circ \eta)(\F) = \mu\parens*{\Gal{\E, \F}} = \E^{\Gal{\E, \F}} = \F
+    \] dove l'ultimo passaggio si ha per il \Cref{lem:galois_1} ponendo $H \deq \Gal{\E, \F}$: \[
+        H = \Gal{\E, \F} \implies \E^{\Gal{\E, \F}} = \E^H = \F.
+    \]
+
+    D'altro canto sia $H \sgr \Gal{\E, \K}$. Allora \[
+        (\eta \circ \mu)(H) = \eta\parens[\big]{\E^H} = \Gal{\E, \E^H} = H
+    \] dove l'ultimo passaggio si ha ancora una volta per il \Cref{lem:galois_1} ponendo $\M \deq \E^H$: \[
+        \E^H = \M \implies \Gal{\E, \E^H} = \Gal{\E, \M} = H.
+    \]
+    % Certamente $H \subseteq \Gal{\E, \E^H}$: per definizione $\E^H$ è il sottocampo di $\E$ fissato da $H$, dunque ogni elemento di $H$ è un automorfismo di $\E$ che fissa $\E^H$ e quindi $H \subseteq \Gal{\E, \E^H}$.
+    % D'altro canto sia $\M \deq \E^H$. Siccome $H \leq \Gal{\E, \M}$ per il \Cref{lem:galois_1} segue che $H = \Gal{\E, \M}$, cioè la tesi.  
+    \paragraph{Sottogruppi ed estensioni normali}
+    Sia $G \deq \Gal{\E, \K}$. Per definizione di sottogruppo normale, $H \normal G$ se e solo se per ogni $\sigma \in G$ vale che $\sigma H\sigma\inv = H$. Per il \Cref{lem:galois_2} questo è equivalente a dire che \[
+        \sigma\parens[\big]{\E^H} = \E^{\sigma H \sigma\inv} = \E^H,
+    \] per ogni $\sigma \in G = \Gal{\E, \K}$, ovvero che ogni elemento di $G$ manda $\E^H$ in sé.
+    
+    Vogliamo ora mostrare che questo accade se e solo se $\ext{\E^H / \K}$ è normale, ovvero se e solo se ogni immersione $\psi : \E^H \embeds \closure\K$ tale che $\psi\restrict\K = \id$ rispetta la condizione \[
+        \psi\parens[\big]{\E^H} = \E^H.
+    \] Ma per il \Cref{th:finite_ext_embedding} ogni $\psi$ di questa forma si estende a delle immersioni \[
+        \tilde\psi : \E \embeds \closure{\K}
+    \] tali che $\tilde\psi\restrict{\E^H} = \psi$, e quindi in particolare $\tilde\psi\restrict{\K} = \psi\restrict\K = \id$.
+    
+    Segue quindi che $\ext{\E^H / \K}$ è normale se e solo se ogni $\sigma : \E \embeds \closure\K$ che fissa $\K$ fissa anche $\E^H$; ma ogni tale $\sigma$ appartiene a $G = \Gal{\E, \K}$ per normalità di $\ext{\E / \K}$.
+    
+    Dunque per quanto mostrato prima \[
+        H \normal G \;\iff\; {\forall \sigma \in G\,:\, \sigma\parens[\big]{\E^H} = \E^H} \;\iff \; \ext{\E^H / \K} \text{ è normale},
+    \] che è ciò che volevamo.
+
+    \paragraph{Gruppo di Galois di $\ext{\E^H / \K}$}
+    Rimane da mostrare che \[
+        \Gal{\E^H, \K} \isomorph \frac{\Gal{\E, \K}}{\Gal{\E, \E^H}}.
+    \] Sia quindi \begin{align*}
+        \operatorname{res} : \Gal{\E, \K} &\to \Gal{\E^H, \K}\\
+        \sigma &\mapsto \sigma\restrict{\E^H}
+    \end{align*} l'omomorfismo di restrizione. Esso è banalmente un omomorfismo in quanto \[
+        (\sigma \circ \rho)\restrict{\E^H} = \sigma\restrict{\E^H} \circ \rho\restrict{\E^H}
+    \] ed è certamente surgettivo: ogni $\psi \in \Gal{\E^H, \K}$ si estende ad un $\K$-automorfismo di $\E$ (poiché $\ext{\E / \K}$ è normale), e dunque restringendo gli elementi di $\Gal{\E, \K}$ troveremo tutti gli elementi di $\Gal{\E^H / \K}$.
+    
+    Inoltre \[
+        \ker \operatorname{res} = \set*{\sigma \in \Gal{\E, \K} \given \sigma\restrict{\E^H} = \id} = \Gal{\E, \E^H}
+    \] per definizione di $\Gal{\E, \E^H}$. Per il \Cref{th:first_omo_group} segue quindi la tesi.
+\end{proof}
+
+Tuttavia la Corrispondenza di Galois è molto più forte della semplice bigezione tra $\mathscr{F}$ e $\mathscr{G}$: essa è un isomorfismo tra il reticolo dei sottocampi di $\ext{\E / \K}$ e il reticolo dei sottogruppi di $\Gal{\E, \K}$.
+Per mostrarlo abbiamo bisogno di definire il concetto di reticolo.
+
+\begin{definition}
+    {Reticolo}{}
+    Sia $(X, \leq)$ un insieme parzialmente ordinato. Dati $x, y \in X$ si dice \begin{itemize}
+        \item \strong{estremo superiore} di $x, y$ (e lo si indica con $x \lor y$) un elemento $z \in X$ tale che \begin{itemize}
+            \item $x \leq z$, $y \leq z$
+            \item per ogni altro $z'$ tale che $x \leq z'$ e $y \leq z'$, allora $z \leq z'$.  
+        \end{itemize}
+        \item \strong{estremo inferiore} di $x, y$ (e lo si denota $x \land y$) un elemento $z \in X$ tale che \begin{itemize}
+            \item $z \leq x$, $z \leq y$
+            \item per ogni altro $z'$ tale che $z' \leq x$ e $z' \leq y$, allora $z' \leq z$.  
+        \end{itemize}
+    \end{itemize}
+
+    Un insieme parzialmente ordinato si dice \strong{reticolo} se ogni coppia di elementi ammette estremo superiore ed inferiore.
+\end{definition}
+
+L'insieme $\mathscr{F}$ dei campi intermedi di $\ext{\E / \K}$ è un reticolo per l'inclusione: dati due campi intermedi $\F, \bL$ allora \begin{itemize}
+    \item $\F\bL$ è un campo intermedio di $\ext{\E / \K}$ ed è per definizione il più piccolo sottocampo di $\E$ contenente $\F$ e $\bL$, dunque $\F\bL = \F \lor \bL$;
+    \item $\F \inters \bL$ è un campo intermedio che è contenuto in $\F$ e in $\bL$. Inoltre se $\S \subseteq \F$, $\S \subseteq \bL$ allora dovrà essere contenuto nella loro intersezione, ovvero $\S \subseteq \F \inters \bL$, da cui $\F \inters \bL = \F \land \bL$.    
+\end{itemize} Analogamente l'insieme $\mathscr{G}$ dei sottogruppi di $\Gal{\E, \K}$ è un reticolo: se $H, K$ sono sottogruppi allora il sottogruppo da essi generato $\gen*{H, K}$ è l'estremo superiore, mentre la loro intersezione è l'estremo inferiore.
+
+Possiamo quindi enunciare il prossimo Teorema.
+\begin{theorem}
+    {Isomorfismo tra i reticoli}{galois_lattice}
+    Nelle ipotesi del \Cref{th:corr_galois}, le funzioni $\eta : \mathscr{F} \to \mathscr{G}$ e $\mu : \mathscr{G} \to \mathscr{F}$ sono \emph{isomorfismi di reticoli} che \emph{invertono l'ordine}; ovvero dati $H, K \leq \Gal{\E, \K}$ valgono le seguenti affermazioni: \begin{enumerate}[(1)]
+        \item $H \sgr K$ se e solo se $\E^H \supseteq \E^K$;
+        \item $\E^{H \inters K} = \E^H\E^K$;
+        \item $\E^{\gen{H, K}} = \E^H \inters \E^K$.    
+    \end{enumerate} 
+\end{theorem}
+
+% Prima di dimostrare il Teorema, enunciamo un lemma che ci permette di passare più facilmente dai campi fissi ai gruppi di Galois.
+% \begin{lemma}
+%     {}{}
+%     Nelle ipotesi del \Cref{th:corr_galois} siano $H, K \sgr \Gal{\E, \K}$, $\F, \bL$ campi intermedi di $\ext{\E / \K}$. Allora \begin{itemize}
+%         \item il gruppo
+%         \item il campo $\F\bL$ ha come gruppo di Galois \[
+%             \Gal{\E, \F\bL} = \Gal{\E, \F} \inters \Gal{\E, \bL}
+%         \] e dunque 
+%     \end{itemize}
+% \end{lemma}
+% \begin{proof}
+    
+% \end{proof}
+
+\begin{remark}
+    La tesi del \Cref{th:galois_lattice} può essere scritta \emph{al contrario} passando per $\eta$ e $\mu$: dati $\F, \bL$ campi intermedi di $\ext{\E / \K}$ si ha che
+    \begin{enumerate}[(1)]
+        \item $\F \supseteq \bL$ se e solo se $\Gal{\E, \F} \leq \Gal{\E, \bL}$;
+        \item $\Gal{\E, \F} \inters \Gal{\E, \bL} = \Gal{\E, \F\bL}$. 
+        \item $\gen[\big]{\Gal{\E, \F}, \Gal{\E, \bL}} = \Gal{\E, \F \inters \bL}$;
+    \end{enumerate}
+
+    \begin{proof}
+        Basta definire $\F \deq \E^H$, $\bL \deq \E^K$: da ciò segue che $H = \Gal{\E, \F}$, $K = \Gal{\E, \bL}$ e quindi le varie affermazioni seguono direttamente per sostituzione. 
+    \end{proof}
+\end{remark}
+
+\begin{proof}
+    Dimostriamo separatamente le tre affermazioni.
+    \paragraph{$H \sgr K \iff \E^H \supseteq \E^K$} Supponiamo che $H \sgr K \sgr G$. Allora siccome ogni $\alpha \in \E^K$ è fissato da ogni elemento di $K$ sarà a maggior ragione fissato da ogni elemento del suo sottogruppo $H$, da cui $\alpha \in \E^H$ e quindi $\E^K \subseteq \E^H$. 
+    
+    D'altro canto se $\E^H \supseteq \E^K$ segue che $\E^K$ è fissato (oltre che da $K$) anche da $H$, dunque $H \sgr K$, come volevamo.
+    \paragraph{$\E^{H \inters K} = \E^H\E^K$}
+    Siccome $H \inters K \sgr H, K$ per il punto precedente segue che $\E^{H \inters K} \supseteq \E^H, \E^K$ e dunque deve valere che \[
+        \E^{H \inters K} \supseteq \E^H\E^K.
+    \]
+
+    Per l'altra inclusione, osserviamo che per il punto precendente passando ai gruppi di Galois si ha che \[
+        \E^{H \inters K} \subseteq \E^H\E^K \; \iff \; \Gal{\E, \E^{H\inters K}} = H \inters K \supseteq \Gal{\E, \E^H\E^K}.
+    \] Sia quindi $\alpha \in \Gal{\E, \E^H\E^K}$: siccome $\alpha$ fissa $\E^H\E^K$ segue che $\alpha$ fissa $\E^H$ e $\E^K$ che sono sottocampi di $\E^H\E^K$. Segue quindi che $\alpha \in \Gal{\E, \E^H} \inters \Gal{\E, \E^K} = H \inters H$, come volevamo.
+    \paragraph{$\E^{\gen{H, K}} = \E^H \inters \E^K$}
+    Ancora una volta consideriamo i due contenimenti. Sicuramente $H, K \subseteq \gen*{H, K}$, da cui $\E^H, \E^K \supseteq \E^{\gen{H, K}}$ e quindi $\E^{\gen{H, K}} \subseteq \E^H \inters \E^H$. 
+
+    Viceversa sia $\alpha \in \E^H \inters \E^K$ e mostriamo che $\alpha \in \E^{\gen{H, K}}$. Siccome $\alpha$ è sia in $\E^H$ che in $\E^K$ segue che $\alpha$ è fissato sia da $H$ che da $K$, dunque è fissato da $\gen*{H, K}$ (poiché è fissato da ogni suo generatore), ovvero $\alpha \in \E^{\gen{H, K}}$. Segue quindi la tesi.
+\end{proof}

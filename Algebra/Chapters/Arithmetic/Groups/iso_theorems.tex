@@ -8,8 +8,8 @@
     Allora esiste un unico omomorfismo $\phi : \quot{G}{N} \to G^\prime$ per cui il seguente diagramma commuta:
     \begin{equation}
         \begin{tikzcd}
-            G \arrow[d, swap, "\pi_N"] \arrow[r, "f"] & G^\prime \\
-            \quot{G}{N} \arrow[ur, swap, "\phi"] &
+            G \arrow[d, swap, "\pi_N"] \arrow[r, "f"] & & G^\prime \\
+            & \quot{G}{N} \arrow[ur, swap, "\phi"] &
         \end{tikzcd}
     \end{equation}
     Inoltre vale che \begin{align*}
@@ -103,7 +103,7 @@ Il seguente diagramma dunque commuta:
 \end{equation}
 
 Vale dunque il seguente corollario.
-\begin{corollary}[Corollario al Primo Teorema degli Omomorfismi]
+\begin{corollary}{Corollario al Primo Teorema degli Omomorfismi}
     {G/ker=Imm}
     Siano $(G, \cdot)$, $(G^\prime, *)$ due gruppi e sia $f : G \to G^\prime$ un omomorfismo di gruppi. Allora \begin{equation}
         \quot{G}{\ker f} \isomorph \Imm f.

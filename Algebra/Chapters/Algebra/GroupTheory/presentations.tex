@@ -68,8 +68,8 @@ Una \emph{presentazione} di $H$ è quindi un'espressione del tipo \begin{equatio
     Per il \nameref{th:first_iso} esisterà allora un unico omomorfismo $\phi$ tale che il seguente diagramma commuti:
     \begin{equation}
         \begin{tikzcd}
-            F(n) \arrow[d, swap, "\pi"] \arrow[r, "g"] & \gen[\big]{f(x_1), \dots, f(x_n)} \subseteq K \\
-            H \isomorph \frac{F(n)}{\gen{w_1, \dots, w_m}} \arrow[ur, swap, "\phi"] &
+            F(n) \arrow[dr, swap, "\pi"] \arrow[rr, "g"] & & \gen[\big]{f(x_1), \dots, f(x_n)} \subseteq K \\
+            & H \isomorph \frac{F(n)}{\gen{w_1, \dots, w_m}} \arrow[ur, swap, "\phi"] &
         \end{tikzcd}
     \end{equation}
 

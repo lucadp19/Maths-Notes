@@ -29,21 +29,21 @@
 \contentsline {subsection}{\numberline {2.5.3}Teorema di Cayley}{45}{subsection.2.5.3}%
 \contentsline {section}{\numberline {2.6}Sottogruppo derivato}{46}{section.2.6}%
 \contentsline {section}{\numberline {2.7}Presentazioni di gruppo}{47}{section.2.7}%
-\contentsline {paragraph}{Costruzione della presentazione di un gruppo}{48}{section*.77}%
+\contentsline {paragraph}{Costruzione della presentazione di un gruppo}{48}{section*.3}%
 \contentsline {section}{\numberline {2.8}Gruppi di permutazioni}{49}{section.2.8}%
 \contentsline {subsection}{\numberline {2.8.1}Classi di coniugio in $\Sym _n$}{56}{subsection.2.8.1}%
 \contentsline {section}{\numberline {2.9}Decomposizione in prodotti diretti e semidiretti}{58}{section.2.9}%
 \contentsline {chapter}{\chapternumberline {3}\MakeTextLowercase {Teoria degli Anelli}}{63}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Anelli ed Ideali}{63}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Operazioni sugli ideali}{64}{subsection.3.1.1}%
-\contentsline {subsubsection}{Ideale generato da un sottoinsieme}{64}{section*.78}%
-\contentsline {subsubsection}{Intersezione di due ideali}{65}{section*.79}%
-\contentsline {subsubsection}{Somma di ideali}{66}{section*.80}%
-\contentsline {subsubsection}{Ideale generato dai prodotti}{66}{section*.81}%
-\contentsline {subsubsection}{Radicale di un ideale}{67}{section*.82}%
-\contentsline {subsubsection}{Divisione tra ideali}{67}{section*.83}%
+\contentsline {subsubsection}{Ideale generato da un sottoinsieme}{64}{section*.4}%
+\contentsline {subsubsection}{Intersezione di due ideali}{65}{section*.5}%
+\contentsline {subsubsection}{Somma di ideali}{66}{section*.6}%
+\contentsline {subsubsection}{Ideale generato dai prodotti}{66}{section*.7}%
+\contentsline {subsubsection}{Radicale di un ideale}{67}{section*.8}%
+\contentsline {subsubsection}{Divisione tra ideali}{67}{section*.9}%
 \contentsline {section}{\numberline {3.2}Omomorfismi di anello}{67}{section.3.2}%
-\contentsline {paragraph}{Anelli quoziente}{68}{section*.84}%
+\contentsline {paragraph}{Anelli quoziente}{68}{section*.10}%
 \contentsline {subsection}{\numberline {3.2.1}Teoremi di omomorfismo}{68}{subsection.3.2.1}%
 \contentsline {section}{\numberline {3.3}Ideali primi e massimali}{70}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Anello delle frazioni}{73}{section.3.4}%
@@ -51,8 +51,8 @@
 \contentsline {section}{\numberline {3.5}Divisibilità nei domini}{75}{section.3.5}%
 \contentsline {section}{\numberline {3.6}Categorie di anelli}{78}{section.3.6}%
 \contentsline {subsection}{\numberline {3.6.1}Domini euclidei}{78}{subsection.3.6.1}%
-\contentsline {subsubsection}{Interi di Gauss}{78}{section*.86}%
-\contentsline {subsubsection}{Proprietà dei domini euclidei}{78}{section*.87}%
+\contentsline {subsubsection}{Interi di Gauss}{78}{section*.12}%
+\contentsline {subsubsection}{Proprietà dei domini euclidei}{78}{section*.13}%
 \contentsline {subsection}{\numberline {3.6.2}Domini ad ideali principali}{79}{subsection.3.6.2}%
 \contentsline {subsection}{\numberline {3.6.3}Domini a fattorizzazione unica}{80}{subsection.3.6.3}%
 \contentsline {section}{\numberline {3.7}Polinomi come UFD}{81}{section.3.7}%
@@ -69,4 +69,17 @@
 \contentsline {section}{\numberline {4.5}Estensione di omomorfismi}{107}{section.4.5}%
 \contentsline {section}{\numberline {4.6}Estensioni normali}{112}{section.4.6}%
 \contentsline {subsection}{\numberline {4.6.1}Proprietà delle estensioni normali}{115}{subsection.4.6.1}%
-\contentsline {paragraph}{Composto ed intersezione}{115}{section*.90}%
+\contentsline {paragraph}{Composto ed intersezione}{115}{section*.16}%
+\contentsline {paragraph}{Torri}{116}{section*.17}%
+\contentsline {section}{\numberline {4.7}Gruppo di Galois}{117}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Gruppo di Galois di campi finiti}{119}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Teorema dell'elemento primitivo}{120}{section.4.9}%
+\contentsline {paragraph}{$\mathbb {K}$ campo infinito}{122}{section*.18}%
+\contentsline {paragraph}{$\mathbb {K}$ campo finito}{123}{section*.19}%
+\contentsline {section}{\numberline {4.10}Teorema di Corrispondenza di Galois}{123}{section.4.10}%
+\contentsline {paragraph}{Bigezione}{126}{section*.21}%
+\contentsline {paragraph}{Sottogruppi ed estensioni normali}{126}{section*.22}%
+\contentsline {paragraph}{Gruppo di Galois di $\ExtArgs {\mathbb {E}^H / \mathbb {K}}$}{127}{section*.23}%
+\contentsline {paragraph}{$H \leq K \DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \mathrel {\mkern -2.65mu}\Rightarrow \tmspace +\thickmuskip {.2777em}\mathbb {E}^H \supseteq \mathbb {E}^K$}{128}{section*.24}%
+\contentsline {paragraph}{$\mathbb {E}^{H \cap K} = \mathbb {E}^H\mathbb {E}^K$}{128}{section*.25}%
+\contentsline {paragraph}{$\mathbb {E}^{\gen {H, K}} = \mathbb {E}^H \cap \mathbb {E}^K$}{128}{section*.26}%

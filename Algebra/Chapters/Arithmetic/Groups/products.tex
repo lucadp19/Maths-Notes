@@ -1,7 +1,7 @@
 \section{Prodotto diretto di gruppi}
 
 \begin{definition}
-    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi. Consideriamo il loro prodotto cartesiano \[
+    Siano $(G_1, \ast)$, $(G_2, \star)$ due gruppi. Consideriamo il loro prodotto cartesiano \[
         G_1 \times G_2 = \set*{(g_1, g_2) \given g_1 \in G_1, g_2 \in G_2}    
     \] e un'operazione $\cdot$ su $G_1 \times G_2$ tale che \begin{align*}
     \cdot : (G_1 \times G_2) \times (G_1 \times G_2) &\to (G_1 \times G_2)\\
@@ -21,10 +21,10 @@
         \item[Associatività] Siano $(x, y), (z, w), (h, k) \in G_1 \times G_2$. Mostriamo che vale la proprietà associativa.
         \begin{align*}
             &(x, y) \cdot ((z, w) \cdot (h, k)) \tag{def. di $\cdot$}\\
-            &=\ (x, y) \cdot (z * h, w \star k)\tag{def. di $\cdot$}\\
-            &=\ (x * (z * h), y \star (w \star k))\tag{ass. di $*$ e $\star$}\\
-            &=\ ((x * z) * h, (y \star w) \star k) \\
-            &=\ (x * z, y \star w) \cdot (h, k) \\
+            &=\ (x, y) \cdot (z \ast h, w \star k)\tag{def. di $\cdot$}\\
+            &=\ (x \ast (z \ast h), y \star (w \star k))\tag{ass. di $*$ e $\star$}\\
+            &=\ ((x \ast z) \ast h, (y \star w) \star k) \\
+            &=\ (x \ast z, y \star w) \cdot (h, k) \\
             &=\ ((x, y) \cdot (z, w)) \cdot (h, k).
         \end{align*}  
         \item[Elemento neutro] Siano $e_1 \in G_1, e_2 \in G_2$ gli elementi neutri dei due gruppi. Mostro che $(e_1, e_2)$ è l'elemento neutro del prodotto diretto.
@@ -35,40 +35,40 @@
         \end{align*}
         \item[Invertibilità] Sia $(x, y) \in G_1 \times G_2$. Mostriamo che $(x, y)$ è invertibile e il suo inverso è $(x\inv, y\inv) \in G_1 \times G_2$, dove $x\inv$ è l'inverso di $x$ in $G_1$ e $y\inv$ è l'inverso di $y$ in $G_2$.
         \begin{align*}
-            &(x, y) \cdot (x\inv, y\inv) = (x * x\inv, y \star y\inv) = (e_1, e_2)\\
-            &(x\inv, y\inv)\cdot (x, y)  = (x\inv * x, y\inv \star y) = (e_1, e_2).
+            &(x, y) \cdot (x\inv, y\inv) = (x \ast x\inv, y \star y\inv) = (e_1, e_2)\\
+            &(x\inv, y\inv)\cdot (x, y)  = (x\inv \ast x, y\inv \star y) = (e_1, e_2).
         \end{align*} 
     \end{description}
     Dunque il prodotto diretto $(G_1 \times G_2, \cdot)$ è un gruppo.
 \end{proof}
 
 \begin{proposition}
-    [Il centro del prodotto diretto è il prodotto diretto dei centri]
-    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $(G_1 \times G_2, \cdot)$ il loro prodotto diretto.
+    {Il centro del prodotto diretto è il prodotto diretto dei centri}{}
+    Siano $(G_1, \ast)$, $(G_2, \star)$ due gruppi e sia $(G_1 \times G_2, \cdot)$ il loro prodotto diretto.
     Allora vale che \[
-        Z(G_1 \times G_2) = Z(G_1) \times Z(G_2).
+        \Zentr*{G_1 \times G_2} = Z(G_1) \times Z(G_2).
     \]
 \end{proposition}
 \begin{proof}
     Per definizione di centro sappiamo che \begin{multline*}
-        Z(G_1 \times G_2) = \left\{\;(x, y) \in G_1 \times G_2 \ColonGiven \right. \\
+        \Zentr{G_1 \times G_2} = \left\{\;(x, y) \in G_1 \times G_2 \ColonGiven \right. \\
         \left. (g_1, g_2) \cdot (x, y) = (x, y) \cdot (g_1, g_2) \quad \forall(g_1,g_2) \in G_1 \times G_2\;\right\}.  
     \end{multline*}
-    Sia $(x, y) \in Z(G_1 \times G_2)$. Allora per ogni $ (g_1,g_2) \in G_1 \times G_2$ vale che \begin{align*}
+    Sia $(x, y) \in \Zentr{G_1 \times G_2}$. Allora per ogni $ (g_1,g_2) \in G_1 \times G_2$ vale che \begin{align*}
         &(g_1, g_2) \cdot (x, y) = (x, y) \cdot (g_1, g_2) \\
-        \iff &(g_1 * x, g_2 \star y) = (x * g_1, y \star g_2)\\
-        \iff &g_1 * x = x*g_1 \text{ e } g_2 \star y = y \star g_2\\
-        \iff &x \in Z(G_1) \text{ e } y \in Z(G_2)\\
-        \iff &(x, y) \in Z(G_1) \times Z(G_2).
+        \iff &(g_1 \ast x, g_2 \star y) = (x * g_1, y \star g_2)\\
+        \iff &g_1 \ast x = x*g_1 \text{ e } g_2 \star y = y \star g_2\\
+        \iff &x \in \Zentr{G_1} \text{ e } y \in \Zentr{G_2}\\
+        \iff &(x, y) \in \Zentr{G_1} \times \Zentr{G_2}.
     \end{align*}
     Seguendo la catena di equivalenze al contrario segue la tesi.
 \end{proof}
 
 \begin{proposition}
-    [Ordine nel prodotto diretto]
+    {Ordine nel prodotto diretto}
     {ord_prod_diretto}
-    Siano $(G_1, *)$, $(G_2, \star)$ due gruppi e sia $(G_1 \times G_2, \cdot)$ il loro prodotto diretto. Sia $(x, y) \in G_1 \times G_2$. Allora vale che \[
-        \ord*(G_1 \times G_2){(x, y)} = \gcd*{\ord_{G_1}{x}, \ord_{G_2}{y}}.    
+    Siano $(G_1, \ast)$, $(G_2, \star)$ due gruppi e sia $(G_1 \times G_2, \cdot)$ il loro prodotto diretto. Sia $(x, y) \in G_1 \times G_2$. Allora vale che \[
+        \ord*_{ G_1 \times G_2 }{(x, y)} = \gcd*{\ord_{G_1}{x}, \ord_{G_2}{y}}.    
     \]
 \end{proposition}
 \begin{proof}
